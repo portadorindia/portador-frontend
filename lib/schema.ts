@@ -44,7 +44,7 @@ const offerCatalog = {
 
 export const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "Corporation"],
   name: site.name,
   legalName: site.legalName,
   url: site.url,

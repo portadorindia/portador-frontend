@@ -275,7 +275,7 @@ export function ListingPage({ title, description, links }: { title: string; desc
         <div className="container-shell grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {links.map((link) => (
             <Link key={link.href} href={link.href} className="glass-panel rounded-lg p-6 transition hover:-translate-y-1 hover:border-[#e30613]/40">
-              <h2 className="text-xl font-semibold text-white">{link.title}</h2>
+              <h3 className="text-xl font-semibold text-white">{link.title}</h3>
               <p className="mt-3 text-sm leading-6 text-zinc-400">{link.description}</p>
               <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#ff4a54]">
                 Open page <ChevronRight size={16} />

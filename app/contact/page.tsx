@@ -47,7 +47,7 @@ export default function ContactPage() {
           ].map((item) => (
             <a key={item.label} href={item.href} className="glass-panel rounded-lg p-6 transition hover:-translate-y-1 hover:border-[#e30613]/40">
               <item.icon className="mb-5 text-[#e30613]" size={26} />
-              <h2 className="text-xl font-semibold text-white">{item.label}</h2>
+              <h3 className="text-xl font-semibold text-white">{item.label}</h3>
               <p className="mt-3 text-sm text-zinc-400">{item.value}</p>
             </a>
           ))}
@@ -63,7 +63,7 @@ export default function ContactPage() {
             return (
               <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-[#e30613]/40">
                 <Icon className="mb-4 text-[#e30613]" size={22} />
-                <h2 className="text-lg font-semibold text-white">{link.label}</h2>
+                <h3 className="text-lg font-semibold text-white">{link.label}</h3>
                 <p className="mt-2 text-sm text-zinc-400">Open official PORTADOR SOS profile</p>
               </a>
             );

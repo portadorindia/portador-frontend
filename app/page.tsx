@@ -246,7 +246,7 @@ export default function Home() {
         <div className="grid gap-5 md:grid-cols-2">
           {aiQuickAnswers.map((item) => (
             <div key={item.question} className="ai-snippet rounded-md">
-              <h2 className="text-lg font-semibold text-white">{item.question}</h2>
+              <h3 className="text-lg font-semibold text-white">{item.question}</h3>
               <p className="mt-3 text-base leading-7 text-zinc-100">{item.answer}</p>
             </div>
           ))}
@@ -262,7 +262,7 @@ export default function Home() {
           {topServiceCards.map((service) => (
             <Link key={service.href} href={service.href} className="glass-panel group rounded-lg p-6 transition hover:-translate-y-1 hover:border-[#e30613]/45 hover:shadow-[0_0_34px_rgba(227,6,19,0.18)]">
               <service.icon className="mb-5 text-[#e30613]" size={26} />
-              <h2 className="text-xl font-semibold text-white">{service.title}</h2>
+              <h3 className="text-xl font-semibold text-white">{service.title}</h3>
               <p className="mt-3 text-sm leading-6 text-zinc-400">{service.copy}</p>
               <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#e30613]">
                 View service <ArrowRight size={16} />
@@ -277,7 +277,7 @@ export default function Home() {
           {cargoCategoryCards.map(({ label, href, bullets, Icon }) => (
             <Link key={label} href={href} className="rounded-lg border border-white/10 bg-white/[0.035] p-4 transition hover:-translate-y-1 hover:border-[#e30613]/40">
               <Icon className="mb-3 text-[#e30613]" size={18} />
-              <h2 className="text-sm font-bold text-white">{label}</h2>
+              <h3 className="text-sm font-bold text-white">{label}</h3>
               <ul className="mt-3 grid gap-1 text-xs leading-5 text-zinc-400">
                 {bullets.map((bullet) => (
                   <li key={bullet} className="flex gap-2">
@@ -296,7 +296,7 @@ export default function Home() {
           {industries.map((industry) => (
             <Link key={industry.slug} href={`/industries/${industry.slug}`} className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-[#e30613]/40">
               <ShieldCheck className="mb-4 text-[#e30613]" size={22} />
-              <h2 className="text-lg font-semibold text-white">{industry.title}</h2>
+              <h3 className="text-lg font-semibold text-white">{industry.title}</h3>
               <p className="mt-3 text-sm leading-6 text-zinc-400">{industry.description}</p>
             </Link>
           ))}
@@ -336,7 +336,7 @@ export default function Home() {
       <Section eyebrow="Comparison snippet" title="Why regular courier can fall short when the shipment is urgent">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="ai-snippet rounded-md">
-            <h2 className="text-xl font-semibold text-white">Air Cargo vs Routine Courier</h2>
+            <h3 className="text-xl font-semibold text-white">Air Cargo vs Routine Courier</h3>
             <p className="mt-4 text-base leading-8 text-zinc-100">
               Regular courier is useful for routine parcels. PORTADOR SOS-style urgent air logistics is better when delay can cause downtime, missed flights, production loss, tender rejection, or emergency replacement failure.
             </p>
@@ -388,7 +388,7 @@ export default function Home() {
           ))}
         </div>
         <div className="ai-snippet mt-5 rounded-md">
-          <h2 className="text-lg font-semibold text-white">Delay and TAT recalculation</h2>
+          <h3 className="text-lg font-semibold text-white">Delay and TAT recalculation</h3>
           <p className="mt-3 text-sm leading-7 text-zinc-100">
             If a flight is cancelled, delayed, rerouted, offloaded, or affected by airline, airport, weather, security, or operational reasons, the TAT will be recalculated accordingly and delay claims will not be entertained.
           </p>
@@ -398,7 +398,7 @@ export default function Home() {
       <Section eyebrow="Customer trust" title="Customer Trust Signals">
         <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div className="ai-snippet rounded-md">
-            <h2 className="text-xl font-semibold text-white">See verified customer feedback and PORTADOR's business presence on Google.</h2>
+            <h3 className="text-xl font-semibold text-white">See verified customer feedback and PORTADOR's business presence on Google.</h3>
             <p className="mt-4 text-base leading-8 text-zinc-100">
               PORTADOR does not show fabricated ratings or review text. Customers can open the live Google Business profile to review public business information and verified customer feedback.
             </p>
@@ -424,7 +424,7 @@ export default function Home() {
             ["Can PORTADOR SOS support regulated cargo?", "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, documentation, packing, and compliance review."]
           ].map(([question, answer]) => (
             <div key={question} className="ai-snippet rounded-md">
-              <h2 className="text-lg font-semibold leading-7 text-white">{question}</h2>
+              <h3 className="text-lg font-semibold leading-7 text-white">{question}</h3>
               <p className="mt-3 text-sm leading-7 text-zinc-100">{answer}</p>
             </div>
           ))}
@@ -466,7 +466,7 @@ function AirportNetworkPanel() {
         </div>
       </div>
       <div className="relative mt-5">
-        <h2 className="max-w-sm text-2xl font-semibold text-white">50+ airport cargo connections</h2>
+        <h3 className="max-w-sm text-2xl font-semibold text-white">50+ airport cargo connections</h3>
         <p className="mt-3 max-w-md text-sm leading-6 text-zinc-300">Major business cities and interior delivery locations are supported where cargo type, documents, timing, and serviceability allow.</p>
       </div>
     </div>
