@@ -15,7 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...authorityPages.map((item) => `/${item.slug}`)
   ];
 
-  return [...coreLinks.map((link) => link.href), ...legalLinks.map((link) => link.href), "/airports", "/cargo", "/use-cases", "/comparisons", "/cities", "/lanes", "/knowledge-hub", ...dynamic].map((path) => ({
+  const paths = [...new Set([...coreLinks.map((link) => link.href), ...legalLinks.map((link) => link.href), "/airports", "/cargo", "/use-cases", "/comparisons", "/cities", "/lanes", "/knowledge-hub", ...dynamic])];
+
+  return paths.map((path) => ({
     url: `${site.url}${path}`,
     lastModified: new Date(),
     changeFrequency: "weekly",

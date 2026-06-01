@@ -18,7 +18,7 @@ import { AviationHeroVisual } from "@/components/aviation-hero-visual";
 import { FAQBlock, Process } from "@/components/page-template";
 import { TrackingForm } from "@/components/tracking-form";
 import { CTA, EmergencyCallback, PrimaryButton, QuickSelector, SecondaryButton, Section } from "@/components/ui";
-import { industries, site } from "@/lib/site";
+import { hubArticles, industries, site } from "@/lib/site";
 import { faqSchema, serviceSchema } from "@/lib/schema";
 import { customerEducationFaqs } from "@/lib/customer-faqs";
 
@@ -47,13 +47,12 @@ const cargoCategoryCards = [
 ];
 
 const comparisonRows = [
-  ["Same-day feasibility", "Supported where feasible", "Usually fixed network timing"],
-  ["Human support", "24x7 operations desk", "Standard customer support"],
-  ["Airport-connected movement", "Available where serviceable", "Often hub or surface led"],
-  ["Escalation", "Urgency-first customer support", "Routine ticket flow"],
-  ["DG support", "Compliance review required", "Often restricted"],
-  ["Battery cargo", "Approval dependent review", "Often limited"],
-  ["Tracking", "Human context for urgent cargo", "Scan-based updates"]
+  ["Launch Feasibility", "Instant desk check; Next Flight Out routing", "Fixed hub sorting and scheduled surface linehauls"],
+  ["Support Ecosystem", "24/7 dedicated human operations desk", "Standard automated ticket / IVR flow"],
+  ["Regulated Shipments", "Dedicated compliance review for DG, batteries, and liquids", "Heavily restricted or systematically rejected"],
+  ["Tracking Model", "Real-time human context and milestone tracking", "Standard scan-to-scan milestone updates"],
+  ["Human Decision Making", "Dedicated operations specialist reviews every urgent movement", "Automated network routing and standard processing"],
+  ["Ideal For", "Manufacturing downtime, missed flight baggage, tender deadlines", "Routine commercial parcels"]
 ];
 
 const trustReasons = [
@@ -97,6 +96,12 @@ const topServiceCards = [
   { title: "PORTADOR GLOBAL", href: "/services/portador-global", icon: Globe2, copy: "Urgent international import and export air cargo coordination for premium cross-border air freight and emergency shipment recovery." }
 ];
 
+const emergencyKnowledgeCards = hubArticles.slice(0, 4).map((item) => ({
+  title: item.title,
+  href: `/knowledge-hub/${item.slug}`,
+  copy: item.aiSnippet ?? item.description
+}));
+
 const aiQuickAnswers = [
   {
     question: "What is PORTADOR SOS?",
@@ -118,48 +123,59 @@ const aiQuickAnswers = [
 
 const citySupportCards = [
   {
-    href: "/airports/delhi-airport-cargo",
+    href: "/airports/delhi-igi-airport",
     title: "PORTADOR SOS in Delhi NCR",
     copy: "Urgent support for machine parts, legal documents, medical equipment, excess baggage, and B2B shipments moving from North India's key business region."
   },
   {
-    href: "/airports/mumbai-air-cargo",
+    href: "/airports/mumbai-csmia",
     title: "PORTADOR SOS in Mumbai",
     copy: "Premium support for high-value cargo, event material, urgent business documents, traveler baggage, and airport-connected cargo in the western market."
   },
   {
-    href: "/airports/bangalore-airport-logistics",
+    href: "/airports/bangalore-kempegowda",
     title: "PORTADOR SOS in Bengaluru",
     copy: "Urgent laptop shipping, electronics, IT hardware, startup cargo, medical equipment, and time-sensitive business shipments for Bengaluru teams."
   },
   {
-    href: "/airports/chennai-airport-cargo",
+    href: "/airports/chennai-airport",
     title: "PORTADOR SOS in Chennai",
     copy: "Air cargo support for manufacturing parts, automotive shipments, electronics, medical equipment, and urgent intercity business movement."
   },
   {
-    href: "/airports/hyderabad-air-cargo",
+    href: "/airports/hyderabad-rgia",
     title: "PORTADOR SOS in Hyderabad",
     copy: "Urgent support for pharma-adjacent cargo, electronics, business documents, medical equipment, and airport-connected shipments."
   },
   {
-    href: "/airports/pune-airport-logistics",
+    href: "/airports/pune-airport",
     title: "PORTADOR SOS in Pune",
     copy: "Support for automotive parts, manufacturing spares, student luggage, excess baggage, and priority B2B shipments from Pune."
   },
   {
-    href: "/airports/ahmedabad-air-cargo",
+    href: "/airports/ahmedabad-airport",
     title: "PORTADOR SOS in Ahmedabad",
     copy: "Urgent cargo support for manufacturing, pharma-adjacent shipments, textiles, machine parts, and Mumbai-linked business cargo."
   },
   {
-    href: "/airports/kolkata-airport-cargo",
+    href: "/airports/kolkata-airport",
     title: "PORTADOR SOS in Kolkata",
     copy: "Eastern India support for urgent documents, baggage, event cargo, medical equipment, and business shipments where air movement is feasible."
   }
 ];
 
-const homeFaqs = [
+const phaseTwoHomeFaqs = [
+  { question: "Is emergency air cargo faster than courier service?", answer: "Emergency air cargo can be faster than courier service for urgent intercity shipments when airport-linked movement is feasible. PORTADOR SOS checks cargo readiness, documents, route feasibility, and serviceability before confirming the fastest support option." },
+  { question: "When should I use Next Flight Out cargo?", answer: "Use Next Flight Out cargo when the shipment cannot wait for routine courier or overnight movement. It is suitable for AOG parts, machine breakdown cargo, emergency documents, medical equipment, high-value cargo, and time-critical replacements." },
+  { question: "Can PORTADOR arrange same-day air cargo?", answer: "PORTADOR can arrange same-day air cargo where timing, cargo eligibility, documentation, pickup readiness, destination support, and operational availability allow. Same-day support is feasibility-based, not a fake blanket guarantee." },
+  { question: "Can PORTADOR move dangerous goods and battery shipments?", answer: "PORTADOR can check dangerous goods and battery shipments through a compliance review. Final movement depends on airline rules, MSDS or declaration where required, compliant packing, documentation, approval, route feasibility, and serviceability." },
+  { question: "Can PORTADOR assist with excess baggage transportation?", answer: "PORTADOR can assist with excess baggage transportation where bags or boxes are eligible, packed, documented, and serviceable. Support can include airport baggage courier, airport-to-home baggage delivery, student luggage, and unaccompanied baggage transport." },
+  { question: "Can PORTADOR support factory breakdown emergencies?", answer: "PORTADOR can support factory breakdown emergencies by checking urgent movement for machine parts, tooling, controllers, motors, and replacement components. The operations desk checks same-day, NFO, airport cargo, or express feasibility based on route and cargo details." },
+  { question: "Can PORTADOR support AOG aircraft parts?", answer: "PORTADOR can support AOG aircraft parts where cargo eligibility, documents, packing, route feasibility, and operational availability allow. AOG support is built for aviation spares, tooling, line station recovery, and Aircraft On Ground urgency." },
+  { question: "Can PORTADOR collect cargo from airport terminals?", answer: "PORTADOR can check airport terminal cargo collection where access, documents, authorization, cargo release status, serviceability, and operational availability allow. Share airport, terminal, AWB or cargo reference, receiver details, and deadline for review." }
+];
+
+const baseHomeFaqs = [
   { question: "How to send urgent cargo today?", answer: "Send urgent cargo today by sharing origin, destination, deadline, cargo category, weight, dimensions, and documents with PORTADOR SOS. The operations desk checks whether urgent same-day or next-flight-out air cargo support is feasible for the shipment." },
   { question: "How to send parcel by flight?", answer: "A parcel can move by flight when it is air-eligible, properly packed, documented, and accepted for air cargo movement. PORTADOR SOS checks same-day air cargo, next flight out options, airport-to-airport cargo, and urgent door support where feasible." },
   { question: "What is same-day air cargo?", answer: "Same-day air cargo is urgent air-linked cargo movement planned to reach the destination the same day where timing, cargo eligibility, documentation, and serviceability allow. PORTADOR SOS uses this for business downtime, machine breakdown, missed flight baggage, and emergency replacement situations." },
@@ -186,6 +202,8 @@ const homeFaqs = [
   ...customerEducationFaqs
 ];
 
+const homeFaqs = [...new Map([...phaseTwoHomeFaqs, ...baseHomeFaqs].map((faq) => [faq.question, faq])).values()];
+
 export default function Home() {
   return (
     <main>
@@ -210,10 +228,10 @@ export default function Home() {
               CANNOT WAIT.
             </h1>
             <p className="mt-3 max-w-xl text-sm font-medium leading-6 text-zinc-300 md:text-base">
-              Same-Day Air Cargo, Next Flight Out coordination, urgent airport cargo support, and premium time-critical logistics across India.
+              Same-Day Air Cargo, Next Flight Out (NFO), Airport Cargo Support and Time-Critical Logistics Across India.
             </p>
             <div className="mt-3 max-w-xl rounded-lg border border-white/10 bg-white/[0.045] p-3.5 shadow-[0_0_22px_rgba(227,6,19,0.07)]">
-              <h2 className="mb-1.5 text-sm font-semibold text-white">Urgent Shipment Support</h2>
+              <p className="mb-1.5 text-sm font-semibold text-white">Urgent Shipment Support</p>
               <p className="text-[13px] leading-5 text-zinc-200">
                 PORTADOR SOS helps businesses and travelers move urgent cargo when normal courier timelines are not enough.
               </p>
@@ -257,7 +275,7 @@ export default function Home() {
 
       <EmergencyCallback />
 
-      <Section eyebrow="Primary services" title="Four premium air cargo products for different urgency levels">
+      <Section eyebrow="Primary services" title="Premium Air Cargo Services">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {topServiceCards.map((service) => (
             <Link key={service.href} href={service.href} className="glass-panel group rounded-lg p-6 transition hover:-translate-y-1 hover:border-[#e30613]/45 hover:shadow-[0_0_34px_rgba(227,6,19,0.18)]">
@@ -291,7 +309,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section eyebrow="Industry use cases" title="Urgency by industry">
+      <Section eyebrow="Industry use cases" title="Industries We Support">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {industries.map((industry) => (
             <Link key={industry.slug} href={`/industries/${industry.slug}`} className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-[#e30613]/40">
@@ -303,7 +321,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section eyebrow="Air cargo coverage" title="Air Cargo Coverage Across India">
+      <Section eyebrow="Air cargo coverage" title="Airport Cargo Solutions">
         <h3 className="-mt-5 text-xl font-semibold text-white">Urgent cargo support across major airport-connected markets.</h3>
         <p className="mt-3 mb-8 max-w-3xl text-base leading-7 text-zinc-300">
           PORTADOR SOS supports urgent cargo movement across 50+ airport cargo connections and 5000+ serviceable pin codes across India.
@@ -333,7 +351,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section eyebrow="Comparison snippet" title="Why regular courier can fall short when the shipment is urgent">
+      <Section eyebrow="Comparison snippet" title="Emergency Air Cargo vs Conventional Courier Networks">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="ai-snippet rounded-md">
             <h3 className="text-xl font-semibold text-white">Air Cargo vs Routine Courier</h3>
@@ -343,9 +361,9 @@ export default function Home() {
           </div>
           <div className="overflow-hidden rounded-lg border border-white/10">
             <div className="grid grid-cols-[1fr_1fr_1fr] bg-white/[0.04] text-xs font-bold uppercase tracking-[0.14em] text-zinc-300">
-              <p className="p-3">Need</p>
+              <p className="p-3">Factor</p>
               <p className="border-l border-white/10 p-3">PORTADOR SOS</p>
-              <p className="border-l border-white/10 p-3">Routine courier</p>
+              <p className="border-l border-white/10 p-3">Conventional courier</p>
             </div>
             {comparisonRows.map(([need, portador, courier]) => (
               <div key={need} className="grid grid-cols-[1fr_1fr_1fr] border-t border-white/10 text-sm leading-6 text-zinc-300">
@@ -355,6 +373,18 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </Section>
+
+      <Section eyebrow="Knowledge Hub" title="Emergency Logistics Knowledge Hub">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {emergencyKnowledgeCards.map((item) => (
+            <Link key={item.href} href={item.href} className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-[#e30613]/40">
+              <Route className="mb-4 text-[#e30613]" size={20} />
+              <h3 className="text-lg font-semibold leading-6 text-white">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-zinc-400">{item.copy}</p>
+            </Link>
+          ))}
         </div>
       </Section>
 

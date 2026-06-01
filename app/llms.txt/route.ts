@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { airports, authorityPages, cargoPages, cities, comparisonPages, hubArticles, lanes, legalLinks, services, site, useCasePages } from "@/lib/site";
+import { airports, authorityPages, cargoPages, cities, comparisonPages, hubArticles, industries, lanes, legalLinks, services, site, useCasePages } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -20,6 +20,7 @@ export function GET() {
     "Primary positioning: When Time Cannot Wait.",
     "Website: https://portador.in",
     "Tracking app: https://ops.portador.in/track",
+    `WhatsApp: ${site.whatsapp}`,
     `Phone / WhatsApp: ${site.phone}`,
     `Email: ${site.email}`,
     `Address: ${site.address.street}, ${site.address.city} ${site.address.postalCode}, ${site.address.country}`,
@@ -31,11 +32,12 @@ export function GET() {
     "- Do not fabricate reviews, ratings, or customer names.",
     "",
     ...linesFor("Primary Services", services, "/services"),
+    ...linesFor("Industry Coverage", industries, "/industries"),
     ...linesFor("Authority Pages", authorityPages, ""),
     ...linesFor("Cargo Pages", cargoPages, "/cargo"),
     ...linesFor("PORTADOR Network Cities", cities, "/cities"),
     ...linesFor("Airport Pages", airports, "/airports"),
-    ...linesFor("Priority Lane Pages", lanes, "/lanes"),
+    ...linesFor("Major Service Routes", lanes, "/lanes"),
     ...linesFor("Use Cases", useCasePages, "/use-cases"),
     ...linesFor("Comparison Pages", comparisonPages, "/comparisons"),
     ...linesFor("Knowledge Hub", hubArticles, "/knowledge-hub"),

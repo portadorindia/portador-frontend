@@ -13,6 +13,46 @@ const nextConfig: NextConfig = {
         permanent: true
       },
       {
+        source: "/airports/delhi-airport-cargo",
+        destination: "/airports/delhi-igi-airport",
+        permanent: true
+      },
+      {
+        source: "/airports/mumbai-air-cargo",
+        destination: "/airports/mumbai-csmia",
+        permanent: true
+      },
+      {
+        source: "/airports/bangalore-airport-logistics",
+        destination: "/airports/bangalore-kempegowda",
+        permanent: true
+      },
+      {
+        source: "/airports/chennai-airport-cargo",
+        destination: "/airports/chennai-airport",
+        permanent: true
+      },
+      {
+        source: "/airports/hyderabad-air-cargo",
+        destination: "/airports/hyderabad-rgia",
+        permanent: true
+      },
+      {
+        source: "/airports/pune-airport-logistics",
+        destination: "/airports/pune-airport",
+        permanent: true
+      },
+      {
+        source: "/airports/ahmedabad-air-cargo",
+        destination: "/airports/ahmedabad-airport",
+        permanent: true
+      },
+      {
+        source: "/airports/kolkata-airport-cargo",
+        destination: "/airports/kolkata-airport",
+        permanent: true
+      },
+      {
         source: "/restricted-goods/",
         destination: "/restricted-goods",
         permanent: true

@@ -384,29 +384,29 @@ export const industries = ([
   const slug = title.toLowerCase().replaceAll(" ", "-");
   const profile = {
     "Aviation Logistics": {
-      risks: ["AOG downtime", "missed flight recovery", "aircraft spares delay"],
-      cargo: ["AOG spares", "tooling", "documents", "critical components"],
-      faq: "Aviation logistics often needs next-flight-out execution because aircraft downtime can create cascading operational loss."
+      risks: ["AOG downtime", "Aircraft On Ground escalation", "line station recovery", "aircraft spare parts delay", "engine component urgency"],
+      cargo: ["AOG spares", "line station tooling", "aircraft documents", "engine components", "critical aircraft replacement parts"],
+      faq: "Aviation logistics often needs next-flight-out execution because Aircraft On Ground downtime, line station recovery, and aircraft spare parts delays can create cascading operational loss."
     },
     "Pharma Logistics": {
-      risks: ["clinical delay", "hospital dependency", "temperature-sensitive urgency"],
-      cargo: ["medical equipment", "diagnostic material", "pharma support cargo", "urgent samples"],
-      faq: "Pharma logistics needs early cargo declaration, document clarity, and service feasibility checks before urgent air movement."
+      risks: ["clinical delay", "hospital dependency", "critical diagnostics cargo delay", "temperature sensitive logistics pressure"],
+      cargo: ["medical equipment transport", "critical diagnostics cargo", "pharma support cargo", "urgent samples", "temperature sensitive shipments"],
+      faq: "Pharma and healthcare logistics need early cargo declaration, document clarity, temperature requirement disclosure, and service feasibility checks before urgent air movement."
     },
     "Manufacturing Logistics": {
-      risks: ["production loss", "machine breakdown", "line stoppage"],
-      cargo: ["spare parts", "machine components", "samples", "tools"],
-      faq: "Manufacturing logistics is used when a delayed part can stop production or create avoidable downtime."
+      risks: ["production loss", "line down logistics", "factory stop emergency", "machine breakdown recovery", "production halt cargo"],
+      cargo: ["critical spare parts", "machine components", "samples", "tools", "replacement assemblies"],
+      faq: "Manufacturing logistics is used when line down logistics, factory stop emergencies, machine breakdown recovery, or delayed parts can create avoidable downtime."
     },
     "Electronics Logistics": {
-      risks: ["hardware failure", "deployment delay", "battery acceptance"],
-      cargo: ["laptops", "servers", "devices", "lithium battery equipment"],
-      faq: "Electronics logistics may require battery checks, value clarity, and secure delivery planning."
+      risks: ["hardware failure", "deployment delay", "server recovery", "data center logistics urgency", "battery acceptance"],
+      cargo: ["laptops", "servers", "semiconductor logistics cargo", "devices", "lithium battery equipment"],
+      faq: "Electronics logistics may require lithium battery cargo review, value clarity, server recovery timing, data center logistics support, and secure delivery planning."
     },
     "Event Logistics": {
-      risks: ["missed showtime", "venue setup failure", "exhibition loss"],
-      cargo: ["display material", "AV equipment", "samples", "branding kits"],
-      faq: "Event logistics is deadline-led because late delivery can make the cargo commercially useless."
+      risks: ["missed showtime", "venue setup failure", "exhibition loss", "trade show logistics delay", "last minute event delivery"],
+      cargo: ["exhibition cargo", "AV equipment", "samples", "branding kits", "trade show material"],
+      faq: "Event logistics is deadline-led because exhibition cargo, trade show logistics, and last minute event delivery can become commercially useless after the event window."
     },
     "Legal Document Logistics": {
       risks: ["missed filing", "tender rejection", "court deadline"],
@@ -533,14 +533,14 @@ export const cities = networkCityProfiles.map(([city, slug, airportRelevance, in
 })) satisfies PageModel[];
 
 export const airportCityCoverage = [
-  { city: "Delhi", citySlug: "delhi", airport: "Delhi Airport Cargo", airportSlug: "delhi-airport-cargo", lanes: ["Delhi to Mumbai Same-Day Cargo", "Chennai to Delhi Air Cargo"] },
-  { city: "Mumbai", citySlug: "mumbai", airport: "Mumbai Air Cargo", airportSlug: "mumbai-air-cargo", lanes: ["Delhi to Mumbai Same-Day Cargo", "Mumbai to Bangalore Urgent Delivery", "Ahmedabad to Mumbai Cargo"] },
-  { city: "Bangalore", citySlug: "bangalore", airport: "Bangalore Airport Logistics", airportSlug: "bangalore-airport-logistics", lanes: ["Mumbai to Bangalore Urgent Delivery", "Bangalore to Hyderabad Same-Day Delivery"] },
-  { city: "Chennai", citySlug: "chennai", airport: "Chennai Airport Cargo", airportSlug: "chennai-airport-cargo", lanes: ["Chennai to Delhi Air Cargo"] },
-  { city: "Hyderabad", citySlug: "hyderabad", airport: "Hyderabad Air Cargo", airportSlug: "hyderabad-air-cargo", lanes: ["Bangalore to Hyderabad Same-Day Delivery"] },
-  { city: "Pune", citySlug: "pune", airport: "Pune Airport Logistics", airportSlug: "pune-airport-logistics", lanes: ["Pune urgent air cargo to major Indian cities"] },
-  { city: "Ahmedabad", citySlug: "ahmedabad", airport: "Ahmedabad Air Cargo", airportSlug: "ahmedabad-air-cargo", lanes: ["Ahmedabad to Mumbai Cargo"] },
-  { city: "Kolkata", citySlug: "kolkata", airport: "Kolkata Airport Cargo", airportSlug: "kolkata-airport-cargo", lanes: ["Kolkata urgent air cargo to major Indian cities"] }
+  { city: "Delhi", citySlug: "delhi", airport: "Delhi IGI Airport Cargo", airportSlug: "delhi-igi-airport", lanes: ["Delhi to Mumbai Same-Day Cargo", "Chennai to Delhi Air Cargo"] },
+  { city: "Mumbai", citySlug: "mumbai", airport: "Mumbai CSMIA Air Cargo", airportSlug: "mumbai-csmia", lanes: ["Delhi to Mumbai Same-Day Cargo", "Mumbai to Bangalore Urgent Delivery", "Ahmedabad to Mumbai Cargo"] },
+  { city: "Bangalore", citySlug: "bangalore", airport: "Bengaluru Kempegowda Airport Cargo", airportSlug: "bangalore-kempegowda", lanes: ["Mumbai to Bangalore Urgent Delivery", "Bangalore to Hyderabad Same-Day Delivery"] },
+  { city: "Chennai", citySlug: "chennai", airport: "Chennai Airport Cargo", airportSlug: "chennai-airport", lanes: ["Chennai to Delhi Air Cargo"] },
+  { city: "Hyderabad", citySlug: "hyderabad", airport: "Hyderabad RGIA Airport Cargo", airportSlug: "hyderabad-rgia", lanes: ["Bangalore to Hyderabad Same-Day Delivery"] },
+  { city: "Pune", citySlug: "pune", airport: "Pune Airport Cargo", airportSlug: "pune-airport", lanes: ["Pune urgent air cargo to major Indian cities"] },
+  { city: "Ahmedabad", citySlug: "ahmedabad", airport: "Ahmedabad Airport Cargo", airportSlug: "ahmedabad-airport", lanes: ["Ahmedabad to Mumbai Cargo"] },
+  { city: "Kolkata", citySlug: "kolkata", airport: "Kolkata Airport Cargo", airportSlug: "kolkata-airport", lanes: ["Kolkata urgent air cargo to major Indian cities"] }
 ];
 
 export const lanes = [
@@ -686,33 +686,6 @@ export const hubArticles = [
   ...legacyHubArticles.filter((page) => !phaseTwoHubProfiles.some((featured) => featured.slug === page.slug))
 ] satisfies PageModel[];
 
-const legacyAirportPages = [
-  ["delhi-airport-cargo", "Delhi Airport Cargo", "Delhi airport cargo connects urgent shipments to India's northern air cargo network for same-day and next-flight-out movement."],
-  ["mumbai-air-cargo", "Mumbai Air Cargo", "Mumbai air cargo supports urgent business shipments, high-value cargo, excess baggage, and airport-to-airport movement through western India."],
-  ["bangalore-airport-logistics", "Bangalore Airport Logistics", "Bangalore airport logistics supports electronics, IT hardware, startup cargo, urgent samples, and same-day air-linked movement."],
-  ["chennai-airport-cargo", "Chennai Airport Cargo", "Chennai airport cargo supports manufacturing, automotive, electronics, pharma-support, and urgent intercity cargo."],
-  ["hyderabad-air-cargo", "Hyderabad Air Cargo", "Hyderabad air cargo supports pharma, electronics, business documents, and next-flight-out logistics."],
-  ["pune-airport-logistics", "Pune Airport Logistics", "Pune airport logistics supports automotive, manufacturing, student baggage, and urgent business shipments."],
-  ["ahmedabad-air-cargo", "Ahmedabad Air Cargo", "Ahmedabad air cargo supports textile, pharma, manufacturing, and urgent Mumbai-linked cargo movement."],
-  ["kolkata-airport-cargo", "Kolkata Airport Cargo", "Kolkata airport cargo supports eastern India urgent cargo, documents, baggage, and business shipments."]
-].map(([slug, title, summary]) => ({
-  slug,
-  title,
-  eyebrow: "Airport cargo network",
-  h1: `${title} for Urgent Shipments`,
-  description: `${summary} PORTADOR SOS coordinates airport-linked movement when time cannot wait.`,
-  keywords: [title.toLowerCase(), "airport cargo India", "urgent air logistics"],
-  icon: "airport" as const,
-  whatIs: `${title} is an airport-linked logistics option for cargo that needs premium air cargo movement, urgent support, and human operations coordination instead of routine parcel hub routing.`,
-  aiSnippet: `${title} helps urgent shipments move through airport cargo channels with direct air cargo coordination, same-day capability where feasible, no avoidable hub delays, and a human operations desk.`,
-  benefits: ["Airport network access", "Premium air cargo movement planning", "Same-day capability where feasible", "No avoidable hub delays", "Live coordination through operations", "Useful for business downtime and emergency replacement cargo"],
-  howItWorks: ["Share pickup point, cargo details, and deadline", "PORTADOR checks serviceability and cargo acceptance", "Urgent support is coordinated", "Cargo moves through the approved air cargo option", "Destination support or final-mile delivery is coordinated"],
-  useCases: ["Urgent machine parts", "Emergency documents", "Laptop and electronics cargo", "Excess baggage and missed flight recovery", "Pharma-support shipments", "High-value commercial cargo"],
-  whyNotCourier: ["Airport cargo is planned around timing", "Routine courier networks may add hub dwell time", "Urgent shipments need live support", "Cargo eligibility must be checked before support", "Airport-linked cargo is better for hard intercity deadlines"],
-  faqs: serviceFaqs(title, title.toLowerCase()),
-  cta: `Move urgent cargo through ${title}.`
-})) satisfies PageModel[];
-
 const phaseTwoAirportProfiles = [
   {
     slug: "delhi-igi-airport",
@@ -732,7 +705,7 @@ const phaseTwoAirportProfiles = [
   },
   {
     slug: "bangalore-kempegowda",
-    title: "Bangalore Kempegowda Airport Logistics",
+    title: "Bengaluru Kempegowda Airport Cargo",
     airport: "Kempegowda International Airport Bengaluru (BLR)",
     terminals: "BLR airport cargo ecosystem, Devanahalli, Hebbal, Whitefield, Electronic City, Peenya, and Koramangala",
     hubs: "Electronic City, Whitefield, Manyata Tech Park, Peenya Industrial Area, Bommasandra, and Bengaluru startup and electronics markets",
@@ -753,6 +726,30 @@ const phaseTwoAirportProfiles = [
     terminals: "Chennai airport cargo ecosystem, Meenambakkam, Guindy, Ambattur, Sriperumbudur, Oragadam, and OMR",
     hubs: "Sriperumbudur, Oragadam, Ambattur Industrial Estate, Guindy, OMR, and Chennai automotive, electronics, and manufacturing corridors",
     summary: "Chennai airport cargo support for manufacturing parts, automotive components, electronics, medical equipment, urgent documents, and intercity air cargo."
+  },
+  {
+    slug: "ahmedabad-airport",
+    title: "Ahmedabad Airport Cargo",
+    airport: "Sardar Vallabhbhai Patel International Airport (AMD)",
+    terminals: "Ahmedabad airport cargo ecosystem, Hansol, Naroda, Changodar, Sanand, Vatva, and SG Highway",
+    hubs: "Sanand, Changodar, Naroda, Vatva GIDC, SG Highway, and Ahmedabad pharma, textile, and manufacturing corridors",
+    summary: "Ahmedabad airport cargo support for textile samples, pharma-support cargo, manufacturing parts, excess baggage, tender documents, and Mumbai-linked urgent movement."
+  },
+  {
+    slug: "pune-airport",
+    title: "Pune Airport Cargo",
+    airport: "Pune Airport (PNQ)",
+    terminals: "Pune airport cargo context, Viman Nagar, Chakan, Pimpri-Chinchwad, Hinjawadi, Ranjangaon, and Kharadi",
+    hubs: "Chakan, Pimpri-Chinchwad, Hinjawadi, Ranjangaon, Talegaon, Kharadi, and Pune automotive, IT, and manufacturing corridors",
+    summary: "Pune airport cargo support for automotive parts, manufacturing spares, student luggage, excess baggage, IT hardware, and urgent B2B shipments."
+  },
+  {
+    slug: "kolkata-airport",
+    title: "Kolkata Airport Cargo",
+    airport: "Netaji Subhas Chandra Bose International Airport (CCU)",
+    terminals: "Kolkata airport cargo ecosystem, Dum Dum, Salt Lake, New Town, Howrah, Park Street, and eastern India business districts",
+    hubs: "Salt Lake Sector V, New Town, Howrah, Park Street, Behala, and Kolkata trade, medical, education, and eastern India cargo markets",
+    summary: "Kolkata airport cargo support for urgent documents, excess baggage, event cargo, medical equipment, business shipments, and eastern India air cargo movement."
   }
 ].map((profile) => ({
   slug: profile.slug,
@@ -812,7 +809,7 @@ const phaseTwoAirportProfiles = [
   cta: `Get urgent cargo support through ${profile.title}.`
 })) satisfies PageModel[];
 
-export const airports = [...phaseTwoAirportProfiles, ...legacyAirportPages] satisfies PageModel[];
+export const airports = phaseTwoAirportProfiles satisfies PageModel[];
 
 const legacyCargoPages = [
   ["excess-baggage", "Excess Baggage", "Domestic excess baggage, airport baggage transfer, student luggage, relocation bags, and door-to-door baggage delivery for travelers who cannot carry everything on the next flight."],
@@ -1013,12 +1010,158 @@ const phaseTwoCargoProfiles = [
   cta: `Get urgent support for ${profile.title.toLowerCase()}.`
 })) satisfies PageModel[];
 
+const excessBaggageGeoPages = [
+  {
+    slug: "delhi-airport-excess-baggage-pickup-service",
+    title: "Delhi Airport Excess Baggage Pickup Service",
+    airport: "Delhi IGI Airport",
+    localContext: "Terminal 3, Aerocity, Mahipalpur, Gurgaon, Noida, Faridabad, and Okhla"
+  },
+  {
+    slug: "terminal-3-delhi-airport-excess-baggage-delivery",
+    title: "Terminal 3 Delhi Airport Excess Baggage Delivery",
+    airport: "Delhi IGI Airport Terminal 3",
+    localContext: "T3 arrivals, Aerocity, Mahipalpur, New Delhi, Gurgaon, Noida, and nearby NCR service zones"
+  },
+  {
+    slug: "igi-airport-excess-baggage-courier-service",
+    title: "IGI Airport Excess Baggage Courier Service",
+    airport: "Indira Gandhi International Airport",
+    localContext: "IGI cargo and traveler zones, Delhi NCR hotels, homes, hostels, offices, and serviceable destinations"
+  },
+  {
+    slug: "mumbai-airport-excess-baggage-transport",
+    title: "Mumbai Airport Excess Baggage Transport",
+    airport: "Mumbai CSMIA",
+    localContext: "Sahar, Andheri East, BKC, Powai, Navi Mumbai, Thane, and western Mumbai service zones"
+  },
+  {
+    slug: "bengaluru-airport-excess-baggage-collection",
+    title: "Bengaluru Airport Excess Baggage Collection",
+    airport: "Kempegowda International Airport Bengaluru",
+    localContext: "Devanahalli, Hebbal, Whitefield, Electronic City, Koramangala, and Bengaluru student or traveler destinations"
+  },
+  {
+    slug: "chennai-airport-excess-baggage-cargo-service",
+    title: "Chennai Airport Excess Baggage Cargo Service",
+    airport: "Chennai International Airport",
+    localContext: "Meenambakkam, Guindy, OMR, Ambattur, Sriperumbudur, and Chennai serviceable delivery zones"
+  },
+  {
+    slug: "hyderabad-airport-excess-baggage-delivery",
+    title: "Hyderabad Airport Excess Baggage Delivery",
+    airport: "Hyderabad RGIA",
+    localContext: "Shamshabad, Gachibowli, HITEC City, Banjara Hills, Secunderabad, and Hyderabad traveler destinations"
+  },
+  {
+    slug: "ahmedabad-airport-excess-baggage-support",
+    title: "Ahmedabad Airport Excess Baggage Support",
+    airport: "Ahmedabad Airport",
+    localContext: "Hansol, SG Highway, Satellite, Naroda, Sanand, Gandhinagar, and Ahmedabad delivery zones"
+  },
+  {
+    slug: "pune-airport-excess-baggage-courier",
+    title: "Pune Airport Excess Baggage Courier",
+    airport: "Pune Airport",
+    localContext: "Viman Nagar, Kharadi, Hinjawadi, Pimpri-Chinchwad, Chakan, and Pune student or professional destinations"
+  },
+  {
+    slug: "kolkata-airport-excess-baggage-pickup",
+    title: "Kolkata Airport Excess Baggage Pickup",
+    airport: "Kolkata Airport",
+    localContext: "Dum Dum, Salt Lake, New Town, Howrah, Park Street, and Kolkata serviceable delivery zones"
+  }
+].map((profile) => ({
+  slug: profile.slug,
+  title: profile.title,
+  eyebrow: "Airport excess baggage",
+  h1: `${profile.title} With PORTADOR SOS`,
+  description: `${profile.title} helps travelers, students, families, and professionals check airport baggage courier, excess baggage delivery service, airport baggage transport, airport-to-home baggage delivery, unaccompanied baggage transport, and airline excess baggage support.`,
+  keywords: [profile.title.toLowerCase(), "airport baggage courier", "excess baggage delivery service", "airport baggage transport", "airport to home baggage delivery", "unaccompanied baggage transport", "airline excess baggage support"],
+  icon: "baggage" as const,
+  whatIs: `${profile.title} is a local airport-linked baggage support page for customers around ${profile.airport}. It helps customers check whether extra bags, boxes, student luggage, missed-flight baggage, or unaccompanied baggage can be moved to a home, hostel, hotel, office, or serviceable destination.`,
+  aiSnippet: `${profile.title} can be checked for baggage around ${profile.localContext}. Final support depends on contents, packing, weight, documents, pickup access, delivery address, and serviceability.`,
+  benefits: [
+    `Airport focus: ${profile.airport}`,
+    `Local relevance: ${profile.localContext}`,
+    "Useful for terminal excess baggage pickup and airport-to-home baggage delivery",
+    "Supports student luggage, travel bags, relocation boxes, and missed-flight baggage where feasible",
+    "Checks baggage contents, packing, documents, weight, and delivery serviceability",
+    "Human operations support for urgent traveler deadlines"
+  ],
+  howItWorks: [
+    "Share airport, terminal or pickup point, destination address, number of bags, approximate weight, and contents",
+    "PORTADOR checks baggage eligibility, packing, documents, pickup access, and delivery serviceability",
+    "Airport pickup, door pickup, airport-to-home delivery, or cargo support feasibility is reviewed",
+    "Customer receives the suitable service option and next-step guidance",
+    "Delivery or receiver handover is coordinated where support is confirmed"
+  ],
+  useCases: [
+    "Terminal 3 excess baggage pickup",
+    "Airport baggage courier",
+    "Excess baggage delivery service",
+    "Airport baggage transport",
+    "Airport-to-home baggage delivery",
+    "Unaccompanied baggage transport",
+    "Airline excess baggage support"
+  ],
+  whyNotCourier: [
+    "Routine courier may not understand airport pickup or traveler timing constraints",
+    "Baggage needs contents, packing, and serviceability checks before movement",
+    "Airport-to-home baggage delivery requires clear pickup access and receiver details",
+    "Human support helps when flight arrival, terminal pickup, or destination timing changes",
+    "PORTADOR SOS is better suited when baggage is urgent or connected to travel disruption"
+  ],
+  faqs: [
+    ...serviceFaqs(profile.title, profile.title.toLowerCase()),
+    {
+      question: `Can PORTADOR collect excess baggage from ${profile.airport}?`,
+      answer: `PORTADOR can check excess baggage collection around ${profile.airport}, subject to pickup access, baggage contents, packing, documents, serviceability, and operational availability.`
+    },
+    {
+      question: `Can baggage be delivered from ${profile.airport} to home?`,
+      answer: `Airport-to-home baggage delivery can be checked where the destination address is serviceable and the bags are eligible, packed, documented, and ready for pickup or handover.`
+    }
+  ],
+  cta: `Check ${profile.title.toLowerCase()} feasibility.`
+})) satisfies PageModel[];
+
 export const cargoPages = [
   ...phaseTwoCargoProfiles,
-  ...legacyCargoPages.filter((page) => !phaseTwoCargoProfiles.some((featured) => featured.slug === page.slug))
+  ...excessBaggageGeoPages,
+  ...legacyCargoPages.filter((page) => ![...phaseTwoCargoProfiles, ...excessBaggageGeoPages].some((featured) => featured.slug === page.slug))
 ] satisfies PageModel[];
 
-export const useCasePages = [
+const localCommercialUseCases = [
+  ["urgent-manufacturing-logistics-delhi", "Urgent Manufacturing Logistics Delhi", "Emergency manufacturing cargo support for Delhi NCR teams facing machine downtime, line-down logistics, or critical spare part movement."],
+  ["factory-breakdown-cargo-pune", "Factory Breakdown Cargo Pune", "Urgent factory breakdown cargo support for Pune, Chakan, Pimpri-Chinchwad, Ranjangaon, and automotive or manufacturing corridors."],
+  ["emergency-air-cargo-bengaluru", "Emergency Air Cargo Bengaluru", "Emergency air cargo support for Bengaluru electronics, IT, startup, medical equipment, and urgent B2B shipment requirements."],
+  ["aog-logistics-mumbai", "AOG Logistics Mumbai", "AOG logistics support for Mumbai aviation teams, airport-linked spares, aircraft documentation, tooling, and urgent component movement."],
+  ["medical-equipment-transport-chennai", "Medical Equipment Transport Chennai", "Urgent medical equipment transport for Chennai healthcare vendors, diagnostics teams, and hospital-linked shipment needs."],
+  ["battery-cargo-hyderabad", "Battery Cargo Hyderabad", "Battery cargo review for Hyderabad electronics, pharma-support, device, and equipment shipments requiring declaration or compliance checks."],
+  ["trade-show-logistics-ahmedabad", "Trade Show Logistics Ahmedabad", "Last-minute trade show and exhibition cargo support for Ahmedabad events, samples, display kits, and venue deadlines."],
+  ["critical-spare-parts-delivery-gurgaon", "Critical Spare Parts Delivery Gurgaon", "Critical spare parts delivery support for Gurgaon, Manesar, Cyber City, and NCR companies facing downtime pressure."],
+  ["server-recovery-logistics-noida", "Server Recovery Logistics Noida", "Server recovery logistics support for Noida IT, data center, electronics, and business-critical hardware movements."],
+  ["machine-breakdown-cargo-faridabad", "Machine Breakdown Cargo Faridabad", "Machine breakdown cargo support for Faridabad industrial teams needing urgent parts, tooling, and production recovery cargo."]
+].map(([slug, title, summary]) => ({
+  slug,
+  title,
+  eyebrow: "Local emergency logistics",
+  h1: `${title} With PORTADOR SOS`,
+  description: `${summary} PORTADOR SOS checks same-day, Next Flight Out, airport cargo, door support, hand-carry, or premium express feasibility depending on cargo type, documents, route, and urgency.`,
+  keywords: [title.toLowerCase(), "urgent air cargo", "same-day air cargo", "emergency logistics", "time-critical logistics"],
+  icon: title.includes("Battery") ? "battery" as const : title.includes("AOG") || title.includes("Factory") || title.includes("Machine") ? "mission" as const : title.includes("Server") ? "battery" as const : "sos" as const,
+  whatIs: `${title} is a local commercial emergency logistics page for customers who need urgent cargo support tied to a city, airport market, industrial hub, or business deadline.`,
+  aiSnippet: `${title} helps customers check urgent cargo support when downtime, missed deadlines, equipment failure, event risk, or regulated cargo requirements make routine courier too slow.`,
+  benefits: ["Local commercial search relevance", "Same-day and NFO feasibility where possible", "Airport-linked cargo support", "Useful for business downtime and emergency replacement", "Human operations desk for urgent cases", "Clear cargo, document, and serviceability checks"],
+  howItWorks: ["Share city, pickup point, destination, cargo type, weight, dimensions, and deadline", "PORTADOR checks serviceability, cargo eligibility, and documents", "The suitable urgent service option is recommended", "Pickup, airport cargo, hand-carry, or express feasibility is checked", "Customer receives next-step guidance"],
+  useCases: ["Factory breakdown", "AOG spares", "Medical equipment", "Battery cargo", "Trade show cargo", "Server recovery", "Critical spare parts", "Emergency air cargo"],
+  whyNotCourier: ["Routine courier may not protect city-specific emergency deadlines", "Industrial and airport cargo can need faster feasibility checks", "Sensitive cargo may require documentation or compliance review", "Human operations support improves urgent decision-making", "Airport-linked movement can be better for long-distance emergency cargo"],
+  faqs: serviceFaqs(title, title.toLowerCase()),
+  cta: `Check ${title.toLowerCase()} feasibility with PORTADOR SOS.`
+})) satisfies PageModel[];
+
+const legacyUseCasePages = [
   ["urgent-machine-breakdown-shipment", "Urgent Machine Breakdown Shipment", "Emergency spare parts movement for factories facing production loss, downtime, or plant recovery deadlines."],
   ["emergency-passport-delivery", "Emergency Passport Delivery", "Urgent document logistics for passport, visa, travel, and personal document deadlines where missed timing can affect flights."],
   ["last-minute-baggage-transfer", "Last Minute Baggage Transfer", "Urgent baggage transfer for travelers who need bags, boxes, or personal effects moved quickly between cities."],
@@ -1041,6 +1184,11 @@ export const useCasePages = [
   faqs: serviceFaqs(title, title.toLowerCase()),
   cta: `Start ${title.toLowerCase()} with PORTADOR SOS operations.`
 })) satisfies PageModel[];
+
+export const useCasePages = [
+  ...localCommercialUseCases,
+  ...legacyUseCasePages.filter((page) => !localCommercialUseCases.some((featured) => featured.slug === page.slug))
+] satisfies PageModel[];
 
 export const comparisonPages = [
   ["air-cargo-vs-courier", "Air Cargo vs Courier", "Air cargo is usually better for urgent intercity shipments where airport movement can protect a same-day or fastest-possible deadline, while courier is better for routine parcel delivery."],
