@@ -571,7 +571,7 @@ export const lanes = [
   cta: `Move urgent cargo from ${from} to ${to}.`
 })) satisfies PageModel[];
 
-export const hubArticles = [
+const legacyHubArticles = [
   "What is Next Flight Out Cargo?",
   "Air Cargo vs Courier",
   "How Same-Day Air Cargo Works",
@@ -598,7 +598,95 @@ export const hubArticles = [
   cta: "Speak with PORTADOR SOS operations for route-specific guidance."
 })) satisfies PageModel[];
 
-export const airports = [
+const phaseTwoHubProfiles = [
+  {
+    title: "What is Next Flight Out Cargo?",
+    summary: "Next Flight Out cargo is an urgent air logistics option where eligible shipments are checked against the earliest suitable flight-linked movement instead of waiting for routine courier cycles.",
+    buyerQuestion: "How quickly can urgent cargo move if normal courier is too slow?",
+    use: "machine breakdown parts, AOG spares, urgent documents, medical equipment, high-value cargo, and emergency replacement shipments",
+    compare: "routine express courier follows scheduled network timelines, while NFO focuses on the earliest feasible air-linked movement"
+  },
+  {
+    title: "Air Cargo vs Courier",
+    summary: "Air cargo is usually better for urgent intercity shipments where airport-linked movement can protect a hard deadline, while courier is better for routine parcels that can follow standard hub networks.",
+    buyerQuestion: "Should I send this urgent shipment by air cargo or courier?",
+    use: "same-day cargo, AOG shipments, excess baggage, tender documents, legal papers, laptop replacement, and business-critical parts",
+    compare: "courier optimizes parcel scale and scheduled movement, while urgent air cargo optimizes deadline pressure and route feasibility"
+  },
+  {
+    title: "How Same-Day Air Cargo Works",
+    summary: "Same-day air cargo works by checking whether pickup readiness, cargo eligibility, documents, timing, destination support, and serviceability can support delivery within the same day.",
+    buyerQuestion: "Can I send cargo today by flight?",
+    use: "urgent business shipments, machine parts, emergency documents, excess baggage, electronics, samples, and high-value cargo",
+    compare: "same-day air cargo is feasibility-led; normal courier may move later through routine sorting and linehaul schedules"
+  },
+  {
+    title: "What is Mission-Critical Logistics?",
+    summary: "Mission-critical logistics is deadline-led shipment support for cargo where delay can cause business downtime, production loss, missed flights, legal risk, medical disruption, or operational failure.",
+    buyerQuestion: "When is a shipment serious enough for emergency logistics?",
+    use: "AOG cargo, factory breakdown parts, urgent medical equipment, event material, tender files, passport documents, and high-value commercial cargo",
+    compare: "routine logistics manages normal delivery expectations, while mission-critical logistics protects time-sensitive outcomes"
+  }
+].map((profile) => ({
+  slug: profile.title.toLowerCase().replaceAll("?", "").replaceAll(" ", "-"),
+  title: profile.title,
+  eyebrow: "Knowledge Hub",
+  h1: profile.title,
+  description: `${profile.summary} PORTADOR SOS explains this for urgent cargo buyers who need customer-readable answers before they ship.`,
+  keywords: [profile.title.toLowerCase().replace("?", ""), "urgent air logistics", "same-day air cargo", "airport cargo India", "next flight out cargo"],
+  icon: "default" as const,
+  whatIs: profile.summary,
+  aiSnippet: `${profile.summary} It is relevant for ${profile.use} when time cannot wait.`,
+  benefits: [
+    `Direct answer: ${profile.buyerQuestion}`,
+    `Useful for ${profile.use}`,
+    `Key comparison: ${profile.compare}`,
+    "Explains feasibility instead of promising impossible fixed timelines",
+    "Connects services, cargo categories, airports, and urgent use cases",
+    "Written for customers searching in simple language and industry terms"
+  ],
+  howItWorks: [
+    "Identify the deadline and consequence of delay",
+    "Check cargo type, weight, dimensions, value, documents, and restrictions",
+    "Compare same-day, NFO, airport cargo, hand-carry, express, or international options",
+    "Confirm pickup or delivery serviceability where required",
+    "Choose the fastest feasible PORTADOR option for the shipment"
+  ],
+  useCases: [
+    "AOG and aviation spares",
+    "Factory breakdown parts",
+    "Emergency documents and passport delivery",
+    "Excess baggage and missed-flight recovery",
+    "Medical equipment and electronics",
+    "High-value or regulated cargo review"
+  ],
+  whyNotCourier: [
+    profile.compare,
+    "Urgent buyers need feasibility checked quickly before the deadline is lost",
+    "Airport-linked movement can outperform routine hub cycles for intercity urgency",
+    "Documentation, cargo type, and serviceability can change the best option",
+    "Human operations support is useful when the shipment has real consequences"
+  ],
+  faqs: [
+    ...serviceFaqs(profile.title.replace("?", ""), "urgent air logistics"),
+    {
+      question: profile.buyerQuestion,
+      answer: `${profile.summary} PORTADOR SOS checks the answer using cargo details, route, documents, serviceability, and urgency instead of giving a generic promise.`
+    },
+    {
+      question: `What shipments use ${profile.title.toLowerCase().replace("?", "")}?`,
+      answer: `Common shipments include ${profile.use}. The right service depends on cargo eligibility, timing, pickup readiness, destination support, and compliance requirements.`
+    }
+  ],
+  cta: "Speak with PORTADOR SOS operations for route-specific guidance."
+})) satisfies PageModel[];
+
+export const hubArticles = [
+  ...phaseTwoHubProfiles,
+  ...legacyHubArticles.filter((page) => !phaseTwoHubProfiles.some((featured) => featured.slug === page.slug))
+] satisfies PageModel[];
+
+const legacyAirportPages = [
   ["delhi-airport-cargo", "Delhi Airport Cargo", "Delhi airport cargo connects urgent shipments to India's northern air cargo network for same-day and next-flight-out movement."],
   ["mumbai-air-cargo", "Mumbai Air Cargo", "Mumbai air cargo supports urgent business shipments, high-value cargo, excess baggage, and airport-to-airport movement through western India."],
   ["bangalore-airport-logistics", "Bangalore Airport Logistics", "Bangalore airport logistics supports electronics, IT hardware, startup cargo, urgent samples, and same-day air-linked movement."],
@@ -625,7 +713,108 @@ export const airports = [
   cta: `Move urgent cargo through ${title}.`
 })) satisfies PageModel[];
 
-export const cargoPages = [
+const phaseTwoAirportProfiles = [
+  {
+    slug: "delhi-igi-airport",
+    title: "Delhi IGI Airport Cargo",
+    airport: "Indira Gandhi International Airport (DEL)",
+    terminals: "IGI Airport cargo terminal ecosystem, Aerocity, Mahipalpur, Okhla, Noida, Gurugram, and Faridabad",
+    hubs: "Okhla Industrial Estate, Noida industrial sectors, Gurugram Cyber City, Manesar, Faridabad, and Delhi legal and government districts",
+    summary: "Delhi IGI Airport cargo support for urgent same-day air cargo, NFO feasibility, passport documents, tender papers, machine parts, medical equipment, and regulated cargo review across North India."
+  },
+  {
+    slug: "mumbai-csmia",
+    title: "Mumbai CSMIA Air Cargo",
+    airport: "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+    terminals: "Mumbai airport cargo complex, Sahar, Andheri East, BKC, MIDC Andheri, Navi Mumbai, Thane, and Powai",
+    hubs: "BKC, Andheri MIDC, Lower Parel, Navi Mumbai, Thane-Belapur belt, and western India manufacturing and finance corridors",
+    summary: "Mumbai CSMIA air cargo support for urgent business shipments, high-value cargo, excess baggage, electronics, pharma-support cargo, and airport-to-airport movement across western India."
+  },
+  {
+    slug: "bangalore-kempegowda",
+    title: "Bangalore Kempegowda Airport Logistics",
+    airport: "Kempegowda International Airport Bengaluru (BLR)",
+    terminals: "BLR airport cargo ecosystem, Devanahalli, Hebbal, Whitefield, Electronic City, Peenya, and Koramangala",
+    hubs: "Electronic City, Whitefield, Manyata Tech Park, Peenya Industrial Area, Bommasandra, and Bengaluru startup and electronics markets",
+    summary: "Bangalore Kempegowda airport logistics for urgent electronics, IT hardware, startup cargo, AOG support, medical equipment, and same-day air-linked movement."
+  },
+  {
+    slug: "hyderabad-rgia",
+    title: "Hyderabad RGIA Airport Cargo",
+    airport: "Rajiv Gandhi International Airport (HYD)",
+    terminals: "RGIA cargo ecosystem, Shamshabad, HITEC City, Gachibowli, Genome Valley, Balanagar, and Medchal",
+    hubs: "Genome Valley, HITEC City, Gachibowli, Balanagar, Medchal, Patancheru, and Hyderabad pharma and electronics corridors",
+    summary: "Hyderabad RGIA airport cargo support for pharma-linked urgent shipments, electronics, medical equipment, business documents, and next-flight-out logistics."
+  },
+  {
+    slug: "chennai-airport",
+    title: "Chennai Airport Cargo",
+    airport: "Chennai International Airport (MAA)",
+    terminals: "Chennai airport cargo ecosystem, Meenambakkam, Guindy, Ambattur, Sriperumbudur, Oragadam, and OMR",
+    hubs: "Sriperumbudur, Oragadam, Ambattur Industrial Estate, Guindy, OMR, and Chennai automotive, electronics, and manufacturing corridors",
+    summary: "Chennai airport cargo support for manufacturing parts, automotive components, electronics, medical equipment, urgent documents, and intercity air cargo."
+  }
+].map((profile) => ({
+  slug: profile.slug,
+  title: profile.title,
+  eyebrow: "Airport logistics authority",
+  h1: `${profile.title} for Urgent Air Cargo`,
+  description: `${profile.summary} PORTADOR SOS supports airport-linked urgent cargo movement subject to cargo type, documentation, route feasibility, and operational availability.`,
+  keywords: [profile.title.toLowerCase(), profile.airport.toLowerCase(), "airport cargo India", "same-day air cargo", "next flight out cargo"],
+  icon: "airport" as const,
+  whatIs: `${profile.title} is an airport-connected urgent logistics page for customers near ${profile.airport} who need same-day air cargo, next flight out feasibility, airport-to-airport cargo, excess baggage support, emergency documents, regulated cargo review, or critical B2B movement.`,
+  aiSnippet: `${profile.title} supports urgent cargo buyers around ${profile.terminals}. PORTADOR SOS checks cargo details, documents, serviceability, and air cargo feasibility before confirming support.`,
+  benefits: [
+    `Airport focus: ${profile.airport}`,
+    `Local service context: ${profile.terminals}`,
+    `Commercial hubs covered: ${profile.hubs}`,
+    "Useful for same-day air cargo, NFO feasibility, and airport-to-airport movement",
+    "Supports business-critical cargo, excess baggage, emergency documents, and regulated cargo review",
+    "Human operations desk for urgent shipment coordination"
+  ],
+  howItWorks: [
+    "Share origin area, destination city, cargo details, weight, dimensions, and deadline",
+    "PORTADOR checks cargo type, documents, serviceability, and airport-linked feasibility",
+    "Urgent pickup, airport cargo, door support, or hand-carry feasibility is reviewed",
+    "The suitable PORTADOR SOS, EXPRESS, BLACK, or GLOBAL option is recommended",
+    "Customer receives clear next-step guidance for the shipment"
+  ],
+  useCases: [
+    "AOG and aviation spares",
+    "Machine breakdown parts",
+    "Medical equipment and diagnostic devices",
+    "Tender, passport, visa, and legal documents",
+    "Excess baggage and travel cargo",
+    "Electronics, laptops, DG, lithium battery, and high-value cargo"
+  ],
+  whyNotCourier: [
+    "Routine courier networks may not protect urgent airport-linked deadlines",
+    "Airport cargo can be more suitable for intercity time-critical shipments",
+    "Regulated cargo and sensitive documents need early feasibility checks",
+    "Human support helps customers act quickly when deadlines are fixed",
+    "Airport-connected support reduces avoidable uncertainty for urgent B2B shipments"
+  ],
+  faqs: [
+    ...serviceFaqs(profile.title, profile.title.toLowerCase()),
+    {
+      question: `Does PORTADOR support urgent cargo near ${profile.airport}?`,
+      answer: `Yes. PORTADOR SOS can check urgent cargo support around ${profile.airport} and nearby business districts, subject to pickup location, cargo type, documents, route feasibility, and operational availability.`
+    },
+    {
+      question: `Which local areas are relevant for ${profile.title}?`,
+      answer: `${profile.title} commonly serves customer enquiries around ${profile.terminals}. Service support depends on the exact pickup or delivery address and shipment readiness.`
+    },
+    {
+      question: `What commercial hubs use ${profile.title}?`,
+      answer: `Commercial demand can come from ${profile.hubs}. Common urgent cargo includes AOG spares, machine parts, medical equipment, documents, electronics, baggage, and high-value cargo.`
+    }
+  ],
+  cta: `Get urgent cargo support through ${profile.title}.`
+})) satisfies PageModel[];
+
+export const airports = [...phaseTwoAirportProfiles, ...legacyAirportPages] satisfies PageModel[];
+
+const legacyCargoPages = [
   ["excess-baggage", "Excess Baggage", "Domestic excess baggage, airport baggage transfer, student luggage, relocation bags, and door-to-door baggage delivery for travelers who cannot carry everything on the next flight."],
   ["battery-cargo", "Battery Cargo", "Battery cargo review for eligible lithium-ion, lithium metal, device-contained, and equipment-packed batteries requiring approval review."],
   ["lithium-battery-cargo", "Lithium Battery Cargo", "Lithium battery cargo support for electronics, laptops, medical devices, equipment-contained batteries, and regulated battery shipments where approval is required."],
@@ -665,6 +854,169 @@ export const cargoPages = [
   faqs: serviceFaqs(title, title.toLowerCase()),
   cta: `Check urgent air cargo feasibility for ${title.toLowerCase()}.`
 })) satisfies PageModel[];
+
+const phaseTwoCargoProfiles = [
+  {
+    slug: "aog-cargo",
+    title: "AOG Cargo",
+    summary: "Aircraft-on-ground cargo support for urgent aviation spares, tooling, documents, and components where downtime can affect flight operations.",
+    audience: "aviation maintenance teams, aircraft operators, MRO teams, and airline support desks",
+    pain: "aircraft downtime, flight disruption, grounded equipment, missed maintenance windows, and cascading operational loss",
+    cargo: "aircraft spares, tooling, avionics, documentation, replacement components, and maintenance-critical items",
+    icon: "mission" as const
+  },
+  {
+    slug: "machine-breakdown",
+    title: "Machine Breakdown Logistics",
+    summary: "Emergency machine breakdown logistics for factories and plants that need urgent spare parts, replacement assemblies, tools, or production recovery cargo.",
+    audience: "manufacturing plants, OEM vendors, plant heads, maintenance managers, and urgent procurement teams",
+    pain: "line stoppage, production loss, customer penalties, delayed dispatch, and downtime escalation",
+    cargo: "machine parts, electronic modules, tooling, motors, controllers, dies, samples, and replacement assemblies",
+    icon: "mission" as const
+  },
+  {
+    slug: "medical-equipment",
+    title: "Medical Equipment Cargo",
+    summary: "Urgent medical equipment cargo for replacement devices, critical instruments, diagnostics support, and hospital-linked business shipments.",
+    audience: "healthcare vendors, diagnostic companies, biomedical teams, hospitals, and device distributors",
+    pain: "procedure delay, equipment failure, diagnostic disruption, site readiness risk, and emergency replacement pressure",
+    cargo: "medical devices, diagnostic instruments, surgical equipment, biomedical parts, monitors, analyzers, and support accessories",
+    icon: "default" as const
+  },
+  {
+    slug: "dangerous-goods",
+    title: "Dangerous Goods Cargo",
+    summary: "Dangerous goods cargo support for regulated shipments that need classification, documentation, compliant packing, and approval review.",
+    audience: "manufacturers, labs, electronics companies, chemical suppliers, aviation teams, and regulated cargo shippers",
+    pain: "shipment rejection, missing declarations, documentation gaps, packing non-compliance, and approval uncertainty",
+    cargo: "declared dangerous goods, chemicals, aerosols, restricted commodities, battery-linked cargo, and regulated product samples",
+    icon: "dg" as const
+  },
+  {
+    slug: "lithium-battery-cargo",
+    title: "Lithium Battery Cargo",
+    summary: "Lithium battery cargo support for electronics, laptops, medical devices, equipment-contained batteries, and regulated battery shipments where approval is required.",
+    audience: "electronics businesses, IT teams, medical device companies, hardware startups, students, and service centers",
+    pain: "airline acceptance uncertainty, MSDS or declaration needs, device downtime, replacement delays, and regulated cargo review",
+    cargo: "laptops, devices with batteries, equipment-packed batteries, lithium-ion batteries, medical devices, and electronics hardware",
+    icon: "battery" as const
+  },
+  {
+    slug: "event-logistics",
+    title: "Event Logistics",
+    summary: "Urgent event logistics for exhibitions, activations, conferences, venue setups, display material, samples, and replacement equipment.",
+    audience: "event agencies, exhibition teams, brand teams, AV vendors, booth fabricators, and corporate marketing teams",
+    pain: "missed showtime, venue setup failure, exhibition loss, sponsor escalation, sample delay, and last-mile event pressure",
+    cargo: "display kits, AV equipment, samples, booth material, branding assets, documents, uniforms, devices, and replacement parts",
+    icon: "route" as const
+  },
+  {
+    slug: "excess-baggage",
+    title: "Excess Baggage",
+    summary: "Domestic excess baggage, airport baggage transfer, student luggage, relocation bags, and door-to-door baggage delivery for travelers who cannot carry everything on the next flight.",
+    audience: "travelers, students, relocating professionals, families, international arrivals, and urgent personal cargo customers",
+    pain: "airline baggage allowance gaps, missed flight baggage, overweight luggage, urgent relocation, and domestic connection pressure",
+    cargo: "bags, boxes, student luggage, books, clothing, personal effects, non-restricted electronics, and travel cargo",
+    icon: "baggage" as const
+  },
+  {
+    slug: "passport-delivery",
+    title: "Passport Delivery",
+    summary: "Urgent passport delivery support for time-sensitive travel documents, missed-flight recovery, family travel needs, and last-minute document movement.",
+    audience: "travelers, families, students, corporate travel teams, visa agents, and urgent personal document customers",
+    pain: "missed flights, visa appointment risk, travel disruption, embassy or consulate deadlines, and document recovery pressure",
+    cargo: "passports, travel documents, sealed envelopes, supporting IDs, travel forms, and time-sensitive personal papers",
+    icon: "obc" as const
+  },
+  {
+    slug: "visa-document-delivery",
+    title: "Visa Document Delivery",
+    summary: "Urgent visa document delivery for appointment deadlines, embassy submissions, travel files, university paperwork, and corporate mobility documents.",
+    audience: "students, travelers, HR mobility teams, visa consultants, families, and corporate travel desks",
+    pain: "missed visa appointments, delayed travel, university reporting deadlines, corporate mobility delays, and hard submission timing",
+    cargo: "visa files, application forms, passports where applicable, invitation letters, university documents, employment papers, and sealed envelopes",
+    icon: "obc" as const
+  },
+  {
+    slug: "legal-document-courier",
+    title: "Legal Document Courier",
+    summary: "Urgent legal document courier support for contracts, court papers, signed originals, affidavits, notarized documents, and deadline-bound submissions.",
+    audience: "law firms, legal teams, founders, company secretaries, finance teams, and corporate administration teams",
+    pain: "missed filings, delayed signatures, tender or contract risk, court deadline pressure, and document custody concerns",
+    cargo: "contracts, affidavits, notarized papers, signed originals, corporate documents, court files, tender documents, and sealed envelopes",
+    icon: "obc" as const
+  },
+  {
+    slug: "tender-document-delivery",
+    title: "Tender Document Delivery",
+    summary: "Urgent tender document delivery for bid submissions, signed commercial files, compliance papers, and hard-deadline business documentation.",
+    audience: "SMEs, procurement teams, contractors, legal teams, government vendors, and corporate bid desks",
+    pain: "tender rejection, missed bid windows, incomplete commercial submission, delayed signatures, and hard deadline failure",
+    cargo: "tender files, bid documents, signed originals, compliance papers, commercial proposals, sealed envelopes, and supporting documents",
+    icon: "obc" as const
+  }
+].map((profile) => ({
+  slug: profile.slug,
+  title: profile.title,
+  eyebrow: "Commercial cargo authority",
+  h1: `${profile.title} With PORTADOR SOS`,
+  description: `${profile.summary} PORTADOR SOS checks urgent movement options based on cargo type, route, documentation, compliance, serviceability, and delivery urgency.`,
+  keywords: [profile.title.toLowerCase(), "urgent cargo India", "same-day air cargo", "airport cargo India", "time-critical logistics"],
+  icon: profile.icon,
+  whatIs: `${profile.title} is a time-critical logistics use case for ${profile.audience}. It is used when ${profile.pain} makes routine courier timelines too slow or too uncertain.`,
+  aiSnippet: `${profile.title} with PORTADOR SOS means urgent support for ${profile.cargo}, with feasibility checked against cargo details, documentation, route, serviceability, and operational availability.`,
+  benefits: [
+    `Built for ${profile.pain}`,
+    `Common cargo: ${profile.cargo}`,
+    `Relevant customers: ${profile.audience}`,
+    "Same-day, NFO, hand-carry, airport cargo, express, or international options can be checked where suitable",
+    "Human operations desk for deadline-first customer support",
+    "Compliance and document review for regulated or sensitive shipments where relevant"
+  ],
+  howItWorks: [
+    "Share origin, destination, cargo description, weight, dimensions, and urgency",
+    "PORTADOR checks cargo type, documents, serviceability, and suitable service category",
+    "The shipment is mapped to PORTADOR SOS, EXPRESS, BLACK, or GLOBAL based on urgency and handling needs",
+    "Pickup, door-to-door, airport cargo, hand-carry, or international feasibility is reviewed",
+    "Customer receives clear next-step guidance for urgent movement"
+  ],
+  useCases: [
+    "Same-day air cargo where feasible",
+    "Next Flight Out / NFO support",
+    "Airport-to-airport cargo",
+    "Door-to-door urgent delivery where serviceable",
+    "Emergency business recovery",
+    "High-value, regulated, or document-sensitive movement"
+  ],
+  whyNotCourier: [
+    "Routine courier is designed for standard schedules and parcel scale",
+    "Urgent cargo needs faster feasibility checks before the deadline is lost",
+    "Sensitive cargo can require documentation, packing, or compliance review",
+    "Business or travel emergencies need human support, not only a tracking screen",
+    "Airport-linked movement may be more suitable for urgent intercity timelines"
+  ],
+  faqs: [
+    ...serviceFaqs(profile.title, profile.title.toLowerCase()),
+    {
+      question: `Who should use ${profile.title.toLowerCase()}?`,
+      answer: `${profile.title} is best suited for ${profile.audience} when delay can create ${profile.pain}. PORTADOR SOS checks the fastest feasible support option after cargo and route details are shared.`
+    },
+    {
+      question: `What can be sent under ${profile.title.toLowerCase()}?`,
+      answer: `Common ${profile.title.toLowerCase()} shipments include ${profile.cargo}. Final support depends on packing, documents, commodity details, serviceability, and compliance requirements.`
+    },
+    {
+      question: `Can ${profile.title.toLowerCase()} move same day?`,
+      answer: `${profile.title} may move same day where pickup readiness, cargo eligibility, airline or service availability, documentation, and destination support make it feasible. PORTADOR SOS checks feasibility before confirmation.`
+    }
+  ],
+  cta: `Get urgent support for ${profile.title.toLowerCase()}.`
+})) satisfies PageModel[];
+
+export const cargoPages = [
+  ...phaseTwoCargoProfiles,
+  ...legacyCargoPages.filter((page) => !phaseTwoCargoProfiles.some((featured) => featured.slug === page.slug))
+] satisfies PageModel[];
 
 export const useCasePages = [
   ["urgent-machine-breakdown-shipment", "Urgent Machine Breakdown Shipment", "Emergency spare parts movement for factories facing production loss, downtime, or plant recovery deadlines."],

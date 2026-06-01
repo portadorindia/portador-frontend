@@ -2,7 +2,7 @@ import { CheckCircle2, ChevronRight, Plane } from "lucide-react";
 import Link from "next/link";
 import { FAQEngine } from "@/components/faq-engine";
 import { CTA, MotionCard, PrimaryButton, QuickSelector, SecondaryButton, Section } from "@/components/ui";
-import { airportCityCoverage, PageModel, serviceIconMap, site } from "@/lib/site";
+import { airportCityCoverage, airports, cargoPages, comparisonPages, hubArticles, PageModel, serviceIconMap, services, site, useCasePages } from "@/lib/site";
 import { breadcrumbSchema, faqSchema, serviceSchema, webPageSchema } from "@/lib/schema";
 
 export function PageTemplate({ page, basePath }: { page: PageModel; basePath: string }) {
@@ -76,10 +76,69 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
         <BulletGrid eyebrow="Courier comparison" title="Why this is different from regular courier" items={page.whyNotCourier} />
         <QuickSelector />
         <DirectAnswerStack page={page} />
+        <RelatedCommercialLinks page={page} basePath={basePath} />
         <FAQBlock faqs={page.faqs} />
         <CTA title={page.cta} />
       </main>
     </>
+  );
+}
+
+function getRelatedCommercialLinks(page: PageModel, basePath: string) {
+  const currentHref = `${basePath}/${page.slug}`;
+  const pools = [
+    ...services.map((item) => ({ title: item.title, description: item.description, href: `/services/${item.slug}`, group: "Service" })),
+    ...cargoPages.map((item) => ({ title: item.title, description: item.description, href: `/cargo/${item.slug}`, group: "Cargo" })),
+    ...airports.map((item) => ({ title: item.title, description: item.description, href: `/airports/${item.slug}`, group: "Airport" })),
+    ...comparisonPages.map((item) => ({ title: item.title, description: item.description, href: `/comparisons/${item.slug}`, group: "Comparison" })),
+    ...hubArticles.map((item) => ({ title: item.title, description: item.description, href: `/knowledge-hub/${item.slug}`, group: "Knowledge" })),
+    ...useCasePages.map((item) => ({ title: item.title, description: item.description, href: `/use-cases/${item.slug}`, group: "Use case" }))
+  ].filter((item) => item.href !== currentHref);
+
+  const focusText = [page.title, page.h1, page.description, page.keywords.join(" ")].join(" ").toLowerCase();
+  const priority = [
+    "/services/portador-sos",
+    "/services/portador-express",
+    "/cargo/aog-cargo",
+    "/cargo/machine-breakdown",
+    "/cargo/excess-baggage",
+    "/cargo/passport-delivery",
+    "/cargo/dangerous-goods",
+    "/cargo/lithium-battery-cargo",
+    "/airports/delhi-igi-airport",
+    "/airports/mumbai-csmia",
+    "/knowledge-hub/what-is-next-flight-out-cargo",
+    "/knowledge-hub/air-cargo-vs-courier",
+    "/comparisons/air-cargo-vs-courier"
+  ];
+
+  return pools
+    .map((item) => {
+      const words = item.title.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+      const relevance = words.reduce((score, word) => score + (focusText.includes(word) ? 2 : 0), 0);
+      const priorityScore = priority.includes(item.href) ? 3 : 0;
+      const sameFamilyScore = item.href.startsWith(basePath) ? 1 : 0;
+      return { ...item, score: relevance + priorityScore + sameFamilyScore };
+    })
+    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
+    .slice(0, 8);
+}
+
+export function RelatedCommercialLinks({ page, basePath }: { page: PageModel; basePath: string }) {
+  const links = getRelatedCommercialLinks(page, basePath);
+
+  return (
+    <Section eyebrow="Related urgent cargo pages" title="Plan the next move faster">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {links.map((link) => (
+          <Link key={link.href} href={link.href} className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-[#e30613]/40">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e30613]">{link.group}</p>
+            <h3 className="mt-3 text-lg font-semibold leading-6 text-white">{link.title}</h3>
+            <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-400">{link.description}</p>
+          </Link>
+        ))}
+      </div>
+    </Section>
   );
 }
 
