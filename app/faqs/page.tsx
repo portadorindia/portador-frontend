@@ -4,6 +4,7 @@ import { CTA } from "@/components/ui";
 import { services } from "@/lib/site";
 import { faqSchema } from "@/lib/schema";
 import { customerEducationFaqs } from "@/lib/customer-faqs";
+import { normalizeFaqs } from "@/lib/faq";
 
 const faqs = Array.from(new Map([
   ...services[0].faqs,
@@ -15,6 +16,7 @@ const faqs = Array.from(new Map([
   { question: "What is PORTADOR GLOBAL?", answer: "PORTADOR GLOBAL is urgent international import and export air cargo coordination for premium cross-border air freight, documentation-aware movement, compliance review, and time-sensitive global shipment planning." },
   ...customerEducationFaqs
 ].map((faq) => [faq.question, faq])).values());
+const normalizedFaqs = normalizeFaqs(faqs);
 
 export const metadata: Metadata = {
   title: "FAQs",
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
 export default function FAQsPage() {
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(normalizedFaqs)) }} />
       <section className="relative overflow-hidden py-14 md:py-20">
         <div className="airport-grid absolute inset-0 opacity-70" />
         <div className="container-shell relative">
@@ -34,7 +36,7 @@ export default function FAQsPage() {
           <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300">Clear answers for same-day cargo, next flight out logistics, airport cargo, regulated cargo, hand carry, and mission-critical shipments.</p>
         </div>
       </section>
-      <FAQBlock faqs={faqs} />
+      <FAQBlock faqs={normalizedFaqs} />
       <CTA />
     </main>
   );

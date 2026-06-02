@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, ArrowUp, Headphones, MessageCircle, Minus, PhoneCall, X } from "lucide-react";
 import { type FormEvent, useEffect, useState } from "react";
-import { site } from "@/lib/site";
+import { site, whatsappHref } from "@/lib/site";
 
 export function Section({
   eyebrow,
@@ -84,11 +84,11 @@ export function CTA({ title = "When Time Cannot Wait, speak to operations now.",
                 <PhoneCall size={17} />
                 Speak To Operations Now
               </PrimaryButton>
-              <SecondaryButton href={site.whatsapp}>
+              <SecondaryButton href={whatsappHref}>
                 <MessageCircle size={17} />
                 WhatsApp Shipment Details
               </SecondaryButton>
-              <SecondaryButton href={`${site.whatsapp}?text=${encodeURIComponent("PORTADOR SOS urgent shipment escalation: origin, destination, cargo, deadline")}`}>
+              <SecondaryButton href={whatsappHref}>
                 <Headphones size={17} />
                 Escalate Urgent Shipment
               </SecondaryButton>
@@ -108,7 +108,7 @@ export function StickyConversionBar() {
           <PhoneCall size={16} />
           Call Now
         </Link>
-        <Link href={site.whatsapp} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-white/15 bg-white/[0.04] text-sm font-bold text-white">
+        <Link href={whatsappHref} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-white/15 bg-white/[0.04] text-sm font-bold text-white">
           <MessageCircle size={16} />
           WhatsApp Operations
         </Link>
@@ -143,7 +143,7 @@ export function FloatingOperationsCTA() {
             </div>
           </div>
           <div className="mt-3 grid gap-2">
-            <Link href={`${site.whatsapp}?text=${encodeURIComponent("PORTADOR SOS urgent shipment: origin, destination, cargo, deadline")}`} className="inline-flex min-h-10 items-center justify-between rounded-md bg-[#e30613] px-3 text-sm font-bold text-white">
+            <Link href={whatsappHref} className="inline-flex min-h-10 items-center justify-between rounded-md bg-[#e30613] px-3 text-sm font-bold text-white">
               Urgent Shipment
               <MessageCircle size={16} />
             </Link>
@@ -316,7 +316,7 @@ export function QuickSelector() {
           <h2 className="text-2xl font-semibold text-white md:text-4xl">Tell Us What You Need To Move</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((category) => (
-              <Link key={category.title} href={`${site.whatsapp}?text=${encodeURIComponent(`PORTADOR SOS urgent shipment: ${category.title}`)}`} className="flex min-h-[78px] flex-col justify-center rounded-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold leading-5 text-zinc-200 transition hover:border-[#e30613]/50 hover:bg-[#e30613]/10">
+              <Link key={category.title} href={whatsappHref} className="flex min-h-[78px] flex-col justify-center rounded-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold leading-5 text-zinc-200 transition hover:border-[#e30613]/50 hover:bg-[#e30613]/10">
                 <span>{category.title}</span>
                 <span className="mt-1 line-clamp-2 text-xs font-normal leading-5 text-zinc-500">{category.detail}</span>
               </Link>

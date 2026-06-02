@@ -19,9 +19,10 @@ import { AviationHeroVisual } from "@/components/aviation-hero-visual";
 import { FAQBlock, Process } from "@/components/page-template";
 import { TrackingForm } from "@/components/tracking-form";
 import { CTA, EmergencyCallback, PrimaryButton, QuickSelector, SecondaryButton, Section } from "@/components/ui";
-import { hubArticles, industries, site } from "@/lib/site";
+import { hubArticles, industries, site, whatsappHref } from "@/lib/site";
 import { faqSchema, serviceSchema } from "@/lib/schema";
 import { customerEducationFaqs } from "@/lib/customer-faqs";
+import { normalizeFaqs } from "@/lib/faq";
 
 const heroSignals = [
   "50+ Airport Cargo Connections",
@@ -50,7 +51,7 @@ const cargoCategoryCards = [
   { label: "Temperature Controlled Cargo", href: "/cargo/temperature-controlled-cargo", bullets: ["Dry Ice, Gel Packs & Frozen Cargo"], Icon: Clock3 },
   { label: "High-Value Cargo", href: "/cargo/high-value-cargo", bullets: ["Electronics, IT Products & Premium Equipment"], Icon: ShieldCheck },
   { label: "Hand Carry / OBC", href: "/cargo/hand-carry-obc", bullets: ["4-7 Hours Delivery Option", "VIP urgency"], Icon: BriefcaseBusiness },
-  { label: "Other Urgent Cargo", href: site.whatsapp, bullets: ["Share cargo details", "PORTADOR will check service feasibility"], Icon: PackageCheck }
+  { label: "Other Urgent Cargo", href: whatsappHref, bullets: ["Share cargo details", "PORTADOR will check service feasibility"], Icon: PackageCheck }
 ];
 
 const comparisonRows = [
@@ -210,6 +211,7 @@ const baseHomeFaqs = [
 ];
 
 const homeFaqs = [...new Map([...phaseTwoHomeFaqs, ...baseHomeFaqs].map((faq) => [faq.question, faq])).values()];
+const normalizedHomeFaqs = normalizeFaqs(homeFaqs);
 
 export default function Home() {
   return (
@@ -218,7 +220,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
-            faqSchema(homeFaqs),
+            faqSchema(normalizedHomeFaqs),
             serviceSchema({ title: "PORTADOR SOS Air Cargo", description: "Same-day air cargo, Next Flight Out coordination, urgent airport cargo support, and 24x7 human operations for urgent shipments across India.", slug: "" }, "")
           ])
         }}
@@ -254,8 +256,8 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <PrimaryButton href={`${site.whatsapp}?text=${encodeURIComponent("PORTADOR SOS urgent quote: origin, destination, cargo, deadline")}`}>Get Urgent Quote</PrimaryButton>
-              <SecondaryButton href={site.whatsapp}>WhatsApp Operations</SecondaryButton>
+              <PrimaryButton href={whatsappHref}>Get Urgent Quote</PrimaryButton>
+              <SecondaryButton href={whatsappHref}>WhatsApp Operations</SecondaryButton>
             </div>
           </div>
 
@@ -467,7 +469,7 @@ export default function Home() {
           ))}
         </div>
       </Section>
-      <FAQBlock faqs={homeFaqs} />
+      <FAQBlock faqs={normalizedHomeFaqs} />
       <CTA title="When Time Cannot Wait, call the operations desk." text="Send origin, destination, deadline, cargo category, weight, dimensions, and any battery or dangerous goods declaration. PORTADOR SOS will check the fastest feasible air-linked movement." />
     </main>
   );

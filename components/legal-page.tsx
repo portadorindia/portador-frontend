@@ -1,5 +1,5 @@
 import type { LegalPage as LegalPageModel } from "@/lib/legal";
-import { site } from "@/lib/site";
+import { site, whatsappHref } from "@/lib/site";
 
 export function LegalPage({ page }: { page: LegalPageModel }) {
   const schema = {
@@ -60,7 +60,7 @@ export function LegalPage({ page }: { page: LegalPageModel }) {
             <div className="mt-4 grid gap-3 text-sm leading-6 text-zinc-200">
               <a className="font-semibold text-white transition hover:text-[#ff4a54]" href={site.emailHref}>{site.email}</a>
               <a className="font-semibold text-white transition hover:text-[#ff4a54]" href={site.phoneHref}>{site.phone}</a>
-              <a className="font-semibold text-white transition hover:text-[#ff4a54]" href={site.whatsapp}>WhatsApp Operations</a>
+              <a className="font-semibold text-white transition hover:text-[#ff4a54]" href={whatsappHref}>WhatsApp Operations</a>
               <p className="text-zinc-400">{site.address.street}, {site.address.city} {site.address.postalCode}, {site.address.country}</p>
             </div>
           </aside>

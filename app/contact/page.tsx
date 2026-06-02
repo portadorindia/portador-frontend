@@ -3,8 +3,9 @@ import { Instagram, Linkedin, MapPin, MessageCircle, PhoneCall, Send, Youtube } 
 import { BulletGrid, FAQBlock, Process } from "@/components/page-template";
 import { CTA, EmergencyCallback, Section } from "@/components/ui";
 import { faqSchema } from "@/lib/schema";
-import { site, socialLinks } from "@/lib/site";
+import { site, socialLinks, whatsappHref } from "@/lib/site";
 import { customerEducationFaqs } from "@/lib/customer-faqs";
+import { normalizeFaqs } from "@/lib/faq";
 
 const faqs = [
   { question: "What is the fastest way to contact PORTADOR SOS?", answer: "For urgent cargo, call operations or send shipment details on WhatsApp so the team can check cargo, route, timing, and serviceability quickly." },
@@ -20,6 +21,7 @@ const faqs = [
   { question: "Is WhatsApp enough to start?", answer: "Yes. WhatsApp is useful for sharing shipment details, photos, dimensions, documents, and deadlines quickly." },
   ...customerEducationFaqs
 ];
+const normalizedFaqs = normalizeFaqs(faqs);
 
 export const metadata: Metadata = {
   title: "Contact Operations",
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(normalizedFaqs)) }} />
       <section className="relative overflow-hidden py-14 md:py-20">
         <div className="airport-grid absolute inset-0 opacity-70" />
         <div className="container-shell relative">
@@ -43,7 +45,7 @@ export default function ContactPage() {
         <div className="grid gap-5 md:grid-cols-3">
           {[
             { icon: PhoneCall, label: "Call Operations", value: site.phone, href: site.phoneHref },
-            { icon: MessageCircle, label: "WhatsApp Details", value: "Share shipment details", href: site.whatsapp },
+            { icon: MessageCircle, label: "WhatsApp Details", value: "Share shipment details", href: whatsappHref },
             { icon: Send, label: "Email Desk", value: site.email, href: site.emailHref }
           ].map((item) => (
             <a key={item.label} href={item.href} className="glass-panel rounded-lg p-6 transition hover:-translate-y-1 hover:border-[#e30613]/40">
@@ -76,7 +78,7 @@ export default function ContactPage() {
       <BulletGrid eyebrow="Use cases" title="Common contact reasons" items={["Same-day cargo quotes", "Next flight out cargo", "Excess baggage shipping", "Battery cargo review", "Dangerous goods review", "Hand carry and OBC requests"]} />
       <BulletGrid eyebrow="Courier comparison" title="Why direct contact matters" items={["Urgent cargo needs immediate clarification", "Air cargo timing changes can affect support options", "Regulated cargo cannot be assumed accepted", "Human operations reduce ambiguity", "Same-day movement depends on cargo readiness", "Mission-critical customers need a live desk"]} />
       <EmergencyCallback />
-      <FAQBlock faqs={faqs} />
+      <FAQBlock faqs={normalizedFaqs} />
       <CTA title="Need a quote now?" text="Send origin, destination, cargo, weight, dimensions, deadline, and whether the shipment contains batteries, liquids, chemicals, or regulated goods." />
     </main>
   );

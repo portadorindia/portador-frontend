@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BulletGrid, FAQBlock, Process } from "@/components/page-template";
 import { CTA, Section } from "@/components/ui";
 import { faqSchema } from "@/lib/schema";
+import { normalizeFaqs } from "@/lib/faq";
 
 const faqs = [
   { question: "What is PORTADOR SOS?", answer: "PORTADOR SOS is a premium time-critical air logistics platform for same-day air cargo, next flight out logistics, airport-to-airport cargo, hand carry, dangerous goods, battery cargo, and urgent business shipments." },
@@ -15,6 +16,7 @@ const faqs = [
   { question: "What is the brand promise?", answer: "The brand promise is When Time Cannot Wait, meaning PORTADOR SOS is designed for shipment urgency rather than routine parcel movement." },
   { question: "How do I start?", answer: "Call or WhatsApp operations with origin, destination, deadline, cargo details, weight, dimensions, and any regulated cargo declaration." }
 ];
+const normalizedFaqs = normalizeFaqs(faqs);
 
 export const metadata: Metadata = {
   title: "About",
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(normalizedFaqs)) }} />
       <section className="relative overflow-hidden py-14 md:py-20">
         <div className="airport-grid absolute inset-0 opacity-70" />
         <div className="container-shell relative">
@@ -41,7 +43,7 @@ export default function AboutPage() {
       <Process items={["Understand the deadline", "Check cargo and serviceability", "Support pickup or airport movement", "Move cargo through the fastest feasible option", "Close with destination support"]} />
       <BulletGrid eyebrow="Use cases" title="Where PORTADOR SOS fits" items={["Plant shutdown recovery", "Aviation AOG support", "Urgent legal documentation", "Exhibition and event deadlines", "High-value electronics", "Traveler and student baggage movement"]} />
       <BulletGrid eyebrow="Courier comparison" title="Why not regular courier" items={["PORTADOR SOS is built for deadline-first support", "Air cargo timing awareness matters for same-day cargo", "Airport-linked movement can reduce delay", "Human support helps when plans change", "Regulated cargo needs early review", "Mission-critical customers need clarity"]} />
-      <FAQBlock faqs={faqs} />
+      <FAQBlock faqs={normalizedFaqs} />
       <CTA />
     </main>
   );

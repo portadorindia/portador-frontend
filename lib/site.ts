@@ -48,6 +48,19 @@ export const site = {
   positioning: "India's SOS Air Cargo operations platform"
 };
 
+export const whatsappPrefillMessage = `Hi PORTADOR,
+
+Need assistance with a shipment.
+
+Pickup:
+Delivery:
+Weight:
+Deadline:
+
+Please assist.`;
+
+export const whatsappHref = `${site.whatsapp}?text=${encodeURIComponent(whatsappPrefillMessage)}`;
+
 export const navItems = [
   { label: "Services", href: "/services" },
   { label: "Industries", href: "/industries" },
@@ -62,6 +75,7 @@ export const moreNavItems = [
   { label: "Cargo", href: "/cargo" },
   { label: "Use Cases", href: "/use-cases" },
   { label: "Airports", href: "/airports" },
+  { label: "Routes", href: "/routes" },
   { label: "Comparisons", href: "/comparisons" }
 ];
 
@@ -821,6 +835,89 @@ export const hubArticles = [
   ...legacyHubArticles.filter((page) => !phaseTwoHubProfiles.some((featured) => featured.slug === page.slug))
 ] satisfies PageModel[];
 
+const airportQualityDetails: Record<string, {
+  iata: string;
+  terminals: string;
+  hotels: string;
+  businessDistricts: string;
+  industrialAreas: string;
+  techHubs: string;
+  residentialStudentAreas: string;
+}> = {
+  "delhi-igi-airport": {
+    iata: "DEL",
+    terminals: "Terminal 1, Terminal 2, Terminal 3, IGI cargo terminal demand zones",
+    hotels: "Aerocity hotels, Mahipalpur hotels, Vasant Kunj hotels, Dwarka stay zones, and airport transit stays",
+    businessDistricts: "Aerocity, Connaught Place, Nehru Place, Saket, Gurugram Cyber City, Noida, Faridabad, and Ghaziabad",
+    industrialAreas: "Okhla Phase 1, Okhla Phase 2, Okhla Phase 3, Udyog Vihar, Manesar, Noida Phase 2, Greater Noida, Faridabad, and Ghaziabad industrial zones",
+    techHubs: "Cyber City, Udyog Vihar, Noida Sector 62, Noida Sector 63, Gurugram startup offices, and NCR technology teams",
+    residentialStudentAreas: "Dwarka, Vasant Kunj, South Delhi, Gurugram, Noida, Greater Noida, Faridabad, and student or traveler housing across NCR"
+  },
+  "mumbai-csmia": {
+    iata: "BOM",
+    terminals: "Terminal 1, Terminal 2, Sahar cargo and airport demand zones",
+    hotels: "Andheri East airport hotels, Marol hotels, Vile Parle hotels, Santacruz hotels, and Powai business stays",
+    businessDistricts: "BKC, Andheri, Marol, Powai, Lower Parel, Vile Parle, Santacruz, Thane, and Navi Mumbai",
+    industrialAreas: "Taloja, Turbhe, Rabale, Mahape, Thane-Belapur belt, MIDC Andheri, and Navi Mumbai industrial zones",
+    techHubs: "Powai, BKC, Andheri East, Airoli, Ghansoli, Mahape, and Navi Mumbai technology offices",
+    residentialStudentAreas: "Andheri, Vile Parle, Santacruz, Powai, Thane, Navi Mumbai, student housing, and business traveler zones"
+  },
+  "bangalore-kempegowda": {
+    iata: "BLR",
+    terminals: "Terminal 1, Terminal 2, Devanahalli and Bengaluru airport cargo demand zones",
+    hotels: "Devanahalli airport hotels, Hebbal hotels, Yelahanka stays, and airport business stays",
+    businessDistricts: "Whitefield, Electronic City, Manyata Tech Park, Hebbal, Koramangala, Indiranagar, and central Bengaluru offices",
+    industrialAreas: "Peenya, Bommasandra, Nelamangala, Doddaballapur, Devanahalli, and Bengaluru manufacturing corridors",
+    techHubs: "Whitefield, Electronic City, Manyata Tech Park, Hebbal, Koramangala, HSR Layout, and startup offices",
+    residentialStudentAreas: "Hebbal, Yelahanka, Whitefield, Koramangala, Indiranagar, Electronic City, student housing, and relocation areas"
+  },
+  "hyderabad-rgia": {
+    iata: "HYD",
+    terminals: "RGIA passenger and cargo demand zones, Shamshabad and Hyderabad airport corridor",
+    hotels: "Shamshabad airport hotels, Gachibowli hotels, HITEC City hotels, and Financial District business stays",
+    businessDistricts: "HITEC City, Gachibowli, Financial District, Madhapur, Banjara Hills, Jubilee Hills, and Secunderabad",
+    industrialAreas: "Shamshabad, Patancheru, Balanagar, Jeedimetla, Medchal, Genome Valley, and Hyderabad industrial corridors",
+    techHubs: "HITEC City, Gachibowli, Financial District, Madhapur, and Hyderabad startup offices",
+    residentialStudentAreas: "Gachibowli, Madhapur, Kondapur, Secunderabad, Banjara Hills, student housing, and professional relocation zones"
+  },
+  "chennai-airport": {
+    iata: "MAA",
+    terminals: "Domestic, international, and cargo demand zones around Chennai International Airport",
+    hotels: "Meenambakkam airport hotels, Guindy hotels, OMR stays, T Nagar stays, and business traveler hotels",
+    businessDistricts: "Guindy, OMR, T Nagar, Anna Nagar, Nungambakkam, Tambaram, and Chennai corporate districts",
+    industrialAreas: "Ambattur, Sriperumbudur, Oragadam, Guindy, Maraimalai Nagar, and Chennai manufacturing corridors",
+    techHubs: "OMR, Guindy, Taramani, Sholinganallur, and Chennai IT or startup offices",
+    residentialStudentAreas: "T Nagar, Anna Nagar, Tambaram, OMR, Guindy, student housing, and relocation areas"
+  },
+  "pune-airport": {
+    iata: "PNQ",
+    terminals: "Pune Airport passenger, cargo, Viman Nagar and Lohegaon demand zones",
+    hotels: "Viman Nagar airport hotels, Kharadi business stays, Koregaon Park hotels, and Magarpatta stays",
+    businessDistricts: "Kharadi, Magarpatta, Hinjewadi, Viman Nagar, Koregaon Park, and Pune corporate districts",
+    industrialAreas: "Chakan, Pimpri-Chinchwad, Ranjangaon, Talegaon, Bhosari, and Pune automotive or manufacturing corridors",
+    techHubs: "Hinjewadi, Kharadi, Magarpatta, Baner, Wakad, and Pune startup offices",
+    residentialStudentAreas: "Viman Nagar, Kharadi, Hinjewadi, Baner, Wakad, student housing, and relocation areas"
+  },
+  "ahmedabad-airport": {
+    iata: "AMD",
+    terminals: "Ahmedabad Airport passenger, cargo, Hansol and airport demand zones",
+    hotels: "Hansol airport hotels, SG Highway hotels, Gandhinagar stays, and GIFT City business stays",
+    businessDistricts: "SG Highway, GIFT City, Gandhinagar, Ashram Road, Satellite, and Ahmedabad business districts",
+    industrialAreas: "Sanand, Changodar, Naroda, Vatva, Dahej, Hazira, Surat Textile Market, Vadodara industrial areas, and Rajkot engineering cluster",
+    techHubs: "GIFT City, SG Highway, Gandhinagar, and Ahmedabad startup or technology offices",
+    residentialStudentAreas: "Satellite, Navrangpura, Gandhinagar, SG Highway, student housing, and traveler delivery zones"
+  },
+  "kolkata-airport": {
+    iata: "CCU",
+    terminals: "Kolkata airport cargo, passenger, Dum Dum and eastern India demand zones",
+    hotels: "Dum Dum airport hotels, New Town hotels, Salt Lake stays, and Park Street business stays",
+    businessDistricts: "Salt Lake Sector V, New Town, Park Street, Howrah, Rajarhat, and Kolkata business districts",
+    industrialAreas: "Howrah industrial belt, Dankuni, Taratala, Haldia-linked cargo demand, and eastern India trade zones",
+    techHubs: "Salt Lake Sector V, New Town, Rajarhat, and Kolkata technology offices",
+    residentialStudentAreas: "Dum Dum, Salt Lake, New Town, Howrah, Park Street, student housing, and traveler delivery zones"
+  }
+};
+
 const phaseTwoAirportProfiles = [
   {
     slug: "delhi-igi-airport",
@@ -886,22 +983,35 @@ const phaseTwoAirportProfiles = [
     hubs: "Salt Lake Sector V, New Town, Howrah, Park Street, Behala, and Kolkata trade, medical, education, and eastern India cargo markets",
     summary: "Kolkata airport cargo support for urgent documents, excess baggage, event cargo, medical equipment, business shipments, and eastern India air cargo movement."
   }
-].map((profile) => ({
+].map((profile) => {
+  const details = airportQualityDetails[profile.slug];
+  const terminalContext = details ? `${details.terminals}. IATA code: ${details.iata}.` : profile.terminals;
+  const hotelContext = details?.hotels ?? "nearby airport hotels and traveler stay zones";
+  const businessContext = details?.businessDistricts ?? profile.hubs;
+  const industrialContext = details?.industrialAreas ?? profile.hubs;
+  const techContext = details?.techHubs ?? profile.hubs;
+  const residentialContext = details?.residentialStudentAreas ?? profile.terminals;
+
+  return {
   slug: profile.slug,
   title: profile.title,
   eyebrow: "Airport logistics authority",
   h1: `${profile.title} for Urgent Air Cargo`,
-  description: `${profile.summary} PORTADOR SOS supports airport-linked urgent cargo movement subject to cargo type, documentation, route feasibility, and operational availability.`,
+  description: `${profile.summary} Nearby airport hotels, business districts, industrial areas, tech hubs, and residential or student areas are covered in customer-facing context. PORTADOR SOS supports airport-linked urgent cargo movement subject to cargo type, documentation, route feasibility, and operational availability.`,
   keywords: [profile.title.toLowerCase(), profile.airport.toLowerCase(), "airport cargo India", "same-day air cargo", "next flight out cargo"],
   icon: "airport" as const,
-  whatIs: `${profile.title} is an airport-connected urgent logistics page for customers near ${profile.airport} who need same-day air cargo, next flight out feasibility, airport-to-airport cargo, excess baggage support, emergency documents, regulated cargo review, or critical B2B movement.`,
-  aiSnippet: `${profile.title} supports urgent cargo buyers around ${profile.terminals}. PORTADOR SOS checks cargo details, documents, serviceability, and air cargo feasibility before confirming support.`,
+  whatIs: `${profile.title} is an airport-connected urgent logistics page for customers near ${profile.airport} who need same-day air cargo, next flight out feasibility, airport-to-airport cargo, excess baggage support, emergency documents, regulated cargo review, airport baggage pickup, or critical B2B movement around ${terminalContext}`,
+  aiSnippet: `${profile.title} supports urgent cargo buyers around ${terminalContext} PORTADOR SOS checks cargo details, documents, serviceability, and air cargo feasibility before confirming support.`,
   benefits: [
     `Airport focus: ${profile.airport}`,
-    `Local service context: ${profile.terminals}`,
-    `Commercial hubs covered: ${profile.hubs}`,
+    `Terminal and IATA context: ${terminalContext}`,
+    `Nearby airport hotels: ${hotelContext}`,
+    `Business districts: ${businessContext}`,
+    `Industrial areas: ${industrialContext}`,
+    `Tech and startup hubs: ${techContext}`,
+    `Residential and student areas: ${residentialContext}`,
     "Useful for same-day air cargo, NFO feasibility, and airport-to-airport movement",
-    "Supports business-critical cargo, excess baggage, emergency documents, and regulated cargo review",
+    "Supports B2B air cargo, airport pickup and delivery, excess baggage, emergency documents, and regulated cargo review",
     "Human operations desk for urgent shipment coordination"
   ],
   howItWorks: [
@@ -916,7 +1026,8 @@ const phaseTwoAirportProfiles = [
     "Machine breakdown parts",
     "Medical equipment and diagnostic devices",
     "Tender, passport, visa, and legal documents",
-    "Excess baggage and travel cargo",
+    `Excess baggage pickup or delivery around ${hotelContext}`,
+    `Airport pickup and delivery for ${businessContext}`,
     "Electronics, laptops, DG, lithium battery, and high-value cargo"
   ],
   whyNotCourier: [
@@ -934,15 +1045,24 @@ const phaseTwoAirportProfiles = [
     },
     {
       question: `Which local areas are relevant for ${profile.title}?`,
-      answer: `${profile.title} commonly serves customer enquiries around ${profile.terminals}. Service support depends on the exact pickup or delivery address and shipment readiness.`
+      answer: `${profile.title} commonly serves customer enquiries around ${terminalContext} Nearby airport hotels include ${hotelContext}. Business and industrial demand includes ${businessContext} and ${industrialContext}. Service support depends on the exact pickup or delivery address and shipment readiness.`
     },
     {
       question: `What commercial hubs use ${profile.title}?`,
-      answer: `Commercial demand can come from ${profile.hubs}. Common urgent cargo includes AOG spares, machine parts, medical equipment, documents, electronics, baggage, and high-value cargo.`
+      answer: `Commercial demand can come from ${businessContext}, ${industrialContext}, and ${techContext}. Common urgent cargo includes AOG spares, machine parts, medical equipment, documents, electronics, baggage, and high-value cargo.`
+    },
+    {
+      question: `Can PORTADOR arrange excess baggage pickup from ${profile.airport}?`,
+      answer: `Yes. PORTADOR can assist with excess baggage pickup from ${profile.airport}, including ${terminalContext}, subject to baggage type, documentation, timing, pickup access, and service feasibility.`
+    },
+    {
+      question: `Can PORTADOR support airport pickup and delivery near ${profile.title}?`,
+      answer: `Yes. PORTADOR can check airport pickup and delivery support near ${profile.title} for hotels, homes, offices, industrial areas, tech hubs, and student areas, subject to cargo readiness and serviceability.`
     }
   ],
   cta: `Get urgent cargo support through ${profile.title}.`
-})) satisfies PageModel[];
+  };
+}) satisfies PageModel[];
 
 const nationalAirportPages = nationalAirportProfiles.map((profile) => ({
   slug: profile.slug,
@@ -1384,11 +1504,93 @@ const nationalExcessBaggagePages = nationalExcessBaggageProfiles.map((profile) =
   cta: `Check ${profile.title.toLowerCase()} with PORTADOR SOS.`
 })) satisfies PageModel[];
 
+const globalShippingIntentProfiles = [
+  ["send-ghee-to-usa", "Send Ghee to USA", "food export enquiry", "ghee", "USA", "families, exporters, NRIs, food businesses, and personal goods customers"],
+  ["send-food-items-to-uk", "Send Food Items to UK", "food export enquiry", "packed food items", "UK", "families, students, NRIs, and small food brands"],
+  ["send-atta-to-canada", "Send Atta to Canada", "food export enquiry", "atta", "Canada", "families, students, NRIs, and household goods customers"],
+  ["send-dal-to-australia", "Send Dal to Australia", "food export enquiry", "dal", "Australia", "families, students, NRIs, and personal goods customers"],
+  ["send-spices-to-europe", "Send Spices to Europe", "food export enquiry", "spices", "Europe", "families, exporters, food businesses, and sample shippers"],
+  ["send-sweets-to-uae", "Send Sweets to UAE", "food export enquiry", "sweets", "UAE", "families, event planners, NRIs, and gifting customers"],
+  ["send-household-goods-to-uk", "Send Household Goods to UK", "personal goods export enquiry", "household goods", "UK", "families, relocating professionals, students, and personal effects customers"],
+  ["send-clothes-to-dubai", "Send Clothes to Dubai", "personal goods export enquiry", "clothes", "Dubai", "families, travelers, students, and personal goods customers"],
+  ["send-documents-to-usa", "Send Documents to USA", "document export enquiry", "documents", "USA", "students, legal teams, families, businesses, and urgent document customers"],
+  ["send-personal-goods-to-saudi-arabia", "Send Personal Goods to Saudi Arabia", "personal goods export enquiry", "personal goods", "Saudi Arabia", "families, travelers, professionals, and relocation customers"],
+  ["send-excess-baggage-to-canada", "Send Excess Baggage to Canada", "excess baggage export enquiry", "excess baggage", "Canada", "students, international travelers, families, and relocation customers"],
+  ["send-luggage-to-australia", "Send Luggage to Australia", "luggage export enquiry", "luggage", "Australia", "students, travelers, relocating professionals, and families"],
+  ["import-from-dubai-to-india", "Import from Dubai to India", "urgent import enquiry", "commercial or personal cargo", "Dubai to India", "businesses, traders, families, and urgent import customers"],
+  ["import-from-saudi-arabia-to-india", "Import from Saudi Arabia to India", "urgent import enquiry", "commercial or personal cargo", "Saudi Arabia to India", "businesses, families, professionals, and urgent import customers"],
+  ["import-from-shenzhen-to-india", "Import from Shenzhen to India", "urgent import enquiry", "electronics, parts, samples, or commercial cargo", "Shenzhen to India", "electronics businesses, startups, manufacturers, and importers"],
+  ["import-from-guangzhou-to-india", "Import from Guangzhou to India", "urgent import enquiry", "commercial samples, parts, garments, or equipment", "Guangzhou to India", "traders, manufacturers, ecommerce vendors, and B2B importers"],
+  ["import-from-yiwu-to-india", "Import from Yiwu to India", "urgent import enquiry", "samples, small commercial cargo, or business goods", "Yiwu to India", "traders, SMEs, sourcing teams, and sample importers"],
+  ["import-from-hong-kong-to-india", "Import from Hong Kong to India", "urgent import enquiry", "documents, electronics, samples, or high-value cargo", "Hong Kong to India", "businesses, electronics buyers, finance teams, and urgent importers"]
+].map(([slug, title, intent, commodity, corridor, audience]) => {
+  const isImport = title.startsWith("Import");
+  const movement = isImport ? "urgent international import air cargo" : "urgent international export air cargo";
+  return {
+    slug,
+    title,
+    eyebrow: "PORTADOR GLOBAL",
+    h1: `${title} With PORTADOR GLOBAL`,
+    description: `${title} support for ${audience} who need ${movement} guidance. Acceptance depends on destination rules, courier or airline policy, packing, documentation, customs, and product restrictions.`,
+    keywords: [title.toLowerCase(), "urgent international air cargo", "PORTADOR GLOBAL", "import export air cargo", `${commodity} shipping`, `${corridor} cargo`],
+    icon: "airport" as const,
+    whatIs: `${title} is a ${intent} for customers who need to check whether ${commodity} can move on the ${corridor} corridor through premium international air cargo support. PORTADOR GLOBAL reviews product restrictions, customs requirements, packing, documents, and carrier policy before confirming feasibility.`,
+    aiSnippet: `${title}: PORTADOR GLOBAL can check ${commodity} shipment feasibility for ${corridor}. Acceptance depends on destination rules, courier or airline policy, packing, documentation, customs, and product restrictions.`,
+    benefits: [
+      `Corridor: ${corridor}`,
+      `Commodity context: ${commodity}`,
+      `Relevant customers: ${audience}`,
+      "Compliance disclaimer included before movement is confirmed",
+      "Useful for personal goods, documents, samples, baggage, and business cargo where allowed",
+      "Human operations desk for urgent international shipment enquiries"
+    ],
+    howItWorks: [
+      "Share pickup country or city, destination, commodity, weight, dimensions, and urgency",
+      "PORTADOR checks destination rules, customs requirements, carrier policy, packing, and documentation",
+      "Eligible export, import, document, baggage, or commercial cargo options are reviewed",
+      "Customer receives quote factors and next-step guidance",
+      "Shipment support proceeds only where compliance and serviceability allow"
+    ],
+    useCases: [
+      "Send food items internationally where allowed",
+      "Send documents abroad urgently",
+      "Send excess baggage or personal goods",
+      "Import commercial samples or machine parts",
+      "Import electronics or IT hardware where allowed",
+      "Check customs and product restrictions before booking"
+    ],
+    whyNotCourier: [
+      "International cargo cannot be confirmed from a generic parcel label alone",
+      "Food, personal goods, documents, and imports may face destination restrictions",
+      "Packing, documents, customs, and carrier policy affect acceptance",
+      "Human guidance helps customers avoid shipment rejection",
+      "PORTADOR GLOBAL is better suited when urgency and compliance both matter"
+    ],
+    faqs: [
+      ...serviceFaqs(title, title.toLowerCase()),
+      {
+        question: `Can PORTADOR GLOBAL help with ${title.toLowerCase()}?`,
+        answer: `PORTADOR GLOBAL can check ${title.toLowerCase()} feasibility, subject to destination rules, courier or airline policy, packing, documentation, customs, product restrictions, and operational availability.`
+      },
+      {
+        question: `Can ${commodity} always be shipped on the ${corridor} corridor?`,
+        answer: `${commodity} cannot be assumed accepted on every route. Final acceptance depends on destination rules, carrier policy, product restrictions, documents, packing, customs, and serviceability.`
+      },
+      {
+        question: "What documents are needed for urgent international cargo?",
+        answer: "Documents may include KYC, invoice, packing list, product declaration, MSDS where relevant, authorization, consignee details, and customs paperwork depending on the commodity and destination."
+      }
+    ],
+    cta: `Check ${title.toLowerCase()} feasibility with PORTADOR GLOBAL.`
+  } satisfies PageModel;
+});
+
 export const cargoPages = [
   ...phaseTwoCargoProfiles,
+  ...globalShippingIntentProfiles,
   ...excessBaggageGeoPages,
-  ...nationalExcessBaggagePages.filter((page) => ![...phaseTwoCargoProfiles, ...excessBaggageGeoPages].some((featured) => featured.slug === page.slug)),
-  ...legacyCargoPages.filter((page) => ![...phaseTwoCargoProfiles, ...excessBaggageGeoPages, ...nationalExcessBaggagePages].some((featured) => featured.slug === page.slug))
+  ...nationalExcessBaggagePages.filter((page) => ![...phaseTwoCargoProfiles, ...globalShippingIntentProfiles, ...excessBaggageGeoPages].some((featured) => featured.slug === page.slug)),
+  ...legacyCargoPages.filter((page) => ![...phaseTwoCargoProfiles, ...globalShippingIntentProfiles, ...excessBaggageGeoPages, ...nationalExcessBaggagePages].some((featured) => featured.slug === page.slug))
 ] satisfies PageModel[];
 
 const localCommercialUseCases = [

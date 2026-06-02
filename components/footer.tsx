@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Instagram, Linkedin, Mail, MapPin, MessageCircle, PackageCheck, PhoneCall, Youtube } from "lucide-react";
-import { cargoPages, cities, hubArticles, legalLinks, services, site, socialLinks } from "@/lib/site";
+import { cargoPages, cities, hubArticles, legalLinks, services, site, socialLinks, whatsappHref } from "@/lib/site";
 
 const socialIconMap = {
   "Head Office Location & Reviews": MapPin,
@@ -30,7 +30,7 @@ export function Footer() {
                 <PhoneCall size={15} className="text-[#e30613]" />
                 {site.phone}
               </a>
-              <a href={site.whatsapp} className="inline-flex items-center gap-2 transition hover:text-white">
+              <a href={whatsappHref} className="inline-flex items-center gap-2 transition hover:text-white">
                 <MessageCircle size={15} className="text-[#e30613]" />
                 WhatsApp Operations
               </a>

@@ -4,6 +4,7 @@ import { CTA, Section } from "@/components/ui";
 import { TrackingForm } from "@/components/tracking-form";
 import { faqSchema, howToSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
+import { normalizeFaqs } from "@/lib/faq";
 
 const faqs = [
   { question: "What is PORTADOR SOS tracking?", answer: "PORTADOR SOS tracking lets customers open shipment status in the separate PORTADOR-OPS tracking app using an AWB or tracking number." },
@@ -17,6 +18,7 @@ const faqs = [
   { question: "What if I do not have a reference number?", answer: "Contact operations with sender, receiver, route, and booking details so the team can locate the shipment." },
   { question: "Does tracking cover hand carry shipments?", answer: "Hand carry and OBC shipments can be updated through the assigned coordinator because the movement is personally supervised." }
 ];
+const normalizedFaqs = normalizeFaqs(faqs);
 
 export const metadata: Metadata = {
   title: "Tracking",
@@ -31,7 +33,7 @@ export default function TrackingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
-            faqSchema(faqs),
+            faqSchema(normalizedFaqs),
             howToSchema({
               name: "How to track a PORTADOR shipment",
               description: "Enter an AWB or tracking number on PORTADOR.in to open the separate PORTADOR-OPS tracking page.",
@@ -59,7 +61,7 @@ export default function TrackingPage() {
       <Process items={["Enter shipment reference", "Operations checks latest milestone", "Airport or movement status is reviewed", "Destination support is coordinated", "Final status is shared"]} />
       <BulletGrid eyebrow="Use cases" title="Shipments commonly tracked" items={["Same-day air cargo", "Next flight out cargo", "Airport-to-airport cargo", "Hand carry shipments", "Excess baggage", "Mission-critical business cargo"]} />
       <BulletGrid eyebrow="Courier comparison" title="Why tracking is different" items={["Urgent cargo milestones are airport-linked", "Timing and handover matter", "Human updates can explain shipment changes", "Receiver readiness affects delivery", "Regulated cargo may have documentation checkpoints", "Mission-critical movement needs more context than a scan"]} />
-      <FAQBlock faqs={faqs} />
+      <FAQBlock faqs={normalizedFaqs} />
       <CTA title="Need live status?" text="For time-critical shipments, the fastest status update is through the assigned operations coordinator or WhatsApp desk." />
     </main>
   );

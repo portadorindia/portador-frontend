@@ -2,15 +2,17 @@ import { CheckCircle2, ChevronRight, Plane } from "lucide-react";
 import Link from "next/link";
 import { FAQEngine } from "@/components/faq-engine";
 import { CTA, MotionCard, PrimaryButton, QuickSelector, SecondaryButton, Section } from "@/components/ui";
-import { airportCityCoverage, airports, cargoPages, comparisonPages, hubArticles, PageModel, serviceIconMap, services, site, useCasePages } from "@/lib/site";
+import { airportCityCoverage, airports, cargoPages, cities, comparisonPages, hubArticles, industries, lanes, PageModel, serviceIconMap, services, site, useCasePages, whatsappHref } from "@/lib/site";
 import { breadcrumbSchema, faqSchema, itemListSchema, serviceSchema, webPageSchema } from "@/lib/schema";
+import { normalizeFaqs } from "@/lib/faq";
 
 export function PageTemplate({ page, basePath }: { page: PageModel; basePath: string }) {
   const Icon = serviceIconMap[page.icon ?? "default"];
   const pageUrl = `${site.url}${basePath}/${page.slug}`;
+  const normalizedFaqs = normalizeFaqs(page.faqs);
   const schemas = [
     breadcrumbSchema([{ name: "Home", href: "/" }, { name: page.title, href: `${basePath}/${page.slug}` }]),
-    faqSchema(page.faqs),
+    faqSchema(normalizedFaqs),
     serviceSchema(page, basePath),
     webPageSchema(page, basePath),
     itemListSchema({
@@ -37,7 +39,7 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
                 <p className="mt-5 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">{page.description}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <PrimaryButton href={site.phoneHref}>Call PORTADOR SOS</PrimaryButton>
-                  <SecondaryButton href={site.whatsapp}>WhatsApp Shipment Details</SecondaryButton>
+                  <SecondaryButton href={whatsappHref}>WhatsApp Shipment Details</SecondaryButton>
                 </div>
               </div>
               <div className="glass-panel rounded-xl p-5 md:p-6">
@@ -88,7 +90,9 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
         <QuickSelector />
         <DirectAnswerStack page={page} />
         <RelatedCommercialLinks page={page} basePath={basePath} />
-        <FAQBlock faqs={page.faqs} />
+        <RelatedLocationLinks page={page} basePath={basePath} />
+        <OperationalNextLinks />
+        <FAQBlock faqs={normalizedFaqs} />
         <CTA title={page.cta} />
       </main>
     </>
@@ -100,7 +104,7 @@ function getRelatedCommercialLinks(page: PageModel, basePath: string) {
   const pools = [
     ...services.map((item) => ({ title: item.title, description: item.description, href: `/services/${item.slug}`, group: "Service" })),
     ...cargoPages.map((item) => ({ title: item.title, description: item.description, href: `/cargo/${item.slug}`, group: "Cargo" })),
-    ...airports.map((item) => ({ title: item.title, description: item.description, href: `/airports/${item.slug}`, group: "Airport" })),
+    ...industries.map((item) => ({ title: item.title, description: item.description, href: `/industries/${item.slug}`, group: "Industry" })),
     ...comparisonPages.map((item) => ({ title: item.title, description: item.description, href: `/comparisons/${item.slug}`, group: "Comparison" })),
     ...hubArticles.map((item) => ({ title: item.title, description: item.description, href: `/knowledge-hub/${item.slug}`, group: "Knowledge" })),
     ...useCasePages.map((item) => ({ title: item.title, description: item.description, href: `/use-cases/${item.slug}`, group: "Use case" }))
@@ -139,13 +143,86 @@ export function RelatedCommercialLinks({ page, basePath }: { page: PageModel; ba
   const links = getRelatedCommercialLinks(page, basePath);
 
   return (
-    <Section eyebrow="Related urgent cargo pages" title="Plan the next move faster">
+    <Section eyebrow="Related services" title="Related PORTADOR SOS resources">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {links.map((link) => (
           <Link key={link.href} href={link.href} className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-[#e30613]/40">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e30613]">{link.group}</p>
             <h3 className="mt-3 text-lg font-semibold leading-6 text-white">{link.title}</h3>
             <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-400">{link.description}</p>
+          </Link>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function getRelatedLocationLinks(page: PageModel, basePath: string) {
+  const currentHref = `${basePath}/${page.slug}`;
+  const focusText = [page.title, page.h1, page.description, page.keywords.join(" ")].join(" ").toLowerCase();
+  const pools = [
+    ...airports.map((item) => ({ title: item.title, description: item.description, href: `/airports/${item.slug}`, group: "Airport" })),
+    ...cities.map((item) => ({ title: item.title, description: item.description, href: `/cities/${item.slug}`, group: "City" })),
+    ...lanes.map((item) => ({ title: item.title, description: item.description, href: `/routes/${item.slug}`, group: "Route" }))
+  ].filter((item) => item.href !== currentHref);
+
+  const priority = [
+    "/airports/delhi-igi-airport",
+    "/airports/mumbai-csmia",
+    "/airports/bangalore-kempegowda",
+    "/airports/hyderabad-rgia",
+    "/airports/chennai-airport",
+    "/cities/delhi",
+    "/cities/gurugram",
+    "/cities/mumbai",
+    "/routes/delhi-to-mumbai",
+    "/routes/mumbai-to-bangalore-urgent-delivery"
+  ];
+
+  return pools
+    .map((item) => {
+      const words = item.title.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+      const relevance = words.reduce((score, word) => score + (focusText.includes(word) ? 2 : 0), 0);
+      return { ...item, score: relevance + (priority.includes(item.href) ? 3 : 0) + (item.href.startsWith(basePath) ? 1 : 0) };
+    })
+    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
+    .slice(0, 8);
+}
+
+export function RelatedLocationLinks({ page, basePath }: { page: PageModel; basePath: string }) {
+  const links = getRelatedLocationLinks(page, basePath);
+
+  return (
+    <Section eyebrow="Related locations" title="Airport, city, and route pages">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {links.map((link) => (
+          <Link key={link.href} href={link.href} className="rounded-lg border border-white/10 bg-white/[0.035] p-5 transition hover:-translate-y-1 hover:border-[#e30613]/40">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e30613]">{link.group}</p>
+            <h3 className="mt-3 text-lg font-semibold leading-6 text-white">{link.title}</h3>
+            <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-400">{link.description}</p>
+          </Link>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+export function OperationalNextLinks() {
+  const links = [
+    { title: "Track Shipment", description: "Open PORTADOR-OPS tracking for AWB and shipment status.", href: site.trackingUrl, group: "Tracking" },
+    { title: "Contact Operations", description: "Call or submit a callback request for urgent cargo support.", href: "/contact", group: "Contact" },
+    { title: "WhatsApp Operations", description: "Send pickup, delivery, weight, and deadline details to PORTADOR.", href: whatsappHref, group: "WhatsApp" },
+    { title: "PORTADOR GLOBAL", description: "Check urgent international import or export air cargo support.", href: "/services/portador-global", group: "Global shipping" }
+  ];
+
+  return (
+    <Section eyebrow="Next action" title="Get shipment support faster">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {links.map((link) => (
+          <Link key={link.href} href={link.href} className="rounded-lg border border-[#e30613]/25 bg-[#e30613]/10 p-5 transition hover:-translate-y-1 hover:border-[#e30613]/50">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ff4a54]">{link.group}</p>
+            <h3 className="mt-3 text-lg font-semibold leading-6 text-white">{link.title}</h3>
+            <p className="mt-3 text-sm leading-6 text-zinc-300">{link.description}</p>
           </Link>
         ))}
       </div>
@@ -293,7 +370,7 @@ export function Process({ items }: { items: string[] }) {
 }
 
 export function FAQBlock({ faqs }: { faqs: { question: string; answer: string }[] }) {
-  return <FAQEngine faqs={faqs} />;
+  return <FAQEngine faqs={normalizeFaqs(faqs)} />;
 }
 
 export function ListingPage({ title, description, links }: { title: string; description: string; links: { title: string; description: string; href: string }[] }) {
@@ -311,6 +388,7 @@ export function ListingPage({ title, description, links }: { title: string; desc
     { question: "What affects urgent air cargo feasibility?", answer: "Urgent air cargo feasibility depends on timing, cargo eligibility, documentation, serviceability, regulatory compliance verification, cargo dimensions, weight, commodity type, and available air movement." },
     { question: "Is support available outside office hours?", answer: "Yes. PORTADOR SOS is positioned for 24x7 urgent operations support, subject to route, pickup, airport, and airline availability." }
   ];
+  const normalizedFaqs = normalizeFaqs(faqs);
 
   return (
     <main>
@@ -318,7 +396,7 @@ export function ListingPage({ title, description, links }: { title: string; desc
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
-            faqSchema(faqs),
+            faqSchema(normalizedFaqs),
             {
               "@context": "https://schema.org",
               "@type": "ItemList",
@@ -406,7 +484,7 @@ export function ListingPage({ title, description, links }: { title: string; desc
           ))}
         </div>
       </Section>
-      <FAQBlock faqs={faqs} />
+      <FAQBlock faqs={normalizedFaqs} />
       <CTA />
     </main>
   );
