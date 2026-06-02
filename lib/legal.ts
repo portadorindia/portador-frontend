@@ -54,7 +54,7 @@ export const legalPages: LegalPage[] = [
       },
       {
         title: "Acceptance is not guaranteed",
-        body: "Urgent movement depends on service feasibility, air cargo timing, cargo type, documentation, packing, regulatory approval, and cargo acceptance. PORTADOR SOS does not guarantee movement for restricted or regulated cargo until feasibility and acceptance are confirmed."
+        body: "Urgent movement depends on service availability, air cargo timing, cargo type, documentation, packing, regulatory approval, and cargo acceptance. PORTADOR SOS does not guarantee movement for restricted or regulated cargo until availability and acceptance are confirmed."
       }
     ]
   },
@@ -78,7 +78,7 @@ export const legalPages: LegalPage[] = [
         title: "How we use information",
         body: "Information is used for operations-led logistics coordination and customer support.",
         items: [
-          "To respond to enquiries, prepare quotes, check feasibility, and coordinate urgent movement.",
+          "To respond to enquiries, prepare quotes, check availability, and coordinate urgent movement.",
           "To verify shipment information, documentation, compliance requirements, pickup, airport support, and destination coordination.",
           "To communicate service updates, exceptions, payment information, operational instructions, and support responses.",
           "To improve website quality, customer experience, fraud prevention, safety, compliance, and internal operations."
@@ -119,7 +119,7 @@ export const legalPages: LegalPage[] = [
       },
       {
         title: "Risk items and acceptance",
-        body: "Battery cargo, dangerous goods, restricted goods, fragile cargo, high-value cargo, perishables, temperature-controlled cargo, medical equipment, liquids, chemicals, and similar items require accurate declaration and may require additional review. Acceptance depends on airline rules, service feasibility, documentation, packing, regulatory requirements, and cargo handling."
+        body: "Battery cargo, dangerous goods, restricted goods, fragile cargo, high-value cargo, perishables, temperature-controlled cargo, medical equipment, liquids, chemicals, and similar items require accurate declaration and may require additional review. Acceptance depends on airline rules, service availability, documentation, packing, regulatory requirements, and cargo handling."
       },
       {
         title: "Freight on value and liability",
@@ -162,7 +162,7 @@ export const legalPages: LegalPage[] = [
         title: "Service names",
         body: "PORTADOR services are structured as follows.",
         items: [
-          "PORTADOR SOS: Same-Day Air Cargo + Next Flight Out / NFO urgent movement feasibility.",
+          "PORTADOR SOS: Same-Day Air Cargo + Next Flight Out / NFO urgent movement availability.",
           "PORTADOR EXPRESS: Next Business Day / Second Business Day Premium Air Cargo.",
           "PORTADOR BLACK: OBC / Hand Carry / Runner / VIP Logistics.",
           "PORTADOR GLOBAL: Urgent International Import / Export Air Cargo."

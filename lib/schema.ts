@@ -7,7 +7,7 @@ const offerCatalog = {
     {
       name: "PORTADOR SOS",
       serviceType: "Same-Day Air Cargo + Next Flight Out Logistics",
-      description: "Flagship emergency domestic air cargo service for same-day, NFO, 10-16 hour feasibility where possible, airport-to-airport movement, urgent door coordination, and 24x7 human operations."
+      description: "Flagship emergency domestic air cargo service for same-day, NFO, 10-16 hour availability where possible, airport-to-airport movement, urgent door coordination, and 24x7 human operations."
     },
     {
       name: "PORTADOR EXPRESS",

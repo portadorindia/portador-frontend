@@ -9,11 +9,19 @@ const negativeIntentPattern = /(without documentation|without documents|without 
 export function normalizeFaqAnswer(faq: FAQItem): FAQItem {
   const answer = faq.answer.trim();
 
-  if (/^(yes|no)[.,]/i.test(answer) || !yesNoQuestionPattern.test(faq.question)) {
+  if (/^yes[.,]/i.test(answer)) {
+    return { ...faq, answer: answer.replace(/^yes[.,]/i, "YES.") };
+  }
+
+  if (/^no[.,]/i.test(answer)) {
+    return { ...faq, answer: answer.replace(/^no[.,]/i, "NO.") };
+  }
+
+  if (!yesNoQuestionPattern.test(faq.question)) {
     return { ...faq, answer };
   }
 
-  const prefix = negativeIntentPattern.test(`${faq.question} ${answer}`) ? "No." : "Yes.";
+  const prefix = negativeIntentPattern.test(`${faq.question} ${answer}`) ? "NO." : "YES.";
   return {
     ...faq,
     answer: `${prefix} ${answer}`

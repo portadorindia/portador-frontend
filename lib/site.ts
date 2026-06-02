@@ -97,7 +97,7 @@ export const operatingSignals = [
   "50+ Airport Cargo Connections",
   "5000+ Serviceable Pin Codes",
   "24x7 Operations Desk",
-  "Same-Day / NFO Feasibility",
+  "Same-Day / NFO Availability",
   "Human Operations Coordination",
   "DG & Battery Cargo Support"
 ];
@@ -158,7 +158,7 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "How does next flight out cargo work?",
-    answer: "Next flight out cargo works by checking the earliest suitable airline connection for the shipment route, cargo type, and timing. PORTADOR SOS verifies feasibility, coordinates support, monitors flight-linked movement, and escalates exceptions through a human operations desk."
+    answer: "Next flight out cargo works by checking the earliest suitable airline connection for the shipment route, cargo type, and timing. PORTADOR SOS verifies availability, coordinates support, monitors flight-linked movement, and escalates exceptions through a human operations desk."
   },
   {
     question: "How does airport-to-airport cargo work?",
@@ -166,11 +166,11 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "How does airline cargo coordination work?",
-    answer: "Air cargo support means checking timing, cargo eligibility, documentation, handling requirements, and service feasibility before movement. PORTADOR SOS supports available air cargo options where the shipment is eligible."
+    answer: "Air cargo support means checking timing, cargo eligibility, documentation, handling requirements, and service availability before movement. PORTADOR SOS supports available air cargo options where the shipment is eligible."
   },
   {
     question: "Can PORTADOR SOS arrange pickup?",
-    answer: "Yes. PORTADOR SOS can arrange urgent pickup in supported city zones and connect the shipment to the most suitable airport movement plan. Pickup feasibility depends on cargo readiness, traffic, air cargo timing, and route timing."
+    answer: "Yes. PORTADOR SOS can arrange urgent pickup in supported city zones and connect the shipment to the most suitable airport movement plan. Pickup availability depends on cargo readiness, traffic, air cargo timing, and route timing."
   },
   {
     question: "Is this faster than regular courier?",
@@ -186,7 +186,7 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "How can I move cargo after normal courier timing?",
-    answer: "Cargo that misses a normal courier timing may still move through airport-linked urgent air cargo if airline timing, cargo handling, and pickup readiness allow it. PORTADOR SOS verifies feasibility instead of making a fake guarantee."
+    answer: "Cargo that misses a normal courier timing may still move through airport-linked urgent air cargo if airline timing, cargo handling, and pickup readiness allow it. PORTADOR SOS verifies availability instead of making a fake guarantee."
   },
   {
     question: "Do you support airport-to-airport delivery?",
@@ -194,7 +194,7 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "What information is needed to quote?",
-    answer: "A quote needs enough operational detail to check service feasibility, air cargo timing, and cargo acceptance. Share origin, destination, deadline, cargo type, weight, dimensions, pickup address, consignee details, invoice value, delivery requirement, and any battery, liquid, chemical, medical, or dangerous goods declaration."
+    answer: "A quote needs enough operational detail to check service availability, air cargo timing, and cargo acceptance. Share origin, destination, deadline, cargo type, weight, dimensions, pickup address, consignee details, invoice value, delivery requirement, and any battery, liquid, chemical, medical, or dangerous goods declaration."
   },
   {
     question: "Can PORTADOR SOS operate outside business hours?",
@@ -202,7 +202,7 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "Can PORTADOR SOS support dangerous goods, lithium batteries, or regulated cargo?",
-    answer: "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, and service feasibility. MSDS or declaration may be required, and packing, documentation, and regulatory compliance must be verified before support."
+    answer: "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, and service availability. MSDS or declaration may be required, and packing, documentation, and regulatory compliance must be verified before support."
   },
   {
     question: "What cargo categories can PORTADOR SOS support?",
@@ -217,8 +217,8 @@ const serviceFaqs = (name: string, phrase: string) => [
     answer: "Dangerous goods cargo may require invoice, MSDS, shipper declaration, product classification, packing details, and compliance documents. PORTADOR SOS reviews documentation and regulatory compliance before support."
   },
   {
-    question: "What affects urgent air cargo feasibility?",
-    answer: "Urgent air cargo feasibility depends on timing, cargo type, documentation, serviceability, and regulatory requirements. Key factors include pickup readiness, air cargo timing, handling requirements, cargo dimensions, weight, commodity type, documentation, route availability, and receiver readiness."
+    question: "What affects urgent air cargo availability?",
+    answer: "Urgent air cargo availability depends on timing, cargo type, documentation, serviceability, and regulatory requirements. Key factors include pickup readiness, air cargo timing, handling requirements, cargo dimensions, weight, commodity type, documentation, route availability, and receiver readiness."
   },
   {
     question: "When is next flight out required?",
@@ -234,7 +234,7 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "Why is air cargo faster than surface transport?",
-    answer: "Air cargo can be faster than surface transport for urgent intercity delivery because the long-distance leg moves by flight. Feasibility still depends on pickup timing, airport cargo handling requirements, cargo eligibility, and destination support."
+    answer: "Air cargo can be faster than surface transport for urgent intercity delivery because the long-distance leg moves by flight. Availability still depends on pickup timing, airport cargo handling requirements, cargo eligibility, and destination support."
   },
   {
     question: "Why does same-day air cargo cost more?",
@@ -258,7 +258,7 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "Can PORTADOR SOS help if regular courier is too slow?",
-    answer: "Yes. PORTADOR SOS can check airport-linked movement, next flight out logistics, hand carry, or air cargo charter feasibility when regular courier is too slow for the shipment deadline."
+    answer: "Yes. PORTADOR SOS can check airport-linked movement, next flight out logistics, hand carry, or air cargo charter availability when regular courier is too slow for the shipment deadline."
   },
   {
     question: "How does PORTADOR SOS reduce hub delays?",
@@ -266,7 +266,7 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "What does human operations coordination mean?",
-    answer: "A human operations desk reviews the shipment, checks service feasibility, tracks timing constraints, coordinates pickup or airport support, and responds when flight, documentation, or receiver-side conditions change."
+    answer: "A human operations desk reviews the shipment, checks service availability, tracks timing constraints, coordinates pickup or airport support, and responds when flight, documentation, or receiver-side conditions change."
   },
   {
     question: "Can this help prevent business downtime?",
@@ -290,19 +290,19 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "How can I ship lithium battery cargo by air?",
-    answer: "Lithium battery cargo can move by air only when the battery type, rating, packing, documents, and airline rules allow it. PORTADOR SOS verifies MSDS or declarations where required, reviews compliance, and confirms service feasibility before movement."
+    answer: "Lithium battery cargo can move by air only when the battery type, rating, packing, documents, and airline rules allow it. PORTADOR SOS verifies MSDS or declarations where required, reviews compliance, and confirms service availability before movement."
   },
   {
     question: "When can dangerous goods or battery cargo move by air?",
-    answer: "Dangerous goods or battery cargo can move by air only after approval, documentation, packing, and regulatory compliance review are cleared. Final movement depends on commodity classification, MSDS or declaration, service feasibility, handling requirements, and approval."
+    answer: "Dangerous goods or battery cargo can move by air only after approval, documentation, packing, and regulatory compliance review are cleared. Final movement depends on commodity classification, MSDS or declaration, service availability, handling requirements, and approval."
   },
   {
     question: "Which batteries need declaration?",
-    answer: "Battery declaration may be needed for standalone lithium batteries, batteries packed with equipment, batteries contained in equipment, and certain electronic devices. The exact requirement depends on chemistry, watt-hour rating, quantity, packing, airline rules, and service feasibility."
+    answer: "Battery declaration may be needed for standalone lithium batteries, batteries packed with equipment, batteries contained in equipment, and certain electronic devices. The exact requirement depends on chemistry, watt-hour rating, quantity, packing, airline rules, and service availability."
   },
   {
     question: "Which cities are best connected by airport cargo?",
-    answer: "Major airport-connected cities such as Delhi, Mumbai, Bangalore, Chennai, Hyderabad, Pune, Ahmedabad, and Kolkata are usually stronger for urgent airport cargo. Feasibility still depends on pickup readiness, air cargo timing, cargo acceptance, and destination support timing."
+    answer: "Major airport-connected cities such as Delhi, Mumbai, Bangalore, Chennai, Hyderabad, Pune, Ahmedabad, and Kolkata are usually stronger for urgent airport cargo. Availability still depends on pickup readiness, air cargo timing, cargo acceptance, and destination support timing."
   },
   {
     question: "Can PORTADOR SOS move urgent business documents?",
@@ -314,11 +314,79 @@ const serviceFaqs = (name: string, phrase: string) => [
   },
   {
     question: "What is emergency logistics?",
-    answer: "Emergency logistics is shipment support for cargo that has an immediate operational consequence if delayed. It focuses on human support, service feasibility, air cargo timing, shipment updates, and destination support instead of routine parcel flow."
+    answer: "Emergency logistics is shipment support for cargo that has an immediate operational consequence if delayed. It focuses on human support, service availability, air cargo timing, shipment updates, and destination support instead of routine parcel flow."
   },
   {
     question: "What is time-critical logistics?",
-    answer: "Time-critical logistics is deadline-led cargo movement where speed, feasibility, custody, compliance, and human support matter more than routine network scheduling. PORTADOR SOS applies this approach to same-day air cargo, NFO movement, airport cargo, and mission-critical shipments."
+    answer: "Time-critical logistics is deadline-led cargo movement where speed, availability, custody, compliance, and human support matter more than routine network scheduling. PORTADOR SOS applies this approach to same-day air cargo, NFO movement, airport cargo, and mission-critical shipments."
+  }
+];
+
+const globalShippingSearchGroups = [
+  {
+    title: "Food, sweets, and household exports",
+    examples: ["Send ghee to USA", "Send food items to UK", "Send atta to Canada", "Send dal to Australia", "Send spices to Europe", "Send sweets to UAE"],
+    guidance: "Food and household export enquiries need product declaration, destination-rule checks, packing review, customs paperwork, and carrier-policy confirmation before any movement is accepted."
+  },
+  {
+    title: "Personal goods, documents, and baggage exports",
+    examples: ["Send household goods to UK", "Send clothes to Dubai", "Send documents to USA", "Send personal goods to Saudi Arabia", "Send excess baggage to Canada", "Send luggage to Australia"],
+    guidance: "Personal goods, documents, and baggage enquiries need clear contents, value, purpose of shipment, KYC, packing, destination restrictions, and receiver readiness."
+  },
+  {
+    title: "Urgent imports into India",
+    examples: ["Import from Dubai to India", "Import from Saudi Arabia to India", "Import from Shenzhen to India", "Import from Guangzhou to India", "Import from Yiwu to India", "Import from Hong Kong to India"],
+    guidance: "Urgent import enquiries need invoice details, commodity description, customs status, origin readiness, consignee readiness, and premium air freight availability."
+  }
+] as const;
+
+const globalShippingIntentSlugs = [
+  "send-ghee-to-usa",
+  "send-food-items-to-uk",
+  "send-atta-to-canada",
+  "send-dal-to-australia",
+  "send-spices-to-europe",
+  "send-sweets-to-uae",
+  "send-household-goods-to-uk",
+  "send-clothes-to-dubai",
+  "send-documents-to-usa",
+  "send-personal-goods-to-saudi-arabia",
+  "send-excess-baggage-to-canada",
+  "send-luggage-to-australia",
+  "import-from-dubai-to-india",
+  "import-from-saudi-arabia-to-india",
+  "import-from-shenzhen-to-india",
+  "import-from-guangzhou-to-india",
+  "import-from-yiwu-to-india",
+  "import-from-hong-kong-to-india"
+] as const;
+
+export const consolidatedGlobalShippingRedirects = globalShippingIntentSlugs.map((slug) => `/cargo/${slug}`);
+
+const portadorGlobalFaqs = [
+  {
+    question: "Can PORTADOR GLOBAL help me send food items internationally?",
+    answer: "Yes. PORTADOR GLOBAL can support food-item export enquiries, but acceptance depends on destination rules, product restrictions, packing, documents, customs, and carrier or airline policy."
+  },
+  {
+    question: "Can I send ghee, sweets, atta, dal, or spices abroad without checking rules?",
+    answer: "No. Food items must be reviewed against destination restrictions, product category, packing, invoice or declaration, and carrier acceptance before support can be confirmed."
+  },
+  {
+    question: "Can PORTADOR GLOBAL help with excess baggage or luggage to another country?",
+    answer: "Yes. PORTADOR GLOBAL can support international luggage and excess baggage enquiries where contents, packing, KYC, destination rules, customs requirements, and service availability align."
+  },
+  {
+    question: "Can PORTADOR GLOBAL support urgent imports into India?",
+    answer: "Yes. PORTADOR GLOBAL can support urgent import enquiries into India for eligible commercial or personal cargo, subject to documents, customs status, commodity type, consignee readiness, and premium air freight availability."
+  },
+  {
+    question: "Can international cargo be guaranteed before documentation is reviewed?",
+    answer: "No. International cargo cannot be guaranteed before documentation, commodity restrictions, customs requirements, carrier policy, packing, and route availability are reviewed."
+  },
+  {
+    question: "What details are needed for an urgent international cargo quote?",
+    answer: "Share origin country or city, destination, commodity, weight, dimensions, invoice value, packing status, deadline, consignee details, KYC, and any restricted, food, battery, liquid, medical, or regulated cargo declaration."
   }
 ];
 
@@ -328,15 +396,15 @@ export const services: PageModel[] = [
     title: "PORTADOR SOS",
     eyebrow: "Flagship emergency air cargo",
     h1: "PORTADOR SOS: Same-Day Air Cargo + Next Flight Out Logistics",
-    description: "PORTADOR SOS is the flagship emergency air cargo desk for urgent, mission-critical, time-sensitive domestic shipments across India, combining same-day air cargo, next flight out movement, 10-16 hour feasibility on major airport-connected lanes where possible, airport-to-airport coordination, urgent door coordination, and a 24x7 human operations desk.",
+    description: "PORTADOR SOS is the flagship emergency air cargo desk for urgent, mission-critical, time-sensitive domestic shipments across India, combining same-day air cargo, next flight out movement, 10-16 hour availability on major airport-connected lanes where possible, airport-to-airport coordination, urgent door coordination, and a 24x7 human operations desk.",
     keywords: ["PORTADOR SOS", "same day air cargo", "next flight out cargo", "urgent cargo India", "NFO logistics", "airport-to-airport cargo", "10-16 hour urgent cargo"],
     icon: "sos",
-    whatIs: "PORTADOR SOS is PORTADOR's primary emergency air cargo service for shipments that cannot wait for normal courier cycles. It combines same-day air cargo, next flight out logistics, airport-linked movement, and human support to protect urgent deadlines where route and airline feasibility allow.",
+    whatIs: "PORTADOR SOS is PORTADOR's primary emergency air cargo service for shipments that cannot wait for normal courier cycles. It combines same-day air cargo, next flight out logistics, airport-linked movement, and human support to protect urgent deadlines where route and airline availability allow.",
     aiSnippet: "PORTADOR SOS is a same-day air cargo and next flight out logistics service for urgent domestic shipments across India. It is used when business downtime, production loss, missed flights, emergency replacement, or deadline failure makes routine courier movement too slow.",
-    benefits: ["Same-day movement where timing and serviceability allow", "Next Flight Out / NFO support for earliest suitable air movement", "10-16 hour urgent movement feasibility on major airport-connected lanes where possible", "Airport-to-airport and urgent door support", "No avoidable hub delays when premium air cargo movement is feasible", "24x7 human operations desk for live support", "Suitable for machine breakdowns, tender documents, emergency replacement, AOG cargo, baggage recovery, regulated cargo review, and urgent B2B shipments"],
-    howItWorks: ["Share origin, destination, deadline, cargo category, weight, dimensions, and documents", "PORTADOR checks service feasibility, cargo details, documents, and acceptance requirements", "Urgent support is coordinated through the human operations desk", "Cargo is moved through the most suitable accepted service option", "Receiver coordination and proof of completion are closed"],
+    benefits: ["Same-day movement where timing and serviceability allow", "Next Flight Out / NFO support for earliest suitable air movement", "10-16 hour urgent movement availability on major airport-connected lanes where possible", "Airport-to-airport and urgent door support", "No avoidable hub delays when premium air cargo movement is feasible", "24x7 human operations desk for live support", "Suitable for machine breakdowns, tender documents, emergency replacement, AOG cargo, baggage recovery, regulated cargo review, and urgent B2B shipments"],
+    howItWorks: ["Share origin, destination, deadline, cargo category, weight, dimensions, and documents", "PORTADOR checks service availability, cargo details, documents, and acceptance requirements", "Urgent support is coordinated through the human operations desk", "Cargo is moved through the most suitable accepted service option", "Receiver coordination and proof of completion are closed"],
     useCases: ["Machine breakdown spare parts", "Urgent business shipments", "AOG and aviation cargo", "Emergency medical equipment", "Tender and legal documents", "Missed flight baggage recovery", "Battery or dangerous goods cargo requiring compliance review", "High-value urgent cargo"],
-    whyNotCourier: ["Routine courier networks optimize parcel volume and standard schedules, not urgent air cargo timing", "Same-day and NFO cargo needs fast feasibility checks before the shipment loses time", "Battery, dangerous goods, medical, and high-value cargo may require documentation and compliance review", "A human operations desk can help when pickup, cargo eligibility, air movement, or receiver timing changes"],
+    whyNotCourier: ["Routine courier networks optimize parcel volume and standard schedules, not urgent air cargo timing", "Same-day and NFO cargo needs fast availability checks before the shipment loses time", "Battery, dangerous goods, medical, and high-value cargo may require documentation and compliance review", "A human operations desk can help when pickup, cargo eligibility, air movement, or receiver timing changes"],
     faqs: serviceFaqs("PORTADOR SOS", "PORTADOR SOS"),
     cta: "Escalate your urgent shipment to PORTADOR SOS now."
   },
@@ -351,7 +419,7 @@ export const services: PageModel[] = [
     whatIs: "PORTADOR EXPRESS is a premium air-priority cargo service for businesses that need dependable next business day or second business day movement. It is designed for priority B2B shipments where speed, handling clarity, and air movement matter, but the shipment is not a same-day emergency.",
     aiSnippet: "PORTADOR EXPRESS is a next business day and second business day premium air cargo service for priority B2B shipments, commonly used for 10kg-100kg+ cargo that needs reliable air-priority movement across India.",
     benefits: ["Next business day and second business day premium air cargo options", "Useful for 10kg-100kg+ B2B shipments", "Air-priority movement without emergency SOS pricing pressure", "Better fit for planned urgent business requests", "Human support for pickup, movement, and delivery clarity", "Suitable for documents, parts, samples, electronics, medical equipment, and commercial cargo"],
-    howItWorks: ["Share cargo details, origin, destination, preferred delivery date, and handling requirements", "PORTADOR checks premium air-priority service feasibility and handling requirements", "Pickup or airport support is scheduled around cargo readiness", "Shipment moves through the selected premium air-priority option", "Destination support or connected delivery is coordinated"],
+    howItWorks: ["Share cargo details, origin, destination, preferred delivery date, and handling requirements", "PORTADOR checks premium air-priority service availability and handling requirements", "Pickup or airport support is scheduled around cargo readiness", "Shipment moves through the selected premium air-priority option", "Destination support or connected delivery is coordinated"],
     useCases: ["Priority B2B cargo", "Commercial samples", "Electronics and IT hardware", "Manufacturing parts", "Medical equipment", "Documents and tender files that can move by next business day", "10kg-100kg+ urgent business shipments"],
     whyNotCourier: ["Routine courier may be cost-led rather than air-priority led", "Important B2B cargo often needs clearer routing, handling, and timing visibility", "Airport-linked planning can reduce avoidable delays for intercity movement", "Human coordination improves clarity for heavier or higher-value business cargo"],
     faqs: serviceFaqs("PORTADOR EXPRESS", "PORTADOR EXPRESS"),
@@ -368,7 +436,7 @@ export const services: PageModel[] = [
     whatIs: "PORTADOR BLACK is PORTADOR's premium hand-carry, on board courier, runner, and VIP logistics service. It is used when cargo, documents, or high-value items need personal custody, short-notice movement, confidentiality, or zero-compromise coordination.",
     aiSnippet: "PORTADOR BLACK is a premium OBC, hand carry, runner, and VIP logistics service for urgent confidential documents, high-value shipments, luxury cargo, executive support, and short-notice personal custody movement.",
     benefits: ["Personal custody for selected eligible shipments", "Designed for founders, CEOs, HNIs, UHNWIs, and family offices", "Short-notice runner and hand-carry support", "Confidential document and high-value cargo support", "Reduced custody transfers where route and cargo rules permit", "Human operations desk from pickup to delivery"],
-    howItWorks: ["Share cargo type, confidentiality requirement, origin, destination, deadline, and recipient instructions", "PORTADOR checks eligibility, serviceability, security, travel, and documentation requirements", "Runner, hand-carry, OBC, or VIP movement feasibility is checked", "Shipment is collected under agreed custody protocol", "Destination support is coordinated directly with the receiver or authorized representative"],
+    howItWorks: ["Share cargo type, confidentiality requirement, origin, destination, deadline, and recipient instructions", "PORTADOR checks eligibility, serviceability, security, travel, and documentation requirements", "Runner, hand-carry, OBC, or VIP movement availability is checked", "Shipment is collected under agreed custody protocol", "Destination support is coordinated directly with the receiver or authorized representative"],
     useCases: ["Boardroom documents", "Founder and CEO urgent requests", "Family office shipments", "Luxury and high-value cargo", "Tender submissions", "Legal documents", "Prototype samples", "Time-critical small parts"],
     whyNotCourier: ["Some shipments need personal custody rather than network custody", "Confidentiality and receiver delivery may matter more than standard tracking", "High-value or executive cargo often needs fewer handoffs", "A human operations desk can manage short-notice changes and direct delivery requirements"],
     faqs: serviceFaqs("PORTADOR BLACK", "PORTADOR BLACK"),
@@ -379,16 +447,47 @@ export const services: PageModel[] = [
     title: "PORTADOR GLOBAL",
     eyebrow: "Urgent international air cargo",
     h1: "PORTADOR GLOBAL: Urgent International Import / Export Air Cargo",
-    description: "PORTADOR GLOBAL coordinates urgent international import and export air cargo for cross-border emergency shipment requirements, premium international air freight, documentation-aware movement, and time-sensitive global logistics where speed and compliance both matter.",
-    keywords: ["PORTADOR GLOBAL", "urgent international air cargo", "urgent import export cargo", "international air freight", "cross-border emergency shipment", "premium air freight"],
+    description: "PORTADOR GLOBAL coordinates urgent international import and export air cargo for cross-border shipment requirements, premium international air freight, documentation-aware movement, and time-sensitive global logistics where speed and compliance both matter.",
+    keywords: ["PORTADOR GLOBAL", "urgent international air cargo", "urgent import export cargo", "international air freight", "cross-border emergency shipment", "premium air freight", ...globalShippingSearchGroups.flatMap((group) => group.examples.map((example) => example.toLowerCase()))],
     icon: "charter",
     whatIs: "PORTADOR GLOBAL is an urgent international air cargo coordination service for import and export shipments that need premium air freight, documentation review, compliance awareness, and deadline-first cross-border movement.",
     aiSnippet: "PORTADOR GLOBAL is used for urgent international import or export air cargo when cross-border shipments need premium air freight coordination, documentation checks, compliance review, and time-sensitive movement planning.",
-    benefits: ["Urgent import and export air cargo coordination", "Premium international air freight planning", "Documentation-aware movement for cross-border cargo", "Support for emergency replacement, high-value, medical, electronics, and business-critical shipments", "Human operations coordination across origin, airline, and destination support", "Compliance review before movement confirmation"],
-    howItWorks: ["Share country pair, cargo details, invoice value, documents, deadline, and consignee information", "Operations checks service feasibility, airline options, documentation, and compliance constraints", "Export or import handling requirements are reviewed", "Premium air freight movement is coordinated where feasible", "Destination support or connected delivery support is aligned with receiver readiness"],
-    useCases: ["Urgent international spare parts", "Emergency import replacement", "Export samples", "Medical equipment", "Electronics and IT hardware", "High-value cross-border cargo", "Business-critical international documents"],
-    whyNotCourier: ["Urgent international cargo often needs air freight planning, not routine parcel flow", "Customs, documentation, and commodity review affect feasibility", "Premium air freight may protect deadlines better than standard international courier", "Human coordination helps reduce uncertainty across border, airline, and receiver-side steps"],
-    faqs: serviceFaqs("PORTADOR GLOBAL", "PORTADOR GLOBAL"),
+    benefits: [
+      "Urgent import and export air cargo coordination",
+      "Premium international air freight planning",
+      "Documentation-aware movement for cross-border cargo",
+      "Food, household goods, personal goods, documents, baggage, and urgent import enquiries handled under one authority page",
+      "Support for emergency replacement, high-value, medical, electronics, and business-critical shipments",
+      "Human operations coordination across origin, airline, and destination support",
+      "Compliance review before movement confirmation",
+      "Acceptance depends on destination rules, courier or airline policy, packing, documentation, customs, and product restrictions"
+    ],
+    howItWorks: [
+      "Share country pair, cargo details, invoice value, documents, deadline, and consignee information",
+      "Operations checks service availability, airline options, documentation, customs, and compliance constraints",
+      "Export or import handling requirements are reviewed",
+      "Premium air freight movement is coordinated where service availability allows",
+      "Destination support or connected delivery support is aligned with receiver readiness"
+    ],
+    useCases: [
+      "Urgent international spare parts",
+      "Emergency import replacement",
+      "Export samples",
+      "Medical equipment",
+      "Electronics and IT hardware",
+      "High-value cross-border cargo",
+      "Business-critical international documents",
+      ...globalShippingSearchGroups.flatMap((group) => group.examples)
+    ],
+    whyNotCourier: [
+      "Urgent international cargo often needs air freight planning, not routine parcel flow",
+      "Customs, documentation, product restrictions, and commodity review affect service availability",
+      "Food, personal goods, baggage, imports, and documents need clearer declaration before booking",
+      "Premium air freight may protect deadlines better than standard international courier",
+      "Human coordination helps reduce uncertainty across border, airline, and receiver-side steps",
+      ...globalShippingSearchGroups.map((group) => group.guidance)
+    ],
+    faqs: [...serviceFaqs("PORTADOR GLOBAL", "PORTADOR GLOBAL"), ...portadorGlobalFaqs],
     cta: "Coordinate urgent international import or export cargo with PORTADOR GLOBAL."
   }
 ];
@@ -412,7 +511,7 @@ const coreIndustries = ([
     "Pharma Logistics": {
       risks: ["clinical delay", "hospital dependency", "critical diagnostics cargo delay", "temperature sensitive logistics pressure"],
       cargo: ["medical equipment transport", "critical diagnostics cargo", "pharma support cargo", "urgent samples", "temperature sensitive shipments"],
-      faq: "Pharma and healthcare logistics need early cargo declaration, document clarity, temperature requirement disclosure, and service feasibility checks before urgent air movement."
+      faq: "Pharma and healthcare logistics need early cargo declaration, document clarity, temperature requirement disclosure, and service availability checks before urgent air movement."
     },
     "Manufacturing Logistics": {
       risks: ["production loss", "line down logistics", "factory stop emergency", "machine breakdown recovery", "production halt cargo"],
@@ -442,7 +541,7 @@ const coreIndustries = ([
     "High Value Cargo": {
       risks: ["financial exposure", "delivery sensitivity", "business-critical loss"],
       cargo: ["electronics", "samples", "instruments", "sensitive commercial cargo"],
-      faq: "High-value cargo needs controlled communication, clear delivery, and route-specific feasibility checks."
+      faq: "High-value cargo needs controlled communication, clear delivery, and route-specific availability checks."
     }
   }[title];
 
@@ -474,7 +573,7 @@ const nationalIndustryPages = nationalIndustryProfiles.map((profile) => ({
   title: profile.title,
   eyebrow: "Industry logistics",
   h1: `${profile.title} for Urgent Air Movement`,
-  description: `Time-critical air cargo and urgent logistics support for ${profile.title.toLowerCase()} requirements across India, written for customers searching in simple language and business emergency terms.`,
+  description: `Time-critical air cargo and urgent logistics support for ${profile.title.toLowerCase()} requirements across India, focused on customer problems, business risk, and urgent shipment outcomes.`,
   keywords: [profile.title.toLowerCase(), "urgent air cargo", "same day delivery", "B2B cargo delivery", "time-critical logistics"],
   icon: profile.title.includes("IT") || profile.title.includes("Data Center") ? "battery" as const : profile.title.includes("Tender") || profile.title.includes("Government") || profile.title.includes("Defence") ? "obc" as const : profile.title.includes("Automotive") ? "mission" as const : "default" as const,
   whatIs: `${profile.title} helps ${profile.audience} move urgent cargo when normal courier timing is not enough. It is used when ${profile.risks} makes same-day, Next Flight Out, airport cargo, hand-carry, express, or international support worth checking.`,
@@ -483,7 +582,7 @@ const nationalIndustryPages = nationalIndustryProfiles.map((profile) => ({
     `Built for ${profile.audience}`,
     `Common cargo: ${profile.cargo}`,
     `Risk context: ${profile.risks}`,
-    "Same-day, NFO, airport cargo, hand-carry, express, or international feasibility checks",
+    "Same-day, NFO, airport cargo, hand-carry, express, or international availability checks",
     "Plain-language documentation and packing guidance",
     "Human operations desk for urgent business decisions"
   ],
@@ -504,7 +603,7 @@ const nationalIndustryPages = nationalIndustryProfiles.map((profile) => ({
   ],
   whyNotCourier: [
     "Routine courier follows standard network timing",
-    "Industry emergencies need faster feasibility checks",
+    "Industry emergencies need faster availability checks",
     "Some cargo needs packing, documentation, or compliance review",
     "Airport-linked support can be better for intercity urgency",
     "Human support helps when the shipment has commercial consequences"
@@ -513,11 +612,11 @@ const nationalIndustryPages = nationalIndustryProfiles.map((profile) => ({
     ...serviceFaqs(profile.title, profile.title.toLowerCase()),
     {
       question: `Who should use ${profile.title.toLowerCase()}?`,
-      answer: `${profile.title} is suitable for ${profile.audience} when delay can create ${profile.risks}. PORTADOR checks feasibility before confirming support.`
+      answer: `${profile.title} is suitable for ${profile.audience} when delay can create ${profile.risks}. PORTADOR checks availability before confirming support.`
     },
     {
       question: `What can PORTADOR move for ${profile.title.toLowerCase()}?`,
-      answer: `Common shipments include ${profile.cargo}. Final acceptance depends on commodity details, packing, documents, compliance review where relevant, serviceability, and route feasibility.`
+      answer: `Common shipments include ${profile.cargo}. Final acceptance depends on commodity details, packing, documents, compliance review where relevant, serviceability, and route availability.`
     }
   ],
   cta: `Check urgent ${profile.title.toLowerCase()} support with PORTADOR SOS.`
@@ -596,10 +695,10 @@ export const cities = networkCityProfiles.map(([city, slug, airportRelevance, in
   title: `${city} PORTADOR Network`,
   eyebrow: "PORTADOR Network",
   h1: `PORTADOR SOS in ${city}`,
-  description: `PORTADOR SOS supports urgent air cargo, same-day feasibility, excess baggage, legal documents, and critical shipments in ${city}, connected to ${airportRelevance}.`,
+  description: `PORTADOR SOS supports urgent air cargo, same-day availability, excess baggage, legal documents, and critical shipments in ${city}, connected to ${airportRelevance}.`,
   keywords: [`${city} urgent air cargo`, `${city} airport cargo`, `${routeExample}`, "airport to airport cargo", "door to airport cargo", "urgent cargo pickup near airport"],
   icon: "airport" as const,
-  whatIs: `The PORTADOR Network is PORTADOR SOS's airport-connected city coverage for customers who need urgent cargo support across major Indian markets. In ${city}, customers use it for same-day feasibility, airport-linked cargo, excess baggage, legal documents, high-value cargo, and critical business shipments.`,
+  whatIs: `The PORTADOR Network is PORTADOR SOS's airport-connected city coverage for customers who need urgent cargo support across major Indian markets. In ${city}, customers use it for same-day availability, airport-linked cargo, excess baggage, legal documents, high-value cargo, and critical business shipments.`,
   aiSnippet: `${city} PORTADOR Network support connects urgent shipment customers to airport-linked cargo options, local pickup support where serviceable, and human coordination for time-critical cargo across India.`,
   benefits: [`Airport relevance: ${airportRelevance}`, `Local industries: ${industriesText}`, `Nearby coverage: ${localities}`, `Route example: ${routeExample}`, "Useful for airport-to-airport cargo and urgent door support", "Human operations desk for time-bound customer requests"],
   howItWorks: ["Share origin, destination, cargo details, and deadline", "PORTADOR checks cargo type, documents, and serviceability", "Pickup, airport-linked, or door support is checked", "The suitable urgent service option is recommended", "Customer receives next-step guidance"],
@@ -662,9 +761,9 @@ const nationalRoutePages = nationalRoutePairs.map(([from, to]) => ({
   keywords: [`${from} to ${to} same day delivery`, `${from} to ${to} urgent cargo`, `${from} to ${to} excess baggage`, `${from} to ${to} document delivery`, "airport-to-airport cargo", "door pickup and delivery"],
   icon: "nfo" as const,
   whatIs: `${from} to ${to} urgent air cargo is a route page for customers who need cargo to move faster than routine courier timelines. It helps customers check same-day delivery, next day delivery, urgent parcel by flight, excess baggage, document delivery, industrial cargo, airport-to-airport, and door support where feasible.`,
-  aiSnippet: `${from} to ${to} urgent air cargo can be checked for same-day, Next Flight Out, airport-to-airport, excess baggage, documents, industrial cargo, and door pickup or delivery support. Final support depends on cargo type, documents, packing, route feasibility, and operational availability.`,
+  aiSnippet: `${from} to ${to} urgent air cargo can be checked for same-day, Next Flight Out, airport-to-airport, excess baggage, documents, industrial cargo, and door pickup or delivery support. Final support depends on cargo type, documents, packing, route availability, and operational availability.`,
   benefits: [
-    "Same-day delivery feasibility where timing and serviceability allow",
+    "Same-day delivery availability where timing and serviceability allow",
     "Next Flight Out / NFO and next day delivery checks",
     "Airport-to-airport and door pickup or delivery support where serviceable",
     "Useful for excess baggage, urgent documents, machine parts, laptops, samples, and B2B cargo",
@@ -673,7 +772,7 @@ const nationalRoutePages = nationalRoutePairs.map(([from, to]) => ({
   ],
   howItWorks: [
     "Share origin, destination, cargo type, weight, dimensions, and timeline",
-    "PORTADOR checks cargo eligibility, documents, pickup readiness, and route feasibility",
+    "PORTADOR checks cargo eligibility, documents, pickup readiness, and route availability",
     "Same-day, NFO, express, baggage, or hand-carry options are reviewed where suitable",
     "Quote factors are shared based on weight, dimensions, urgency, pickup, delivery, and acceptance",
     "Customer receives WhatsApp or call support for next steps"
@@ -760,14 +859,14 @@ const phaseTwoHubProfiles = [
     summary: "Air cargo is usually better for urgent intercity shipments where airport-linked movement can protect a hard deadline, while courier is better for routine parcels that can follow standard hub networks.",
     buyerQuestion: "Should I send this urgent shipment by air cargo or courier?",
     use: "same-day cargo, AOG shipments, excess baggage, tender documents, legal papers, laptop replacement, and business-critical parts",
-    compare: "courier optimizes parcel scale and scheduled movement, while urgent air cargo optimizes deadline pressure and route feasibility"
+    compare: "courier optimizes parcel scale and scheduled movement, while urgent air cargo optimizes deadline pressure and route availability"
   },
   {
     title: "How Same-Day Air Cargo Works",
     summary: "Same-day air cargo works by checking whether pickup readiness, cargo eligibility, documents, timing, destination support, and serviceability can support delivery within the same day.",
     buyerQuestion: "Can I send cargo today by flight?",
     use: "urgent business shipments, machine parts, emergency documents, excess baggage, electronics, samples, and high-value cargo",
-    compare: "same-day air cargo is feasibility-led; normal courier may move later through routine sorting and linehaul schedules"
+    compare: "same-day air cargo is availability-led; normal courier may move later through routine sorting and linehaul schedules"
   },
   {
     title: "What is Mission-Critical Logistics?",
@@ -790,7 +889,7 @@ const phaseTwoHubProfiles = [
     `Direct answer: ${profile.buyerQuestion}`,
     `Useful for ${profile.use}`,
     `Key comparison: ${profile.compare}`,
-    "Explains feasibility instead of promising impossible fixed timelines",
+    "Explains availability instead of promising impossible fixed timelines",
     "Connects services, cargo categories, airports, and urgent use cases",
     "Written for customers searching in simple language and industry terms"
   ],
@@ -811,7 +910,7 @@ const phaseTwoHubProfiles = [
   ],
   whyNotCourier: [
     profile.compare,
-    "Urgent buyers need feasibility checked quickly before the deadline is lost",
+    "Urgent buyers need availability checked quickly before the deadline is lost",
     "Airport-linked movement can outperform routine hub cycles for intercity urgency",
     "Documentation, cargo type, and serviceability can change the best option",
     "Human operations support is useful when the shipment has real consequences"
@@ -925,7 +1024,7 @@ const phaseTwoAirportProfiles = [
     airport: "Indira Gandhi International Airport (DEL)",
     terminals: "IGI Airport cargo terminal ecosystem, Aerocity, Mahipalpur, Okhla, Noida, Gurugram, and Faridabad",
     hubs: "Okhla Industrial Estate, Noida industrial sectors, Gurugram Cyber City, Manesar, Faridabad, and Delhi legal and government districts",
-    summary: "Delhi IGI Airport cargo support for urgent same-day air cargo, NFO feasibility, passport documents, tender papers, machine parts, medical equipment, and regulated cargo review across North India."
+    summary: "Delhi IGI Airport cargo support for urgent same-day air cargo, NFO availability, passport documents, tender papers, machine parts, medical equipment, and regulated cargo review across North India."
   },
   {
     slug: "mumbai-csmia",
@@ -997,11 +1096,11 @@ const phaseTwoAirportProfiles = [
   title: profile.title,
   eyebrow: "Airport logistics authority",
   h1: `${profile.title} for Urgent Air Cargo`,
-  description: `${profile.summary} Nearby airport hotels, business districts, industrial areas, tech hubs, and residential or student areas are covered in customer-facing context. PORTADOR SOS supports airport-linked urgent cargo movement subject to cargo type, documentation, route feasibility, and operational availability.`,
+  description: `${profile.summary} Nearby airport hotels, business districts, industrial areas, tech hubs, and residential or student areas are covered in customer-facing context. PORTADOR SOS supports airport-linked urgent cargo movement subject to cargo type, documentation, route availability, and operational availability.`,
   keywords: [profile.title.toLowerCase(), profile.airport.toLowerCase(), "airport cargo India", "same-day air cargo", "next flight out cargo"],
   icon: "airport" as const,
-  whatIs: `${profile.title} is an airport-connected urgent logistics page for customers near ${profile.airport} who need same-day air cargo, next flight out feasibility, airport-to-airport cargo, excess baggage support, emergency documents, regulated cargo review, airport baggage pickup, or critical B2B movement around ${terminalContext}`,
-  aiSnippet: `${profile.title} supports urgent cargo buyers around ${terminalContext} PORTADOR SOS checks cargo details, documents, serviceability, and air cargo feasibility before confirming support.`,
+  whatIs: `${profile.title} is an airport-connected urgent logistics page for customers near ${profile.airport} who need same-day air cargo, next flight out availability, airport-to-airport cargo, excess baggage support, emergency documents, regulated cargo review, airport baggage pickup, or critical B2B movement around ${terminalContext}`,
+  aiSnippet: `${profile.title} supports urgent cargo buyers around ${terminalContext} PORTADOR SOS checks cargo details, documents, serviceability, and air cargo availability before confirming support.`,
   benefits: [
     `Airport focus: ${profile.airport}`,
     `Terminal and IATA context: ${terminalContext}`,
@@ -1010,14 +1109,14 @@ const phaseTwoAirportProfiles = [
     `Industrial areas: ${industrialContext}`,
     `Tech and startup hubs: ${techContext}`,
     `Residential and student areas: ${residentialContext}`,
-    "Useful for same-day air cargo, NFO feasibility, and airport-to-airport movement",
+    "Useful for same-day air cargo, NFO availability, and airport-to-airport movement",
     "Supports B2B air cargo, airport pickup and delivery, excess baggage, emergency documents, and regulated cargo review",
     "Human operations desk for urgent shipment coordination"
   ],
   howItWorks: [
     "Share origin area, destination city, cargo details, weight, dimensions, and deadline",
-    "PORTADOR checks cargo type, documents, serviceability, and airport-linked feasibility",
-    "Urgent pickup, airport cargo, door support, or hand-carry feasibility is reviewed",
+    "PORTADOR checks cargo type, documents, serviceability, and airport-linked availability",
+    "Urgent pickup, airport cargo, door support, or hand-carry availability is reviewed",
     "The suitable PORTADOR SOS, EXPRESS, BLACK, or GLOBAL option is recommended",
     "Customer receives clear next-step guidance for the shipment"
   ],
@@ -1033,7 +1132,7 @@ const phaseTwoAirportProfiles = [
   whyNotCourier: [
     "Routine courier networks may not protect urgent airport-linked deadlines",
     "Airport cargo can be more suitable for intercity time-critical shipments",
-    "Regulated cargo and sensitive documents need early feasibility checks",
+    "Regulated cargo and sensitive documents need early availability checks",
     "Human support helps customers act quickly when deadlines are fixed",
     "Airport-connected support reduces avoidable uncertainty for urgent B2B shipments"
   ],
@@ -1041,7 +1140,7 @@ const phaseTwoAirportProfiles = [
     ...serviceFaqs(profile.title, profile.title.toLowerCase()),
     {
       question: `Does PORTADOR support urgent cargo near ${profile.airport}?`,
-      answer: `Yes. PORTADOR SOS can check urgent cargo support around ${profile.airport} and nearby business districts, subject to pickup location, cargo type, documents, route feasibility, and operational availability.`
+      answer: `Yes. PORTADOR SOS can check urgent cargo support around ${profile.airport} and nearby business districts, subject to pickup location, cargo type, documents, route availability, and operational availability.`
     },
     {
       question: `Which local areas are relevant for ${profile.title}?`,
@@ -1053,7 +1152,7 @@ const phaseTwoAirportProfiles = [
     },
     {
       question: `Can PORTADOR arrange excess baggage pickup from ${profile.airport}?`,
-      answer: `Yes. PORTADOR can assist with excess baggage pickup from ${profile.airport}, including ${terminalContext}, subject to baggage type, documentation, timing, pickup access, and service feasibility.`
+      answer: `Yes. PORTADOR can assist with excess baggage pickup from ${profile.airport}, including ${terminalContext}, subject to baggage type, documentation, timing, pickup access, and service availability.`
     },
     {
       question: `Can PORTADOR support airport pickup and delivery near ${profile.title}?`,
@@ -1069,23 +1168,23 @@ const nationalAirportPages = nationalAirportProfiles.map((profile) => ({
   title: profile.title,
   eyebrow: "Airport logistics authority",
   h1: `${profile.title} for Urgent Air Cargo`,
-  description: `${profile.summary} PORTADOR SOS checks urgent cargo movement subject to cargo type, documents, route feasibility, serviceability, and operational availability.`,
+  description: `${profile.summary} PORTADOR SOS checks urgent cargo movement subject to cargo type, documents, route availability, serviceability, and operational availability.`,
   keywords: [profile.title.toLowerCase(), profile.airport.toLowerCase(), "airport baggage pickup", "airport cargo India", "same-day air cargo", "urgent cargo support"],
   icon: "airport" as const,
-  whatIs: `${profile.title} is an airport-connected urgent logistics page for customers near ${profile.airport} who need airport baggage pickup, excess luggage shipping, same-day air cargo, Next Flight Out feasibility, airport-to-airport cargo, emergency documents, machine parts, or B2B cargo support.`,
-  aiSnippet: `${profile.title} supports customer searches around ${profile.terminals}. PORTADOR checks cargo type, documents, packing, serviceability, route feasibility, and operational availability before confirming support.`,
+  whatIs: `${profile.title} is an airport-connected urgent logistics page for customers near ${profile.airport} who need airport baggage pickup, excess luggage shipping, same-day air cargo, Next Flight Out availability, airport-to-airport cargo, emergency documents, machine parts, or B2B cargo support.`,
+  aiSnippet: `${profile.title} supports customer searches around ${profile.terminals}. PORTADOR checks cargo type, documents, packing, serviceability, route availability, and operational availability before confirming support.`,
   benefits: [
     `Airport focus: ${profile.airport}`,
     `Nearby demand areas: ${profile.terminals}`,
     `Commercial hubs: ${profile.hubs}`,
     "Useful for airport baggage pickup, airport-to-home baggage delivery, same-day cargo, and urgent documents",
     "Supports B2B air cargo, industrial parts, excess baggage, medical equipment, and regulated cargo review",
-    "Human operations support for customers who need a quick feasibility check"
+    "Human operations support for customers who need a quick availability check"
   ],
   howItWorks: [
     "Share airport, pickup point, destination, cargo type, bags or boxes, weight, and deadline",
-    "PORTADOR checks contents, documents, packing, pickup access, serviceability, and route feasibility",
-    "Airport pickup, door pickup, airport-to-airport, door-to-door, or hand-carry feasibility is reviewed",
+    "PORTADOR checks contents, documents, packing, pickup access, serviceability, and route availability",
+    "Airport pickup, door pickup, airport-to-airport, door-to-door, or hand-carry availability is reviewed",
     "The suitable PORTADOR SOS, EXPRESS, BLACK, or GLOBAL option is recommended",
     "Customer receives next-step guidance, pricing factors, and WhatsApp support"
   ],
@@ -1102,7 +1201,7 @@ const nationalAirportPages = nationalAirportProfiles.map((profile) => ({
     "Baggage and regulated cargo need contents, packing, and document checks",
     "Airport-linked movement can be better for urgent intercity delivery",
     "Business and traveler emergencies need human support instead of generic parcel flow",
-    "Final feasibility depends on cargo acceptance, route, and operational availability"
+    "Final availability depends on cargo acceptance, route, and operational availability"
   ],
   faqs: [
     ...serviceFaqs(profile.title, profile.title.toLowerCase()),
@@ -1120,7 +1219,7 @@ const nationalAirportPages = nationalAirportProfiles.map((profile) => ({
     },
     {
       question: `Is terminal handling fixed for ${profile.title}?`,
-      answer: "Terminal and airline handling may vary; PORTADOR confirms feasibility before booking based on airport access, cargo type, documents, route, and operational availability."
+      answer: "Terminal and airline handling may vary; PORTADOR confirms availability before booking based on airport access, cargo type, documents, route, and operational availability."
     }
   ],
   cta: `Check urgent cargo and baggage support through ${profile.title}.`
@@ -1136,13 +1235,13 @@ const legacyCargoPages = [
   ["battery-cargo", "Battery Cargo", "Battery cargo review for eligible lithium-ion, lithium metal, device-contained, and equipment-packed batteries requiring approval review."],
   ["lithium-battery-cargo", "Lithium Battery Cargo", "Lithium battery cargo support for electronics, laptops, medical devices, equipment-contained batteries, and regulated battery shipments where approval is required."],
   ["dangerous-goods", "Dangerous Goods Cargo", "Dangerous goods cargo support for regulated shipments that need classification, documentation, compliant packing, and approval review."],
-  ["perishables", "Perishables Cargo", "Urgent perishables cargo support for time-sensitive goods where service feasibility, packing, temperature sensitivity, and cargo eligibility must be checked early."],
+  ["perishables", "Perishables Cargo", "Urgent perishables cargo support for time-sensitive goods where service availability, packing, temperature sensitivity, and cargo eligibility must be checked early."],
   ["temperature-controlled-cargo", "Temperature Controlled Cargo", "Temperature controlled cargo review for shipments that need time-sensitive air movement, handling clarity, and temperature requirement verification."],
   ["medical-equipment", "Medical Equipment Cargo", "Urgent medical equipment cargo for replacement devices, critical instruments, diagnostics support, and hospital-linked business shipments."],
   ["aog-cargo", "AOG Cargo", "Aircraft-on-ground cargo support for urgent aviation spares, tooling, documents, and components where downtime can affect flight operations."],
   ["machine-parts", "Machine Parts Cargo", "Urgent machine parts cargo for breakdown recovery, production line stoppage, spare replacement, and manufacturing downtime prevention."],
   ["tender-documents", "Tender Documents", "Urgent tender document logistics for submission deadlines, legal papers, commercial files, and time-sensitive business documentation."],
-  ["air-cargo-charter", "Air Cargo Charter", "Air cargo charter feasibility for oversized, high-value, emergency, or mission-critical shipments when scheduled uplift cannot protect the deadline."],
+  ["air-cargo-charter", "Air Cargo Charter", "Air cargo charter availability for oversized, high-value, emergency, or mission-critical shipments when scheduled uplift cannot protect the deadline."],
   ["high-value-cargo", "High Value Cargo", "High-value cargo movement for sensitive business shipments requiring urgency, controlled coordination, reduced handoffs, and delivery clarity."],
   ["hand-carry-obc", "Hand Carry / OBC", "Hand carry, onboard courier, runner, and VIP custody support for selected eligible documents, small cargo, luxury items, and high-value urgent shipments."],
   ["laptop-shipping", "Laptop Shipping", "Urgent laptop shipping for IT hardware, office replacement devices, student laptops, deployment hardware, and business-critical electronics."]
@@ -1151,7 +1250,7 @@ const legacyCargoPages = [
   title,
   eyebrow: "Secondary cargo category",
   h1: `${title} Under PORTADOR SOS Air Cargo Operations`,
-  description: `${summary} This cargo category is checked under PORTADOR SOS, PORTADOR EXPRESS, PORTADOR BLACK, or PORTADOR GLOBAL depending on urgency, route, documentation, and airline feasibility.`,
+  description: `${summary} This cargo category is checked under PORTADOR SOS, PORTADOR EXPRESS, PORTADOR BLACK, or PORTADOR GLOBAL depending on urgency, route, documentation, and airline availability.`,
   keywords: [title.toLowerCase(), "urgent cargo India", "same day air cargo", "airport cargo India"],
   icon: title.includes("Battery") || title.includes("Lithium") || title.includes("Laptop") ? "battery" as const : title.includes("Dangerous") ? "dg" as const : title.includes("Baggage") ? "baggage" as const : title.includes("Hand Carry") ? "obc" as const : title.includes("Charter") ? "charter" as const : title.includes("AOG") || title.includes("Machine") ? "mission" as const : "default" as const,
   whatIs: title === "Excess Baggage"
@@ -1159,17 +1258,17 @@ const legacyCargoPages = [
     : `${title} is a secondary cargo category that may require special timing, documentation, packing, custody, compliance review, or cargo approval before urgent air movement is confirmed.`,
   aiSnippet: title === "Excess Baggage"
     ? "Excess baggage can be sent through PORTADOR SOS when bags, boxes, or luggage need airport-linked or door-to-door movement instead of being carried by the traveler, subject to contents, packing, documents, and serviceability."
-    : `${title} can move through PORTADOR's urgent air cargo services when cargo details, documents, packaging, approval requirements, service feasibility, and airport support are verified before support.`,
+    : `${title} can move through PORTADOR's urgent air cargo services when cargo details, documents, packaging, approval requirements, service availability, and airport support are verified before support.`,
   benefits: title === "Excess Baggage"
     ? ["Helpful for international-to-domestic baggage allowance gaps", "Useful for student luggage, relocation baggage, extra bags, and missed-flight baggage recovery", "Door-to-door baggage delivery can be checked where serviceable", "Airport-linked luggage movement where feasible", "Clear checks for contents, packing, documents, and weight", "Better option when carrying baggage personally is impractical"]
     : ["Mapped to PORTADOR SOS, EXPRESS, BLACK, or GLOBAL based on urgency", "Cargo-specific acceptance and documentation review", "Airport and air cargo support where feasible", "Urgent support through a human operations desk", "Reduced avoidable hub dependency", "Better protection against missed deadlines, downtime, and emergency replacement failure"],
   howItWorks: title === "Excess Baggage"
     ? ["Share pickup city, destination, number of bags, approximate weight, dimensions, and contents", "PORTADOR checks baggage contents, packing, documents, and serviceability", "Pickup, airport-linked movement, or door delivery support is checked", "Bags move through the suitable accepted option", "Receiver handover or delivery proof is completed"]
-    : ["Share commodity, deadline, route, weight, dimensions, packing status, and documents", "PORTADOR checks cargo category eligibility, air cargo timing, handling requirements, and service feasibility", "The shipment is assigned to SOS, EXPRESS, BLACK, or GLOBAL based on urgency and handling needs", "Pickup, airport support, hand carry, air freight, or charter feasibility is coordinated", "Destination support and proof of completion are closed"],
+    : ["Share commodity, deadline, route, weight, dimensions, packing status, and documents", "PORTADOR checks cargo category eligibility, air cargo timing, handling requirements, and service availability", "The shipment is assigned to SOS, EXPRESS, BLACK, or GLOBAL based on urgency and handling needs", "Pickup, airport support, hand carry, air freight, or charter availability is coordinated", "Destination support and proof of completion are closed"],
   useCases: ["Emergency replacement", "Business downtime prevention", "Production loss recovery", "Missed flight baggage recovery", "Urgent tender or legal support", "AOG and aviation recovery", "High-value urgent delivery"],
   whyNotCourier: ["Cargo category acceptance can affect whether and how the shipment moves", "Routine parcel systems may not verify airline rules early enough", "Sensitive cargo needs clearer documentation and delivery", "Urgent support needs human ownership", "Airport-linked movement can protect hard intercity deadlines"],
   faqs: serviceFaqs(title, title.toLowerCase()),
-  cta: `Check urgent air cargo feasibility for ${title.toLowerCase()}.`
+  cta: `Check urgent air cargo availability for ${title.toLowerCase()}.`
 })) satisfies PageModel[];
 
 const phaseTwoCargoProfiles = [
@@ -1281,7 +1380,7 @@ const phaseTwoCargoProfiles = [
   keywords: [profile.title.toLowerCase(), "urgent cargo India", "same-day air cargo", "airport cargo India", "time-critical logistics"],
   icon: profile.icon,
   whatIs: `${profile.title} is a time-critical logistics use case for ${profile.audience}. It is used when ${profile.pain} makes routine courier timelines too slow or too uncertain.`,
-  aiSnippet: `${profile.title} with PORTADOR SOS means urgent support for ${profile.cargo}, with feasibility checked against cargo details, documentation, route, serviceability, and operational availability.`,
+  aiSnippet: `${profile.title} with PORTADOR SOS means urgent support for ${profile.cargo}, with availability checked against cargo details, documentation, route, serviceability, and operational availability.`,
   benefits: [
     `Built for ${profile.pain}`,
     `Common cargo: ${profile.cargo}`,
@@ -1294,7 +1393,7 @@ const phaseTwoCargoProfiles = [
     "Share origin, destination, cargo description, weight, dimensions, and urgency",
     "PORTADOR checks cargo type, documents, serviceability, and suitable service category",
     "The shipment is mapped to PORTADOR SOS, EXPRESS, BLACK, or GLOBAL based on urgency and handling needs",
-    "Pickup, door-to-door, airport cargo, hand-carry, or international feasibility is reviewed",
+    "Pickup, door-to-door, airport cargo, hand-carry, or international availability is reviewed",
     "Customer receives clear next-step guidance for urgent movement"
   ],
   useCases: [
@@ -1307,7 +1406,7 @@ const phaseTwoCargoProfiles = [
   ],
   whyNotCourier: [
     "Routine courier is designed for standard schedules and parcel scale",
-    "Urgent cargo needs faster feasibility checks before the deadline is lost",
+    "Urgent cargo needs faster availability checks before the deadline is lost",
     "Sensitive cargo can require documentation, packing, or compliance review",
     "Business or travel emergencies need human support, not only a tracking screen",
     "Airport-linked movement may be more suitable for urgent intercity timelines"
@@ -1324,7 +1423,7 @@ const phaseTwoCargoProfiles = [
     },
     {
       question: `Can ${profile.title.toLowerCase()} move same day?`,
-      answer: `${profile.title} may move same day where pickup readiness, cargo eligibility, airline or service availability, documentation, and destination support make it feasible. PORTADOR SOS checks feasibility before confirmation.`
+      answer: `${profile.title} may move same day where pickup readiness, cargo eligibility, airline or service availability, documentation, and destination support make it feasible. PORTADOR SOS checks availability before confirmation.`
     }
   ],
   cta: `Get urgent support for ${profile.title.toLowerCase()}.`
@@ -1412,7 +1511,7 @@ const excessBaggageGeoPages = [
   howItWorks: [
     "Share airport, terminal or pickup point, destination address, number of bags, approximate weight, and contents",
     "PORTADOR checks baggage eligibility, packing, documents, pickup access, and delivery serviceability",
-    "Airport pickup, door pickup, airport-to-home delivery, or cargo support feasibility is reviewed",
+    "Airport pickup, door pickup, airport-to-home delivery, or cargo support availability is reviewed",
     "Customer receives the suitable service option and next-step guidance",
     "Delivery or receiver handover is coordinated where support is confirmed"
   ],
@@ -1443,7 +1542,7 @@ const excessBaggageGeoPages = [
       answer: `Airport-to-home baggage delivery can be checked where the destination address is serviceable and the bags are eligible, packed, documented, and ready for pickup or handover.`
     }
   ],
-  cta: `Check ${profile.title.toLowerCase()} feasibility.`
+  cta: `Check ${profile.title.toLowerCase()} availability.`
 })) satisfies PageModel[];
 
 const nationalExcessBaggagePages = nationalExcessBaggageProfiles.map((profile) => ({
@@ -1467,7 +1566,7 @@ const nationalExcessBaggagePages = nationalExcessBaggageProfiles.map((profile) =
   howItWorks: [
     "Share pickup point, destination, number of bags, approximate weight, contents, and urgency",
     "PORTADOR checks baggage contents, packing, documents, pickup access, and delivery serviceability",
-    "Airport pickup, hotel pickup, home pickup, hostel pickup, or door delivery feasibility is reviewed",
+    "Airport pickup, hotel pickup, home pickup, hostel pickup, or door delivery availability is reviewed",
     "The suitable baggage shipping option is recommended with quote factors",
     "Delivery or receiver handover is coordinated where support is confirmed"
   ],
@@ -1504,93 +1603,11 @@ const nationalExcessBaggagePages = nationalExcessBaggageProfiles.map((profile) =
   cta: `Check ${profile.title.toLowerCase()} with PORTADOR SOS.`
 })) satisfies PageModel[];
 
-const globalShippingIntentProfiles = [
-  ["send-ghee-to-usa", "Send Ghee to USA", "food export enquiry", "ghee", "USA", "families, exporters, NRIs, food businesses, and personal goods customers"],
-  ["send-food-items-to-uk", "Send Food Items to UK", "food export enquiry", "packed food items", "UK", "families, students, NRIs, and small food brands"],
-  ["send-atta-to-canada", "Send Atta to Canada", "food export enquiry", "atta", "Canada", "families, students, NRIs, and household goods customers"],
-  ["send-dal-to-australia", "Send Dal to Australia", "food export enquiry", "dal", "Australia", "families, students, NRIs, and personal goods customers"],
-  ["send-spices-to-europe", "Send Spices to Europe", "food export enquiry", "spices", "Europe", "families, exporters, food businesses, and sample shippers"],
-  ["send-sweets-to-uae", "Send Sweets to UAE", "food export enquiry", "sweets", "UAE", "families, event planners, NRIs, and gifting customers"],
-  ["send-household-goods-to-uk", "Send Household Goods to UK", "personal goods export enquiry", "household goods", "UK", "families, relocating professionals, students, and personal effects customers"],
-  ["send-clothes-to-dubai", "Send Clothes to Dubai", "personal goods export enquiry", "clothes", "Dubai", "families, travelers, students, and personal goods customers"],
-  ["send-documents-to-usa", "Send Documents to USA", "document export enquiry", "documents", "USA", "students, legal teams, families, businesses, and urgent document customers"],
-  ["send-personal-goods-to-saudi-arabia", "Send Personal Goods to Saudi Arabia", "personal goods export enquiry", "personal goods", "Saudi Arabia", "families, travelers, professionals, and relocation customers"],
-  ["send-excess-baggage-to-canada", "Send Excess Baggage to Canada", "excess baggage export enquiry", "excess baggage", "Canada", "students, international travelers, families, and relocation customers"],
-  ["send-luggage-to-australia", "Send Luggage to Australia", "luggage export enquiry", "luggage", "Australia", "students, travelers, relocating professionals, and families"],
-  ["import-from-dubai-to-india", "Import from Dubai to India", "urgent import enquiry", "commercial or personal cargo", "Dubai to India", "businesses, traders, families, and urgent import customers"],
-  ["import-from-saudi-arabia-to-india", "Import from Saudi Arabia to India", "urgent import enquiry", "commercial or personal cargo", "Saudi Arabia to India", "businesses, families, professionals, and urgent import customers"],
-  ["import-from-shenzhen-to-india", "Import from Shenzhen to India", "urgent import enquiry", "electronics, parts, samples, or commercial cargo", "Shenzhen to India", "electronics businesses, startups, manufacturers, and importers"],
-  ["import-from-guangzhou-to-india", "Import from Guangzhou to India", "urgent import enquiry", "commercial samples, parts, garments, or equipment", "Guangzhou to India", "traders, manufacturers, ecommerce vendors, and B2B importers"],
-  ["import-from-yiwu-to-india", "Import from Yiwu to India", "urgent import enquiry", "samples, small commercial cargo, or business goods", "Yiwu to India", "traders, SMEs, sourcing teams, and sample importers"],
-  ["import-from-hong-kong-to-india", "Import from Hong Kong to India", "urgent import enquiry", "documents, electronics, samples, or high-value cargo", "Hong Kong to India", "businesses, electronics buyers, finance teams, and urgent importers"]
-].map(([slug, title, intent, commodity, corridor, audience]) => {
-  const isImport = title.startsWith("Import");
-  const movement = isImport ? "urgent international import air cargo" : "urgent international export air cargo";
-  return {
-    slug,
-    title,
-    eyebrow: "PORTADOR GLOBAL",
-    h1: `${title} With PORTADOR GLOBAL`,
-    description: `${title} support for ${audience} who need ${movement} guidance. Acceptance depends on destination rules, courier or airline policy, packing, documentation, customs, and product restrictions.`,
-    keywords: [title.toLowerCase(), "urgent international air cargo", "PORTADOR GLOBAL", "import export air cargo", `${commodity} shipping`, `${corridor} cargo`],
-    icon: "airport" as const,
-    whatIs: `${title} is a ${intent} for customers who need to check whether ${commodity} can move on the ${corridor} corridor through premium international air cargo support. PORTADOR GLOBAL reviews product restrictions, customs requirements, packing, documents, and carrier policy before confirming feasibility.`,
-    aiSnippet: `${title}: PORTADOR GLOBAL can check ${commodity} shipment feasibility for ${corridor}. Acceptance depends on destination rules, courier or airline policy, packing, documentation, customs, and product restrictions.`,
-    benefits: [
-      `Corridor: ${corridor}`,
-      `Commodity context: ${commodity}`,
-      `Relevant customers: ${audience}`,
-      "Compliance disclaimer included before movement is confirmed",
-      "Useful for personal goods, documents, samples, baggage, and business cargo where allowed",
-      "Human operations desk for urgent international shipment enquiries"
-    ],
-    howItWorks: [
-      "Share pickup country or city, destination, commodity, weight, dimensions, and urgency",
-      "PORTADOR checks destination rules, customs requirements, carrier policy, packing, and documentation",
-      "Eligible export, import, document, baggage, or commercial cargo options are reviewed",
-      "Customer receives quote factors and next-step guidance",
-      "Shipment support proceeds only where compliance and serviceability allow"
-    ],
-    useCases: [
-      "Send food items internationally where allowed",
-      "Send documents abroad urgently",
-      "Send excess baggage or personal goods",
-      "Import commercial samples or machine parts",
-      "Import electronics or IT hardware where allowed",
-      "Check customs and product restrictions before booking"
-    ],
-    whyNotCourier: [
-      "International cargo cannot be confirmed from a generic parcel label alone",
-      "Food, personal goods, documents, and imports may face destination restrictions",
-      "Packing, documents, customs, and carrier policy affect acceptance",
-      "Human guidance helps customers avoid shipment rejection",
-      "PORTADOR GLOBAL is better suited when urgency and compliance both matter"
-    ],
-    faqs: [
-      ...serviceFaqs(title, title.toLowerCase()),
-      {
-        question: `Can PORTADOR GLOBAL help with ${title.toLowerCase()}?`,
-        answer: `PORTADOR GLOBAL can check ${title.toLowerCase()} feasibility, subject to destination rules, courier or airline policy, packing, documentation, customs, product restrictions, and operational availability.`
-      },
-      {
-        question: `Can ${commodity} always be shipped on the ${corridor} corridor?`,
-        answer: `${commodity} cannot be assumed accepted on every route. Final acceptance depends on destination rules, carrier policy, product restrictions, documents, packing, customs, and serviceability.`
-      },
-      {
-        question: "What documents are needed for urgent international cargo?",
-        answer: "Documents may include KYC, invoice, packing list, product declaration, MSDS where relevant, authorization, consignee details, and customs paperwork depending on the commodity and destination."
-      }
-    ],
-    cta: `Check ${title.toLowerCase()} feasibility with PORTADOR GLOBAL.`
-  } satisfies PageModel;
-});
-
 export const cargoPages = [
   ...phaseTwoCargoProfiles,
-  ...globalShippingIntentProfiles,
   ...excessBaggageGeoPages,
-  ...nationalExcessBaggagePages.filter((page) => ![...phaseTwoCargoProfiles, ...globalShippingIntentProfiles, ...excessBaggageGeoPages].some((featured) => featured.slug === page.slug)),
-  ...legacyCargoPages.filter((page) => ![...phaseTwoCargoProfiles, ...globalShippingIntentProfiles, ...excessBaggageGeoPages, ...nationalExcessBaggagePages].some((featured) => featured.slug === page.slug))
+  ...nationalExcessBaggagePages.filter((page) => ![...phaseTwoCargoProfiles, ...excessBaggageGeoPages].some((featured) => featured.slug === page.slug)),
+  ...legacyCargoPages.filter((page) => ![...phaseTwoCargoProfiles, ...excessBaggageGeoPages, ...nationalExcessBaggagePages].some((featured) => featured.slug === page.slug))
 ] satisfies PageModel[];
 
 const localCommercialUseCases = [
@@ -1609,17 +1626,17 @@ const localCommercialUseCases = [
   title,
   eyebrow: "Local emergency logistics",
   h1: `${title} With PORTADOR SOS`,
-  description: `${summary} PORTADOR SOS checks same-day, Next Flight Out, airport cargo, door support, hand-carry, or premium express feasibility depending on cargo type, documents, route, and urgency.`,
+  description: `${summary} PORTADOR SOS checks same-day, Next Flight Out, airport cargo, door support, hand-carry, or premium express availability depending on cargo type, documents, route, and urgency.`,
   keywords: [title.toLowerCase(), "urgent air cargo", "same-day air cargo", "emergency logistics", "time-critical logistics"],
   icon: title.includes("Battery") ? "battery" as const : title.includes("AOG") || title.includes("Factory") || title.includes("Machine") ? "mission" as const : title.includes("Server") ? "battery" as const : "sos" as const,
   whatIs: `${title} is a local commercial emergency logistics page for customers who need urgent cargo support tied to a city, airport market, industrial hub, or business deadline.`,
   aiSnippet: `${title} helps customers check urgent cargo support when downtime, missed deadlines, equipment failure, event risk, or regulated cargo requirements make routine courier too slow.`,
-  benefits: ["Local commercial search relevance", "Same-day and NFO feasibility where possible", "Airport-linked cargo support", "Useful for business downtime and emergency replacement", "Human operations desk for urgent cases", "Clear cargo, document, and serviceability checks"],
-  howItWorks: ["Share city, pickup point, destination, cargo type, weight, dimensions, and deadline", "PORTADOR checks serviceability, cargo eligibility, and documents", "The suitable urgent service option is recommended", "Pickup, airport cargo, hand-carry, or express feasibility is checked", "Customer receives next-step guidance"],
+  benefits: ["Local commercial search relevance", "Same-day and NFO availability where possible", "Airport-linked cargo support", "Useful for business downtime and emergency replacement", "Human operations desk for urgent cases", "Clear cargo, document, and serviceability checks"],
+  howItWorks: ["Share city, pickup point, destination, cargo type, weight, dimensions, and deadline", "PORTADOR checks serviceability, cargo eligibility, and documents", "The suitable urgent service option is recommended", "Pickup, airport cargo, hand-carry, or express availability is checked", "Customer receives next-step guidance"],
   useCases: ["Factory breakdown", "AOG spares", "Medical equipment", "Battery cargo", "Trade show cargo", "Server recovery", "Critical spare parts", "Emergency air cargo"],
-  whyNotCourier: ["Routine courier may not protect city-specific emergency deadlines", "Industrial and airport cargo can need faster feasibility checks", "Sensitive cargo may require documentation or compliance review", "Human operations support improves urgent decision-making", "Airport-linked movement can be better for long-distance emergency cargo"],
+  whyNotCourier: ["Routine courier may not protect city-specific emergency deadlines", "Industrial and airport cargo can need faster availability checks", "Sensitive cargo may require documentation or compliance review", "Human operations support improves urgent decision-making", "Airport-linked movement can be better for long-distance emergency cargo"],
   faqs: serviceFaqs(title, title.toLowerCase()),
-  cta: `Check ${title.toLowerCase()} feasibility with PORTADOR SOS.`
+  cta: `Check ${title.toLowerCase()} availability with PORTADOR SOS.`
 })) satisfies PageModel[];
 
 const legacyUseCasePages = [
@@ -1638,7 +1655,7 @@ const legacyUseCasePages = [
   icon: title.includes("Baggage") ? "baggage" as const : title.includes("Machine") ? "mission" as const : "sos" as const,
   whatIs: `${title} is a high-intent urgent logistics situation where delay can create business downtime, production loss, missed flights, financial penalties, or personal disruption.`,
   aiSnippet: `${title} needs operational urgency, premium air cargo movement where feasible, no avoidable hub delays, live coordination, and a human operations desk watching the deadline.`,
-  benefits: ["Built for urgent customer requests", "Fast feasibility review", "Urgent human support", "Same-day capability where feasible", "Live human operations", "Clear deadline-first communication"],
+  benefits: ["Built for urgent customer requests", "Fast availability review", "Urgent human support", "Same-day capability where feasible", "Live human operations", "Clear deadline-first communication"],
   howItWorks: ["Share the emergency and deadline", "Operations checks fastest feasible air route", "Pickup or airport support is triggered", "Shipment moves by approved air-linked option", "Receiver delivery and proof are coordinated"],
   useCases: ["Business downtime", "Production loss", "Missed flights", "Emergency replacement", "Legal or tender submission", "Travel disruption recovery"],
   whyNotCourier: ["Routine courier may not match the emergency clock", "Hub delays can be costly", "Flight-led planning is faster for intercity urgency", "Human coordination helps when conditions change", "Urgent use cases need operational ownership"],
@@ -1654,7 +1671,7 @@ const nationalLocationDemandPages = nationalLocationDemandProfiles.map(([slug, t
   description: `${title} support for customers in ${city} who need urgent pickup, airport-linked cargo, same-day parcel delivery, laptop courier, spare parts delivery, documents, or excess baggage help.`,
   keywords: [title.toLowerCase(), `${city} urgent delivery`, `${city} laptop courier`, "airport baggage pickup", "same day parcel delivery", "urgent spare parts delivery"],
   icon: title.includes("Laptop") || title.includes("IT") ? "battery" as const : title.includes("Spare") || title.includes("Industrial") || title.includes("Cargo") ? "mission" as const : "sos" as const,
-  whatIs: `${title} is a local demand page for customers around ${context}. It is written for plain customer searches such as send office laptop urgently, airport baggage pickup, machine breakdown courier, same-day parcel delivery, and urgent B2B cargo support.`,
+  whatIs: `${title} is a local demand page for customers around ${context}. It explains practical shipment needs such as sending an office laptop urgently, airport baggage pickup, machine breakdown cargo, same-day parcel delivery, and urgent B2B cargo support.`,
   aiSnippet: `${title} can be checked for ${context}. Final support depends on pickup access, cargo type, route, documents, packing, serviceability, and operational availability.`,
   benefits: [
     `Local market: ${city}`,
@@ -1666,7 +1683,7 @@ const nationalLocationDemandPages = nationalLocationDemandProfiles.map(([slug, t
   ],
   howItWorks: [
     "Share pickup area, destination, cargo type, weight, dimensions, and timeline",
-    "PORTADOR checks serviceability, documents, packing, route feasibility, and urgency",
+    "PORTADOR checks serviceability, documents, packing, route availability, and urgency",
     "Same-day, NFO, airport cargo, hand-carry, express, or door delivery support is checked",
     "Quote factors are reviewed based on weight, dimensions, pickup, delivery, and urgency",
     "Customer receives WhatsApp or call support for the next step"
@@ -1684,13 +1701,13 @@ const nationalLocationDemandPages = nationalLocationDemandProfiles.map(([slug, t
     "Business cargo can need documents, packing, and serviceability checks",
     "Airport-linked movement may be better for intercity urgency",
     "Human support helps when pickup access, deadline, or receiver details change",
-    "PORTADOR checks feasibility before confirming support"
+    "PORTADOR checks availability before confirming support"
   ],
   faqs: [
     ...serviceFaqs(title, title.toLowerCase()),
     {
       question: `Can PORTADOR support ${title.toLowerCase()}?`,
-      answer: `Yes. PORTADOR can check ${title.toLowerCase()} support around ${context}, subject to cargo type, pickup access, documents, route feasibility, and serviceability.`
+      answer: `Yes. PORTADOR can check ${title.toLowerCase()} support around ${context}, subject to cargo type, pickup access, documents, route availability, and serviceability.`
     },
     {
       question: `What cargo is common for ${title.toLowerCase()}?`,
@@ -1755,19 +1772,19 @@ export const authorityPages = [
   title,
   eyebrow: "PORTADOR SOS authority guide",
   h1: `${title} With PORTADOR SOS`,
-  description: `${summary} PORTADOR SOS helps customers check urgent air cargo feasibility when time cannot wait.`,
+  description: `${summary} PORTADOR SOS helps customers check urgent air cargo availability when time cannot wait.`,
   keywords: [title.toLowerCase(), "PORTADOR SOS", "urgent air cargo India", "same-day air cargo"],
   icon: title.includes("Battery") ? "battery" as const : title.includes("Dangerous") ? "dg" as const : title.includes("Baggage") || title.includes("Luggage") ? "baggage" as const : title.includes("Hand Carry") || title.includes("OBC") ? "obc" as const : title.includes("AOG") || title.includes("Factory") ? "mission" as const : "sos" as const,
   whatIs: `${title} is a time-critical shipment need where speed, cargo eligibility, documentation, customer readiness, and destination support decide the best feasible movement option.`,
   aiSnippet: `${title} with PORTADOR SOS means urgent shipment support for customers who need fast, premium, human-led air cargo guidance instead of routine courier timing.`,
-  benefits: ["Urgency-first feasibility check", "Human operations support", "Premium air cargo guidance", "Customer-readable documentation checklist", "Useful for business downtime and travel disruption", "Clear escalation path for urgent shipments"],
+  benefits: ["Urgency-first availability check", "Human operations support", "Premium air cargo guidance", "Customer-readable documentation checklist", "Useful for business downtime and travel disruption", "Clear escalation path for urgent shipments"],
   howItWorks: ["Share origin, destination, cargo details, and deadline", "PORTADOR checks cargo type, documents, and serviceability", "The suitable PORTADOR service option is recommended", "Pickup, airport-linked, hand carry, or international support is checked", "Customer receives clear next-step guidance"],
   useCases: ["Urgent business shipments", "Critical replacement cargo", "Traveler and student baggage", "Documents with hard deadlines", "Medical and electronics cargo", "High-value or regulated cargo review"],
-  whyNotCourier: ["Routine courier is built for normal delivery timing", "Urgent cargo needs faster feasibility decisions", "Some categories require document and packing checks", "Human support matters when a deadline is fixed", "Premium air cargo support can be more suitable for long-distance urgency"],
+  whyNotCourier: ["Routine courier is built for normal delivery timing", "Urgent cargo needs faster availability decisions", "Some categories require document and packing checks", "Human support matters when a deadline is fixed", "Premium air cargo support can be more suitable for long-distance urgency"],
   faqs: [
     {
       question: `When should I use PORTADOR SOS for ${title.toLowerCase()}?`,
-      answer: `Use PORTADOR SOS for ${title.toLowerCase()} when the shipment deadline is urgent and routine courier timing may not protect the outcome. Share complete cargo details so feasibility can be checked quickly.`
+      answer: `Use PORTADOR SOS for ${title.toLowerCase()} when the shipment deadline is urgent and routine courier timing may not protect the outcome. Share complete cargo details so availability can be checked quickly.`
     },
     {
       question: `What details are needed for ${title.toLowerCase()}?`,
@@ -1775,14 +1792,14 @@ export const authorityPages = [
     },
     {
       question: `Is ${title.toLowerCase()} always possible?`,
-      answer: `${title} depends on serviceability, cargo eligibility, packing, documents, timing, and operational availability. PORTADOR SOS checks feasibility before confirming movement.`
+      answer: `${title} depends on serviceability, cargo eligibility, packing, documents, timing, and operational availability. PORTADOR SOS checks availability before confirming movement.`
     },
     {
       question: `Can PORTADOR provide door-to-door support for ${title.toLowerCase()}?`,
       answer: `Door-to-door support can be checked where pickup and delivery serviceability allow. Some urgent shipments may need airport-linked or hand carry options depending on cargo and deadline.`
     }
   ],
-  cta: `Check ${title.toLowerCase()} feasibility with PORTADOR SOS.`
+  cta: `Check ${title.toLowerCase()} availability with PORTADOR SOS.`
 })) satisfies PageModel[];
 
 export const coreLinks = [

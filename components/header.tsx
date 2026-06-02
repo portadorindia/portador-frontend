@@ -86,9 +86,9 @@ const mobileMenuSections = [
     title: "Global Shipping",
     links: [
       { label: "PORTADOR GLOBAL", href: "/services/portador-global" },
-      { label: "Send Documents to USA", href: "/cargo/send-documents-to-usa" },
-      { label: "Send Excess Baggage to Canada", href: "/cargo/send-excess-baggage-to-canada" },
-      { label: "Import from Dubai to India", href: "/cargo/import-from-dubai-to-india" }
+      { label: "Food & Personal Goods Guidance", href: "/services/portador-global" },
+      { label: "International Documents", href: "/services/portador-global" },
+      { label: "Urgent Imports Into India", href: "/services/portador-global" }
     ]
   },
   {

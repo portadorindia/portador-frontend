@@ -1,7 +1,7 @@
 export const customerEducationFaqs = [
   {
     question: "Can PORTADOR help with same-day delivery?",
-    answer: "Yes. PORTADOR SOS can support same-day delivery where cargo readiness, documents, serviceability, and available air movement allow. Share the city pair, deadline, cargo type, weight, dimensions, and pickup details for urgent feasibility review."
+    answer: "Yes. PORTADOR SOS can support same-day delivery where cargo readiness, documents, serviceability, and available air movement allow. Share the city pair, deadline, cargo type, weight, dimensions, and pickup details for urgent availability review."
   },
   {
     question: "What is air cargo movement?",
@@ -21,7 +21,7 @@ export const customerEducationFaqs = [
   },
   {
     question: "Can students send baggage with PORTADOR?",
-    answer: "Yes. Students can request baggage movement support for relocation, college moves, missed baggage situations, or urgent personal goods. Feasibility depends on contents, packing, documents, pickup city, destination, and timeline."
+    answer: "Yes. Students can request baggage movement support for relocation, college moves, missed baggage situations, or urgent personal goods. Availability depends on contents, packing, documents, pickup city, destination, and timeline."
   },
   {
     question: "Can PORTADOR help with relocation cargo?",
@@ -45,7 +45,7 @@ export const customerEducationFaqs = [
   },
   {
     question: "Can dangerous goods move with PORTADOR?",
-    answer: "PORTADOR can review dangerous goods cargo, but movement depends on classification, documentation, packing, approvals, and service feasibility. MSDS, declaration, invoice, and compliance details may be required before acceptance."
+    answer: "PORTADOR can review dangerous goods cargo, but movement depends on classification, documentation, packing, approvals, and service availability. MSDS, declaration, invoice, and compliance details may be required before acceptance."
   },
   {
     question: "Can lithium batteries move by air?",
@@ -61,7 +61,7 @@ export const customerEducationFaqs = [
   },
   {
     question: "Can PORTADOR support import shipments?",
-    answer: "PORTADOR GLOBAL can check urgent import shipment support for time-sensitive international cargo. Feasibility depends on documents, customs status, commodity type, consignee readiness, compliance requirements, and available premium air freight options."
+    answer: "PORTADOR GLOBAL can check urgent import shipment support for time-sensitive international cargo. Availability depends on documents, customs status, commodity type, consignee readiness, compliance requirements, and available premium air freight options."
   },
   {
     question: "Does PORTADOR handle customs?",

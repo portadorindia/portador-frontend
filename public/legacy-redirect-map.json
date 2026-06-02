@@ -19,6 +19,24 @@
     { "source": "https://support.portador.in/track-form", "destination": "https://portador.in/tracking" },
     { "source": "https://support.portador.in/category/blog", "destination": "https://portador.in/knowledge-hub" },
     { "source": "https://support.portador.in/portador-services", "destination": "https://portador.in/services" },
-    { "source": "https://support.portador.in/contact-us", "destination": "https://portador.in/contact" }
+    { "source": "https://support.portador.in/contact-us", "destination": "https://portador.in/contact" },
+    { "source": "https://portador.in/cargo/send-ghee-to-usa", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-food-items-to-uk", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-atta-to-canada", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-dal-to-australia", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-spices-to-europe", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-sweets-to-uae", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-household-goods-to-uk", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-clothes-to-dubai", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-documents-to-usa", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-personal-goods-to-saudi-arabia", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-excess-baggage-to-canada", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/send-luggage-to-australia", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/import-from-dubai-to-india", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/import-from-saudi-arabia-to-india", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/import-from-shenzhen-to-india", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/import-from-guangzhou-to-india", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/import-from-yiwu-to-india", "destination": "https://portador.in/services/portador-global" },
+    { "source": "https://portador.in/cargo/import-from-hong-kong-to-india", "destination": "https://portador.in/services/portador-global" }
   ]
 }

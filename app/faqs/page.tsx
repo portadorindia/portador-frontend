@@ -8,7 +8,7 @@ import { normalizeFaqs } from "@/lib/faq";
 
 const faqs = Array.from(new Map([
   ...services[0].faqs,
-  { question: "Which Indian cities does PORTADOR SOS support?", answer: "PORTADOR SOS focuses on major airport-linked Indian cities including Delhi, Mumbai, Bangalore, Chennai, Hyderabad, Pune, Ahmedabad, and Kolkata, with service feasibility checked per shipment." },
+  { question: "Which Indian cities does PORTADOR SOS support?", answer: "PORTADOR SOS focuses on major airport-linked Indian cities including Delhi, Mumbai, Bangalore, Chennai, Hyderabad, Pune, Ahmedabad, and Kolkata, with service availability checked per shipment." },
   { question: "Can PORTADOR SOS help with urgent business shipments?", answer: "Yes. PORTADOR SOS is designed for urgent B2B shipments, manufacturing parts, aviation spares, legal documents, electronics, event cargo, and high-value movement." },
   { question: "What does no hub delays mean?", answer: "No avoidable hub delays means PORTADOR SOS prioritizes direct airport-linked planning where feasible instead of defaulting to multi-hub parcel sorting cycles used by high-volume courier networks." },
   { question: "Who should use PORTADOR BLACK?", answer: "PORTADOR BLACK is for founders, CEOs, HNIs, UHNWIs, family offices, legal teams, and high-value cargo customers who need hand carry, OBC, runner, VIP, confidential, or short-notice logistics." },

@@ -306,7 +306,7 @@ export function QuickSelector() {
     { title: "Temperature Controlled Cargo", detail: "Dry ice & frozen cargo" },
     { title: "High-Value Cargo", detail: "Premium equipment" },
     { title: "Hand Carry / OBC", detail: "4-7 hours option" },
-    { title: "Other Urgent Cargo", detail: "Share cargo details. PORTADOR will check service feasibility." }
+    { title: "Other Urgent Cargo", detail: "Share cargo details. PORTADOR will check service availability." }
   ];
   return (
     <section className="py-14">

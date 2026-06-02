@@ -68,12 +68,12 @@ function StructuredFAQAnswer({ question, answer }: FAQItem) {
 function getStructuredAnswer(question: string, answer: string) {
   if (question === "How can I send urgent cargo today?") {
     return {
-      lead: "You can send urgent cargo today by sharing shipment details with PORTADOR SOS for a fast feasibility check.",
+      lead: "You can send urgent cargo today by sharing shipment details with PORTADOR SOS for a fast availability check.",
       items: [
         "Share route, cargo type, weight, dimensions, deadline, and compliance details.",
         "The team checks pickup readiness and air cargo timing.",
         "Airport cargo support and available air movement are checked.",
-        "Human support begins after feasibility is confirmed."
+        "Human support begins after availability is confirmed."
       ]
     };
   }
@@ -87,7 +87,7 @@ function getStructuredAnswer(question: string, answer: string) {
         "Timing, cargo type, and urgent human support matter.",
         "A human operations desk is needed for live shipment support."
       ],
-      note: "PORTADOR SOS checks feasibility before confirming movement because urgent cargo still depends on route, approval, and cargo readiness."
+      note: "PORTADOR SOS checks availability before confirming movement because urgent cargo still depends on route, approval, and cargo readiness."
     };
   }
 
@@ -134,14 +134,14 @@ function getStructuredAnswer(question: string, answer: string) {
         "Timing and route availability are checked.",
         "Dimensions, weight, and commodity restrictions are reviewed.",
         "Airport cargo handling requirements are considered.",
-        "Support is coordinated only when documents and feasibility align."
+        "Support is coordinated only when documents and availability align."
       ]
     };
   }
 
   if (question === "What information is needed to quote?") {
     return {
-      lead: "A quote needs enough shipment detail to check service feasibility and air cargo eligibility.",
+      lead: "A quote needs enough shipment detail to check service availability and air cargo eligibility.",
       items: [
         "Origin, destination, pickup address, and consignee details.",
         "Deadline, delivery requirement, and consequence of delay.",
@@ -149,7 +149,7 @@ function getStructuredAnswer(question: string, answer: string) {
         "Battery, liquid, chemical, medical, dangerous goods, or regulated cargo declaration.",
         "Documents such as invoice, MSDS, authorization, or handling notes when applicable."
       ],
-      note: "These details help PORTADOR SOS check feasibility, regulated cargo requirements, and avoidable delay risk."
+      note: "These details help PORTADOR SOS check availability, regulated cargo requirements, and avoidable delay risk."
     };
   }
 
@@ -172,7 +172,7 @@ function getStructuredAnswer(question: string, answer: string) {
         "Share part dimensions, weight, invoice value, pickup point, and deadline.",
         "The team checks timing and serviceability.",
         "Packing, documentation, and handling requirements are reviewed.",
-        "Human support starts after feasibility is confirmed."
+        "Human support starts after availability is confirmed."
       ]
     };
   }
@@ -181,7 +181,7 @@ function getStructuredAnswer(question: string, answer: string) {
     return {
       lead: "Cargo that misses a normal courier timing may still move through urgent air cargo if airline timing and cargo handling allow it.",
       items: [
-        "PORTADOR SOS checks air cargo and airport-linked delivery feasibility.",
+        "PORTADOR SOS checks air cargo and airport-linked delivery availability.",
         "Pickup readiness and airport support timing are reviewed.",
         "Commodity restrictions and documentation are verified.",
         "A new movement plan is shared without fake delivery guarantees."
@@ -198,7 +198,7 @@ function getStructuredAnswer(question: string, answer: string) {
         "Excess baggage, missed-flight baggage recovery, event cargo, and high-value cargo.",
         "Lithium battery shipments, dangerous goods, and regulated cargo subject to approval."
       ],
-      note: "Final acceptance depends on airline rules, documentation, handling requirements, and service feasibility."
+      note: "Final acceptance depends on airline rules, documentation, handling requirements, and service availability."
     };
   }
 
@@ -209,7 +209,7 @@ function getStructuredAnswer(question: string, answer: string) {
         "Urgent documents, machine parts, laptops, electronics cargo, and medical equipment.",
         "Event material, exhibition cargo, aviation spares, excess baggage, and high-value cargo.",
         "DG cargo by air, lithium battery cargo, chemical cargo, and restricted goods only after approval.",
-        "Final movement depends on airline rules, regulatory compliance verification, and service feasibility."
+        "Final movement depends on airline rules, regulatory compliance verification, and service availability."
       ]
     };
   }
@@ -227,9 +227,9 @@ function getStructuredAnswer(question: string, answer: string) {
     };
   }
 
-  if (question === "What affects urgent air cargo feasibility?") {
+  if (question === "What affects urgent air cargo availability?") {
     return {
-      lead: "Urgent air cargo feasibility depends on timing, cargo type, documentation, and serviceability.",
+      lead: "Urgent air cargo availability depends on timing, cargo type, documentation, and serviceability.",
       items: [
         "Pickup readiness, road access, and air cargo timing.",
         "Cargo dimensions, weight, commodity type, packaging, and handling requirements.",
@@ -290,13 +290,13 @@ function getStructuredAnswer(question: string, answer: string) {
 
   if (question === "Can PORTADOR SOS support dangerous goods, lithium batteries, or regulated cargo?") {
     return {
-      lead: "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, and service feasibility.",
+      lead: "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, and service availability.",
       items: [
         "Airline rules and commodity restrictions are checked before movement planning.",
         "MSDS, declaration, invoice, or authorization documents may be required.",
         "Packing, labeling, documentation, and handling details must be verified.",
         "Regulatory compliance review is completed before support.",
-        "Final movement depends on approval, cargo eligibility, handling requirements, and service feasibility."
+        "Final movement depends on approval, cargo eligibility, handling requirements, and service availability."
       ]
     };
   }

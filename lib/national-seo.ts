@@ -5,7 +5,7 @@ export const nationalAirportProfiles = [
     airport: "Noida International Airport / Jewar Airport demand market",
     terminals: "Jewar Airport demand corridor, Greater Noida, Yamuna Expressway, Noida sectors, and NCR airport-linked cargo zones",
     hubs: "Greater Noida, Jewar, Yamuna Expressway Industrial Area, Noida Phase 2, Noida Sector 62, Noida Sector 63, and NCR manufacturing or electronics clusters",
-    summary: "Noida International Airport and Jewar Airport demand support for excess baggage, urgent cargo, machine parts, documents, and NCR airport-linked movement where feasibility allows."
+    summary: "Noida International Airport and Jewar Airport demand support for excess baggage, urgent cargo, machine parts, documents, and NCR airport-linked movement where availability allows."
   },
   {
     slug: "navi-mumbai-airport",
@@ -21,7 +21,7 @@ export const nationalAirportProfiles = [
     airport: "Goa airport markets including Dabolim and Mopa demand zones",
     terminals: "Goa airport traveler and cargo demand around Dabolim, Mopa, Panaji, Vasco, Margao, North Goa, and South Goa",
     hubs: "Panaji, Vasco da Gama, Margao, Verna Industrial Estate, tourism hotels, event venues, and student or traveler baggage demand zones",
-    summary: "Goa airport-linked cargo support for excess baggage, event material, documents, personal goods, and urgent business shipments where route and cargo feasibility allow."
+    summary: "Goa airport-linked cargo support for excess baggage, event material, documents, personal goods, and urgent business shipments where route and cargo availability allow."
   },
   {
     slug: "kochi-airport",
@@ -495,10 +495,10 @@ export const nationalRoutePairs = [
 ] as const;
 
 export const airportTerminalSeoData = [
-  { airportSlug: "delhi-igi-airport", terminals: ["Terminal 1", "Terminal 2", "Terminal 3"], note: "Delhi terminal and airline handling may vary; PORTADOR confirms feasibility before booking." },
+  { airportSlug: "delhi-igi-airport", terminals: ["Terminal 1", "Terminal 2", "Terminal 3"], note: "Delhi terminal and airline handling may vary; PORTADOR confirms availability before booking." },
   { airportSlug: "mumbai-csmia", terminals: ["Terminal 1", "Terminal 2"], note: "Mumbai T1/T2 pickup, baggage, and cargo support depends on access, documents, and serviceability." },
-  { airportSlug: "bangalore-kempegowda", terminals: ["Terminal 1", "Terminal 2"], note: "Bengaluru airport handling depends on cargo type, pickup point, documents, and route feasibility." },
-  { airportSlug: "hyderabad-rgia", terminals: ["RGIA passenger and cargo demand zones"], note: "Hyderabad support is feasibility-led for baggage, documents, pharma-adjacent cargo, and electronics." },
+  { airportSlug: "bangalore-kempegowda", terminals: ["Terminal 1", "Terminal 2"], note: "Bengaluru airport handling depends on cargo type, pickup point, documents, and route availability." },
+  { airportSlug: "hyderabad-rgia", terminals: ["RGIA passenger and cargo demand zones"], note: "Hyderabad support is availability-led for baggage, documents, pharma-adjacent cargo, and electronics." },
   { airportSlug: "chennai-airport", terminals: ["Domestic and international passenger/cargo demand zones"], note: "Chennai support depends on access, packing, documents, and operational availability." }
 ] as const;
 

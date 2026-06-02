@@ -28,7 +28,7 @@ const heroSignals = [
   "50+ Airport Cargo Connections",
   "5000+ Serviceable Pin Codes",
   "24x7 Operations Desk",
-  "Same-Day / NFO Feasibility",
+  "Same-Day / NFO Availability",
   "Human Operations Coordination",
   "DG & Battery Cargo Support"
 ];
@@ -51,11 +51,11 @@ const cargoCategoryCards = [
   { label: "Temperature Controlled Cargo", href: "/cargo/temperature-controlled-cargo", bullets: ["Dry Ice, Gel Packs & Frozen Cargo"], Icon: Clock3 },
   { label: "High-Value Cargo", href: "/cargo/high-value-cargo", bullets: ["Electronics, IT Products & Premium Equipment"], Icon: ShieldCheck },
   { label: "Hand Carry / OBC", href: "/cargo/hand-carry-obc", bullets: ["4-7 Hours Delivery Option", "VIP urgency"], Icon: BriefcaseBusiness },
-  { label: "Other Urgent Cargo", href: whatsappHref, bullets: ["Share cargo details", "PORTADOR will check service feasibility"], Icon: PackageCheck }
+  { label: "Other Urgent Cargo", href: whatsappHref, bullets: ["Share cargo details", "PORTADOR will check service availability"], Icon: PackageCheck }
 ];
 
 const comparisonRows = [
-  ["Launch Feasibility", "Instant desk check; Next Flight Out routing", "Fixed hub sorting and scheduled surface linehauls"],
+  ["Urgent Readiness", "Fast desk confirmation; Next Flight Out routing where available", "Fixed hub sorting and scheduled surface linehauls"],
   ["Support Ecosystem", "24/7 dedicated human operations desk", "Standard automated ticket / IVR flow"],
   ["Regulated Shipments", "Dedicated compliance review for DG, batteries, and liquids", "Heavily restricted or systematically rejected"],
   ["Tracking Model", "Real-time human context and milestone tracking", "Standard scan-to-scan milestone updates"],
@@ -67,7 +67,7 @@ const trustReasons = [
   "24x7 operations desk for urgent shipment support",
   "50+ airport cargo connections across India",
   "5000+ serviceable pin codes for pickup and delivery support",
-  "Same-day and NFO feasibility checks for urgent cargo",
+  "Same-day and NFO availability checks for urgent cargo",
   "Human operations coordination for time-sensitive shipments",
   "DG and battery cargo support with documentation review"
 ];
@@ -98,7 +98,7 @@ const protectionNotes = [
 ];
 
 const topServiceCards = [
-  { title: "PORTADOR SOS (Same-Day & Next Flight Out)", href: "/services/portador-sos", icon: Siren, copy: "Same-day air cargo, next flight out logistics, 10-16 hour feasibility where possible, airport-to-airport movement, and urgent door coordination." },
+  { title: "PORTADOR SOS (Same-Day & Next Flight Out)", href: "/services/portador-sos", icon: Siren, copy: "Same-day air cargo, next flight out logistics, 10-16 hour availability where possible, airport-to-airport movement, and urgent door coordination." },
   { title: "PORTADOR EXPRESS (Next Business Day)", href: "/services/portador-express", icon: Plane, copy: "Next business day and second business day premium air cargo for priority B2B shipments, 10kg-100kg+, and planned urgent movement." },
   { title: "PORTADOR BLACK (On Board Courier / Hand Carry)", href: "/services/portador-black", icon: BriefcaseBusiness, copy: "OBC, hand carry, runner, and VIP short-notice logistics for confidential cargo, founders, CEOs, HNIs, UHNWIs, and high-value shipments." },
   { title: "PORTADOR GLOBAL (Critical Imports & Exports)", href: "/services/portador-global", icon: Globe2, copy: "Urgent international import and export air cargo coordination for premium cross-border air freight and emergency shipment recovery." }
@@ -121,7 +121,7 @@ const aiQuickAnswers = [
   },
   {
     question: "Can PORTADOR move cargo in 10-16 hours?",
-    answer: "PORTADOR SOS can check 10-16 hour urgent movement feasibility on major airport-connected lanes where timing, cargo eligibility, documentation, and serviceability align."
+    answer: "PORTADOR SOS can check 10-16 hour urgent movement availability on major airport-connected lanes where timing, cargo eligibility, documentation, and serviceability align."
   },
   {
     question: "Why is airport cargo faster than regular courier?",
@@ -173,13 +173,13 @@ const citySupportCards = [
 ];
 
 const phaseTwoHomeFaqs = [
-  { question: "Is emergency air cargo faster than courier service?", answer: "Emergency air cargo can be faster than courier service for urgent intercity shipments when airport-linked movement is feasible. PORTADOR SOS checks cargo readiness, documents, route feasibility, and serviceability before confirming the fastest support option." },
+  { question: "Is emergency air cargo faster than courier service?", answer: "Emergency air cargo can be faster than courier service for urgent intercity shipments when airport-linked movement is feasible. PORTADOR SOS checks cargo readiness, documents, route availability, and serviceability before confirming the fastest support option." },
   { question: "When should I use Next Flight Out cargo?", answer: "Use Next Flight Out cargo when the shipment cannot wait for routine courier or overnight movement. It is suitable for AOG parts, machine breakdown cargo, emergency documents, medical equipment, high-value cargo, and time-critical replacements." },
-  { question: "Can PORTADOR arrange same-day air cargo?", answer: "PORTADOR can arrange same-day air cargo where timing, cargo eligibility, documentation, pickup readiness, destination support, and operational availability allow. Same-day support is feasibility-based, not a fake blanket guarantee." },
-  { question: "Can PORTADOR move dangerous goods and battery shipments?", answer: "PORTADOR can check dangerous goods and battery shipments through a compliance review. Final movement depends on airline rules, MSDS or declaration where required, compliant packing, documentation, approval, route feasibility, and serviceability." },
+  { question: "Can PORTADOR arrange same-day air cargo?", answer: "PORTADOR can arrange same-day air cargo where timing, cargo eligibility, documentation, pickup readiness, destination support, and operational availability allow. Same-day support is availability-based, not a fake blanket guarantee." },
+  { question: "Can PORTADOR move dangerous goods and battery shipments?", answer: "PORTADOR can check dangerous goods and battery shipments through a compliance review. Final movement depends on airline rules, MSDS or declaration where required, compliant packing, documentation, approval, route availability, and serviceability." },
   { question: "Can PORTADOR assist with excess baggage transportation?", answer: "PORTADOR can assist with excess baggage transportation where bags or boxes are eligible, packed, documented, and serviceable. Support can include airport baggage courier, airport-to-home baggage delivery, student luggage, and unaccompanied baggage transport." },
-  { question: "Can PORTADOR support factory breakdown emergencies?", answer: "PORTADOR can support factory breakdown emergencies by checking urgent movement for machine parts, tooling, controllers, motors, and replacement components. The operations desk checks same-day, NFO, airport cargo, or express feasibility based on route and cargo details." },
-  { question: "Can PORTADOR support AOG aircraft parts?", answer: "PORTADOR can support AOG aircraft parts where cargo eligibility, documents, packing, route feasibility, and operational availability allow. AOG support is built for aviation spares, tooling, line station recovery, and Aircraft On Ground urgency." },
+  { question: "Can PORTADOR support factory breakdown emergencies?", answer: "PORTADOR can support factory breakdown emergencies by checking urgent movement for machine parts, tooling, controllers, motors, and replacement components. The operations desk checks same-day, NFO, airport cargo, or express availability based on route and cargo details." },
+  { question: "Can PORTADOR support AOG aircraft parts?", answer: "PORTADOR can support AOG aircraft parts where cargo eligibility, documents, packing, route availability, and operational availability allow. AOG support is built for aviation spares, tooling, line station recovery, and Aircraft On Ground urgency." },
   { question: "Can PORTADOR collect cargo from airport terminals?", answer: "PORTADOR can check airport terminal cargo collection where access, documents, authorization, cargo release status, serviceability, and operational availability allow. Share airport, terminal, AWB or cargo reference, receiver details, and deadline for review." }
 ];
 
@@ -190,11 +190,11 @@ const baseHomeFaqs = [
   { question: "What is next flight out cargo?", answer: "Next Flight Out cargo is urgent air logistics where a shipment is routed through the earliest suitable airline connection. It is used when routine courier hub movement or overnight schedules are too slow for the shipment deadline." },
   { question: "What is airport-to-airport cargo?", answer: "Airport-to-airport cargo moves eligible shipments between airport cargo terminals using airline cargo channels. It can reduce avoidable hub delays when the receiver can collect at destination airport or when connected delivery is coordinated after flight movement." },
   { question: "When should I use PORTADOR SOS?", answer: "Use PORTADOR SOS when delay can create business downtime, production loss, missed flights, tender failure, emergency replacement failure, or customer escalation. It is built for urgent domestic air cargo where operational urgency matters more than routine courier scale." },
-  { question: "Can PORTADOR move cargo in 10-16 hours?", answer: "PORTADOR SOS can check 10-16 hour urgent cargo movement feasibility on major airport-connected lanes where timing allows. Final feasibility depends on cargo readiness, eligibility, documentation, available air movement, and destination serviceability." },
+  { question: "Can PORTADOR move cargo in 10-16 hours?", answer: "PORTADOR SOS can check 10-16 hour urgent cargo movement availability on major airport-connected lanes where timing allows. Final availability depends on cargo readiness, eligibility, documentation, available air movement, and destination serviceability." },
   { question: "Can PORTADOR support dangerous goods, lithium batteries, or regulated cargo?", answer: "PORTADOR can support dangerous goods, lithium batteries, and regulated cargo after compliance review, but acceptance depends on airline rules and approvals. MSDS or declaration may be required, packing and documentation must be verified, and final movement depends on approval and serviceability." },
   { question: "How does PORTADOR reduce hub delays?", answer: "PORTADOR reduces avoidable hub delays by prioritizing airport-linked air cargo support where feasible instead of routine multi-hub courier movement. Human operations coordination helps urgent shipments move with clearer accountability." },
   { question: "Why regular courier fails for urgent shipments?", answer: "Regular courier can be too slow for urgent shipments because routine networks optimize pickup density, hub sorting, and scheduled linehaul movement. PORTADOR SOS is used when same-day air cargo, next flight out support, and human support are needed." },
-  { question: "What information is needed for an urgent quote?", answer: "An urgent quote needs origin, destination, deadline, cargo type, weight, dimensions, pickup address, receiver details, invoice value, packing status, and any battery, dangerous goods, medical, liquid, or regulated cargo declaration. These details help PORTADOR SOS check urgent air cargo feasibility accurately." },
+  { question: "What information is needed for an urgent quote?", answer: "An urgent quote needs origin, destination, deadline, cargo type, weight, dimensions, pickup address, receiver details, invoice value, packing status, and any battery, dangerous goods, medical, liquid, or regulated cargo declaration. These details help PORTADOR SOS check urgent air cargo availability accurately." },
   { question: "Who should use PORTADOR BLACK?", answer: "PORTADOR BLACK is for founders, CEOs, HNIs, UHNWIs, family offices, legal teams, and high-value cargo clients who need hand carry, OBC, runner, VIP, confidential, or short-notice logistics. It is used when personal custody, fewer handoffs, and discreet coordination matter." },
   { question: "When should businesses use PORTADOR EXPRESS?", answer: "Businesses should use PORTADOR EXPRESS for next business day or second business day premium air cargo when the shipment is important but not a same-day emergency. It fits priority B2B cargo, 10kg-100kg+ shipments, commercial samples, electronics, parts, and planned urgent movement." },
   { question: "What is urgent international air cargo?", answer: "Urgent international air cargo is premium import or export air freight planned for cross-border shipments with tight deadlines. PORTADOR GLOBAL coordinates documentation review, compliance checks, premium air freight support, and receiver-side coordination for time-sensitive international cargo." },
@@ -203,7 +203,7 @@ const baseHomeFaqs = [
   { question: "Can PORTADOR help with tracking?", answer: "Yes. PORTADOR can support tracking for urgent shipments handled through PORTADOR SOS, EXPRESS, BLACK, or GLOBAL. Customers should share the shipment reference or booking details for the fastest status check." },
   { question: "Can PORTADOR arrange reverse pickup?", answer: "Reverse pickup can be checked where the pickup location, cargo readiness, documentation, and serviceability allow. Share pickup address, consignee details, cargo type, deadline, and packing status for review." },
   { question: "Does PORTADOR provide warehousing?", answer: "PORTADOR may support warehousing or temporary holding for selected shipments where operationally feasible. Availability depends on location, cargo type, duration, compliance requirements, and shipment urgency." },
-  { question: "Can PORTADOR support import shipments?", answer: "PORTADOR GLOBAL can support urgent international import air cargo. Import feasibility depends on documents, commodity type, customs status, consignee readiness, regulatory requirements, and available premium air cargo options." },
+  { question: "Can PORTADOR support import shipments?", answer: "PORTADOR GLOBAL can support urgent international import air cargo. Import availability depends on documents, commodity type, customs status, consignee readiness, regulatory requirements, and available premium air cargo options." },
   { question: "Can PORTADOR move personal goods?", answer: "PORTADOR can move personal goods, excess baggage, student relocation cargo, and urgent travel-related shipments where the items are air-eligible, properly packed, documented, and accepted for movement." },
   { question: "What is PORTADOR liability per docket?", answer: "Unless separately agreed in writing, liability may be limited to Rs. 2,500 per docket as described in the Booking & Refund Policy. Customers should review the policy before booking high-value shipments." },
   { question: "What is Carrier Risk or FOV?", answer: "Carrier Risk or FOV may be available at 5% of invoice value for declared eligible shipments, subject to acceptance and written confirmation. Coverage terms depend on shipment details and policy conditions." },
@@ -397,9 +397,9 @@ export default function Home() {
         </div>
       </Section>
 
-      <Process items={["Same-Day Feasibility", "Next Flight Out Coordination", "Airport Cargo Support", "Human Operations Desk", "Regulated Cargo Review", "24x7 Escalation"]} />
+      <Process items={["Same-Day Availability Check", "Next Flight Out Coordination", "Airport Cargo Support", "Human Operations Desk", "Regulated Cargo Review", "24x7 Escalation"]} />
 
-      <Section eyebrow="Before you book" title="Details That Help PORTADOR Check Urgent Cargo Feasibility">
+      <Section eyebrow="Before you book" title="Details PORTADOR Needs Before Urgent Cargo Confirmation">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {bookingChecklist.map((item) => (
             <div key={item} className="rounded-lg border border-white/10 bg-white/[0.035] p-4">
@@ -459,7 +459,7 @@ export default function Home() {
         <div className="grid gap-4 lg:grid-cols-3">
           {[
             ["Can PORTADOR SOS support urgent airport cargo?", "Yes. PORTADOR SOS supports urgent airport cargo with human operations coordination, regulated cargo review where needed, and real-time monitoring for time-critical shipments."],
-            ["What affects same-day air cargo feasibility?", "Same-day air cargo depends on cargo readiness, serviceability, available air movement, acceptance rules, documentation, and regulatory compliance verification where relevant."],
+            ["What affects same-day air cargo availability?", "Same-day air cargo depends on cargo readiness, serviceability, available air movement, acceptance rules, documentation, and regulatory compliance verification where relevant."],
             ["Can PORTADOR SOS support regulated cargo?", "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, documentation, packing, and compliance review."]
           ].map(([question, answer]) => (
             <div key={question} className="ai-snippet rounded-md">

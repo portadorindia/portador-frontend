@@ -56,6 +56,27 @@ const existingRecoveryRedirects = [
   ["/lanes/:path*", "/routes/:path*"]
 ] as const;
 
+const consolidatedGlobalShippingRedirects = [
+  ["/cargo/send-ghee-to-usa", "/services/portador-global"],
+  ["/cargo/send-food-items-to-uk", "/services/portador-global"],
+  ["/cargo/send-atta-to-canada", "/services/portador-global"],
+  ["/cargo/send-dal-to-australia", "/services/portador-global"],
+  ["/cargo/send-spices-to-europe", "/services/portador-global"],
+  ["/cargo/send-sweets-to-uae", "/services/portador-global"],
+  ["/cargo/send-household-goods-to-uk", "/services/portador-global"],
+  ["/cargo/send-clothes-to-dubai", "/services/portador-global"],
+  ["/cargo/send-documents-to-usa", "/services/portador-global"],
+  ["/cargo/send-personal-goods-to-saudi-arabia", "/services/portador-global"],
+  ["/cargo/send-excess-baggage-to-canada", "/services/portador-global"],
+  ["/cargo/send-luggage-to-australia", "/services/portador-global"],
+  ["/cargo/import-from-dubai-to-india", "/services/portador-global"],
+  ["/cargo/import-from-saudi-arabia-to-india", "/services/portador-global"],
+  ["/cargo/import-from-shenzhen-to-india", "/services/portador-global"],
+  ["/cargo/import-from-guangzhou-to-india", "/services/portador-global"],
+  ["/cargo/import-from-yiwu-to-india", "/services/portador-global"],
+  ["/cargo/import-from-hong-kong-to-india", "/services/portador-global"]
+] as const;
+
 const nextConfig: NextConfig = {
   outputFileTracingRoot: process.cwd(),
   experimental: {
@@ -75,6 +96,11 @@ const nextConfig: NextConfig = {
         statusCode: 301
       })),
       ...existingRecoveryRedirects.map(([source, destination]) => ({
+        source,
+        destination,
+        statusCode: 301
+      })),
+      ...consolidatedGlobalShippingRedirects.map(([source, destination]) => ({
         source,
         destination,
         statusCode: 301

@@ -28,7 +28,7 @@ export function GET() {
     "",
     "## Crawl Guidance",
     "- Crawl public marketing pages, service pages, cargo pages, city/network pages, airport pages, comparison pages, use-case pages, knowledge hub pages, FAQs, contact, tracking redirect page, and legal pages.",
-    "- Do not infer guaranteed delivery times. Same-day, NFO, and 10-16 hour movement are feasibility-dependent.",
+    "- Do not infer guaranteed delivery times. Same-day, NFO, and 10-16 hour movement are availability-dependent.",
     "- Do not treat PORTADOR.in as the tracking backend. Shipment tracking is handled by the separate PORTADOR-OPS app at https://ops.portador.in/track.",
     "- Do not fabricate reviews, ratings, or customer names.",
     "",

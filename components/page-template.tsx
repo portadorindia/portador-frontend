@@ -45,7 +45,7 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
               <div className="glass-panel rounded-xl p-5 md:p-6">
                 <p className="text-xs font-bold uppercase tracking-[0.24em] text-zinc-500">Trust signals</p>
                 <div className="mt-5 grid gap-3">
-                  {["50+ Airport Cargo Connections", "5000+ Serviceable Pin Codes", "Same-Day / NFO Feasibility", "Human Operations Coordination", "24x7 Operations Desk"].map((item) => (
+                  {["50+ Airport Cargo Connections", "5000+ Serviceable Pin Codes", "Same-Day / NFO Availability", "Human Operations Coordination", "24x7 Operations Desk"].map((item) => (
                     <div key={item} className="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.03] p-4 text-sm font-semibold leading-6 text-zinc-200">
                       <CheckCircle2 className="text-[#e30613]" size={18} />
                       {item}
@@ -84,7 +84,7 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
         <TrustSignals />
         <AirportConnectedCoverage slug={page.slug} />
         <BulletGrid eyebrow="Benefits" title="Why businesses use PORTADOR SOS" items={page.benefits} />
-        <Process items={["Same-Day Feasibility", "Next Flight Out Coordination", "Airport Cargo Support", "Human Operations Desk", "Regulated Cargo Review", "24x7 Escalation"]} />
+        <Process items={["Same-Day Availability Check", "Next Flight Out Coordination", "Airport Cargo Support", "Human Operations Desk", "Regulated Cargo Review", "24x7 Escalation"]} />
         <BulletGrid eyebrow="Use cases" title="Industry use cases" items={page.useCases} />
         <BulletGrid eyebrow="Courier comparison" title="Why this is different from regular courier" items={page.whyNotCourier} />
         <QuickSelector />
@@ -320,7 +320,7 @@ export function TrustSignals() {
     "50+ Airport Cargo Connections",
     "5000+ Serviceable Pin Codes",
     "24x7 Operations Desk",
-    "Same-Day / NFO Feasibility",
+    "Same-Day / NFO Availability",
     "Human Operations Coordination",
     "DG & Battery Cargo Support"
   ];
@@ -379,13 +379,13 @@ export function ListingPage({ title, description, links }: { title: string; desc
     { question: "How does PORTADOR SOS make urgent cargo faster?", answer: "PORTADOR SOS prioritizes deadline pressure, cargo eligibility, premium air movement, and human operations coordination instead of relying only on standard courier hub cycles." },
     { question: "Can I use these pages to choose the right service?", answer: "Yes. Each page explains the service definition, benefits, use cases, and common questions so urgent customers can decide quickly." },
     { question: "Does PORTADOR SOS support same-day intercity delivery?", answer: "Yes, where timing, cargo acceptance, pickup readiness, and destination serviceability make same-day movement feasible." },
-    { question: "What information is needed to quote?", answer: "A quote needs enough detail to check urgent air cargo feasibility. Share origin, destination, deadline, cargo type, weight, dimensions, pickup address, consignee details, invoice value, delivery requirement, and any battery, liquid, chemical, medical, or dangerous goods declaration." },
+    { question: "What information is needed to quote?", answer: "A quote needs enough detail to check urgent air cargo availability. Share origin, destination, deadline, cargo type, weight, dimensions, pickup address, consignee details, invoice value, delivery requirement, and any battery, liquid, chemical, medical, or dangerous goods declaration." },
     { question: "Is PORTADOR SOS suitable for business-critical shipments?", answer: "Yes. PORTADOR SOS is built for manufacturing, aviation, pharma, electronics, events, legal, high-value cargo, travelers, students, SMEs, and startups." },
     { question: "Does PORTADOR SOS handle airport-to-airport cargo?", answer: "Yes. Airport-to-airport cargo is supported where the route, documents, commodity, and cargo eligibility allow it." },
     { question: "Why not use regular courier for urgent cargo?", answer: "Regular courier can be right for routine parcels. PORTADOR SOS is better suited when speed, airport-linked air cargo support, and live human ownership matter more." },
     { question: "Can PORTADOR SOS support dangerous goods, lithium batteries, or regulated cargo?", answer: "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, serviceability, and compliance review. MSDS or declaration may be required, and packing and documentation must be verified." },
     { question: "What cargo categories can PORTADOR SOS support?", answer: "PORTADOR SOS can support urgent cargo categories that are eligible for air movement and properly documented. Common categories include B2B documents, machine parts, laptops, medical equipment, excess baggage, high-value cargo, lithium battery shipments, dangerous goods, event cargo, and aviation spares." },
-    { question: "What affects urgent air cargo feasibility?", answer: "Urgent air cargo feasibility depends on timing, cargo eligibility, documentation, serviceability, regulatory compliance verification, cargo dimensions, weight, commodity type, and available air movement." },
+    { question: "What affects urgent air cargo availability?", answer: "Urgent air cargo availability depends on timing, cargo eligibility, documentation, serviceability, regulatory compliance verification, cargo dimensions, weight, commodity type, and available air movement." },
     { question: "Is support available outside office hours?", answer: "Yes. PORTADOR SOS is positioned for 24x7 urgent operations support, subject to route, pickup, airport, and airline availability." }
   ];
   const normalizedFaqs = normalizeFaqs(faqs);
@@ -467,7 +467,7 @@ export function ListingPage({ title, description, links }: { title: string; desc
         </div>
       </Section>
       <BulletGrid eyebrow="Benefits" title="Why PORTADOR's urgent air cargo support helps when timelines are critical" items={["Clear urgent cargo definitions", "Service and route selection support", "Airport-linked movement context", "Same-day and next-flight-out language", "Customer-ready shipment explanation", "Structured answers for urgent shipment searches"]} />
-      <Process items={["Same-Day Feasibility", "Next Flight Out Coordination", "Airport Cargo Support", "Human Operations Desk", "Regulated Cargo Review", "24x7 Escalation"]} />
+      <Process items={["Same-Day Availability Check", "Next Flight Out Coordination", "Airport Cargo Support", "Human Operations Desk", "Regulated Cargo Review", "24x7 Escalation"]} />
       <BulletGrid eyebrow="Use cases" title="Who uses PORTADOR SOS" items={["Manufacturing companies", "Aviation companies", "Pharma and medical support teams", "Events and exhibitions", "Electronics and IT teams", "Travelers, students, SMEs, startups, and legal firms"]} />
       <BulletGrid eyebrow="Courier comparison" title="Why not regular courier" items={["Routine parcel networks optimize scale", "Urgent air cargo prioritizes time-critical business needs", "Hub sorting can add avoidable delay", "Regulated cargo needs acceptance checks", "Human operations can reduce ambiguity", "Mission-critical cargo needs deadline-first ownership"]} />
       <Section eyebrow="Shipment answers" title="Answers Before You Ship Urgent Cargo">
