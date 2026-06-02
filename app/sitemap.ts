@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { airports, authorityPages, cargoPages, cities, comparisonPages, coreLinks, hubArticles, industries, lanes, legalLinks, services, site, useCasePages } from "@/lib/site";
+import { airports, authorityPages, cargoPages, cities, comparisonPages, coreLinks, hubArticles, industries, lanes, legalLinks, routeAliasPages, services, site, useCasePages } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const dynamic = [
@@ -10,12 +10,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...comparisonPages.map((item) => `/comparisons/${item.slug}`),
     ...industries.map((item) => `/industries/${item.slug}`),
     ...cities.map((item) => `/cities/${item.slug}`),
-    ...lanes.map((item) => `/lanes/${item.slug}`),
+    ...lanes.map((item) => `/routes/${item.slug}`),
+    ...routeAliasPages.map((item) => `/routes/${item.slug}`),
     ...hubArticles.map((item) => `/knowledge-hub/${item.slug}`),
     ...authorityPages.map((item) => `/${item.slug}`)
   ];
 
-  const paths = [...new Set([...coreLinks.map((link) => link.href), ...legalLinks.map((link) => link.href), "/airports", "/cargo", "/use-cases", "/comparisons", "/cities", "/lanes", "/knowledge-hub", ...dynamic])];
+  const paths = [...new Set([...coreLinks.map((link) => link.href), ...legalLinks.map((link) => link.href), "/airports", "/cargo", "/use-cases", "/comparisons", "/cities", "/routes", "/knowledge-hub", ...dynamic])];
 
   return paths.map((path) => ({
     url: `${site.url}${path}`,

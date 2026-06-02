@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { airports, authorityPages, cargoPages, cities, comparisonPages, hubArticles, industries, lanes, legalLinks, services, site, useCasePages } from "@/lib/site";
+import { airports, authorityPages, cargoPages, cities, comparisonPages, hubArticles, industries, lanes, legalLinks, routeAliasPages, services, site, useCasePages } from "@/lib/site";
 import { commoditySeoData, importOriginSeoData, industrialAreaSeoData, internationalDestinationSeoData, nearAirportLocationSeoData, techHubSeoData } from "@/lib/national-seo";
 
 export const dynamic = "force-static";
@@ -59,7 +59,10 @@ export function GET() {
     ...linesFor("Cargo Pages", cargoPages, "/cargo"),
     ...linesFor("PORTADOR Network Cities", cities, "/cities"),
     ...linesFor("Airport Pages", airports, "/airports"),
-    ...linesFor("Major Service Routes", lanes, "/lanes"),
+    "## Major Service Routes",
+    ...routeAliasPages.map((item) => `- ${item.title}: ${site.url}/routes/${item.slug}`),
+    ...lanes.map((item) => `- ${item.title}: ${site.url}/routes/${item.slug}`),
+    "",
     ...linesFor("Use Cases", useCasePages, "/use-cases"),
     ...linesFor("Comparison Pages", comparisonPages, "/comparisons"),
     ...linesFor("Knowledge Hub", hubArticles, "/knowledge-hub"),

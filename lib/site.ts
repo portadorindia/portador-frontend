@@ -516,7 +516,7 @@ export const industries = [
 
 const networkCityProfiles = [
   ["Delhi NCR", "delhi", "IGI Airport cargo ecosystem", "manufacturing, legal, pharma, electronics, events, SMEs", "Mahipalpur, Gurgaon, Noida, Faridabad, Ghaziabad", "Delhi to Mumbai airport cargo"],
-  ["Gurgaon", "gurgaon", "IGI Airport and NCR corporate cargo ecosystem", "manufacturing, IT, legal, aviation, electronics, SMEs, startups", "Cyber City, Udyog Vihar, Manesar, Sohna Road, MG Road", "Gurgaon to Mumbai urgent cargo"],
+  ["Gurugram", "gurugram", "IGI Airport and NCR corporate cargo ecosystem", "manufacturing, IT, legal, aviation, electronics, SMEs, startups", "Cyber City, Udyog Vihar, Manesar, Sohna Road, MG Road, Gurgaon", "Gurugram to Mumbai urgent cargo"],
   ["Mumbai", "mumbai", "western India air cargo gateway", "finance, events, pharma, media, high-value cargo", "Andheri, BKC, Navi Mumbai, Thane, Powai", "Mumbai to Bengaluru urgent cargo"],
   ["Bengaluru", "bangalore", "technology and startup cargo market", "IT, electronics, medical devices, startups, aerospace", "Whitefield, Electronic City, Indiranagar, Hebbal", "Bengaluru to Hyderabad same-day cargo"],
   ["Chennai", "chennai", "southern manufacturing and port-linked market", "automotive, electronics, healthcare, manufacturing", "Guindy, Sriperumbudur, OMR, Ambattur", "Chennai to Delhi air cargo"],
@@ -697,6 +697,14 @@ export const lanes = [
   ...coreLanePages,
   ...nationalRoutePages.filter((page) => !coreLanePages.some((existing) => existing.slug === page.slug))
 ] satisfies PageModel[];
+
+export const routeAliasPages = [
+  {
+    slug: "delhi-to-mumbai",
+    targetSlug: "delhi-mumbai-same-day",
+    title: "Delhi to Mumbai Urgent Air Cargo Route"
+  }
+] as const;
 
 const legacyHubArticles = [
   "What is Next Flight Out Cargo?",
@@ -1586,6 +1594,7 @@ export const coreLinks = [
   { title: "Contact", href: "/contact" },
   { title: "Tracking", href: "/tracking" },
   { title: "Industries", href: "/industries" },
+  { title: "Routes", href: "/routes" },
   { title: "FAQs", href: "/faqs" }
 ];
 

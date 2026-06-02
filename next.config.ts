@@ -11,9 +11,9 @@ const rootLegacyRedirects = [
   ["/urgent-air-courier-delhi", "/services/portador-sos"],
   ["/portador-services-2", "/services"],
   ["/track-form", "/tracking"],
-  ["/gurgaon-urgent-courier", "/cities/gurgaon"],
+  ["/gurgaon-urgent-courier", "/cities/gurugram"],
   ["/same-day-intercity-delivery-india", "/services/portador-sos"],
-  ["/same-day-delivey-delhi-to-mumbai", "/lanes/delhi-mumbai-same-day"],
+  ["/same-day-delivey-delhi-to-mumbai", "/routes/delhi-to-mumbai"],
   ["/mumbai-urgent-courier", "/cities/mumbai"],
   ["/hyderabad-urgent-courier", "/cities/hyderabad"]
 ] as const;
@@ -50,7 +50,10 @@ const existingRecoveryRedirects = [
   ["/services/battery-cargo", "/cargo/battery-cargo"],
   ["/services/dangerous-goods-cargo", "/cargo/dangerous-goods"],
   ["/services/hand-carry-obc", "/services/portador-black"],
-  ["/services/air-cargo-charter", "/cargo/air-cargo-charter"]
+  ["/services/air-cargo-charter", "/cargo/air-cargo-charter"],
+  ["/cities/gurgaon", "/cities/gurugram"],
+  ["/lanes", "/routes"],
+  ["/lanes/:path*", "/routes/:path*"]
 ] as const;
 
 const nextConfig: NextConfig = {
