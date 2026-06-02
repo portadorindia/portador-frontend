@@ -4,7 +4,8 @@ import { industries } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Industries",
-  description: "Urgent air logistics for aviation, pharma, manufacturing, electronics, events, legal documents, students, and high-value cargo."
+  description: "Urgent air logistics for aviation, pharma, manufacturing, electronics, events, legal documents, students, and high-value cargo.",
+  alternates: { canonical: "https://portador.in/industries" }
 };
 
 export default function IndustriesPage() {

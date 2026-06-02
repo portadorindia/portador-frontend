@@ -4,7 +4,8 @@ import { services } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "PORTADOR SOS, PORTADOR EXPRESS, PORTADOR BLACK, and PORTADOR GLOBAL premium air cargo services for urgent domestic and international logistics."
+  description: "PORTADOR SOS, PORTADOR EXPRESS, PORTADOR BLACK, and PORTADOR GLOBAL premium air cargo services for urgent domestic and international logistics.",
+  alternates: { canonical: "https://portador.in/services" }
 };
 
 export default function ServicesPage() {

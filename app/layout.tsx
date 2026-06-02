@@ -17,6 +17,27 @@ export const metadata: Metadata = {
   },
   description:
     "PORTADOR SOS is India's SOS air cargo operations platform for same-day air cargo, next flight out movement, airport-to-airport cargo, dangerous goods, battery cargo, and 24x7 urgent business shipments.",
+  applicationName: "PORTADOR SOS",
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" }
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/favicon.ico"]
+  },
+  appleWebApp: {
+    capable: true,
+    title: "PORTADOR SOS",
+    statusBarStyle: "black-translucent"
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true
+  },
   openGraph: {
     title: "PORTADOR SOS | When Time Cannot Wait",
     description: "Premium same-day air cargo, next flight out logistics, and emergency cargo coordination across India.",

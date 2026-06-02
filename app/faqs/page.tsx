@@ -18,7 +18,8 @@ const faqs = Array.from(new Map([
 
 export const metadata: Metadata = {
   title: "FAQs",
-  description: "Frequently asked questions about PORTADOR SOS same-day air cargo, next flight out logistics, airport cargo, battery cargo, dangerous goods, hand carry, and urgent delivery in India."
+  description: "Frequently asked questions about PORTADOR SOS same-day air cargo, next flight out logistics, airport cargo, battery cargo, dangerous goods, hand carry, and urgent delivery in India.",
+  alternates: { canonical: "https://portador.in/faqs" }
 };
 
 export default function FAQsPage() {

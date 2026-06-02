@@ -20,7 +20,8 @@ const faqs = [
 
 export const metadata: Metadata = {
   title: "Tracking",
-  description: "Track PORTADOR SOS urgent air cargo, same-day delivery, next flight out cargo, and airport-to-airport shipment status."
+  description: "Track PORTADOR SOS urgent air cargo, same-day delivery, next flight out cargo, and airport-to-airport shipment status.",
+  alternates: { canonical: "https://portador.in/tracking" }
 };
 
 export default function TrackingPage() {

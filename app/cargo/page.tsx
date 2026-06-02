@@ -4,7 +4,8 @@ import { cargoPages } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cargo Categories",
-  description: "Secondary cargo categories under PORTADOR SOS, EXPRESS, BLACK, and GLOBAL, including excess baggage, battery cargo, dangerous goods, perishables, medical equipment, AOG cargo, machine parts, tender documents, OBC, charter, and high-value cargo."
+  description: "Secondary cargo categories under PORTADOR SOS, EXPRESS, BLACK, and GLOBAL, including excess baggage, battery cargo, dangerous goods, perishables, medical equipment, AOG cargo, machine parts, tender documents, OBC, charter, and high-value cargo.",
+  alternates: { canonical: "https://portador.in/cargo" }
 };
 
 export default function CargoPage() {

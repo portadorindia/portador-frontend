@@ -4,7 +4,8 @@ import { cities } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "PORTADOR Network",
-  description: "PORTADOR Network coverage across major Indian airport-connected cities for urgent air cargo, excess baggage, legal documents, and time-critical shipments."
+  description: "PORTADOR Network coverage across major Indian airport-connected cities for urgent air cargo, excess baggage, legal documents, and time-critical shipments.",
+  alternates: { canonical: "https://portador.in/cities" }
 };
 
 export default function CitiesPage() {

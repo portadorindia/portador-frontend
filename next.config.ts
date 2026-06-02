@@ -1,5 +1,58 @@
 import type { NextConfig } from "next";
 
+const supportHost = [{ type: "host" as const, value: "support.portador.in" }];
+
+const rootLegacyRedirects = [
+  ["/portador-network", "/"],
+  ["/portador-services", "/services"],
+  ["/login", "/"],
+  ["/about-us", "/about"],
+  ["/contact-us", "/contact"],
+  ["/urgent-air-courier-delhi", "/services/portador-sos"],
+  ["/portador-services-2", "/services"],
+  ["/track-form", "/tracking"],
+  ["/gurgaon-urgent-courier", "/cities/gurgaon"],
+  ["/same-day-intercity-delivery-india", "/services/portador-sos"],
+  ["/same-day-delivey-delhi-to-mumbai", "/lanes/delhi-mumbai-same-day"],
+  ["/mumbai-urgent-courier", "/cities/mumbai"],
+  ["/hyderabad-urgent-courier", "/cities/hyderabad"]
+] as const;
+
+const supportLegacyRedirects = [
+  ["/register", "https://portador.in/"],
+  ["/track-form", "https://portador.in/tracking"],
+  ["/category/blog", "https://portador.in/knowledge-hub"],
+  ["/portador-services", "https://portador.in/services"],
+  ["/contact-us", "https://portador.in/contact"]
+] as const;
+
+const existingRecoveryRedirects = [
+  ["/cargo-medical-equipment", "/cargo/medical-equipment"],
+  ["/airports/delhi-airport-cargo", "/airports/delhi-igi-airport"],
+  ["/airports/mumbai-air-cargo", "/airports/mumbai-csmia"],
+  ["/airports/bangalore-airport-logistics", "/airports/bangalore-kempegowda"],
+  ["/airports/chennai-airport-cargo", "/airports/chennai-airport"],
+  ["/airports/hyderabad-air-cargo", "/airports/hyderabad-rgia"],
+  ["/airports/pune-airport-logistics", "/airports/pune-airport"],
+  ["/airports/ahmedabad-air-cargo", "/airports/ahmedabad-airport"],
+  ["/airports/kolkata-airport-cargo", "/airports/kolkata-airport"],
+  ["/restricted-goods/", "/restricted-goods"],
+  ["/privacy-policy/", "/privacy-policy"],
+  ["/booking-refund-policy/", "/booking-refund-policy"],
+  ["/booking_refund_policy", "/booking-refund-policy"],
+  ["/booking_refund_policy/", "/booking-refund-policy"],
+  ["/terms-conditions/", "/terms-conditions"],
+  ["/services/same-day-delivery", "/services/portador-sos"],
+  ["/services/next-flight-out-logistics", "/services/portador-sos"],
+  ["/services/airport-to-airport-cargo", "/services/portador-sos"],
+  ["/services/mission-critical-logistics", "/services/portador-sos"],
+  ["/services/excess-baggage", "/cargo/excess-baggage"],
+  ["/services/battery-cargo", "/cargo/battery-cargo"],
+  ["/services/dangerous-goods-cargo", "/cargo/dangerous-goods"],
+  ["/services/hand-carry-obc", "/services/portador-black"],
+  ["/services/air-cargo-charter", "/cargo/air-cargo-charter"]
+] as const;
+
 const nextConfig: NextConfig = {
   outputFileTracingRoot: process.cwd(),
   experimental: {
@@ -7,126 +60,22 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: "/cargo-medical-equipment",
-        destination: "/cargo/medical-equipment",
-        permanent: true
-      },
-      {
-        source: "/airports/delhi-airport-cargo",
-        destination: "/airports/delhi-igi-airport",
-        permanent: true
-      },
-      {
-        source: "/airports/mumbai-air-cargo",
-        destination: "/airports/mumbai-csmia",
-        permanent: true
-      },
-      {
-        source: "/airports/bangalore-airport-logistics",
-        destination: "/airports/bangalore-kempegowda",
-        permanent: true
-      },
-      {
-        source: "/airports/chennai-airport-cargo",
-        destination: "/airports/chennai-airport",
-        permanent: true
-      },
-      {
-        source: "/airports/hyderabad-air-cargo",
-        destination: "/airports/hyderabad-rgia",
-        permanent: true
-      },
-      {
-        source: "/airports/pune-airport-logistics",
-        destination: "/airports/pune-airport",
-        permanent: true
-      },
-      {
-        source: "/airports/ahmedabad-air-cargo",
-        destination: "/airports/ahmedabad-airport",
-        permanent: true
-      },
-      {
-        source: "/airports/kolkata-airport-cargo",
-        destination: "/airports/kolkata-airport",
-        permanent: true
-      },
-      {
-        source: "/restricted-goods/",
-        destination: "/restricted-goods",
-        permanent: true
-      },
-      {
-        source: "/privacy-policy/",
-        destination: "/privacy-policy",
-        permanent: true
-      },
-      {
-        source: "/booking-refund-policy/",
-        destination: "/booking-refund-policy",
-        permanent: true
-      },
-      {
-        source: "/booking_refund_policy",
-        destination: "/booking-refund-policy",
-        permanent: true
-      },
-      {
-        source: "/booking_refund_policy/",
-        destination: "/booking-refund-policy",
-        permanent: true
-      },
-      {
-        source: "/terms-conditions/",
-        destination: "/terms-conditions",
-        permanent: true
-      },
-      {
-        source: "/services/same-day-delivery",
-        destination: "/services/portador-sos",
-        permanent: true
-      },
-      {
-        source: "/services/next-flight-out-logistics",
-        destination: "/services/portador-sos",
-        permanent: true
-      },
-      {
-        source: "/services/airport-to-airport-cargo",
-        destination: "/services/portador-sos",
-        permanent: true
-      },
-      {
-        source: "/services/mission-critical-logistics",
-        destination: "/services/portador-sos",
-        permanent: true
-      },
-      {
-        source: "/services/excess-baggage",
-        destination: "/cargo/excess-baggage",
-        permanent: true
-      },
-      {
-        source: "/services/battery-cargo",
-        destination: "/cargo/battery-cargo",
-        permanent: true
-      },
-      {
-        source: "/services/dangerous-goods-cargo",
-        destination: "/cargo/dangerous-goods",
-        permanent: true
-      },
-      {
-        source: "/services/hand-carry-obc",
-        destination: "/services/portador-black",
-        permanent: true
-      },
-      {
-        source: "/services/air-cargo-charter",
-        destination: "/cargo/air-cargo-charter",
-        permanent: true
-      }
+      ...supportLegacyRedirects.map(([source, destination]) => ({
+        source,
+        destination,
+        has: supportHost,
+        statusCode: 301
+      })),
+      ...rootLegacyRedirects.map(([source, destination]) => ({
+        source,
+        destination,
+        statusCode: 301
+      })),
+      ...existingRecoveryRedirects.map(([source, destination]) => ({
+        source,
+        destination,
+        statusCode: 301
+      }))
     ];
   }
 };

@@ -4,7 +4,8 @@ import { airports } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Airport Cargo Network",
-  description: "Airport cargo pages for Delhi, Mumbai, Bangalore, Chennai, Hyderabad, Pune, Ahmedabad, and Kolkata urgent air logistics."
+  description: "Airport cargo pages for Delhi, Mumbai, Bangalore, Chennai, Hyderabad, Pune, Ahmedabad, and Kolkata urgent air logistics.",
+  alternates: { canonical: "https://portador.in/airports" }
 };
 
 export default function AirportsPage() {

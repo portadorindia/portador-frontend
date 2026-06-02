@@ -18,7 +18,8 @@ const faqs = [
 
 export const metadata: Metadata = {
   title: "About",
-  description: "PORTADOR SOS is India's time-critical air logistics network for same-day cargo, NFO execution, airport cargo, and mission-critical shipments."
+  description: "PORTADOR SOS is India's time-critical air logistics network for same-day cargo, NFO execution, airport cargo, and mission-critical shipments.",
+  alternates: { canonical: "https://portador.in/about" }
 };
 
 export default function AboutPage() {

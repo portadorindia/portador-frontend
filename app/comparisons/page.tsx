@@ -4,7 +4,8 @@ import { comparisonPages } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Logistics Comparisons",
-  description: "Comparison pages for air cargo vs courier, same-day delivery vs overnight courier, and airport cargo vs surface transport."
+  description: "Comparison pages for air cargo vs courier, same-day delivery vs overnight courier, and airport cargo vs surface transport.",
+  alternates: { canonical: "https://portador.in/comparisons" }
 };
 
 export default function ComparisonsPage() {

@@ -4,7 +4,8 @@ import { hubArticles } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Knowledge Hub",
-  description: "Definitions and buyer guides for next flight out cargo, air cargo vs courier, same-day air cargo, airport cargo, mission-critical logistics, excess baggage, and battery cargo."
+  description: "Definitions and buyer guides for next flight out cargo, air cargo vs courier, same-day air cargo, airport cargo, mission-critical logistics, excess baggage, and battery cargo.",
+  alternates: { canonical: "https://portador.in/knowledge-hub" }
 };
 
 export default function KnowledgeHubPage() {

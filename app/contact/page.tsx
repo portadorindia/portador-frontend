@@ -23,7 +23,8 @@ const faqs = [
 
 export const metadata: Metadata = {
   title: "Contact Operations",
-  description: "Contact PORTADOR SOS's 24x7 operations desk for urgent same-day air cargo, next flight out logistics, airport cargo, battery cargo, dangerous goods, and hand-carry shipments."
+  description: "Contact PORTADOR SOS's 24x7 operations desk for urgent same-day air cargo, next flight out logistics, airport cargo, battery cargo, dangerous goods, and hand-carry shipments.",
+  alternates: { canonical: "https://portador.in/contact" }
 };
 
 export default function ContactPage() {

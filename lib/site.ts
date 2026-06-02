@@ -450,6 +450,7 @@ export const industries = ([
 
 const networkCityProfiles = [
   ["Delhi NCR", "delhi", "IGI Airport cargo ecosystem", "manufacturing, legal, pharma, electronics, events, SMEs", "Mahipalpur, Gurgaon, Noida, Faridabad, Ghaziabad", "Delhi to Mumbai airport cargo"],
+  ["Gurgaon", "gurgaon", "IGI Airport and NCR corporate cargo ecosystem", "manufacturing, IT, legal, aviation, electronics, SMEs, startups", "Cyber City, Udyog Vihar, Manesar, Sohna Road, MG Road", "Gurgaon to Mumbai urgent cargo"],
   ["Mumbai", "mumbai", "western India air cargo gateway", "finance, events, pharma, media, high-value cargo", "Andheri, BKC, Navi Mumbai, Thane, Powai", "Mumbai to Bengaluru urgent cargo"],
   ["Bengaluru", "bangalore", "technology and startup cargo market", "IT, electronics, medical devices, startups, aerospace", "Whitefield, Electronic City, Indiranagar, Hebbal", "Bengaluru to Hyderabad same-day cargo"],
   ["Chennai", "chennai", "southern manufacturing and port-linked market", "automotive, electronics, healthcare, manufacturing", "Guindy, Sriperumbudur, OMR, Ambattur", "Chennai to Delhi air cargo"],
@@ -544,6 +545,7 @@ export const airportCityCoverage = [
 ];
 
 export const lanes = [
+  ["Delhi", "Mumbai", "Same Day"],
   ["Delhi", "Mumbai", "Same-Day Cargo"],
   ["Mumbai", "Delhi", "Air Cargo"],
   ["Delhi", "Bengaluru", "Urgent Cargo"],
@@ -554,7 +556,7 @@ export const lanes = [
   ["Bangalore", "Hyderabad", "Same-Day Delivery"],
   ["Ahmedabad", "Mumbai", "Cargo"]
 ].map(([from, to, service]) => ({
-  slug: `${from}-to-${to}-${service}`.toLowerCase().replaceAll(" ", "-"),
+  slug: from === "Delhi" && to === "Mumbai" && service === "Same Day" ? "delhi-mumbai-same-day" : `${from}-to-${to}-${service}`.toLowerCase().replaceAll(" ", "-"),
   title: `${from} to ${to} ${service}`,
   eyebrow: "Priority air lane",
   h1: `${from} to ${to} ${service}`,

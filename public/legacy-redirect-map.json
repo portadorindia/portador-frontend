@@ -1,0 +1,24 @@
+{
+  "generatedFor": "PORTADOR.in legacy SEO recovery",
+  "statusCode": 301,
+  "redirects": [
+    { "source": "https://portador.in/portador-network", "destination": "https://portador.in/" },
+    { "source": "https://portador.in/portador-services", "destination": "https://portador.in/services" },
+    { "source": "https://portador.in/login", "destination": "https://portador.in/" },
+    { "source": "https://portador.in/about-us", "destination": "https://portador.in/about" },
+    { "source": "https://portador.in/contact-us", "destination": "https://portador.in/contact" },
+    { "source": "https://portador.in/urgent-air-courier-delhi", "destination": "https://portador.in/services/portador-sos" },
+    { "source": "https://portador.in/portador-services-2", "destination": "https://portador.in/services" },
+    { "source": "https://portador.in/track-form", "destination": "https://portador.in/tracking" },
+    { "source": "https://portador.in/gurgaon-urgent-courier", "destination": "https://portador.in/cities/gurgaon" },
+    { "source": "https://portador.in/same-day-intercity-delivery-india", "destination": "https://portador.in/services/portador-sos" },
+    { "source": "https://portador.in/same-day-delivey-delhi-to-mumbai", "destination": "https://portador.in/lanes/delhi-mumbai-same-day" },
+    { "source": "https://portador.in/mumbai-urgent-courier", "destination": "https://portador.in/cities/mumbai" },
+    { "source": "https://portador.in/hyderabad-urgent-courier", "destination": "https://portador.in/cities/hyderabad" },
+    { "source": "https://support.portador.in/register", "destination": "https://portador.in/" },
+    { "source": "https://support.portador.in/track-form", "destination": "https://portador.in/tracking" },
+    { "source": "https://support.portador.in/category/blog", "destination": "https://portador.in/knowledge-hub" },
+    { "source": "https://support.portador.in/portador-services", "destination": "https://portador.in/services" },
+    { "source": "https://support.portador.in/contact-us", "destination": "https://portador.in/contact" }
+  ]
+}

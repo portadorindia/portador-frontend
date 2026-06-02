@@ -4,7 +4,8 @@ import { lanes } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Priority Air Cargo Lanes",
-  description: "Urgent intercity air cargo lanes including Delhi to Mumbai, Mumbai to Bangalore, Chennai to Delhi, Bangalore to Hyderabad, and Ahmedabad to Mumbai."
+  description: "Urgent intercity air cargo lanes including Delhi to Mumbai, Mumbai to Bangalore, Chennai to Delhi, Bangalore to Hyderabad, and Ahmedabad to Mumbai.",
+  alternates: { canonical: "https://portador.in/lanes" }
 };
 
 export default function LanesPage() {

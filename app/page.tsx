@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -30,6 +31,12 @@ const heroSignals = [
   "Human Operations Coordination",
   "DG & Battery Cargo Support"
 ];
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://portador.in"
+  }
+};
 
 const cargoCategoryCards = [
   { label: "Machine Parts", href: "/cargo/machine-parts", bullets: ["Breakdown recovery", "Production support"], Icon: Warehouse },
