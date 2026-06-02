@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { airports, authorityPages, cargoPages, cities, comparisonPages, hubArticles, industries, lanes, legalLinks, services, site, useCasePages } from "@/lib/site";
+import { commoditySeoData, importOriginSeoData, industrialAreaSeoData, internationalDestinationSeoData, nearAirportLocationSeoData, techHubSeoData } from "@/lib/national-seo";
 
 export const dynamic = "force-static";
 
@@ -30,6 +31,27 @@ export function GET() {
     "- Do not infer guaranteed delivery times. Same-day, NFO, and 10-16 hour movement are feasibility-dependent.",
     "- Do not treat PORTADOR.in as the tracking backend. Shipment tracking is handled by the separate PORTADOR-OPS app at https://ops.portador.in/track.",
     "- Do not fabricate reviews, ratings, or customer names.",
+    "",
+    "## National SEO Coverage Summary",
+    "- Services: PORTADOR SOS, PORTADOR EXPRESS, PORTADOR BLACK, and PORTADOR GLOBAL.",
+    "- Airport pages: major Indian airports, airport baggage pickup, airport cargo support, airport-to-home luggage delivery, and airport-connected city markets.",
+    "- Excess baggage: extra luggage courier, airport baggage pickup, send suitcase by courier, student baggage shipping, NRI baggage, and airline excess baggage alternatives.",
+    "- City pages: airport-connected Indian city pages for urgent cargo, baggage, documents, machine parts, laptops, and B2B shipments.",
+    "- Industrial cargo: manufacturing, automotive, electronics, IT hardware, data center, healthcare, pharma, AOG, events, tender documents, government vendors, and legally safe defence vendor cargo.",
+    "- Global export/import: PORTADOR GLOBAL covers urgent import/export air cargo where commodity, customs, packing, carrier policy, documentation, and destination restrictions allow.",
+    "- Tracking remains separate at ops.portador.in; PORTADOR.in is the marketing and SEO frontend.",
+    "",
+    "## Nearby Airport Demand Areas",
+    ...nearAirportLocationSeoData.map((item) => `- ${item}`),
+    "",
+    "## Industrial and Tech Hubs",
+    ...industrialAreaSeoData.map((item) => `- Industrial: ${item}`),
+    ...techHubSeoData.map((item) => `- Tech hub: ${item}`),
+    "",
+    "## Global Export / Import Taxonomy",
+    ...internationalDestinationSeoData.map((item) => `- Export destination: ${item}`),
+    ...importOriginSeoData.map((item) => `- Import origin: ${item}`),
+    ...commoditySeoData.map((item) => `- Commodity search: ${item}`),
     "",
     ...linesFor("Primary Services", services, "/services"),
     ...linesFor("Industry Coverage", industries, "/industries"),

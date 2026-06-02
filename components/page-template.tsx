@@ -3,11 +3,22 @@ import Link from "next/link";
 import { FAQEngine } from "@/components/faq-engine";
 import { CTA, MotionCard, PrimaryButton, QuickSelector, SecondaryButton, Section } from "@/components/ui";
 import { airportCityCoverage, airports, cargoPages, comparisonPages, hubArticles, PageModel, serviceIconMap, services, site, useCasePages } from "@/lib/site";
-import { breadcrumbSchema, faqSchema, serviceSchema, webPageSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, itemListSchema, serviceSchema, webPageSchema } from "@/lib/schema";
 
 export function PageTemplate({ page, basePath }: { page: PageModel; basePath: string }) {
   const Icon = serviceIconMap[page.icon ?? "default"];
-  const schemas = [breadcrumbSchema([{ name: "Home", href: "/" }, { name: page.title, href: `${basePath}/${page.slug}` }]), faqSchema(page.faqs), serviceSchema(page, basePath), webPageSchema(page, basePath)];
+  const pageUrl = `${site.url}${basePath}/${page.slug}`;
+  const schemas = [
+    breadcrumbSchema([{ name: "Home", href: "/" }, { name: page.title, href: `${basePath}/${page.slug}` }]),
+    faqSchema(page.faqs),
+    serviceSchema(page, basePath),
+    webPageSchema(page, basePath),
+    itemListSchema({
+      name: `${page.title} use cases and customer searches`,
+      url: pageUrl,
+      items: [...page.useCases, ...page.benefits].slice(0, 12)
+    })
+  ];
 
   return (
     <>

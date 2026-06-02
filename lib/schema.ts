@@ -242,6 +242,21 @@ export function webPageSchema(page: { title: string; description: string; slug: 
   };
 }
 
+export function itemListSchema({ name, url, items }: { name: string; url: string; items: string[] }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    url,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item,
+      url
+    }))
+  };
+}
+
 export function howToSchema({ name, description, steps, url }: { name: string; description: string; steps: string[]; url: string }) {
   return {
     "@context": "https://schema.org",

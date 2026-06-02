@@ -16,6 +16,13 @@ import {
   Siren,
   Warehouse
 } from "lucide-react";
+import {
+  nationalAirportProfiles,
+  nationalExcessBaggageProfiles,
+  nationalIndustryProfiles,
+  nationalLocationDemandProfiles,
+  nationalRoutePairs
+} from "@/lib/national-seo";
 
 export const site = {
   name: "PORTADOR SOS",
@@ -371,7 +378,7 @@ export const services: PageModel[] = [
     cta: "Coordinate urgent international import or export cargo with PORTADOR GLOBAL."
   }
 ];
-export const industries = ([
+const coreIndustries = ([
   "Aviation Logistics",
   "Pharma Logistics",
   "Manufacturing Logistics",
@@ -447,6 +454,65 @@ export const industries = ([
     cta: `Move ${title.toLowerCase()} with PORTADOR SOS.`
   } satisfies PageModel;
 });
+
+const nationalIndustryPages = nationalIndustryProfiles.map((profile) => ({
+  slug: profile.slug,
+  title: profile.title,
+  eyebrow: "Industry logistics",
+  h1: `${profile.title} for Urgent Air Movement`,
+  description: `Time-critical air cargo and urgent logistics support for ${profile.title.toLowerCase()} requirements across India, written for customers searching in simple language and business emergency terms.`,
+  keywords: [profile.title.toLowerCase(), "urgent air cargo", "same day delivery", "B2B cargo delivery", "time-critical logistics"],
+  icon: profile.title.includes("IT") || profile.title.includes("Data Center") ? "battery" as const : profile.title.includes("Tender") || profile.title.includes("Government") || profile.title.includes("Defence") ? "obc" as const : profile.title.includes("Automotive") ? "mission" as const : "default" as const,
+  whatIs: `${profile.title} helps ${profile.audience} move urgent cargo when normal courier timing is not enough. It is used when ${profile.risks} makes same-day, Next Flight Out, airport cargo, hand-carry, express, or international support worth checking.`,
+  aiSnippet: `${profile.title} with PORTADOR SOS supports ${profile.cargo}. Final support depends on cargo type, route, documents, packing, compliance, serviceability, and operational availability.`,
+  benefits: [
+    `Built for ${profile.audience}`,
+    `Common cargo: ${profile.cargo}`,
+    `Risk context: ${profile.risks}`,
+    "Same-day, NFO, airport cargo, hand-carry, express, or international feasibility checks",
+    "Plain-language documentation and packing guidance",
+    "Human operations desk for urgent business decisions"
+  ],
+  howItWorks: [
+    "Share origin, destination, cargo details, weight, dimensions, and deadline",
+    "PORTADOR checks cargo eligibility, documents, packing, serviceability, and urgency",
+    "The suitable PORTADOR SOS, EXPRESS, BLACK, or GLOBAL option is recommended",
+    "Pickup, airport-linked movement, hand-carry, express, or international support is checked",
+    "Customer receives clear next-step guidance and quote factors"
+  ],
+  useCases: [
+    "Same-day delivery for urgent business cargo",
+    "Next Flight Out for emergency replacement cargo",
+    "Airport-to-airport movement where speed matters",
+    "Door pickup and delivery where serviceable",
+    "Documents, samples, spares, laptops, and high-value shipments",
+    "Business downtime prevention and deadline recovery"
+  ],
+  whyNotCourier: [
+    "Routine courier follows standard network timing",
+    "Industry emergencies need faster feasibility checks",
+    "Some cargo needs packing, documentation, or compliance review",
+    "Airport-linked support can be better for intercity urgency",
+    "Human support helps when the shipment has commercial consequences"
+  ],
+  faqs: [
+    ...serviceFaqs(profile.title, profile.title.toLowerCase()),
+    {
+      question: `Who should use ${profile.title.toLowerCase()}?`,
+      answer: `${profile.title} is suitable for ${profile.audience} when delay can create ${profile.risks}. PORTADOR checks feasibility before confirming support.`
+    },
+    {
+      question: `What can PORTADOR move for ${profile.title.toLowerCase()}?`,
+      answer: `Common shipments include ${profile.cargo}. Final acceptance depends on commodity details, packing, documents, compliance review where relevant, serviceability, and route feasibility.`
+    }
+  ],
+  cta: `Check urgent ${profile.title.toLowerCase()} support with PORTADOR SOS.`
+})) satisfies PageModel[];
+
+export const industries = [
+  ...coreIndustries,
+  ...nationalIndustryPages.filter((page) => !coreIndustries.some((existing) => existing.slug === page.slug))
+] satisfies PageModel[];
 
 const networkCityProfiles = [
   ["Delhi NCR", "delhi", "IGI Airport cargo ecosystem", "manufacturing, legal, pharma, electronics, events, SMEs", "Mahipalpur, Gurgaon, Noida, Faridabad, Ghaziabad", "Delhi to Mumbai airport cargo"],
@@ -544,7 +610,7 @@ export const airportCityCoverage = [
   { city: "Kolkata", citySlug: "kolkata", airport: "Kolkata Airport Cargo", airportSlug: "kolkata-airport", lanes: ["Kolkata urgent air cargo to major Indian cities"] }
 ];
 
-export const lanes = [
+const coreLanePages = [
   ["Delhi", "Mumbai", "Same Day"],
   ["Delhi", "Mumbai", "Same-Day Cargo"],
   ["Mumbai", "Delhi", "Air Cargo"],
@@ -572,6 +638,65 @@ export const lanes = [
   faqs: serviceFaqs(`${from} to ${to} ${service}`, `${from} to ${to} urgent cargo`),
   cta: `Move urgent cargo from ${from} to ${to}.`
 })) satisfies PageModel[];
+
+const nationalRoutePages = nationalRoutePairs.map(([from, to]) => ({
+  slug: `${from}-to-${to}-urgent-air-cargo`.toLowerCase().replaceAll(" ", "-"),
+  title: `${from} to ${to} Urgent Air Cargo`,
+  eyebrow: "National priority route",
+  h1: `${from} to ${to} Same-Day and Next Flight Out Cargo`,
+  description: `Urgent air-linked logistics for ${from} to ${to}, including same-day delivery where feasible, next day delivery, urgent cargo, excess baggage, document delivery, industrial cargo, airport-to-airport movement, and door pickup or delivery support.`,
+  keywords: [`${from} to ${to} same day delivery`, `${from} to ${to} urgent cargo`, `${from} to ${to} excess baggage`, `${from} to ${to} document delivery`, "airport-to-airport cargo", "door pickup and delivery"],
+  icon: "nfo" as const,
+  whatIs: `${from} to ${to} urgent air cargo is a route page for customers who need cargo to move faster than routine courier timelines. It helps customers check same-day delivery, next day delivery, urgent parcel by flight, excess baggage, document delivery, industrial cargo, airport-to-airport, and door support where feasible.`,
+  aiSnippet: `${from} to ${to} urgent air cargo can be checked for same-day, Next Flight Out, airport-to-airport, excess baggage, documents, industrial cargo, and door pickup or delivery support. Final support depends on cargo type, documents, packing, route feasibility, and operational availability.`,
+  benefits: [
+    "Same-day delivery feasibility where timing and serviceability allow",
+    "Next Flight Out / NFO and next day delivery checks",
+    "Airport-to-airport and door pickup or delivery support where serviceable",
+    "Useful for excess baggage, urgent documents, machine parts, laptops, samples, and B2B cargo",
+    "Pricing depends on weight, dimensions, urgency, pickup/delivery, and acceptance",
+    "Human operations desk for urgent route-specific guidance"
+  ],
+  howItWorks: [
+    "Share origin, destination, cargo type, weight, dimensions, and timeline",
+    "PORTADOR checks cargo eligibility, documents, pickup readiness, and route feasibility",
+    "Same-day, NFO, express, baggage, or hand-carry options are reviewed where suitable",
+    "Quote factors are shared based on weight, dimensions, urgency, pickup, delivery, and acceptance",
+    "Customer receives WhatsApp or call support for next steps"
+  ],
+  useCases: [
+    "Same-day parcel delivery by flight",
+    "Urgent spare parts delivery",
+    "Machine breakdown courier",
+    "Tender and legal document delivery",
+    "Excess baggage and student luggage",
+    "Laptop, server, and IT hardware delivery"
+  ],
+  whyNotCourier: [
+    "Routine courier may not protect hard route deadlines",
+    "Airport-linked support can be faster for intercity urgent cargo",
+    "Documents, baggage, and regulated cargo need early checks",
+    "Industrial cargo may need weight, dimensions, and packing review",
+    "Human support helps when route timing matters"
+  ],
+  faqs: [
+    ...serviceFaqs(`${from} to ${to} urgent air cargo`, `${from} to ${to} urgent cargo`),
+    {
+      question: `Can PORTADOR support same-day delivery from ${from} to ${to}?`,
+      answer: `PORTADOR can check same-day delivery from ${from} to ${to} where pickup readiness, cargo eligibility, route timing, documents, and destination serviceability allow.`
+    },
+    {
+      question: `Can I send excess baggage from ${from} to ${to}?`,
+      answer: `Yes. Excess baggage can be checked on the ${from} to ${to} route when bags or boxes are eligible, properly packed, documented, and serviceable for pickup and delivery.`
+    }
+  ],
+  cta: `WhatsApp PORTADOR for ${from} to ${to} urgent cargo.`
+})) satisfies PageModel[];
+
+export const lanes = [
+  ...coreLanePages,
+  ...nationalRoutePages.filter((page) => !coreLanePages.some((existing) => existing.slug === page.slug))
+] satisfies PageModel[];
 
 const legacyHubArticles = [
   "What is Next Flight Out Cargo?",
@@ -811,7 +936,72 @@ const phaseTwoAirportProfiles = [
   cta: `Get urgent cargo support through ${profile.title}.`
 })) satisfies PageModel[];
 
-export const airports = phaseTwoAirportProfiles satisfies PageModel[];
+const nationalAirportPages = nationalAirportProfiles.map((profile) => ({
+  slug: profile.slug,
+  title: profile.title,
+  eyebrow: "Airport logistics authority",
+  h1: `${profile.title} for Urgent Air Cargo`,
+  description: `${profile.summary} PORTADOR SOS checks urgent cargo movement subject to cargo type, documents, route feasibility, serviceability, and operational availability.`,
+  keywords: [profile.title.toLowerCase(), profile.airport.toLowerCase(), "airport baggage pickup", "airport cargo India", "same-day air cargo", "urgent cargo support"],
+  icon: "airport" as const,
+  whatIs: `${profile.title} is an airport-connected urgent logistics page for customers near ${profile.airport} who need airport baggage pickup, excess luggage shipping, same-day air cargo, Next Flight Out feasibility, airport-to-airport cargo, emergency documents, machine parts, or B2B cargo support.`,
+  aiSnippet: `${profile.title} supports customer searches around ${profile.terminals}. PORTADOR checks cargo type, documents, packing, serviceability, route feasibility, and operational availability before confirming support.`,
+  benefits: [
+    `Airport focus: ${profile.airport}`,
+    `Nearby demand areas: ${profile.terminals}`,
+    `Commercial hubs: ${profile.hubs}`,
+    "Useful for airport baggage pickup, airport-to-home baggage delivery, same-day cargo, and urgent documents",
+    "Supports B2B air cargo, industrial parts, excess baggage, medical equipment, and regulated cargo review",
+    "Human operations support for customers who need a quick feasibility check"
+  ],
+  howItWorks: [
+    "Share airport, pickup point, destination, cargo type, bags or boxes, weight, and deadline",
+    "PORTADOR checks contents, documents, packing, pickup access, serviceability, and route feasibility",
+    "Airport pickup, door pickup, airport-to-airport, door-to-door, or hand-carry feasibility is reviewed",
+    "The suitable PORTADOR SOS, EXPRESS, BLACK, or GLOBAL option is recommended",
+    "Customer receives next-step guidance, pricing factors, and WhatsApp support"
+  ],
+  useCases: [
+    "Airport baggage pickup and airport-to-home luggage delivery",
+    "Same-day parcel delivery by flight where feasible",
+    "Urgent spare parts and machine breakdown cargo",
+    "B2B documents, tender files, and legal submissions",
+    "Medical equipment, laptops, IT hardware, and event cargo",
+    "Dangerous goods, battery, and restricted cargo review where applicable"
+  ],
+  whyNotCourier: [
+    "Routine courier may not handle airport pickup timing clearly",
+    "Baggage and regulated cargo need contents, packing, and document checks",
+    "Airport-linked movement can be better for urgent intercity delivery",
+    "Business and traveler emergencies need human support instead of generic parcel flow",
+    "Final feasibility depends on cargo acceptance, route, and operational availability"
+  ],
+  faqs: [
+    ...serviceFaqs(profile.title, profile.title.toLowerCase()),
+    {
+      question: `Can PORTADOR help with airport baggage pickup near ${profile.airport}?`,
+      answer: `Yes. PORTADOR can check airport baggage pickup near ${profile.airport}, subject to pickup access, contents, packing, documents, serviceability, and operational availability.`
+    },
+    {
+      question: `Which nearby areas does ${profile.title} cover?`,
+      answer: `${profile.title} commonly receives demand from ${profile.terminals}. Final support depends on the exact pickup or delivery address and shipment readiness.`
+    },
+    {
+      question: `Can businesses use ${profile.title} for urgent cargo?`,
+      answer: `Yes. Businesses around ${profile.hubs} can check urgent cargo support for machine parts, documents, IT hardware, medical equipment, samples, event material, and regulated cargo review.`
+    },
+    {
+      question: `Is terminal handling fixed for ${profile.title}?`,
+      answer: "Terminal and airline handling may vary; PORTADOR confirms feasibility before booking based on airport access, cargo type, documents, route, and operational availability."
+    }
+  ],
+  cta: `Check urgent cargo and baggage support through ${profile.title}.`
+})) satisfies PageModel[];
+
+export const airports = [
+  ...phaseTwoAirportProfiles,
+  ...nationalAirportPages.filter((page) => !phaseTwoAirportProfiles.some((existing) => existing.slug === page.slug))
+] satisfies PageModel[];
 
 const legacyCargoPages = [
   ["excess-baggage", "Excess Baggage", "Domestic excess baggage, airport baggage transfer, student luggage, relocation bags, and door-to-door baggage delivery for travelers who cannot carry everything on the next flight."],
@@ -1128,10 +1318,69 @@ const excessBaggageGeoPages = [
   cta: `Check ${profile.title.toLowerCase()} feasibility.`
 })) satisfies PageModel[];
 
+const nationalExcessBaggagePages = nationalExcessBaggageProfiles.map((profile) => ({
+  slug: profile.slug,
+  title: profile.title,
+  eyebrow: "Excess baggage service",
+  h1: `${profile.title} With PORTADOR SOS`,
+  description: `${profile.title} helps customers check extra luggage courier, excess baggage courier, airport baggage pickup, airport-to-home luggage delivery, student baggage shipping, NRI baggage shipping, and send luggage separately options.`,
+  keywords: [profile.title.toLowerCase(), "extra luggage courier", "excess baggage courier", "airport baggage pickup", "send suitcase by courier", "student baggage shipping", "airline excess baggage alternative"],
+  icon: "baggage" as const,
+  whatIs: `${profile.title} is for customers asking: Have extra bags? Airline baggage charges too high? Need to send luggage separately? Reached the airport with more bags than allowed? PORTADOR checks whether bags, boxes, clothes, books, student luggage, personal effects, or household items can move from ${profile.airport}.`,
+  aiSnippet: `${profile.title} can be checked around ${profile.localContext}. Final support depends on contents, packing, documents, weight, pickup access, delivery address, and serviceability.`,
+  benefits: [
+    `Airport or market focus: ${profile.airport}`,
+    `Local relevance: ${profile.localContext}`,
+    "Useful for extra luggage courier, send suitcase by courier, and luggage courier near me searches",
+    "Supports airport baggage pickup, hotel pickup, home pickup, hostel pickup, and airport-to-home delivery where feasible",
+    "Helpful for students, NRIs, international arrivals, domestic connections, and travelers with too much luggage",
+    "Clear checks for restricted items, packing, weight, dimensions, and serviceability"
+  ],
+  howItWorks: [
+    "Share pickup point, destination, number of bags, approximate weight, contents, and urgency",
+    "PORTADOR checks baggage contents, packing, documents, pickup access, and delivery serviceability",
+    "Airport pickup, hotel pickup, home pickup, hostel pickup, or door delivery feasibility is reviewed",
+    "The suitable baggage shipping option is recommended with quote factors",
+    "Delivery or receiver handover is coordinated where support is confirmed"
+  ],
+  useCases: [
+    "Send extra luggage from airport",
+    "Airport to home luggage delivery",
+    "Student baggage shipping",
+    "NRI baggage shipping",
+    "Courier bags from hotel or hostel",
+    "Send clothes, books, and personal goods separately"
+  ],
+  whyNotCourier: [
+    "Routine courier may not understand airport pickup or traveler timing",
+    "Baggage needs contents, restricted goods, packing, and weight checks",
+    "Airport-to-home delivery depends on pickup access and receiver details",
+    "Human support helps when flight arrival, hotel checkout, or connection timing changes",
+    "PORTADOR explains quote factors instead of giving fake fixed promises"
+  ],
+  faqs: [
+    ...serviceFaqs(profile.title, profile.title.toLowerCase()),
+    {
+      question: `Can I send extra luggage through ${profile.title.toLowerCase()}?`,
+      answer: `Yes. PORTADOR can check extra luggage courier support for ${profile.title}, subject to contents, packing, documents, pickup access, destination serviceability, and operational availability.`
+    },
+    {
+      question: "What details are needed for excess baggage quote?",
+      answer: "Share pickup location, destination, number of bags, approximate weight, dimensions, contents, delivery urgency, and whether the pickup is from airport, hotel, home, hostel, or office."
+    },
+    {
+      question: "Can PORTADOR move restricted items inside baggage?",
+      answer: "Restricted items must be declared before booking. Acceptance depends on commodity rules, destination rules, packing, documents, carrier policy, and compliance review."
+    }
+  ],
+  cta: `Check ${profile.title.toLowerCase()} with PORTADOR SOS.`
+})) satisfies PageModel[];
+
 export const cargoPages = [
   ...phaseTwoCargoProfiles,
   ...excessBaggageGeoPages,
-  ...legacyCargoPages.filter((page) => ![...phaseTwoCargoProfiles, ...excessBaggageGeoPages].some((featured) => featured.slug === page.slug))
+  ...nationalExcessBaggagePages.filter((page) => ![...phaseTwoCargoProfiles, ...excessBaggageGeoPages].some((featured) => featured.slug === page.slug)),
+  ...legacyCargoPages.filter((page) => ![...phaseTwoCargoProfiles, ...excessBaggageGeoPages, ...nationalExcessBaggagePages].some((featured) => featured.slug === page.slug))
 ] satisfies PageModel[];
 
 const localCommercialUseCases = [
@@ -1187,9 +1436,64 @@ const legacyUseCasePages = [
   cta: `Start ${title.toLowerCase()} with PORTADOR SOS operations.`
 })) satisfies PageModel[];
 
+const nationalLocationDemandPages = nationalLocationDemandProfiles.map(([slug, title, city, context]) => ({
+  slug,
+  title,
+  eyebrow: "Near-airport demand page",
+  h1: `${title} With PORTADOR SOS`,
+  description: `${title} support for customers in ${city} who need urgent pickup, airport-linked cargo, same-day parcel delivery, laptop courier, spare parts delivery, documents, or excess baggage help.`,
+  keywords: [title.toLowerCase(), `${city} urgent delivery`, `${city} laptop courier`, "airport baggage pickup", "same day parcel delivery", "urgent spare parts delivery"],
+  icon: title.includes("Laptop") || title.includes("IT") ? "battery" as const : title.includes("Spare") || title.includes("Industrial") || title.includes("Cargo") ? "mission" as const : "sos" as const,
+  whatIs: `${title} is a local demand page for customers around ${context}. It is written for plain customer searches such as send office laptop urgently, airport baggage pickup, machine breakdown courier, same-day parcel delivery, and urgent B2B cargo support.`,
+  aiSnippet: `${title} can be checked for ${context}. Final support depends on pickup access, cargo type, route, documents, packing, serviceability, and operational availability.`,
+  benefits: [
+    `Local market: ${city}`,
+    `Relevant demand area: ${context}`,
+    "Useful for laptop delivery to employee, office courier, spare parts, documents, and urgent business cargo",
+    "Airport-linked cargo support where feasible",
+    "Door pickup and delivery can be checked where serviceable",
+    "Human operations desk for urgent customer enquiries"
+  ],
+  howItWorks: [
+    "Share pickup area, destination, cargo type, weight, dimensions, and timeline",
+    "PORTADOR checks serviceability, documents, packing, route feasibility, and urgency",
+    "Same-day, NFO, airport cargo, hand-carry, express, or door delivery support is checked",
+    "Quote factors are reviewed based on weight, dimensions, pickup, delivery, and urgency",
+    "Customer receives WhatsApp or call support for the next step"
+  ],
+  useCases: [
+    "Send laptop to employee",
+    "Same-day laptop courier",
+    "Urgent spare parts delivery",
+    "Airport baggage pickup",
+    "Business documents and tender files",
+    "Industrial parcel delivery"
+  ],
+  whyNotCourier: [
+    "Local emergency searches need faster response than routine parcel flow",
+    "Business cargo can need documents, packing, and serviceability checks",
+    "Airport-linked movement may be better for intercity urgency",
+    "Human support helps when pickup access, deadline, or receiver details change",
+    "PORTADOR checks feasibility before confirming support"
+  ],
+  faqs: [
+    ...serviceFaqs(title, title.toLowerCase()),
+    {
+      question: `Can PORTADOR support ${title.toLowerCase()}?`,
+      answer: `Yes. PORTADOR can check ${title.toLowerCase()} support around ${context}, subject to cargo type, pickup access, documents, route feasibility, and serviceability.`
+    },
+    {
+      question: `What cargo is common for ${title.toLowerCase()}?`,
+      answer: "Common cargo includes laptops, IT hardware, documents, machine parts, samples, travel baggage, event material, and urgent B2B shipments where eligible and properly packed."
+    }
+  ],
+  cta: `Check ${title.toLowerCase()} with PORTADOR SOS.`
+})) satisfies PageModel[];
+
 export const useCasePages = [
   ...localCommercialUseCases,
-  ...legacyUseCasePages.filter((page) => !localCommercialUseCases.some((featured) => featured.slug === page.slug))
+  ...nationalLocationDemandPages.filter((page) => !localCommercialUseCases.some((featured) => featured.slug === page.slug)),
+  ...legacyUseCasePages.filter((page) => ![...localCommercialUseCases, ...nationalLocationDemandPages].some((featured) => featured.slug === page.slug))
 ] satisfies PageModel[];
 
 export const comparisonPages = [

@@ -39,13 +39,13 @@ export const metadata: Metadata = {
 };
 
 const cargoCategoryCards = [
-  { label: "Machine Parts", href: "/cargo/machine-parts", bullets: ["Breakdown recovery", "Production support"], Icon: Warehouse },
-  { label: "Legal Documents", href: "/cargo/tender-documents", bullets: ["Tender & Legal Papers", "Time-sensitive submissions"], Icon: BriefcaseBusiness },
-  { label: "Laptop Shipping", href: "/cargo/laptop-shipping", bullets: ["Device movement", "Business equipment"], Icon: PackageCheck },
-  { label: "Dangerous Goods, Batteries & Restricted Cargo", href: "/cargo/dangerous-goods", bullets: ["Compliance review required", "Liquids, Powders, Gels & Batteries"], Icon: Flame },
-  { label: "Excess Baggage", href: "/cargo/excess-baggage", bullets: ["Domestic and international", "Door to Door + Airport Pickup & Drop"], Icon: Luggage },
-  { label: "Medical Equipment", href: "/cargo/medical-equipment", bullets: ["Priority handling", "Surgical Equipment"], Icon: ShieldCheck },
-  { label: "AOG Cargo", href: "/cargo/aog-cargo", bullets: ["Aviation spares", "Critical replacement parts"], Icon: Plane },
+  { label: "Machine Parts & Breakdown Recovery", href: "/cargo/machine-parts", bullets: ["Breakdown recovery", "Production support"], Icon: Warehouse },
+  { label: "Critical IT Hardware, Server & Laptop Shipping", href: "/cargo/laptop-shipping", bullets: ["Device movement", "Business equipment"], Icon: PackageCheck },
+  { label: "Dangerous Goods (DG), Lithium Battery & Restricted Cargo Review", href: "/cargo/dangerous-goods", bullets: ["Compliance review required", "Liquids, Powders, Gels & Batteries"], Icon: Flame },
+  { label: "Excess Baggage, Personal Effects & Student Luggage", href: "/cargo/excess-baggage", bullets: ["Domestic and international", "Door to Door + Airport Pickup & Drop"], Icon: Luggage },
+  { label: "Medical Equipment, Healthcare & Emergency Shipments", href: "/cargo/medical-equipment", bullets: ["Priority handling", "Surgical Equipment"], Icon: ShieldCheck },
+  { label: "Aircraft Spare Parts & AOG Logistics", href: "/cargo/aog-cargo", bullets: ["Aviation spares", "Critical replacement parts"], Icon: Plane },
+  { label: "Tender Documents & Legal Papers", href: "/cargo/tender-documents", bullets: ["Tender & Legal Papers", "Time-sensitive submissions"], Icon: BriefcaseBusiness },
   { label: "Perishables", href: "/cargo/perishables", bullets: ["Fruits, Vegetables & Time-Sensitive Food Cargo"], Icon: Clock3 },
   { label: "Temperature Controlled Cargo", href: "/cargo/temperature-controlled-cargo", bullets: ["Dry Ice, Gel Packs & Frozen Cargo"], Icon: Clock3 },
   { label: "High-Value Cargo", href: "/cargo/high-value-cargo", bullets: ["Electronics, IT Products & Premium Equipment"], Icon: ShieldCheck },
@@ -97,10 +97,10 @@ const protectionNotes = [
 ];
 
 const topServiceCards = [
-  { title: "PORTADOR SOS", href: "/services/portador-sos", icon: Siren, copy: "Same-day air cargo, next flight out logistics, 10-16 hour feasibility where possible, airport-to-airport movement, and urgent door coordination." },
-  { title: "PORTADOR EXPRESS", href: "/services/portador-express", icon: Plane, copy: "Next business day and second business day premium air cargo for priority B2B shipments, 10kg-100kg+, and planned urgent movement." },
-  { title: "PORTADOR BLACK", href: "/services/portador-black", icon: BriefcaseBusiness, copy: "OBC, hand carry, runner, and VIP short-notice logistics for confidential cargo, founders, CEOs, HNIs, UHNWIs, and high-value shipments." },
-  { title: "PORTADOR GLOBAL", href: "/services/portador-global", icon: Globe2, copy: "Urgent international import and export air cargo coordination for premium cross-border air freight and emergency shipment recovery." }
+  { title: "PORTADOR SOS (Same-Day & Next Flight Out)", href: "/services/portador-sos", icon: Siren, copy: "Same-day air cargo, next flight out logistics, 10-16 hour feasibility where possible, airport-to-airport movement, and urgent door coordination." },
+  { title: "PORTADOR EXPRESS (Next Business Day)", href: "/services/portador-express", icon: Plane, copy: "Next business day and second business day premium air cargo for priority B2B shipments, 10kg-100kg+, and planned urgent movement." },
+  { title: "PORTADOR BLACK (On Board Courier / Hand Carry)", href: "/services/portador-black", icon: BriefcaseBusiness, copy: "OBC, hand carry, runner, and VIP short-notice logistics for confidential cargo, founders, CEOs, HNIs, UHNWIs, and high-value shipments." },
+  { title: "PORTADOR GLOBAL (Critical Imports & Exports)", href: "/services/portador-global", icon: Globe2, copy: "Urgent international import and export air cargo coordination for premium cross-border air freight and emergency shipment recovery." }
 ];
 
 const emergencyKnowledgeCards = hubArticles.slice(0, 4).map((item) => ({
@@ -235,7 +235,7 @@ export default function Home() {
               CANNOT WAIT.
             </h1>
             <p className="mt-3 max-w-xl text-sm font-medium leading-6 text-zinc-300 md:text-base">
-              Same-Day Air Cargo, Next Flight Out (NFO), Airport Cargo Support and Time-Critical Logistics Across India.
+              Same-Day Air Cargo, Next Flight Out coordination, Airport Baggage Support, Excess Luggage Shipping and Premium Time-Critical Logistics Across India.
             </p>
             <div className="mt-3 max-w-xl rounded-lg border border-white/10 bg-white/[0.045] p-3.5 shadow-[0_0_22px_rgba(227,6,19,0.07)]">
               <p className="mb-1.5 text-sm font-semibold text-white">Urgent Shipment Support</p>
@@ -282,7 +282,7 @@ export default function Home() {
 
       <EmergencyCallback />
 
-      <Section eyebrow="Primary services" title="Premium Air Cargo Services">
+      <Section eyebrow="Primary services" title="Our Premium Air Cargo Services">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {topServiceCards.map((service) => (
             <Link key={service.href} href={service.href} className="glass-panel group rounded-lg p-6 transition hover:-translate-y-1 hover:border-[#e30613]/45 hover:shadow-[0_0_34px_rgba(227,6,19,0.18)]">
@@ -297,7 +297,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section eyebrow="Cargo categories" title="Urgent cargo PORTADOR can support">
+      <Section eyebrow="Cargo categories" title="Urgent Cargo Categories We Support">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {cargoCategoryCards.map(({ label, href, bullets, Icon }) => (
             <Link key={label} href={href} className="rounded-lg border border-white/10 bg-white/[0.035] p-4 transition hover:-translate-y-1 hover:border-[#e30613]/40">
