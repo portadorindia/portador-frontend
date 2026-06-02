@@ -4,24 +4,9 @@ import { BulletGrid, FAQBlock, Process } from "@/components/page-template";
 import { CTA, EmergencyCallback, Section } from "@/components/ui";
 import { faqSchema } from "@/lib/schema";
 import { site, socialLinks, whatsappHref } from "@/lib/site";
-import { customerEducationFaqs } from "@/lib/customer-faqs";
-import { normalizeFaqs } from "@/lib/faq";
+import { getFounderFaqsForStaticPage } from "@/lib/faq-authority";
 
-const faqs = [
-  { question: "What is the fastest way to contact PORTADOR SOS?", answer: "For urgent cargo, call operations or send shipment details on WhatsApp so the team can check cargo, route, timing, and serviceability quickly." },
-  { question: "What information is needed to quote?", answer: "A quote needs enough detail to check urgent air cargo availability. Share origin, destination, deadline, cargo type, weight, dimensions, pickup address, consignee details, invoice value, delivery requirement, and any battery, liquid, chemical, medical, or dangerous goods declaration." },
-  { question: "Can I request a quote for same-day cargo?", answer: "Yes. PORTADOR SOS can check same-day air cargo availability once shipment and route details are available." },
-  { question: "Can I contact PORTADOR SOS at night?", answer: "PORTADOR SOS is positioned for 24x7 urgent operations support, subject to pickup, airport, airline, and route availability." },
-  { question: "Can PORTADOR SOS handle urgent documents?", answer: "Yes. Urgent legal, tender, commercial, and business documents can be checked for same-day, NFO, or hand-carry movement." },
-  { question: "Can PORTADOR SOS support dangerous goods, lithium batteries, or regulated cargo?", answer: "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, serviceability, and compliance review. MSDS or declaration may be required, and packing and documentation must be verified." },
-  { question: "What cargo categories can PORTADOR SOS support?", answer: "PORTADOR SOS can support urgent cargo categories that are eligible for air movement and properly documented. Common categories include B2B documents, machine parts, laptops, medical equipment, excess baggage, high-value cargo, lithium battery shipments, dangerous goods, event cargo, and aviation spares." },
-  { question: "What affects urgent air cargo availability?", answer: "Urgent air cargo availability depends on timing, cargo eligibility, documentation, serviceability, regulatory compliance verification, and available air movement. PORTADOR SOS confirms availability before committing to movement." },
-  { question: "Does PORTADOR SOS support airport-to-airport cargo?", answer: "Yes. Airport-to-airport cargo can be coordinated for eligible shipments and routes." },
-  { question: "Do you arrange pickup?", answer: "Pickup can be arranged in supported zones depending on route, deadline, cargo readiness, and operational availability." },
-  { question: "Is WhatsApp enough to start?", answer: "Yes. WhatsApp is useful for sharing shipment details, photos, dimensions, documents, and deadlines quickly." },
-  ...customerEducationFaqs
-];
-const normalizedFaqs = normalizeFaqs(faqs);
+const normalizedFaqs = getFounderFaqsForStaticPage("contact");
 
 export const metadata: Metadata = {
   title: "Contact Operations",

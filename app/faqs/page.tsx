@@ -18,7 +18,7 @@ export default function FAQsPage() {
       <section className="relative overflow-hidden py-14 md:py-20">
         <div className="airport-grid absolute inset-0 opacity-70" />
         <div className="container-shell relative">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-[#e30613]">FAQ authority hub</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-[#e30613]">PORTADOR SOS FAQs</p>
           <h1 className="max-w-4xl text-4xl font-black leading-tight text-white lg:text-5xl xl:text-6xl">Urgent Air Logistics Questions</h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300">
             Clear customer answers for same-day cargo, Next Flight Out, airport cargo, excess baggage, international movement, restricted goods, GST documents, and mission-critical shipments.

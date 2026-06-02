@@ -21,8 +21,7 @@ import { TrackingForm } from "@/components/tracking-form";
 import { CTA, EmergencyCallback, PrimaryButton, QuickSelector, SecondaryButton, Section } from "@/components/ui";
 import { hubArticles, industries, site, whatsappHref } from "@/lib/site";
 import { faqSchema, serviceSchema } from "@/lib/schema";
-import { customerEducationFaqs } from "@/lib/customer-faqs";
-import { normalizeFaqs } from "@/lib/faq";
+import { founderHomepageFaqs } from "@/lib/faq-authority";
 
 const heroSignals = [
   "50+ Airport Cargo Connections",
@@ -110,25 +109,6 @@ const emergencyKnowledgeCards = hubArticles.slice(0, 4).map((item) => ({
   copy: item.aiSnippet ?? item.description
 }));
 
-const aiQuickAnswers = [
-  {
-    question: "What is PORTADOR SOS?",
-    answer: "PORTADOR SOS is PORTADOR's flagship emergency air cargo service for same-day air cargo, next flight out coordination, airport cargo support, and urgent door support where serviceability allows."
-  },
-  {
-    question: "What is Next Flight Out cargo?",
-    answer: "Next Flight Out cargo moves urgent shipments through the earliest suitable airline connection instead of waiting for routine courier hub and linehaul schedules."
-  },
-  {
-    question: "Can PORTADOR move cargo in 10-16 hours?",
-    answer: "PORTADOR SOS can check 10-16 hour urgent movement availability on major airport-connected lanes where timing, cargo eligibility, documentation, and serviceability align."
-  },
-  {
-    question: "Why is airport cargo faster than regular courier?",
-    answer: "Airport cargo can be faster than regular courier because the long-distance leg can move by air instead of waiting for routine hub sorting and surface linehaul schedules."
-  }
-];
-
 const citySupportCards = [
   {
     href: "/airports/delhi-igi-airport",
@@ -172,46 +152,7 @@ const citySupportCards = [
   }
 ];
 
-const phaseTwoHomeFaqs = [
-  { question: "Is emergency air cargo faster than courier service?", answer: "Emergency air cargo can be faster than courier service for urgent intercity shipments when airport-linked movement is feasible. PORTADOR SOS checks cargo readiness, documents, route availability, and serviceability before confirming the fastest support option." },
-  { question: "When should I use Next Flight Out cargo?", answer: "Use Next Flight Out cargo when the shipment cannot wait for routine courier or overnight movement. It is suitable for AOG parts, machine breakdown cargo, emergency documents, medical equipment, high-value cargo, and time-critical replacements." },
-  { question: "Can PORTADOR arrange same-day air cargo?", answer: "PORTADOR can arrange same-day air cargo where timing, cargo eligibility, documentation, pickup readiness, destination support, and operational availability allow. Same-day support is availability-based, not a fake blanket guarantee." },
-  { question: "Can PORTADOR move dangerous goods and battery shipments?", answer: "PORTADOR can check dangerous goods and battery shipments through a compliance review. Final movement depends on airline rules, MSDS or declaration where required, compliant packing, documentation, approval, route availability, and serviceability." },
-  { question: "Can PORTADOR assist with excess baggage transportation?", answer: "PORTADOR can assist with excess baggage transportation where bags or boxes are eligible, packed, documented, and serviceable. Support can include airport baggage courier, airport-to-home baggage delivery, student luggage, and unaccompanied baggage transport." },
-  { question: "Can PORTADOR support factory breakdown emergencies?", answer: "PORTADOR can support factory breakdown emergencies by checking urgent movement for machine parts, tooling, controllers, motors, and replacement components. The operations desk checks same-day, NFO, airport cargo, or express availability based on route and cargo details." },
-  { question: "Can PORTADOR support AOG aircraft parts?", answer: "PORTADOR can support AOG aircraft parts where cargo eligibility, documents, packing, route availability, and operational availability allow. AOG support is built for aviation spares, tooling, line station recovery, and Aircraft On Ground urgency." },
-  { question: "Can PORTADOR collect cargo from airport terminals?", answer: "PORTADOR can check airport terminal cargo collection where access, documents, authorization, cargo release status, serviceability, and operational availability allow. Share airport, terminal, AWB or cargo reference, receiver details, and deadline for review." }
-];
-
-const baseHomeFaqs = [
-  { question: "How to send urgent cargo today?", answer: "Send urgent cargo today by sharing origin, destination, deadline, cargo category, weight, dimensions, and documents with PORTADOR SOS. The operations desk checks whether urgent same-day or next-flight-out air cargo support is feasible for the shipment." },
-  { question: "How to send parcel by flight?", answer: "A parcel can move by flight when it is air-eligible, properly packed, documented, and accepted for air cargo movement. PORTADOR SOS checks same-day air cargo, next flight out options, airport-to-airport cargo, and urgent door support where feasible." },
-  { question: "What is same-day air cargo?", answer: "Same-day air cargo is urgent air-linked cargo movement planned to reach the destination the same day where timing, cargo eligibility, documentation, and serviceability allow. PORTADOR SOS uses this for business downtime, machine breakdown, missed flight baggage, and emergency replacement situations." },
-  { question: "What is next flight out cargo?", answer: "Next Flight Out cargo is urgent air logistics where a shipment is routed through the earliest suitable airline connection. It is used when routine courier hub movement or overnight schedules are too slow for the shipment deadline." },
-  { question: "What is airport-to-airport cargo?", answer: "Airport-to-airport cargo moves eligible shipments between airport cargo terminals using airline cargo channels. It can reduce avoidable hub delays when the receiver can collect at destination airport or when connected delivery is coordinated after flight movement." },
-  { question: "When should I use PORTADOR SOS?", answer: "Use PORTADOR SOS when delay can create business downtime, production loss, missed flights, tender failure, emergency replacement failure, or customer escalation. It is built for urgent domestic air cargo where operational urgency matters more than routine courier scale." },
-  { question: "Can PORTADOR move cargo in 10-16 hours?", answer: "PORTADOR SOS can check 10-16 hour urgent cargo movement availability on major airport-connected lanes where timing allows. Final availability depends on cargo readiness, eligibility, documentation, available air movement, and destination serviceability." },
-  { question: "Can PORTADOR support dangerous goods, lithium batteries, or regulated cargo?", answer: "PORTADOR can support dangerous goods, lithium batteries, and regulated cargo after compliance review, but acceptance depends on airline rules and approvals. MSDS or declaration may be required, packing and documentation must be verified, and final movement depends on approval and serviceability." },
-  { question: "How does PORTADOR reduce hub delays?", answer: "PORTADOR reduces avoidable hub delays by prioritizing airport-linked air cargo support where feasible instead of routine multi-hub courier movement. Human operations coordination helps urgent shipments move with clearer accountability." },
-  { question: "Why regular courier fails for urgent shipments?", answer: "Regular courier can be too slow for urgent shipments because routine networks optimize pickup density, hub sorting, and scheduled linehaul movement. PORTADOR SOS is used when same-day air cargo, next flight out support, and human support are needed." },
-  { question: "What information is needed for an urgent quote?", answer: "An urgent quote needs origin, destination, deadline, cargo type, weight, dimensions, pickup address, receiver details, invoice value, packing status, and any battery, dangerous goods, medical, liquid, or regulated cargo declaration. These details help PORTADOR SOS check urgent air cargo availability accurately." },
-  { question: "Who should use PORTADOR BLACK?", answer: "PORTADOR BLACK is for founders, CEOs, HNIs, UHNWIs, family offices, legal teams, and high-value cargo clients who need hand carry, OBC, runner, VIP, confidential, or short-notice logistics. It is used when personal custody, fewer handoffs, and discreet coordination matter." },
-  { question: "When should businesses use PORTADOR EXPRESS?", answer: "Businesses should use PORTADOR EXPRESS for next business day or second business day premium air cargo when the shipment is important but not a same-day emergency. It fits priority B2B cargo, 10kg-100kg+ shipments, commercial samples, electronics, parts, and planned urgent movement." },
-  { question: "What is urgent international air cargo?", answer: "Urgent international air cargo is premium import or export air freight planned for cross-border shipments with tight deadlines. PORTADOR GLOBAL coordinates documentation review, compliance checks, premium air freight support, and receiver-side coordination for time-sensitive international cargo." },
-  { question: "What cargo categories can PORTADOR support?", answer: "PORTADOR can support urgent cargo categories that are air-eligible, properly packed, and documented. Common categories include excess baggage, battery cargo, dangerous goods, perishables, temperature controlled cargo, medical equipment, AOG cargo, machine parts, tender documents, hand carry / OBC, air cargo charter, laptop shipping, and high-value cargo." },
-  { question: "Is same-day delivery always feasible?", answer: "Same-day delivery is not always feasible. PORTADOR SOS confirms serviceability based on cargo readiness, documents, available air movement, destination support, and regulatory requirements before accepting an urgent shipment." },
-  { question: "Can PORTADOR help with tracking?", answer: "Yes. PORTADOR can support tracking for urgent shipments handled through PORTADOR SOS, EXPRESS, BLACK, or GLOBAL. Customers should share the shipment reference or booking details for the fastest status check." },
-  { question: "Can PORTADOR arrange reverse pickup?", answer: "Reverse pickup can be checked where the pickup location, cargo readiness, documentation, and serviceability allow. Share pickup address, consignee details, cargo type, deadline, and packing status for review." },
-  { question: "Does PORTADOR provide warehousing?", answer: "PORTADOR may support warehousing or temporary holding for selected shipments where operationally feasible. Availability depends on location, cargo type, duration, compliance requirements, and shipment urgency." },
-  { question: "Can PORTADOR support import shipments?", answer: "PORTADOR GLOBAL can support urgent international import air cargo. Import availability depends on documents, commodity type, customs status, consignee readiness, regulatory requirements, and available premium air cargo options." },
-  { question: "Can PORTADOR move personal goods?", answer: "PORTADOR can move personal goods, excess baggage, student relocation cargo, and urgent travel-related shipments where the items are air-eligible, properly packed, documented, and accepted for movement." },
-  { question: "What is PORTADOR liability per docket?", answer: "Unless separately agreed in writing, liability may be limited to Rs. 2,500 per docket as described in the Booking & Refund Policy. Customers should review the policy before booking high-value shipments." },
-  { question: "What is Carrier Risk or FOV?", answer: "Carrier Risk or FOV may be available at 5% of invoice value for declared eligible shipments, subject to acceptance and written confirmation. Coverage terms depend on shipment details and policy conditions." },
-  ...customerEducationFaqs
-];
-
-const homeFaqs = [...new Map([...phaseTwoHomeFaqs, ...baseHomeFaqs].map((faq) => [faq.question, faq])).values()].slice(0, 60);
-const normalizedHomeFaqs = normalizeFaqs(homeFaqs);
+const normalizedHomeFaqs = founderHomepageFaqs;
 
 export default function Home() {
   return (
@@ -271,7 +212,7 @@ export default function Home() {
 
       <Section eyebrow="Customer guidance" title="Answers Before You Ship Urgent Cargo">
         <div className="grid gap-5 md:grid-cols-2">
-          {aiQuickAnswers.map((item) => (
+          {normalizedHomeFaqs.slice(0, 4).map((item) => (
             <div key={item.question} className="ai-snippet rounded-md">
               <h3 className="text-lg font-semibold text-white">{item.question}</h3>
               <p className="mt-3 text-base leading-7 text-zinc-100">{item.answer}</p>
@@ -457,19 +398,15 @@ export default function Home() {
 
       <Section eyebrow="Common questions" title="Answers Before You Ship Urgent Cargo">
         <div className="grid gap-4 lg:grid-cols-3">
-          {[
-            ["Can PORTADOR SOS support urgent airport cargo?", "Yes. PORTADOR SOS supports urgent airport cargo with human operations coordination, regulated cargo review where needed, and real-time monitoring for time-critical shipments."],
-            ["What affects same-day air cargo availability?", "Same-day air cargo depends on cargo readiness, serviceability, available air movement, acceptance rules, documentation, and regulatory compliance verification where relevant."],
-            ["Can PORTADOR SOS support regulated cargo?", "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, documentation, packing, and compliance review."]
-          ].map(([question, answer]) => (
-            <div key={question} className="ai-snippet rounded-md">
-              <h3 className="text-lg font-semibold leading-7 text-white">{question}</h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-100">{answer}</p>
+          {normalizedHomeFaqs.slice(4, 7).map((item) => (
+            <div key={item.question} className="ai-snippet rounded-md">
+              <h3 className="text-lg font-semibold leading-7 text-white">{item.question}</h3>
+              <p className="mt-3 text-sm leading-7 text-zinc-100">{item.answer}</p>
             </div>
           ))}
         </div>
       </Section>
-      <FAQBlock faqs={normalizedHomeFaqs} />
+      <FAQBlock faqs={normalizedHomeFaqs.slice(7)} />
       <CTA title="When Time Cannot Wait, call the operations desk." text="Send origin, destination, deadline, cargo category, weight, dimensions, and any battery or dangerous goods declaration. PORTADOR SOS will check the fastest feasible air-linked movement." />
     </main>
   );

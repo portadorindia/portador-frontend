@@ -5,11 +5,12 @@ import { CTA, MotionCard, PrimaryButton, QuickSelector, SecondaryButton, Section
 import { airportCityCoverage, airports, cargoPages, cities, comparisonPages, hubArticles, industries, lanes, PageModel, serviceIconMap, services, site, useCasePages, whatsappHref } from "@/lib/site";
 import { breadcrumbSchema, faqSchema, itemListSchema, serviceSchema, webPageSchema } from "@/lib/schema";
 import { normalizeFaqs } from "@/lib/faq";
+import { getFounderFaqsForPage, getFounderListingFaqs } from "@/lib/faq-authority";
 
 export function PageTemplate({ page, basePath }: { page: PageModel; basePath: string }) {
   const Icon = serviceIconMap[page.icon ?? "default"];
   const pageUrl = `${site.url}${basePath}/${page.slug}`;
-  const normalizedFaqs = normalizeFaqs(page.faqs);
+  const normalizedFaqs = getFounderFaqsForPage(page, basePath);
   const schemas = [
     breadcrumbSchema([{ name: "Home", href: "/" }, { name: page.title, href: `${basePath}/${page.slug}` }]),
     faqSchema(normalizedFaqs),
@@ -88,11 +89,11 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
         <BulletGrid eyebrow="Use cases" title="Industry use cases" items={page.useCases} />
         <BulletGrid eyebrow="Courier comparison" title="Why this is different from regular courier" items={page.whyNotCourier} />
         <QuickSelector />
-        <DirectAnswerStack page={page} />
+        <DirectAnswerStack faqs={normalizedFaqs.slice(0, 3)} />
         <RelatedCommercialLinks page={page} basePath={basePath} />
         <RelatedLocationLinks page={page} basePath={basePath} />
         <OperationalNextLinks />
-        <FAQBlock faqs={normalizedFaqs} />
+        <FAQBlock faqs={normalizedFaqs.slice(3)} />
         <CTA title={page.cta} />
       </main>
     </>
@@ -230,26 +231,11 @@ export function OperationalNextLinks() {
   );
 }
 
-export function DirectAnswerStack({ page }: { page: PageModel }) {
-  const answers = [
-    {
-      question: `Can PORTADOR SOS handle ${page.title.toLowerCase()} urgently?`,
-      answer: `Yes. PORTADOR SOS checks ${page.title.toLowerCase()} through deadline-first support, premium air cargo options, and a human operations desk.`
-    },
-    {
-      question: `What makes ${page.title.toLowerCase()} different from routine courier?`,
-      answer: "The service is built around operational urgency, cargo eligibility, and business risk instead of routine parcel sorting and network scale."
-    },
-    {
-      question: `Who should use ${page.title.toLowerCase()}?`,
-      answer: "Use it when a delayed shipment can cause production loss, business downtime, missed flights, legal risk, event disruption, or emergency replacement failure."
-    }
-  ];
-
+export function DirectAnswerStack({ faqs }: { faqs: { question: string; answer: string }[] }) {
   return (
     <Section eyebrow="Shipment answers" title="Answers Before You Ship Urgent Cargo">
       <div className="grid gap-4 lg:grid-cols-3">
-        {answers.map((item) => (
+        {faqs.map((item) => (
           <div key={item.question} className="ai-snippet rounded-md">
             <h3 className="text-lg font-semibold leading-7 text-white">{item.question}</h3>
             <p className="mt-3 text-sm leading-7 text-zinc-100">{item.answer}</p>
@@ -374,21 +360,7 @@ export function FAQBlock({ faqs }: { faqs: { question: string; answer: string }[
 }
 
 export function ListingPage({ title, description, links }: { title: string; description: string; links: { title: string; description: string; href: string }[] }) {
-  const faqs = [
-    { question: `What is ${title}?`, answer: `${title} is a PORTADOR SOS logistics section built to explain urgent air cargo options and airport-linked movement in clear customer and industry language.` },
-    { question: "How does PORTADOR SOS make urgent cargo faster?", answer: "PORTADOR SOS prioritizes deadline pressure, cargo eligibility, premium air movement, and human operations coordination instead of relying only on standard courier hub cycles." },
-    { question: "Can I use these pages to choose the right service?", answer: "Yes. Each page explains the service definition, benefits, use cases, and common questions so urgent customers can decide quickly." },
-    { question: "Does PORTADOR SOS support same-day intercity delivery?", answer: "Yes, where timing, cargo acceptance, pickup readiness, and destination serviceability make same-day movement feasible." },
-    { question: "What information is needed to quote?", answer: "A quote needs enough detail to check urgent air cargo availability. Share origin, destination, deadline, cargo type, weight, dimensions, pickup address, consignee details, invoice value, delivery requirement, and any battery, liquid, chemical, medical, or dangerous goods declaration." },
-    { question: "Is PORTADOR SOS suitable for business-critical shipments?", answer: "Yes. PORTADOR SOS is built for manufacturing, aviation, pharma, electronics, events, legal, high-value cargo, travelers, students, SMEs, and startups." },
-    { question: "Does PORTADOR SOS handle airport-to-airport cargo?", answer: "Yes. Airport-to-airport cargo is supported where the route, documents, commodity, and cargo eligibility allow it." },
-    { question: "Why not use regular courier for urgent cargo?", answer: "Regular courier can be right for routine parcels. PORTADOR SOS is better suited when speed, airport-linked air cargo support, and live human ownership matter more." },
-    { question: "Can PORTADOR SOS support dangerous goods, lithium batteries, or regulated cargo?", answer: "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, serviceability, and compliance review. MSDS or declaration may be required, and packing and documentation must be verified." },
-    { question: "What cargo categories can PORTADOR SOS support?", answer: "PORTADOR SOS can support urgent cargo categories that are eligible for air movement and properly documented. Common categories include B2B documents, machine parts, laptops, medical equipment, excess baggage, high-value cargo, lithium battery shipments, dangerous goods, event cargo, and aviation spares." },
-    { question: "What affects urgent air cargo availability?", answer: "Urgent air cargo availability depends on timing, cargo eligibility, documentation, serviceability, regulatory compliance verification, cargo dimensions, weight, commodity type, and available air movement." },
-    { question: "Is support available outside office hours?", answer: "Yes. PORTADOR SOS is positioned for 24x7 urgent operations support, subject to route, pickup, airport, and airline availability." }
-  ];
-  const normalizedFaqs = normalizeFaqs(faqs);
+  const normalizedFaqs = getFounderListingFaqs(title);
 
   return (
     <main>
@@ -472,19 +444,15 @@ export function ListingPage({ title, description, links }: { title: string; desc
       <BulletGrid eyebrow="Courier comparison" title="Why not regular courier" items={["Routine parcel networks optimize scale", "Urgent air cargo prioritizes time-critical business needs", "Hub sorting can add avoidable delay", "Regulated cargo needs acceptance checks", "Human operations can reduce ambiguity", "Mission-critical cargo needs deadline-first ownership"]} />
       <Section eyebrow="Shipment answers" title="Answers Before You Ship Urgent Cargo">
         <div className="grid gap-4 lg:grid-cols-3">
-          {[
-            ["Can PORTADOR SOS support urgent cargo?", "Yes. PORTADOR SOS supports urgent air cargo through airport-linked movement and human operations desk oversight."],
-            ["Is same-day air cargo always possible?", "Same-day capability depends on timing, cargo readiness, cargo acceptance, available air movement, and destination serviceability."],
-            ["Why use PORTADOR SOS instead of routine courier?", "Use PORTADOR SOS when urgent air cargo support, live shipment updates, and human support matter more than routine parcel scale."]
-          ].map(([question, answer]) => (
-            <div key={question} className="ai-snippet rounded-md">
-              <h3 className="text-lg font-semibold leading-7 text-white">{question}</h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-100">{answer}</p>
+          {normalizedFaqs.slice(0, 3).map((item) => (
+            <div key={item.question} className="ai-snippet rounded-md">
+              <h3 className="text-lg font-semibold leading-7 text-white">{item.question}</h3>
+              <p className="mt-3 text-sm leading-7 text-zinc-100">{item.answer}</p>
             </div>
           ))}
         </div>
       </Section>
-      <FAQBlock faqs={normalizedFaqs} />
+      <FAQBlock faqs={normalizedFaqs.slice(3)} />
       <CTA />
     </main>
   );

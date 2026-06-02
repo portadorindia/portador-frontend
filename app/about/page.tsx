@@ -2,21 +2,9 @@ import type { Metadata } from "next";
 import { BulletGrid, FAQBlock, Process } from "@/components/page-template";
 import { CTA, Section } from "@/components/ui";
 import { faqSchema } from "@/lib/schema";
-import { normalizeFaqs } from "@/lib/faq";
+import { getFounderFaqsForStaticPage } from "@/lib/faq-authority";
 
-const faqs = [
-  { question: "What is PORTADOR SOS?", answer: "PORTADOR SOS is a premium time-critical air logistics platform for same-day air cargo, next flight out logistics, airport-to-airport cargo, hand carry, dangerous goods, battery cargo, and urgent business shipments." },
-  { question: "Is PORTADOR SOS a courier company?", answer: "PORTADOR SOS is not positioned as a generic courier company. It focuses on urgent air-linked movement and human operations support when time cannot wait." },
-  { question: "What makes PORTADOR SOS different?", answer: "PORTADOR SOS prioritizes urgent air cargo support, timing clarity, no avoidable hub delays, and live human ownership for urgent shipments." },
-  { question: "Who uses PORTADOR SOS?", answer: "Manufacturing, aviation, pharma, electronics, events, legal firms, SMEs, startups, travelers, students, and high-value cargo clients use PORTADOR SOS for urgent movement." },
-  { question: "Does PORTADOR SOS operate 24x7?", answer: "Yes. PORTADOR SOS is built around a 24x7 urgent support posture, subject to route, cargo type, airport, and pickup availability." },
-  { question: "Can PORTADOR SOS support dangerous goods, lithium batteries, or regulated cargo?", answer: "PORTADOR SOS can check dangerous goods, lithium batteries, and regulated cargo, but final movement depends on airline rules, approval, and service availability. MSDS or declaration may be required, and packing, documentation, and regulatory compliance must be verified before support." },
-  { question: "Does PORTADOR SOS offer next flight out logistics?", answer: "Yes. Next flight out logistics is one of PORTADOR SOS's core services for shipments that need the earliest feasible flight." },
-  { question: "Does PORTADOR SOS support airport-to-airport cargo?", answer: "Yes. PORTADOR SOS coordinates airport-to-airport cargo for eligible shipments and routes." },
-  { question: "What is the brand promise?", answer: "The brand promise is When Time Cannot Wait, meaning PORTADOR SOS is designed for shipment urgency rather than routine parcel movement." },
-  { question: "How do I start?", answer: "Call or WhatsApp operations with origin, destination, deadline, cargo details, weight, dimensions, and any regulated cargo declaration." }
-];
-const normalizedFaqs = normalizeFaqs(faqs);
+const normalizedFaqs = getFounderFaqsForStaticPage("about");
 
 export const metadata: Metadata = {
   title: "About",

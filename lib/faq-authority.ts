@@ -1,32 +1,6 @@
-import {
-  airports,
-  authorityPages,
-  cargoPages,
-  cities,
-  comparisonPages,
-  hubArticles,
-  industries,
-  lanes,
-  legalLinks,
-  routeAliasPages,
-  services,
-  site,
-  useCasePages
-} from "@/lib/site";
-import { customerEducationFaqs } from "@/lib/customer-faqs";
-import { normalizeFaqs, type FAQItem } from "@/lib/faq";
-
-type PageWithFaqs = {
-  slug: string;
-  title: string;
-  faqs: FAQItem[];
-};
-
-type MaybePageWithFaqs = {
-  slug: string;
-  title: string;
-  faqs?: FAQItem[];
-};
+import type { FAQItem } from "@/lib/faq";
+import { founderFAQs, founderFAQSource, type FounderFAQ } from "@/lib/founder-faqs";
+import { legalLinks, site, type PageModel } from "@/lib/site";
 
 export type FAQAuthorityCategory = {
   id: string;
@@ -36,212 +10,267 @@ export type FAQAuthorityCategory = {
   faqs: FAQItem[];
 };
 
-const pagePools = {
-  services,
-  cargo: cargoPages,
-  airports,
-  cities,
-  routes: [...routeAliasPages, ...lanes],
-  industries,
-  useCases: useCasePages,
-  comparisons: comparisonPages,
-  knowledgeHub: hubArticles,
-  authority: authorityPages
-};
+const allFounderFAQs = founderFAQs as readonly FounderFAQ[];
+
+const urgentTerms = ["fastest", "same-day", "same day", "next flight", "nfo", "priority air", "urgent", "air cargo", "domestic", "speed", "deadline"];
+const baggageTerms = ["baggage", "luggage", "suitcase", "personal effects", "student", "nri", "expat", "hotel", "airline", "airport panic", "ghee", "souvenir"];
+const industrialTerms = ["machine", "factory", "manufacturing", "line-down", "production", "industrial", "heavy", "pallet", "automotive", "aog", "aviation", "spare parts"];
+const itTerms = ["laptop", "server", "electronics", "it asset", "it assets", "data center", "computer", "mobile phone", "gpu", "battery", "lithium"];
+const regulatedTerms = ["dangerous", "dg", "lithium", "battery", "restricted", "msds", "dry ice", "pharma", "medical", "temperature", "hazardous", "chemical", "compliance"];
+const complianceTerms = ["gst", "e-way", "eway", "invoice", "pod", "claim", "refund", "fov", "carrier risk", "declared value", "tax", "insurance", "payment", "billing"];
+const airportTerms = ["airport", "terminal", "delhi", "mumbai", "bangalore", "bengaluru", "hyderabad", "chennai", "cochin", "kolkata", "city"];
+const globalTerms = ["international", "customs", "import", "export", "overseas", "country", "abroad", "ata carnet", "passport", "visa", "tourist", "foreign"];
+const documentTerms = ["document", "documents", "passport", "visa", "legal", "tender", "paper", "declaration", "commercial invoice"];
+const trackingTerms = ["tracking", "barcode", "status", "pod", "proof", "notification", "recipient", "tracking number"];
+
+function toFAQItem(faq: FounderFAQ): FAQItem {
+  return {
+    question: faq.question,
+    answer: faq.answer
+  };
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 90) || "faqs";
+}
+
+function cleanCategoryLabel(value: string) {
+  return value.replace(/^[^A-Za-z0-9]+/, "").replace(/\s+/g, " ").trim();
+}
+
+function uniqueFaqItems(faqs: FAQItem[]) {
+  return Array.from(new Map(faqs.map((faq) => [faq.question.trim().toLowerCase(), faq])).values());
+}
+
+function faqSearchText(faq: FounderFAQ) {
+  return `${faq.part} ${faq.section} ${faq.question} ${faq.answer} ${faq.sourceAnswer}`.toLowerCase();
+}
 
 function includesAny(text: string, terms: string[]) {
   const value = text.toLowerCase();
-  return terms.some((term) => value.includes(term));
+  return terms.some((term) => value.includes(term.toLowerCase()));
 }
 
-function uniqueFaqs(faqs: FAQItem[]) {
-  return Array.from(
-    new Map(
-      normalizeFaqs(faqs)
-        .filter((faq) => faq.question.trim() && faq.answer.trim())
-        .map((faq) => [faq.question.trim().toLowerCase(), { question: faq.question.trim(), answer: faq.answer.trim() }])
-    ).values()
-  );
+function matchingFounderFAQs(terms: string[]) {
+  return allFounderFAQs.filter((faq) => includesAny(faqSearchText(faq), terms));
 }
 
-function faqsFromPages(pages: MaybePageWithFaqs[]) {
-  return pages.flatMap((page) => page.faqs ?? []);
+function pickFounderFaqs(terms: string[], limit: number, fallbackTerms: string[] = urgentTerms): FAQItem[] {
+  const primary = matchingFounderFAQs(terms).map(toFAQItem);
+  const fallback = matchingFounderFAQs(fallbackTerms).map(toFAQItem);
+  const broad = allFounderFAQs.map(toFAQItem);
+  return uniqueFaqItems([...primary, ...fallback, ...broad]).slice(0, limit);
 }
 
-function pageFaqs(pages: MaybePageWithFaqs[], terms: string[], faqTerms = terms) {
-  return pages
-    .filter((page) => includesAny(`${page.slug} ${page.title}`, terms))
-    .flatMap((page) => page.faqs ?? [])
-    .filter((faq) => faqTextMatches(faq, faqTerms));
+function balancedFounderFaqs(buckets: { terms: string[]; limit: number }[], limit: number) {
+  const selected: FAQItem[] = [];
+  const used = new Set<string>();
+
+  for (const bucket of buckets) {
+    for (const faq of matchingFounderFAQs(bucket.terms).map(toFAQItem)) {
+      const key = faq.question.toLowerCase();
+      if (used.has(key)) continue;
+      selected.push(faq);
+      used.add(key);
+      if (selected.filter((item) => includesAny(`${item.question} ${item.answer}`, bucket.terms)).length >= bucket.limit) break;
+    }
+  }
+
+  for (const faq of allFounderFAQs.map(toFAQItem)) {
+    if (selected.length >= limit) break;
+    const key = faq.question.toLowerCase();
+    if (!used.has(key)) {
+      selected.push(faq);
+      used.add(key);
+    }
+  }
+
+  return selected.slice(0, limit);
 }
 
-function faqTextMatches(faq: FAQItem, terms: string[]) {
-  return includesAny(`${faq.question} ${faq.answer}`, terms);
+function categoryLinks(text: string) {
+  const value = text.toLowerCase();
+  const links = [
+    { label: "PORTADOR SOS", href: "/services/portador-sos" },
+    { label: "PORTADOR GLOBAL", href: "/services/portador-global" },
+    { label: "Track Shipment", href: site.trackingUrl },
+    { label: "Contact Operations", href: "/contact" }
+  ];
+
+  if (includesAny(value, baggageTerms)) {
+    links.unshift({ label: "Excess Baggage", href: "/cargo/excess-baggage" });
+  }
+
+  if (includesAny(value, industrialTerms)) {
+    links.unshift({ label: "Machine Breakdown", href: "/cargo/machine-breakdown" });
+    links.unshift({ label: "AOG Cargo", href: "/cargo/aog-cargo" });
+  }
+
+  if (includesAny(value, itTerms)) {
+    links.unshift({ label: "Laptop Shipping", href: "/cargo/laptop-shipping" });
+    links.unshift({ label: "Lithium Battery Cargo", href: "/cargo/lithium-battery-cargo" });
+  }
+
+  if (includesAny(value, regulatedTerms)) {
+    links.unshift({ label: "Dangerous Goods", href: "/cargo/dangerous-goods" });
+    links.unshift({ label: "Restricted Goods", href: "/restricted-goods" });
+  }
+
+  if (includesAny(value, complianceTerms)) {
+    links.unshift(...legalLinks.slice(0, 3));
+  }
+
+  if (includesAny(value, airportTerms)) {
+    links.unshift({ label: "All Airports", href: "/airports" });
+    links.unshift({ label: "All Cities", href: "/cities" });
+  }
+
+  return uniqueLinks(links).slice(0, 6);
 }
 
-function matchingFaqs(terms: string[]) {
-  const all = Object.values(pagePools).flatMap((pages) => faqsFromPages(pages));
-  return all.filter((faq) => faqTextMatches(faq, terms));
-}
-
-function categoryFaqs(faqs: FAQItem[], usedQuestions: Set<string>) {
-  const unique = uniqueFaqs(faqs);
-  const fresh = unique.filter((faq) => !usedQuestions.has(faq.question.toLowerCase()));
-  fresh.forEach((faq) => usedQuestions.add(faq.question.toLowerCase()));
-  return fresh;
+function uniqueLinks(links: { label: string; href: string }[]) {
+  return Array.from(new Map(links.map((link) => [`${link.label}-${link.href}`, link])).values());
 }
 
 export function buildFAQAuthorityCategories(): FAQAuthorityCategory[] {
-  const usedQuestions = new Set<string>();
-  const getService = (slug: string) => services.find((service) => service.slug === slug);
+  const groups = new Map<string, { part: string; section: string; faqs: FounderFAQ[] }>();
 
-  const sos = getService("portador-sos");
-  const global = getService("portador-global");
+  for (const faq of allFounderFAQs) {
+    const key = `${faq.part}__${faq.section}`;
+    const group = groups.get(key) ?? { part: faq.part, section: faq.section, faqs: [] };
+    group.faqs.push(faq);
+    groups.set(key, group);
+  }
 
-  const categories: FAQAuthorityCategory[] = [
-    {
-      id: "excess-baggage",
-      title: "Excess Baggage, Student Luggage & Traveler FAQs",
-      description: "Airport panic searches, airline excess baggage alternatives, rejected baggage, student moves, NRI luggage, hotel pickup, and personal effects.",
-      links: [
-        { label: "Excess Baggage", href: "/cargo/excess-baggage" },
-        { label: "Student Luggage Shipping", href: "/student-luggage-shipping" },
-        { label: "Delhi Airport", href: "/airports/delhi-igi-airport" },
-        { label: "Mumbai Airport", href: "/airports/mumbai-csmia" },
-        { label: "PORTADOR GLOBAL", href: "/services/portador-global" }
-      ],
-      faqs: categoryFaqs([
-        ...pageFaqs([...cargoPages, ...authorityPages, ...useCasePages], ["baggage", "luggage", "student", "nri", "personal-goods", "personal goods", "airport-to-home"]),
-        ...matchingFaqs(["baggage", "luggage", "student", "nri", "personal goods", "suitcase", "airport pickup", "hotel"])
-      ], usedQuestions)
-    },
-    {
-      id: "portador-global",
-      title: "PORTADOR GLOBAL Import / Export FAQs",
-      description: "International food, household goods, documents, gifts, luggage, China imports, Dubai imports, Saudi and UAE movement questions.",
-      links: [
-        { label: "PORTADOR GLOBAL", href: "/services/portador-global" },
-        { label: "Restricted Goods", href: "/restricted-goods" },
-        { label: "Excess Baggage", href: "/cargo/excess-baggage" },
-        { label: "Contact Operations", href: "/contact" }
-      ],
-      faqs: categoryFaqs([
-        ...(global?.faqs ?? []),
-        ...matchingFaqs(["global", "international", "import", "export", "customs", "food", "ghee", "documents", "household", "china", "dubai", "saudi", "uae"])
-      ], usedQuestions)
-    },
-    {
-      id: "industrial-b2b",
-      title: "Industrial, Manufacturing & B2B FAQs",
-      description: "Factory line-down cargo, machine parts, manufacturing downtime, heavy shipments, aviation spares, medical equipment, tender and event emergencies.",
-      links: [
-        { label: "Manufacturing Logistics", href: "/industries/manufacturing-logistics" },
-        { label: "Aviation Logistics", href: "/industries/aviation-logistics" },
-        { label: "Machine Breakdown", href: "/cargo/machine-breakdown" },
-        { label: "AOG Cargo", href: "/cargo/aog-cargo" },
-        { label: "Tender Documents", href: "/cargo/tender-document-delivery" }
-      ],
-      faqs: categoryFaqs([
-        ...pageFaqs([...industries, ...cargoPages, ...useCasePages, ...authorityPages], ["manufacturing", "machine", "factory", "breakdown", "aog", "aviation", "medical", "event", "tender", "government", "defence", "high-value", "heavy"]),
-        ...matchingFaqs(["machine", "factory", "manufacturing", "aog", "aviation", "medical", "event", "tender", "heavy", "b2b", "commercial"])
-      ], usedQuestions)
-    },
-    {
-      id: "it-hardware",
-      title: "IT Hardware, Laptop & Data Center FAQs",
-      description: "Laptop courier, server movement, corporate IT assets, electronics cargo, data center equipment, lithium battery rules, and urgent hardware recovery.",
-      links: [
-        { label: "Electronics Logistics", href: "/industries/electronics-logistics" },
-        { label: "Laptop Shipping", href: "/cargo/laptop-shipping" },
-        { label: "Battery Cargo", href: "/cargo/battery-cargo" },
-        { label: "Lithium Battery Cargo", href: "/cargo/lithium-battery-cargo" }
-      ],
-      faqs: categoryFaqs([
-        ...pageFaqs([...industries, ...cargoPages, ...useCasePages, ...authorityPages], ["electronics", "laptop", "server", "data-center", "data center", "it", "hardware", "battery", "lithium"]),
-        ...matchingFaqs(["laptop", "server", "electronics", "it hardware", "data center", "battery", "lithium", "mobile phone"])
-      ], usedQuestions)
-    },
-    {
-      id: "dangerous-goods",
-      title: "Dangerous Goods, Battery & Restricted Cargo FAQs",
-      description: "DG cargo, lithium batteries, MSDS, dry ice, pharma, medical, restricted goods, dangerous cargo declarations, and compliance review.",
-      links: [
-        { label: "Dangerous Goods", href: "/cargo/dangerous-goods" },
-        { label: "Lithium Battery Cargo", href: "/cargo/lithium-battery-cargo" },
-        { label: "Restricted Goods", href: "/restricted-goods" },
-        { label: "Medical Equipment", href: "/cargo/medical-equipment" },
-        { label: "Temperature Controlled Cargo", href: "/cargo/temperature-controlled-cargo" }
-      ],
-      faqs: categoryFaqs([
-        ...pageFaqs([...cargoPages, ...industries, ...authorityPages], ["dangerous", "dg", "battery", "lithium", "restricted", "perishable", "temperature", "medical", "pharma", "dry-ice", "dry ice"]),
-        ...matchingFaqs(["dangerous", "dg", "battery", "lithium", "restricted", "msds", "dry ice", "pharma", "medical", "compliance", "chemical"])
-      ], usedQuestions)
-    },
-    {
-      id: "gst-eway-compliance",
-      title: "GST, E-Way Bill, Invoice & Claims FAQs",
-      description: "GST invoice, e-way bill, commercial invoice, POD, declared value, FOV, Carrier Risk, claims, refunds, restricted goods, and documentation questions.",
-      links: [
-        { label: "Booking & Refund Policy", href: "/booking-refund-policy" },
-        { label: "Terms & Conditions", href: "/terms-conditions" },
-        { label: "Restricted Goods", href: "/restricted-goods" },
-        { label: "Privacy Policy", href: "/privacy-policy" },
-        ...legalLinks
-      ],
-      faqs: categoryFaqs([
-        ...customerEducationFaqs,
-        ...matchingFaqs(["gst", "e-way", "eway", "invoice", "pod", "claim", "refund", "fov", "carrier risk", "own risk", "tax", "commercial invoice", "declared value", "payment"])
-      ], usedQuestions)
-    },
-    {
-      id: "airport-city-route",
-      title: "Airport, City & Route FAQs",
-      description: "Airport cargo, terminal pickup, city-specific same-day movement, route questions, airport-to-home baggage, and urgent cargo near airports.",
-      links: [
-        { label: "All Airports", href: "/airports" },
-        { label: "All Cities", href: "/cities" },
-        { label: "All Routes", href: "/routes" },
-        { label: "Delhi to Mumbai", href: "/routes/delhi-to-mumbai" },
-        { label: "Gurugram", href: "/cities/gurugram" }
-      ],
-      faqs: categoryFaqs([
-        ...faqsFromPages(pagePools.airports),
-        ...faqsFromPages(pagePools.cities),
-        ...faqsFromPages(pagePools.routes)
-      ], usedQuestions)
-    },
-    {
-      id: "sos-air-cargo",
-      title: "Same-Day Air Cargo & NFO FAQs",
-      description: "Questions about fastest same-day support, next flight out cargo, urgent documents, emergency business shipments, and airport-linked movement.",
-      links: [
-        { label: "PORTADOR SOS", href: "/services/portador-sos" },
-        { label: "Same-Day Delivery", href: "/same-day-delivery" },
-        { label: "Next Flight Out", href: "/next-flight-out" },
-        { label: "Airport-to-Airport Cargo", href: "/airport-to-airport-cargo" }
-      ],
-      faqs: categoryFaqs([
-        ...(sos?.faqs ?? []),
-        ...matchingFaqs(["same-day", "same day", "next flight", "nfo", "airport-to-airport", "airport cargo"])
-      ], usedQuestions)
-    },
-    {
-      id: "general-service",
-      title: "General Urgent Cargo FAQs",
-      description: "Broad customer questions about same-day delivery, urgent parcel movement, airport cargo, tracking, pricing, liability, and support.",
-      links: [
-        { label: "PORTADOR SOS", href: "/services/portador-sos" },
-        { label: "Track Shipment", href: site.trackingUrl },
-        { label: "Contact Operations", href: "/contact" },
-        { label: "WhatsApp Operations", href: `${site.whatsapp}?text=${encodeURIComponent("Hi PORTADOR,\n\nNeed assistance with a shipment.\n\nPickup:\nDelivery:\nWeight:\nDeadline:\n\nPlease assist.")}` }
-      ],
-      faqs: categoryFaqs([...(sos?.faqs ?? []), ...customerEducationFaqs], usedQuestions)
-    }
-  ];
-
-  return categories.filter((category) => category.faqs.length > 0);
+  return Array.from(groups.values()).map((group, index) => {
+    const title = `${cleanCategoryLabel(group.part)} - ${cleanCategoryLabel(group.section)}`;
+    return {
+      id: `${String(index + 1).padStart(2, "0")}-${slugify(title)}`,
+      title,
+      description: `Customer FAQ category covering ${cleanCategoryLabel(group.section).toLowerCase()} questions for PORTADOR customers.`,
+      links: categoryLinks(`${group.part} ${group.section}`),
+      faqs: group.faqs.map(toFAQItem)
+    };
+  });
 }
 
 export const faqAuthorityCategories = buildFAQAuthorityCategories();
-export const faqAuthorityFaqs = faqAuthorityCategories.flatMap((category) => category.faqs);
-export const faqAuthorityStats = Object.fromEntries(faqAuthorityCategories.map((category) => [category.id, category.faqs.length]));
+export const faqAuthorityFaqs = allFounderFAQs.map(toFAQItem);
+export const faqAuthorityStats = {
+  source: founderFAQSource.file,
+  total: founderFAQSource.total,
+  parseFailures: founderFAQSource.parseFailures,
+  duplicateQuestionCount: founderFAQSource.duplicateQuestionCount,
+  visibleHubFaqs: faqAuthorityFaqs.length,
+  categories: faqAuthorityCategories.length
+} as const;
+
+export const founderHomepageFaqs = balancedFounderFaqs(
+  [
+    { terms: urgentTerms, limit: 10 },
+    { terms: baggageTerms, limit: 10 },
+    { terms: industrialTerms, limit: 8 },
+    { terms: itTerms, limit: 8 },
+    { terms: regulatedTerms, limit: 8 },
+    { terms: complianceTerms, limit: 6 },
+    { terms: airportTerms, limit: 5 },
+    { terms: globalTerms, limit: 4 },
+    { terms: trackingTerms, limit: 4 }
+  ],
+  60
+);
+
+export function getFounderFaqsForPage(page: PageModel, basePath: string): FAQItem[] {
+  const pageText = `${basePath} ${page.slug} ${page.title} ${page.h1} ${page.description} ${page.keywords.join(" ")}`.toLowerCase();
+
+  if (basePath === "/services" && page.slug === "portador-sos") {
+    return pickFounderFaqs([...urgentTerms, ...airportTerms, ...industrialTerms, ...documentTerms], 70);
+  }
+
+  if (basePath === "/services" && page.slug === "portador-express") {
+    return pickFounderFaqs([...urgentTerms, "next business", "b2b", "weight", "pricing", "commercial", "sla", ...complianceTerms], 45);
+  }
+
+  if (basePath === "/services" && page.slug === "portador-black") {
+    return pickFounderFaqs([...documentTerms, "hand carry", "obc", "high-value", "security", "traveler", "passport", "visa", ...baggageTerms], 45);
+  }
+
+  if (basePath === "/services" && page.slug === "portador-global") {
+    return pickFounderFaqs([...globalTerms, ...baggageTerms, ...documentTerms, "food", "ghee", "household", "personal goods", "customs"], 65);
+  }
+
+  if (basePath === "/cargo" && includesAny(pageText, baggageTerms)) {
+    return pickFounderFaqs([...baggageTerms, ...airportTerms, ...globalTerms], 75);
+  }
+
+  if (basePath === "/cargo" && includesAny(pageText, regulatedTerms)) {
+    return pickFounderFaqs([...regulatedTerms, ...itTerms, ...complianceTerms], 65);
+  }
+
+  if (basePath === "/cargo" && includesAny(pageText, itTerms)) {
+    return pickFounderFaqs([...itTerms, ...regulatedTerms, ...complianceTerms], 55);
+  }
+
+  if (basePath === "/cargo" && includesAny(pageText, industrialTerms)) {
+    return pickFounderFaqs([...industrialTerms, ...urgentTerms, ...complianceTerms], 55);
+  }
+
+  if (basePath === "/cargo" && includesAny(pageText, documentTerms)) {
+    return pickFounderFaqs([...documentTerms, ...urgentTerms, ...complianceTerms], 45);
+  }
+
+  if (basePath === "/airports") {
+    return pickFounderFaqs([...airportTerms, ...baggageTerms, ...urgentTerms, ...trackingTerms], 42);
+  }
+
+  if (basePath === "/cities" || basePath === "/routes" || basePath === "/lanes") {
+    return pickFounderFaqs([...airportTerms, ...urgentTerms, ...baggageTerms, ...industrialTerms], 38);
+  }
+
+  if (basePath === "/industries" && includesAny(pageText, ["manufacturing", "aviation", "industrial", "machine", "aog"])) {
+    return pickFounderFaqs([...industrialTerms, ...urgentTerms, ...complianceTerms], 48);
+  }
+
+  if (basePath === "/industries" && includesAny(pageText, ["electronics", "it", "tech", "startup", "laptop"])) {
+    return pickFounderFaqs([...itTerms, ...regulatedTerms, ...urgentTerms], 48);
+  }
+
+  if (basePath === "/industries" && includesAny(pageText, ["pharma", "medical", "healthcare"])) {
+    return pickFounderFaqs([...regulatedTerms, "medical", "pharma", "dry ice", "temperature"], 48);
+  }
+
+  if (basePath === "/industries" && includesAny(pageText, ["event", "exhibition", "mice"])) {
+    return pickFounderFaqs(["event", "mice", "exhibition", "ata carnet", ...baggageTerms, ...urgentTerms], 42);
+  }
+
+  if (basePath === "/industries" && includesAny(pageText, ["legal", "tender", "document", "student", "high-value", "value"])) {
+    return pickFounderFaqs([...documentTerms, ...baggageTerms, "high-value", ...urgentTerms], 42);
+  }
+
+  if (basePath === "/knowledge-hub" || basePath === "/comparisons") {
+    return pickFounderFaqs([...urgentTerms, ...airportTerms, ...regulatedTerms, ...complianceTerms], 34);
+  }
+
+  return pickFounderFaqs([...pageText.split(/[^a-z0-9]+/).filter((word) => word.length > 3), ...urgentTerms], 24);
+}
+
+export function getFounderFaqsForStaticPage(pageKey: "about" | "contact" | "tracking"): FAQItem[] {
+  if (pageKey === "contact") {
+    return pickFounderFaqs([...urgentTerms, ...documentTerms, ...regulatedTerms, ...complianceTerms, "pricing", "quote"], 42);
+  }
+
+  if (pageKey === "tracking") {
+    return pickFounderFaqs([...trackingTerms, ...urgentTerms, ...baggageTerms, "pod", "proof"], 34);
+  }
+
+  return pickFounderFaqs([...urgentTerms, ...airportTerms, ...industrialTerms, ...baggageTerms, ...regulatedTerms], 36);
+}
+
+export function getFounderListingFaqs(title: string): FAQItem[] {
+  const titleTerms = title.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+  return pickFounderFaqs([...titleTerms, ...urgentTerms, ...airportTerms], 20);
+}

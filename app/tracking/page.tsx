@@ -4,21 +4,9 @@ import { CTA, Section } from "@/components/ui";
 import { TrackingForm } from "@/components/tracking-form";
 import { faqSchema, howToSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
-import { normalizeFaqs } from "@/lib/faq";
+import { getFounderFaqsForStaticPage } from "@/lib/faq-authority";
 
-const faqs = [
-  { question: "What is PORTADOR SOS tracking?", answer: "PORTADOR SOS tracking lets customers open shipment status in the separate PORTADOR-OPS tracking app using an AWB or tracking number." },
-  { question: "Where do I find my reference number?", answer: "Your reference number is shared by the PORTADOR SOS operations desk after shipment registration or booking confirmation." },
-  { question: "Is tracking handled inside PORTADOR.in?", answer: "No. PORTADOR.in is the marketing website only. Tracking is handled by the separate PORTADOR-OPS app at ops.portador.in." },
-  { question: "Can I track same-day air cargo?", answer: "Yes. Same-day air cargo status can be requested using the shipment reference or through the operations desk." },
-  { question: "Can I track airport-to-airport cargo?", answer: "Yes. Airport-to-airport cargo updates can include pickup, airport handover, air movement, arrival, and delivery status." },
-  { question: "What status updates matter most?", answer: "Important updates include pickup completed, airport handover, air movement, destination arrived, out for delivery, and handed over." },
-  { question: "Why does urgent cargo need human tracking?", answer: "Urgent air logistics depends on timing, airport handling, cargo eligibility, and destination readiness, so human support helps clarify shipment updates." },
-  { question: "Can I request proof of delivery?", answer: "Yes. PORTADOR SOS can coordinate proof of delivery or delivery where available for the shipment type." },
-  { question: "What if I do not have a reference number?", answer: "Contact operations with sender, receiver, route, and booking details so the team can locate the shipment." },
-  { question: "Does tracking cover hand carry shipments?", answer: "Hand carry and OBC shipments can be updated through the assigned coordinator because the movement is personally supervised." }
-];
-const normalizedFaqs = normalizeFaqs(faqs);
+const normalizedFaqs = getFounderFaqsForStaticPage("tracking");
 
 export const metadata: Metadata = {
   title: "Tracking",
