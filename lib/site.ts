@@ -891,14 +891,14 @@ const phaseTwoHubProfiles = [
     `Key comparison: ${profile.compare}`,
     "Explains availability instead of promising impossible fixed timelines",
     "Connects services, cargo categories, airports, and urgent use cases",
-    "Written for customers searching in simple language and industry terms"
+    "Useful for urgent buyers who need plain answers before booking"
   ],
   howItWorks: [
     "Identify the deadline and consequence of delay",
     "Check cargo type, weight, dimensions, value, documents, and restrictions",
     "Compare same-day, NFO, airport cargo, hand-carry, express, or international options",
     "Confirm pickup or delivery serviceability where required",
-    "Choose the fastest feasible PORTADOR option for the shipment"
+    "Choose the fastest available PORTADOR option for the shipment"
   ],
   useCases: [
     "AOG and aviation spares",

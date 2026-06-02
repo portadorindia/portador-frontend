@@ -210,7 +210,7 @@ const baseHomeFaqs = [
   ...customerEducationFaqs
 ];
 
-const homeFaqs = [...new Map([...phaseTwoHomeFaqs, ...baseHomeFaqs].map((faq) => [faq.question, faq])).values()];
+const homeFaqs = [...new Map([...phaseTwoHomeFaqs, ...baseHomeFaqs].map((faq) => [faq.question, faq])).values()].slice(0, 60);
 const normalizedHomeFaqs = normalizeFaqs(homeFaqs);
 
 export default function Home() {

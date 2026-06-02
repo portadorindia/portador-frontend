@@ -39,6 +39,7 @@ export function GET() {
     "- City pages: airport-connected Indian city pages for urgent cargo, baggage, documents, machine parts, laptops, and B2B shipments.",
     "- Industrial cargo: manufacturing, automotive, electronics, IT hardware, data center, healthcare, pharma, AOG, events, tender documents, government vendors, and legally safe defence vendor cargo.",
     "- Global export/import: PORTADOR GLOBAL covers urgent import/export air cargo where commodity, customs, packing, carrier policy, documentation, and destination restrictions allow.",
+    "- FAQ authority hub: /faqs groups visible customer FAQs for general urgent cargo, SOS air cargo, excess baggage, PORTADOR GLOBAL import/export, industrial/B2B cargo, IT hardware, dangerous goods, GST/e-way bill/compliance, airports, cities, and routes.",
     "- Tracking remains separate at ops.portador.in; PORTADOR.in is the marketing and SEO frontend.",
     "",
     "## Nearby Airport Demand Areas",
