@@ -162,22 +162,23 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_28%,rgba(227,6,19,0.1),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.025),transparent_38%)]" />
         <div className="absolute left-1/2 top-8 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-[#e30613]/7 blur-3xl" />
         <div className="container-shell relative grid w-full gap-4 lg:grid-cols-[52fr_48fr] lg:items-center">
-          <div className="max-w-[620px]">
-            <h1 className="max-w-3xl text-[clamp(2.3rem,4vw,4.25rem)] font-black leading-[0.94] text-white">
-              Urgent Air Cargo & Same Day Delivery Across India
+          <div className="min-w-0 w-full max-w-[calc(100vw-24px)] pr-3 sm:max-w-[620px] sm:pr-0">
+            <h1 className="max-w-3xl break-words text-[clamp(2.15rem,3.6vw,3.8rem)] font-black leading-[1.02] text-white">
+              Urgent Air Cargo & <span className="text-[#e30613]">Same-Day</span> Delivery Across India
             </h1>
-            <h2 className="mt-3 max-w-2xl text-xl font-semibold leading-7 text-[#ff4a54] md:text-2xl md:leading-8">
-              10–16 Hour Delivery Through India&apos;s Commercial Airline Network
+            <h2 className="mt-3 max-w-2xl break-words text-base font-medium leading-6 text-[#e30613] sm:text-lg md:text-2xl md:leading-8">
+              10–16 Hour Delivery for Time-Critical Shipments
             </h2>
-            <p className="mt-4 max-w-2xl text-sm font-medium leading-6 text-zinc-300 md:text-base md:leading-7">
-              When production stops, flights are missed, inventory runs out, or deadlines cannot wait, PORTADOR arranges urgent pickup, air cargo movement, and final delivery across major Indian cities.
+            <p className="mt-4 max-w-2xl break-words text-sm font-medium leading-6 text-zinc-300 md:text-base md:leading-7">
+              When production stops, inventory runs out, flights are missed, or deadlines cannot wait, PORTADOR arranges urgent pickup, rapid movement, and final delivery across major Indian cities.
             </p>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-5 flex max-w-[calc(100vw-48px)] flex-col gap-3 sm:max-w-full sm:flex-row sm:flex-wrap">
               <PrimaryButton href={whatsappHref}>Get Instant Quote</PrimaryButton>
               <SecondaryButton href={whatsappHref}>Book Pickup</SecondaryButton>
             </div>
-            <p className="mt-3 max-w-xl text-xs font-medium leading-5 text-zinc-500 md:text-sm">
-              Trusted for time-critical business shipments, industrial cargo, airport cargo, excess baggage, and emergency logistics movements.
+            <p className="mt-3 max-w-[calc(100vw-48px)] text-xs font-medium leading-5 text-zinc-500 sm:max-w-xl md:text-sm">
+              <span className="block">Trusted for time-critical business shipments and airport cargo.</span>
+              <span className="block">Excess baggage and emergency logistics across major Indian cities.</span>
             </p>
           </div>
 
