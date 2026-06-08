@@ -23,15 +23,6 @@ import { hubArticles, industries, site, whatsappHref } from "@/lib/site";
 import { faqSchema, serviceSchema } from "@/lib/schema";
 import { founderHomepageFaqs } from "@/lib/faq-authority";
 
-const heroSignals = [
-  "50+ Airport Cargo Connections",
-  "5000+ Serviceable Pin Codes",
-  "24x7 Operations Desk",
-  "Same-Day / NFO Availability",
-  "Human Operations Coordination",
-  "DG & Battery Cargo Support"
-];
-
 export const metadata: Metadata = {
   alternates: {
     canonical: "https://portador.in"
@@ -171,35 +162,23 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_28%,rgba(227,6,19,0.1),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.025),transparent_38%)]" />
         <div className="absolute left-1/2 top-8 h-[260px] w-[260px] -translate-x-1/2 rounded-full bg-[#e30613]/7 blur-3xl" />
         <div className="container-shell relative grid w-full gap-4 lg:grid-cols-[52fr_48fr] lg:items-center">
-          <div className="max-w-[600px]">
-            <h1 className="max-w-3xl text-[clamp(2.45rem,4.4vw,4.55rem)] font-black uppercase leading-[0.88] text-white">
-              WHEN <span className="text-[#e30613]">TIME</span>
-              <br />
-              CANNOT WAIT.
+          <div className="max-w-[620px]">
+            <h1 className="max-w-3xl text-[clamp(2.3rem,4vw,4.25rem)] font-black leading-[0.94] text-white">
+              Urgent Air Cargo & Same Day Delivery Across India
             </h1>
-            <p className="mt-3 max-w-xl text-sm font-medium leading-6 text-zinc-300 md:text-base">
-              Same-Day Air Cargo, Next Flight Out coordination, Airport Baggage Support, Excess Luggage Shipping and Premium Time-Critical Logistics Across India.
+            <h2 className="mt-3 max-w-2xl text-xl font-semibold leading-7 text-[#ff4a54] md:text-2xl md:leading-8">
+              10–16 Hour Delivery Through India&apos;s Commercial Airline Network
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm font-medium leading-6 text-zinc-300 md:text-base md:leading-7">
+              When production stops, flights are missed, inventory runs out, or deadlines cannot wait, PORTADOR arranges urgent pickup, air cargo movement, and final delivery across major Indian cities.
             </p>
-            <div className="mt-3 max-w-xl rounded-lg border border-white/10 bg-white/[0.045] p-3.5 shadow-[0_0_22px_rgba(227,6,19,0.07)]">
-              <p className="mb-1.5 text-sm font-semibold text-white">Urgent Shipment Support</p>
-              <p className="text-[13px] leading-5 text-zinc-200">
-                PORTADOR SOS helps businesses and travelers move urgent cargo when normal courier timelines are not enough.
-              </p>
-              <p className="mt-2 text-[13px] leading-5 text-zinc-300">
-                We support same-day, next-flight-out, airport cargo, excess baggage, DG cargo, battery cargo, and high-priority shipments with proper documentation and operational review.
-              </p>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <PrimaryButton href={whatsappHref}>Get Instant Quote</PrimaryButton>
+              <SecondaryButton href={whatsappHref}>Book Pickup</SecondaryButton>
             </div>
-            <div className="mt-3 grid grid-cols-2 gap-2 text-[10.5px] font-semibold text-zinc-200 sm:grid-cols-3">
-              {heroSignals.map((signal) => (
-                <span key={signal} className="flex min-h-9 items-center rounded-md border border-white/10 bg-black/35 px-2.5 py-1.5 leading-4 shadow-[0_0_16px_rgba(227,6,19,0.05)]">
-                  {signal}
-                </span>
-              ))}
-            </div>
-            <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <PrimaryButton href={whatsappHref}>Get Urgent Quote</PrimaryButton>
-              <SecondaryButton href={whatsappHref}>WhatsApp Operations</SecondaryButton>
-            </div>
+            <p className="mt-3 max-w-xl text-xs font-medium leading-5 text-zinc-500 md:text-sm">
+              Trusted for time-critical business shipments, industrial cargo, airport cargo, excess baggage, and emergency logistics movements.
+            </p>
           </div>
 
           <AviationHeroVisual />
