@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
+import { AnalyticsEvents } from "@/components/analytics-events";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { BackToTopButton, FloatingOperationsCTA, StickyConversionBar } from "@/components/ui";
+import { gaMeasurementId, gtmId } from "@/lib/analytics";
 import { localBusinessSchema, organizationSchema, placeSchema, serviceSchemas, websiteSchema } from "@/lib/schema";
-
-const gtmId = "GTM-T39648NN";
-const ga4MeasurementId = "G-9EJGWV5DXM";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://portador.in"),
@@ -62,6 +60,21 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-IN">
+      <head>
+        <script
+          id="portador-gtm-head"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`
+          }}
+        />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} />
+        <script
+          id="portador-ga4-head"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaMeasurementId}',{'send_page_view':false});window.dataLayer.push({'event':'portador_analytics_ready','gtm_id':'${gtmId}','ga4_measurement_id':'${gaMeasurementId}'});`
+          }}
+        />
+      </head>
       <body>
         <noscript>
           <iframe
@@ -72,24 +85,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             title="Google Tag Manager"
           />
         </noscript>
-        <Script
-          id="portador-gtm-datalayer"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];window.dataLayer.push({'ga4MeasurementId':'${ga4MeasurementId}','event':'portador_analytics_ready'});`
-          }}
-        />
-        <Script
-          id="portador-gtm"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, localBusinessSchema, websiteSchema, placeSchema, ...serviceSchemas]) }}
         />
+        <AnalyticsEvents />
         <Header />
         {children}
         <BackToTopButton />

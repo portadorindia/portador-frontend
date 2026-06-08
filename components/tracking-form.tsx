@@ -2,6 +2,7 @@
 
 import { Search } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { pushAnalyticsEvent } from "@/lib/analytics";
 import { site } from "@/lib/site";
 
 export function TrackingForm() {
@@ -11,6 +12,11 @@ export function TrackingForm() {
     event.preventDefault();
     const trackingNumber = awb.trim();
     const destination = trackingNumber ? `${site.trackingUrl}/${encodeURIComponent(trackingNumber)}` : site.trackingUrl;
+    pushAnalyticsEvent("tracking_form_submit", {
+      has_awb: Boolean(trackingNumber),
+      awb_length: trackingNumber.length,
+      destination
+    });
     window.location.href = destination;
   }
 

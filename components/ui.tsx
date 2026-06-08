@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, ArrowUp, Headphones, MessageCircle, Minus, PhoneCall, X } from "lucide-react";
 import { type FormEvent, useEffect, useState } from "react";
+import { pushAnalyticsEvent } from "@/lib/analytics";
 import { site, whatsappHref } from "@/lib/site";
 
 export function Section({
@@ -242,6 +243,13 @@ export function EmergencyCallback() {
     ].join("\n");
 
     const whatsappBase = site.whatsapp || "https://wa.me/919818038779";
+    pushAnalyticsEvent("quote_contact_form_submit", {
+      form_name: "emergency_callback",
+      has_origin: Boolean(form.origin.trim()),
+      has_destination: Boolean(form.destination.trim()),
+      has_weight: Boolean(form.weight.trim()),
+      has_commodity: Boolean(form.commodity.trim())
+    });
     window.location.href = `${whatsappBase}?text=${encodeURIComponent(message)}`;
   }
 
