@@ -1,5 +1,5 @@
 export const gtmId = process.env.NEXT_PUBLIC_GTM_ID || "GTM-T39648NN";
-export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-9EJGWV5DXM";
+export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-9EJGWW5DXM";
 
 export type AnalyticsEventName =
   | "page_view"

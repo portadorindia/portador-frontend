@@ -3,7 +3,7 @@
 ## Installed IDs
 
 - Google Tag Manager: `GTM-T39648NN`
-- GA4 Measurement ID: `G-9EJGWV5DXM`
+- GA4 Measurement ID: `G-9EJGWW5DXM`
 
 The code supports environment overrides:
 
@@ -33,6 +33,6 @@ Events are pushed to `window.dataLayer` for GTM and to `gtag` for direct GA4 fal
 
 ## GTM Publishing Note
 
-The website now sends analytics events directly and through `dataLayer`. If GA4 is configured inside Google Tag Manager, confirm that the GTM workspace has a published GA4 configuration tag using `G-9EJGWV5DXM` and event tags/listeners for the events above.
+The website now sends analytics events directly and through `dataLayer`. If GA4 is configured inside Google Tag Manager, confirm that the GTM workspace has a published GA4 configuration tag using `G-9EJGWW5DXM` and event tags/listeners for the events above.
 
 If GTM is later confirmed to fire GA4 page views with the same Measurement ID, remove or disable the direct GA4 fallback to avoid duplicate GA4 events.
