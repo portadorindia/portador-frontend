@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Instagram, Linkedin, Mail, MapPin, MessageCircle, PackageCheck, PhoneCall, Youtube } from "lucide-react";
-import { cargoPages, cities, hubArticles, legalLinks, services, site, socialLinks, whatsappHref } from "@/lib/site";
+import { cargoPages, cities, fraudAdvisoryLink, hubArticles, legalLinks, services, site, socialLinks, whatsappHref } from "@/lib/site";
 
 const socialIconMap = {
   "Head Office Location & Reviews": MapPin,
@@ -71,7 +71,7 @@ export function Footer() {
           <FooterGroup title="Cargo Categories" links={cargoPages.slice(0, 8).map((item) => ({ label: item.title, href: `/cargo/${item.slug}` }))} />
           <FooterGroup title="PORTADOR Network" links={cities.slice(0, 8).map((item) => ({ label: item.title, href: `/cities/${item.slug}` }))} />
           <FooterGroup title="Knowledge Hub" links={hubArticles.slice(0, 6).map((item) => ({ label: item.title, href: `/knowledge-hub/${item.slug}` }))} />
-          <FooterGroup title="Legal" links={legalLinks} />
+          <FooterGroup title="Legal" links={[...legalLinks, fraudAdvisoryLink]} />
         </div>
         <div className="mt-10 border-t border-white/10 pt-6 text-xs text-zinc-500">
           © 2026 {site.legalName} • Built for Urgency.

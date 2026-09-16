@@ -13,9 +13,7 @@ export function TrackingForm() {
     const trackingNumber = awb.trim();
     const destination = trackingNumber ? `${site.trackingUrl}/${encodeURIComponent(trackingNumber)}` : site.trackingUrl;
     pushAnalyticsEvent("tracking_form_submit", {
-      has_awb: Boolean(trackingNumber),
-      awb_length: trackingNumber.length,
-      destination
+      entry_type: trackingNumber ? "awb" : "tracking_portal"
     });
     window.location.href = destination;
   }

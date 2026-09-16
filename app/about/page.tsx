@@ -20,7 +20,7 @@ export default function AboutPage() {
         <div className="airport-grid absolute inset-0 opacity-70" />
         <div className="container-shell relative">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-[#e30613]">About PORTADOR SOS</p>
-          <h1 className="max-w-4xl text-4xl font-black leading-tight text-white lg:text-5xl xl:text-6xl">India's SOS Air Cargo Operations Platform</h1>
+          <h1 className="max-w-4xl text-4xl font-black leading-tight text-white lg:text-5xl xl:text-6xl">India&apos;s SOS Air Cargo Operations Platform</h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300">PORTADOR SOS exists for business and personal shipments where normal courier timelines are not enough. The brand combines premium air cargo support, airport-linked movement, and real human urgency.</p>
         </div>
       </section>

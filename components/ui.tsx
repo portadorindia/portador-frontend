@@ -103,14 +103,14 @@ export function CTA({ title = "When Time Cannot Wait, speak to operations now.",
 
 export function StickyConversionBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#050506]/92 px-3 py-3 pb-[calc(12px+env(safe-area-inset-bottom))] backdrop-blur-xl md:hidden">
-      <div className="grid grid-cols-2 gap-2">
-        <Link href={site.phoneHref} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#e30613] text-sm font-bold text-white">
-          <PhoneCall size={16} />
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#050506]/92 px-2.5 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] backdrop-blur-xl md:hidden">
+      <div className="grid min-w-0 grid-cols-2 gap-2">
+        <Link href={site.phoneHref} className="inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-md bg-[#e30613] px-2 text-xs font-bold text-white min-[400px]:text-sm">
+          <PhoneCall size={16} className="shrink-0" />
           Call Now
         </Link>
-        <Link href={whatsappHref} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-white/15 bg-white/[0.04] text-sm font-bold text-white">
-          <MessageCircle size={16} />
+        <Link href={whatsappHref} className="inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-md border border-white/15 bg-white/[0.04] px-2 text-xs font-bold text-white min-[400px]:text-sm">
+          <MessageCircle size={16} className="shrink-0" />
           WhatsApp Operations
         </Link>
       </div>
@@ -125,7 +125,7 @@ export function FloatingOperationsCTA() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
-      className="fixed bottom-24 right-4 z-50 md:bottom-6 md:right-6"
+      className="fixed bottom-[calc(6rem+env(safe-area-inset-bottom))] right-3 z-[49] md:bottom-6 md:right-6"
     >
       {open ? (
         <div className="w-[min(300px,calc(100vw-32px))] rounded-lg border border-[#e30613]/30 bg-[#090a0c]/95 p-3 shadow-[0_0_24px_rgba(227,6,19,0.16)] backdrop-blur-xl">
@@ -189,7 +189,7 @@ export function BackToTopButton() {
     <button
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-24 left-4 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/80 text-white shadow-[0_0_20px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-[#e30613]/50 hover:text-[#ff4a54] md:bottom-6 md:left-6"
+      className="fixed bottom-[calc(6rem+env(safe-area-inset-bottom))] left-3 z-[49] inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/80 text-white shadow-[0_0_20px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-[#e30613]/50 hover:text-[#ff4a54] md:bottom-6 md:left-6"
       aria-label="Back to top"
     >
       <ArrowUp size={17} />
@@ -280,6 +280,8 @@ export function EmergencyCallback() {
                 <input
                   id={`callback-${field.key}`}
                   aria-label={field.label}
+                  aria-invalid={Boolean(error) && field.required ? true : undefined}
+                  aria-describedby={error && field.required ? "callback-form-error" : undefined}
                   value={form[field.key]}
                   onChange={(event) => updateField(field.key, event.target.value)}
                   placeholder={field.placeholder}
@@ -289,7 +291,9 @@ export function EmergencyCallback() {
                 />
               </div>
             ))}
-            {error ? <p className="text-sm font-semibold text-[#ff4a54] md:col-span-2 xl:col-span-3">{error}</p> : null}
+            <div aria-live="assertive" aria-atomic="true" className="md:col-span-2 xl:col-span-3">
+              {error ? <p id="callback-form-error" role="alert" className="text-sm font-semibold text-[#ff4a54]">{error}</p> : null}
+            </div>
             <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 text-sm font-bold text-white transition hover:bg-[#ff1b28] md:col-span-2 xl:col-span-1">
               <MessageCircle size={16} />
               Request Callback

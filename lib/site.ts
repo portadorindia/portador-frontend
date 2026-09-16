@@ -86,6 +86,11 @@ export const legalLinks = [
   { label: "Terms & Conditions", href: "/terms-conditions" }
 ];
 
+export const fraudAdvisoryLink = {
+  label: "Fraud & Brand Impersonation Advisory",
+  href: "/fraud-brand-impersonation-advisory"
+};
+
 export const socialLinks = [
   { label: "Head Office Location & Reviews", href: "https://maps.app.goo.gl/8NYstBm3itwBkDNH7" },
   { label: "YouTube Channel", href: "https://www.youtube.com/@portadorbharat" },

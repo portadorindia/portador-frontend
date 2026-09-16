@@ -4,7 +4,8 @@ import { useCasePages } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Urgent Logistics Use Cases",
-  description: "High-conversion urgent logistics use cases including machine breakdown shipments, emergency passport delivery, baggage transfer, tender documents, and missed flight baggage recovery."
+  description: "High-conversion urgent logistics use cases including machine breakdown shipments, emergency passport delivery, baggage transfer, tender documents, and missed flight baggage recovery.",
+  alternates: { canonical: "https://portador.in/use-cases" }
 };
 
 export default function UseCasesPage() {

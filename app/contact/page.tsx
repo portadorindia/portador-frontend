@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Instagram, Linkedin, MapPin, MessageCircle, PhoneCall, Send, Youtube } from "lucide-react";
+import Link from "next/link";
+import { Instagram, Linkedin, MapPin, MessageCircle, PhoneCall, Send, ShieldAlert, Youtube } from "lucide-react";
 import { BulletGrid, FAQBlock, Process } from "@/components/page-template";
 import { CTA, EmergencyCallback, Section } from "@/components/ui";
 import { faqSchema } from "@/lib/schema";
@@ -56,6 +57,20 @@ export default function ContactPage() {
               </a>
             );
           })}
+        </div>
+      </Section>
+      <Section eyebrow="Customer safety" title="Verify unexpected PORTADOR communications">
+        <div className="glass-panel flex flex-col gap-5 rounded-lg p-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex max-w-3xl gap-4">
+            <ShieldAlert className="mt-1 shrink-0 text-[#e30613]" size={24} aria-hidden="true" />
+            <div>
+              <h3 className="text-xl font-semibold text-white">Fraud & Brand Impersonation Advisory</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-400">If a message, booking request, or payment communication appears suspicious, pause and verify it through the official contact details on this page before taking action.</p>
+            </div>
+          </div>
+          <Link href="/fraud-brand-impersonation-advisory" className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-md border border-white/15 px-4 text-sm font-bold text-white transition hover:border-[#e30613]/55 hover:bg-white/[0.04]">
+            Read official advisory
+          </Link>
         </div>
       </Section>
       <BulletGrid eyebrow="Benefits" title="Why contact operations directly" items={["Faster route review", "Air cargo timing awareness", "Commodity acceptance checks", "Pickup and airport planning", "Human coordinator context", "Clear next action for urgent cargo"]} />

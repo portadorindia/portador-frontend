@@ -10,6 +10,7 @@ import {
   MapPin,
   Plane,
   Route,
+  ShieldAlert,
   ShieldCheck,
   Siren,
   Warehouse,
@@ -186,6 +187,24 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-4 md:py-5" aria-labelledby="homepage-fraud-advisory-title">
+        <div className="container-shell">
+          <div className="flex flex-col gap-4 rounded-lg border border-[#e30613]/25 bg-[#e30613]/[0.07] p-4 sm:flex-row sm:items-center sm:justify-between md:px-5">
+            <div className="flex min-w-0 gap-3">
+              <ShieldAlert className="mt-0.5 shrink-0 text-[#e30613]" size={22} aria-hidden="true" />
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e30613]">Official customer advisory</p>
+                <h2 id="homepage-fraud-advisory-title" className="mt-1 text-base font-semibold text-white md:text-lg">Received an unexpected PORTADOR message or payment request?</h2>
+                <p className="mt-1 text-sm leading-6 text-zinc-400">Verify it through official PORTADOR channels before sharing personal information or making payment.</p>
+              </div>
+            </div>
+            <Link href="/fraud-brand-impersonation-advisory" className="inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-md border border-white/15 px-4 text-sm font-bold text-white transition hover:border-[#e30613]/55 hover:bg-white/[0.04]">
+              Read advisory <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Section eyebrow="Track shipment" title="Track Your PORTADOR Shipment">
         <TrackingForm />
       </Section>
@@ -358,7 +377,7 @@ export default function Home() {
       <Section eyebrow="Customer trust" title="Customer Trust Signals">
         <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <div className="ai-snippet rounded-md">
-            <h3 className="text-xl font-semibold text-white">See verified customer feedback and PORTADOR's business presence on Google.</h3>
+            <h3 className="text-xl font-semibold text-white">See verified customer feedback and PORTADOR&apos;s business presence on Google.</h3>
             <p className="mt-4 text-base leading-8 text-zinc-100">
               PORTADOR does not show fabricated ratings or review text. Customers can open the live Google Business profile to review public business information and verified customer feedback.
             </p>

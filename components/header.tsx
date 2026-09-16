@@ -127,6 +127,8 @@ export function Header() {
     Contact: true
   });
   const moreRef = useRef<HTMLDivElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileDrawerRef = useRef<HTMLDivElement>(null);
   const moreLinks = [...moreNavItems, ...legalLinks];
 
   useEffect(() => {
@@ -150,10 +152,45 @@ export function Header() {
 
   useEffect(() => {
     if (!open) return;
+
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
+    const drawer = mobileDrawerRef.current;
+    const menuButton = mobileMenuButtonRef.current;
+    const focusableSelector = "a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex='-1'])";
+    const focusFrame = window.requestAnimationFrame(() => {
+      drawer?.querySelector<HTMLElement>("[data-mobile-menu-focus]")?.focus();
+    });
+
+    function handleDrawerKeydown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !drawer) return;
+      const focusable = Array.from(drawer.querySelectorAll<HTMLElement>(focusableSelector)).filter((element) => !element.hasAttribute("disabled"));
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleDrawerKeydown);
     return () => {
+      window.cancelAnimationFrame(focusFrame);
+      document.removeEventListener("keydown", handleDrawerKeydown);
       document.body.style.overflow = originalOverflow;
+      window.requestAnimationFrame(() => menuButton?.focus());
     };
   }, [open]);
 
@@ -207,14 +244,39 @@ export function Header() {
             WhatsApp
           </Link>
         </div>
-        <button className="rounded-md border border-white/15 p-2 text-white xl:hidden" onClick={() => setOpen((value) => !value)} aria-label="Toggle menu">
+        <button
+          ref={mobileMenuButtonRef}
+          type="button"
+          className="rounded-md border border-white/15 p-2 text-white xl:hidden"
+          onClick={() => setOpen((value) => !value)}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+        >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
       {open ? (
-        <div className="fixed inset-x-0 top-16 z-50 h-[calc(100vh-64px)] border-t border-white/10 bg-[#06070a]/98 shadow-2xl backdrop-blur-xl xl:hidden">
+        <div
+          ref={mobileDrawerRef}
+          id="mobile-navigation"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          className="fixed inset-x-0 top-16 z-50 h-[calc(100dvh-64px)] border-t border-white/10 bg-[#06070a]/98 shadow-2xl backdrop-blur-xl xl:hidden"
+        >
           <div className="h-full overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch]">
-            <div className="container-shell grid gap-3 pb-40 pt-4">
+            <div className="container-shell flex justify-end pt-3">
+              <button
+                type="button"
+                data-mobile-menu-focus
+                onClick={closeMobileMenu}
+                className="inline-flex min-h-10 items-center gap-2 rounded-md border border-white/15 px-3 text-sm font-bold text-white"
+              >
+                Close menu <X size={16} />
+              </button>
+            </div>
+            <div className="container-shell grid gap-3 pb-[calc(10rem+env(safe-area-inset-bottom))] pt-3">
               <div className="rounded-lg border border-[#e30613]/25 bg-[#e30613]/10 p-4">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff4a54]">When Time Cannot Wait</p>
                 <p className="mt-2 text-sm leading-6 text-zinc-200">Same-day air cargo, NFO logistics, airport cargo, excess baggage, and 24x7 human operations.</p>

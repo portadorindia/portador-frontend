@@ -89,9 +89,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, localBusinessSchema, websiteSchema, placeSchema, ...serviceSchemas]) }}
         />
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <AnalyticsEvents />
         <Header />
-        {children}
+        <div id="main-content" tabIndex={-1}>
+          {children}
+        </div>
         <BackToTopButton />
         <FloatingOperationsCTA />
         <StickyConversionBar />

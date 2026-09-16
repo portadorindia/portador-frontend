@@ -146,7 +146,7 @@ export const placeSchema = {
   }
 };
 
-export const serviceSchemas = offerCatalog.itemListElement.map((offer: any) => ({
+export const serviceSchemas = offerCatalog.itemListElement.map((offer) => ({
   "@context": "https://schema.org",
   "@type": "Service",
   name: offer.itemOffered.name,
