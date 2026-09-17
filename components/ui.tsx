@@ -89,10 +89,6 @@ export function CTA({ title = "When Time Cannot Wait, speak to operations now.",
                 <MessageCircle size={17} />
                 WhatsApp Shipment Details
               </SecondaryButton>
-              <SecondaryButton href={whatsappHref}>
-                <Headphones size={17} />
-                Escalate Urgent Shipment
-              </SecondaryButton>
             </div>
           </div>
         </div>
@@ -310,14 +306,14 @@ export function QuickSelector() {
     { title: "Machine Parts", detail: "Breakdown support" },
     { title: "Legal Documents", detail: "Tender & legal papers" },
     { title: "Laptop Shipping", detail: "IT equipment" },
+    { title: "Heavy Cargo", detail: "50 kg+ B2B requirements" },
     { title: "Dangerous Goods, Batteries & Restricted Cargo", detail: "Approval review" },
     { title: "Excess Baggage", detail: "Airport pickup & drop" },
     { title: "Medical Equipment", detail: "Surgical equipment" },
     { title: "AOG Cargo", detail: "Aviation spares" },
-    { title: "Perishables", detail: "Food cargo" },
     { title: "Temperature Controlled Cargo", detail: "Dry ice & frozen cargo" },
     { title: "High-Value Cargo", detail: "Premium equipment" },
-    { title: "Hand Carry / OBC", detail: "4-7 hours option" },
+    { title: "Event Logistics", detail: "Time-bound event material" },
     { title: "Other Urgent Cargo", detail: "Share cargo details. PORTADOR will check service availability." }
   ];
   return (

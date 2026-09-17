@@ -1,10 +1,10 @@
-import { Boxes, BriefcaseBusiness, Globe2, Headphones, Plane, ShieldCheck, Weight } from "lucide-react";
+import { Boxes, BriefcaseBusiness, Clock3, Globe2, Headphones, Plane, ShieldCheck, Siren } from "lucide-react";
 
-const capabilityItems = [
-  { label: "SOS / NFO", detail: "Critical priority", Icon: Plane },
-  { label: "Heavy Cargo", detail: "50 kg+ B2B focus", Icon: Weight },
+const serviceFamilyItems = [
+  { label: "PORTADOR SOS", detail: "Same-Day + NFO", Icon: Siren },
+  { label: "PORTADOR EXPRESS", detail: "Next / second business day", Icon: Clock3 },
   { label: "PORTADOR BLACK", detail: "OBC / hand carry", Icon: BriefcaseBusiness },
-  { label: "International", detail: "Priority movements", Icon: Globe2 }
+  { label: "PORTADOR GLOBAL", detail: "International priority", Icon: Globe2 }
 ];
 
 export function AviationHeroVisual() {
@@ -16,12 +16,12 @@ export function AviationHeroVisual() {
       <div className="relative p-4 sm:p-5">
         <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
           <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#e30613]">PORTADOR priority desk</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#e30613]">PORTADOR service control</p>
             <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">Time-Critical Cargo Control</h2>
           </div>
           <div className="inline-flex shrink-0 items-center gap-2 rounded-md border border-[#e30613]/35 bg-[#e30613]/10 px-3 py-2 text-xs font-bold text-white">
             <span className="h-2 w-2 rounded-full bg-[#e30613] shadow-[0_0_12px_rgba(227,6,19,0.75)]" />
-            24x7 desk
+            Live desk
           </div>
         </div>
 
@@ -47,7 +47,7 @@ export function AviationHeroVisual() {
 
           <div className="grid content-start gap-2">
             <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-500">Service families</p>
-            {capabilityItems.map(({ label, detail, Icon }) => (
+            {serviceFamilyItems.map(({ label, detail, Icon }) => (
               <div key={label} className="flex min-h-[48px] items-center gap-3 rounded-md border border-white/10 bg-white/[0.025] px-3 py-2">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-[#e30613]/25 bg-[#e30613]/10 text-[#e30613]">
                   <Icon size={16} aria-hidden="true" />

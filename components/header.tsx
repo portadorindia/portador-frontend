@@ -204,10 +204,10 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-[#050506]/94 shadow-[0_10px_35px_rgba(0,0,0,0.24)] backdrop-blur-xl">
-      <div className="container-shell flex h-[68px] items-center justify-between">
+      <div className="container-shell flex h-[88px] items-center justify-between md:h-[96px]">
         <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="PORTADOR SOS homepage">
-          <span className="relative block h-8 w-[138px] shrink-0 overflow-hidden md:h-10 md:w-[168px]">
-            <img src={site.logo} alt="PORTADOR SOS" className="absolute left-1/2 top-1/2 w-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[182px]" />
+          <span className="block h-[88px] w-[132px] shrink-0 md:h-[96px] md:w-[144px]">
+            <img src={site.logo} alt="PORTADOR SOS" className="h-full w-full object-contain" />
           </span>
           <span className="hidden sm:block xl:hidden 2xl:block">
             <span className="block border-l border-white/15 pl-3 text-[10px] font-black uppercase tracking-[0.16em] text-zinc-300">Time-Critical Logistics</span>
@@ -265,7 +265,7 @@ export function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
-          className="fixed inset-x-0 top-[68px] z-50 h-[calc(100dvh-68px)] border-t border-white/10 bg-[#06070a]/98 shadow-2xl backdrop-blur-xl xl:hidden"
+          className="fixed inset-x-0 top-[88px] z-50 h-[calc(100dvh-88px)] border-t border-white/10 bg-[#06070a]/98 shadow-2xl backdrop-blur-xl md:top-[96px] md:h-[calc(100dvh-96px)] xl:hidden"
         >
           <div className="h-full overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch]">
             <div className="container-shell flex justify-end pt-3">
@@ -281,7 +281,7 @@ export function Header() {
             <div className="container-shell grid gap-3 pb-[calc(10rem+env(safe-area-inset-bottom))] pt-3">
               <div className="rounded-lg border border-[#e30613]/25 bg-[#e30613]/[0.07] p-4">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#e30613]">Time-Critical Air Logistics</p>
-                <p className="mt-2 text-sm leading-6 text-zinc-200">SOS / NFO, same-day, heavy air cargo, excess baggage, OBC, and international priority support.</p>
+                <p className="mt-2 text-sm leading-6 text-zinc-200">PORTADOR SOS, EXPRESS, BLACK, and GLOBAL for urgent domestic, planned air-priority, controlled-custody, and international movements.</p>
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   <Link href={whatsappHref} onClick={closeMobileMenu} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#e30613] text-sm font-bold text-white">
                     <MessageCircle size={16} />

@@ -10,15 +10,10 @@ const socialIconMap = {
 };
 
 const footerServiceLinks = [
-  { label: "SOS / Next Flight Out", href: "/services/portador-sos" },
-  { label: "Same-Day Air Cargo", href: "/same-day-delivery" },
-  { label: "Express", href: "/services/portador-express" },
-  { label: "Deferred / Economy", href: "/services/portador-express" },
-  { label: "Heavy Air Cargo", href: "/cargo/machine-parts" },
-  { label: "Excess Baggage", href: "/cargo/excess-baggage" },
-  { label: "PORTADOR BLACK / OBC", href: "/services/portador-black" },
-  { label: "International Priority", href: "/services/portador-global" },
-  { label: "DG / Specialized Cargo", href: "/cargo/dangerous-goods" }
+  { label: "PORTADOR SOS", href: "/services/portador-sos" },
+  { label: "PORTADOR EXPRESS", href: "/services/portador-express" },
+  { label: "PORTADOR BLACK", href: "/services/portador-black" },
+  { label: "PORTADOR GLOBAL", href: "/services/portador-global" }
 ];
 
 export function Footer() {

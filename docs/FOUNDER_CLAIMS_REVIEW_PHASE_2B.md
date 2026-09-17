@@ -105,3 +105,11 @@ Founder decision needed: approve standard wording that support is checked case b
 
 The homepage continues to show founder-supplied operating signals already present in the protected baseline: 50+ airport cargo connections, 5000+ serviceable pin codes, and a 24x7 operations desk. Founder should keep evidence for these statements current.
 
+## Founder UAT correction notes
+
+- The homepage now presents only PORTADOR SOS, PORTADOR EXPRESS, PORTADOR BLACK, and PORTADOR GLOBAL as primary service families.
+- Deferred / Economy was removed from homepage and footer presentation. No indexed route or canonical page depended on that label, so no route or redirect was removed.
+- Heavy Air Cargo remains a dedicated 50 kg+ commercial capability. Founder should confirm whether 50 kg+ is a positioning threshold only or a formal booking rule before that wording is expanded beyond the homepage feature.
+- Excess Baggage, AOG, machine breakdown, medical, DG / battery, temperature-controlled, event, high-value, and similar requirements remain cargo or use-case solutions rather than master service brands.
+- A prior homepage reference suggesting a general 10 kg+ customer-fit threshold was removed because no approved universal minimum-weight rule was found.
+- Protected FAQ statements concerning hard TAT, POD timing, integrations, dimensions, insurance, cutoffs, customs, and service availability remain unchanged and require the Founder decisions listed above.

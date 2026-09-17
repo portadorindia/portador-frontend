@@ -10,7 +10,6 @@ import {
   Factory,
   Flame,
   Globe2,
-  Headphones,
   Luggage,
   MapPin,
   PackageCheck,
@@ -38,76 +37,44 @@ export const metadata: Metadata = {
 const serviceFamilies = [
   {
     number: "01",
-    title: "SOS / Next Flight Out",
-    label: "Highest urgency",
+    title: "PORTADOR SOS",
+    label: "Same-Day + NFO",
     href: "/services/portador-sos",
-    description: "Time-critical cargo support with Next Flight Out feasibility checked against shipment readiness, cargo eligibility, and serviceability.",
+    description: "Emergency and time-critical domestic air cargo, including Same-Day and Next Flight Out feasibility when every hour matters.",
     Icon: Siren
   },
   {
     number: "02",
-    title: "Same-Day Air Cargo",
-    label: "Urgent intercity",
-    href: "/same-day-delivery",
-    description: "Same-day intercity support for business-critical shipments where the requested deadline is operationally feasible.",
-    Icon: Plane
-  },
-  {
-    number: "03",
-    title: "Express",
-    label: "Next business day",
+    title: "PORTADOR EXPRESS",
+    label: "Planned air-priority",
     href: "/services/portador-express",
-    description: "Premium next business day movement for priority B2B cargo that needs speed without full SOS escalation.",
+    description: "Next Business Day and Second Business Day premium air-priority cargo for important, planned B2B movements.",
     Icon: Clock3
   },
   {
-    number: "04",
-    title: "Deferred / Economy",
-    label: "Planned movement",
-    href: "/services/portador-express",
-    description: "Cost-conscious options for planned cargo with a more flexible delivery window and clear serviceability review.",
-    Icon: PackageCheck
-  },
-  {
-    number: "05",
-    title: "Heavy Air Cargo",
-    label: "50 kg+ B2B focus",
-    href: "#heavy-air-cargo",
-    description: "Meaningful B2B cargo requirements, multi-box consignments, machinery parts, and heavier commercial shipments.",
-    Icon: Weight
-  },
-  {
-    number: "06",
-    title: "Excess Baggage",
-    label: "Traveler support",
-    href: "/cargo/excess-baggage",
-    description: "Separate movement for extra luggage, student baggage, personal effects, and airport-linked baggage requirements.",
-    Icon: Luggage
-  },
-  {
-    number: "07",
-    title: "PORTADOR BLACK / OBC",
-    label: "Premium custody",
+    number: "03",
+    title: "PORTADOR BLACK",
+    label: "Controlled custody",
     href: "/services/portador-black",
-    description: "On-board courier and hand-carry support for eligible high-value, confidential, or exceptionally time-sensitive items.",
+    description: "OBC, hand carry, runner, and executive logistics for eligible high-value, confidential, or controlled-custody requirements.",
     Icon: BriefcaseBusiness
   },
   {
-    number: "08",
-    title: "International Priority",
-    label: "Cross-border",
+    number: "04",
+    title: "PORTADOR GLOBAL",
+    label: "International priority",
     href: "/services/portador-global",
-    description: "Priority international import and export support subject to documentation, acceptance, customs, and serviceability.",
+    description: "Urgent international import and export air cargo subject to documentation, acceptance, customs, and serviceability.",
     Icon: Globe2
-  },
-  {
-    number: "09",
-    title: "DG / Specialized Cargo",
-    label: "Review required",
-    href: "/cargo/dangerous-goods",
-    description: "Specialized support subject to classification, documentation, compliant packing, carrier acceptance, and applicable regulations.",
-    Icon: Flame
   }
+];
+
+const serviceJourney = [
+  ["01", "What needs to move?", "Start with the cargo or customer requirement."],
+  ["02", "How urgent is it?", "Define the deadline, movement, and custody need."],
+  ["03", "Match the service", "SOS, EXPRESS, BLACK, or GLOBAL."],
+  ["04", "Qualify the cargo", "Check heavy, baggage, DG, AOG, medical, or other needs."],
+  ["05", "Confirm feasibility", "Acceptance and quotation follow the review."]
 ];
 
 const priorityCargo = [
@@ -237,7 +204,7 @@ export default function Home() {
         }}
       />
 
-      <section className="relative overflow-hidden border-b border-white/[0.06] py-10 sm:py-12 lg:flex lg:min-h-[calc(100svh-64px)] lg:max-h-[800px] lg:items-center lg:py-10">
+      <section className="relative overflow-hidden border-b border-white/[0.06] py-8 sm:py-10 lg:flex lg:min-h-[calc(100svh-96px)] lg:max-h-[800px] lg:items-center lg:py-10">
         <div className="absolute inset-0 airport-grid opacity-20" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,6,0.98)_0%,rgba(5,5,6,0.9)_48%,rgba(5,5,6,0.62)_100%)]" />
         <div className="container-shell relative grid w-full gap-8 lg:grid-cols-[52fr_48fr] lg:items-center">
@@ -251,10 +218,10 @@ export default function Home() {
             </p>
 
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 border-l-2 border-[#e30613] pl-4 text-sm font-semibold text-zinc-200">
-              <span>SOS / NFO</span>
-              <span>Same-Day</span>
-              <span>Heavy Air Cargo</span>
-              <span>International Priority</span>
+              <span>PORTADOR SOS</span>
+              <span>PORTADOR EXPRESS</span>
+              <span>PORTADOR BLACK</span>
+              <span>PORTADOR GLOBAL</span>
             </div>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -262,10 +229,6 @@ export default function Home() {
               <SecondaryButton href={site.trackingUrl}>Track Shipment</SecondaryButton>
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-zinc-500">
-              <a href={site.phoneHref} className="inline-flex items-center gap-2 transition hover:text-white">
-                <Headphones size={14} className="text-[#e30613]" />
-                Call the 24x7 desk
-              </a>
               <span>Feasibility is confirmed before booking.</span>
             </div>
           </div>
@@ -292,11 +255,22 @@ export default function Home() {
         </div>
       </section>
 
-      <Section eyebrow="Service architecture" title="A service level for the consequence of the delay">
+      <QuickSelector />
+
+      <Section eyebrow="How PORTADOR works" title="Four service families, selected around the shipment">
+        <div className="mb-10 grid gap-px border-y border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
+          {serviceJourney.map(([number, title, copy]) => (
+            <div key={number} className="min-w-0 bg-[#050506] px-4 py-4 sm:last:col-span-2 lg:min-h-36 lg:last:col-span-1">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#e30613]">Step {number}</p>
+              <h3 className="mt-2 text-sm font-semibold text-white">{title}</h3>
+              <p className="mt-2 text-xs leading-5 text-zinc-500">{copy}</p>
+            </div>
+          ))}
+        </div>
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <p className="max-w-md text-lg leading-8 text-zinc-300">
-              PORTADOR is built for urgent, business-critical, heavier, baggage, and specialized cargo. The right service is selected around the deadline, cargo profile, and serviceability, not a one-size-fits-all parcel tier.
+              Start with what needs to move and when it must arrive. PORTADOR then matches the requirement to SOS, EXPRESS, BLACK, or GLOBAL before cargo-specific qualification and quotation.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <PrimaryButton href={whatsappHref}>Discuss a shipment</PrimaryButton>
@@ -327,10 +301,10 @@ export default function Home() {
       <section id="heavy-air-cargo" className="border-y border-white/[0.06] bg-[#090a0c] py-16 md:py-24">
         <div className="container-shell grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e30613]">Heavy air cargo · 50 kg+ B2B focus</p>
-            <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight text-white md:text-5xl">Commercial cargo deserves more than a parcel workflow.</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e30613]">Cargo capability · 50 kg+ B2B focus</p>
+            <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight text-white md:text-5xl">Heavy Air Cargo, matched to the right service family.</h2>
             <p className="mt-5 max-w-2xl text-base leading-8 text-zinc-300">
-              PORTADOR supports meaningful and heavier cargo requirements including industrial spares, machinery parts, multi-box consignments, business equipment, and other time-sensitive commercial shipments.
+              Heavy and multi-box requirements are handled as a cargo solution through PORTADOR SOS or EXPRESS for domestic movement, PORTADOR BLACK where eligible controlled custody is practical, or PORTADOR GLOBAL for international priority cargo.
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-500">
               Final support depends on weight, dimensions, commodity, packing, documentation, origin, destination, and operational serviceability.
@@ -361,7 +335,7 @@ export default function Home() {
               </div>
               <div className="mt-4 flex items-center gap-3 rounded-md border border-[#e30613]/25 bg-[#e30613]/[0.07] px-4 py-3">
                 <Boxes className="shrink-0 text-[#e30613]" size={20} aria-hidden="true" />
-                <p className="text-xs leading-5 text-zinc-300">Share actual weight, dimensions, commodity, packing, and deadline for a responsible feasibility check.</p>
+                <p className="text-xs leading-5 text-zinc-300">Share actual weight, dimensions, commodity, packing, deadline, and domestic or international requirement for a responsible service match.</p>
               </div>
             </div>
           </div>
@@ -377,7 +351,7 @@ export default function Home() {
               Use PORTADOR when the shipment needs urgency, informed human support, or cargo-specific review. Routine low-cost parcel movement is not the center of the service model.
             </p>
             <p className="mt-4 text-sm leading-7 text-zinc-500">
-              Smaller legitimate urgent shipments remain welcome. PORTADOR is particularly suited to 10 kg+ and larger requirements, depending on the cargo and deadline.
+              Smaller legitimate urgent shipments remain welcome, while larger commercial requirements receive cargo-specific feasibility and handling review.
             </p>
           </div>
           <div className="divide-y divide-white/10 border-y border-white/10">
@@ -547,7 +521,6 @@ export default function Home() {
         </div>
       </Section>
 
-      <QuickSelector />
       <EmergencyCallback />
 
       <Section eyebrow="Before you book" title="Details PORTADOR needs before urgent cargo confirmation">
