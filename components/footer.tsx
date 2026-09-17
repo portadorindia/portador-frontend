@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Instagram, Linkedin, Mail, MapPin, MessageCircle, PackageCheck, PhoneCall, Youtube } from "lucide-react";
-import { cargoPages, cities, fraudAdvisoryLink, hubArticles, legalLinks, services, site, socialLinks, whatsappHref } from "@/lib/site";
+import { cargoPages, cities, fraudAdvisoryLink, hubArticles, legalLinks, site, socialLinks, whatsappHref } from "@/lib/site";
 
 const socialIconMap = {
   "Head Office Location & Reviews": MapPin,
@@ -9,22 +9,37 @@ const socialIconMap = {
   "LinkedIn Company Page": Linkedin
 };
 
+const footerServiceLinks = [
+  { label: "SOS / Next Flight Out", href: "/services/portador-sos" },
+  { label: "Same-Day Air Cargo", href: "/same-day-delivery" },
+  { label: "Express", href: "/services/portador-express" },
+  { label: "Deferred / Economy", href: "/services/portador-express" },
+  { label: "Heavy Air Cargo", href: "/cargo/machine-parts" },
+  { label: "Excess Baggage", href: "/cargo/excess-baggage" },
+  { label: "PORTADOR BLACK / OBC", href: "/services/portador-black" },
+  { label: "International Priority", href: "/services/portador-global" },
+  { label: "DG / Specialized Cargo", href: "/cargo/dangerous-goods" }
+];
+
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#050506] py-12">
+    <footer className="border-t border-white/[0.08] bg-[#050506] py-12 md:py-16">
       <div className="container-shell">
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-[1.55fr_repeat(5,minmax(0,1fr))] xl:items-start">
           <div className="min-w-0">
-            <div className="flex items-center gap-3">
-              <img src={site.logo} alt="PORTADOR SOS" className="h-12 w-auto max-w-[190px] object-contain" />
+            <div className="flex flex-col items-start gap-3">
+              <span className="relative block h-11 w-[190px] shrink-0 overflow-hidden">
+                <img src={site.logo} alt="PORTADOR SOS" className="absolute left-1/2 top-1/2 w-[205px] max-w-none -translate-x-1/2 -translate-y-1/2" />
+              </span>
               <div className="border-l border-white/15 pl-3">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-white">SOS AIR CARGO</p>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-white">Time-Critical Logistics</p>
                 <p className="mt-1 text-xs uppercase tracking-[0.16em] text-zinc-500">When Time Cannot Wait</p>
               </div>
             </div>
             <p className="mt-5 text-sm leading-6 text-zinc-400">
-              Premium SOS air cargo support for urgent business shipments, regulated cargo review, and time-critical movement across India.
+              India-first time-critical air logistics for urgent business cargo, heavier requirements, excess baggage, specialized shipments, and international priority movements.
             </p>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-600">Official website of {site.legalName}</p>
             <div className="mt-5 grid gap-2 text-sm leading-6 text-zinc-300">
               <a href={site.phoneHref} className="inline-flex items-center gap-2 transition hover:text-white">
                 <PhoneCall size={15} className="text-[#e30613]" />
@@ -67,7 +82,7 @@ export function Footer() {
             </div>
           </div>
 
-          <FooterGroup title="Services" links={services.map((s) => ({ label: s.title, href: `/services/${s.slug}` }))} />
+          <FooterGroup title="Services" links={footerServiceLinks} />
           <FooterGroup title="Cargo Categories" links={cargoPages.slice(0, 8).map((item) => ({ label: item.title, href: `/cargo/${item.slug}` }))} />
           <FooterGroup title="PORTADOR Network" links={cities.slice(0, 8).map((item) => ({ label: item.title, href: `/cities/${item.slug}` }))} />
           <FooterGroup title="Knowledge Hub" links={hubArticles.slice(0, 6).map((item) => ({ label: item.title, href: `/knowledge-hub/${item.slug}` }))} />

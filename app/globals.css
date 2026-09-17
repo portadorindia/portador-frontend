@@ -24,9 +24,9 @@ body {
   margin: 0;
   color: var(--foreground);
   background:
-    radial-gradient(circle at 70% 0%, rgba(227, 6, 19, 0.12), transparent 34rem),
-    linear-gradient(180deg, #050506 0%, #0a0b0d 46%, #050506 100%);
-  font-family: "Manrope", "Aptos", "Segoe UI Variable", "Segoe UI", Arial, Helvetica, sans-serif;
+    radial-gradient(circle at 74% -8%, rgba(227, 6, 19, 0.08), transparent 32rem),
+    #050506;
+  font-family: "Aptos", "Segoe UI Variable", "Segoe UI", Arial, Helvetica, sans-serif;
   font-optical-sizing: auto;
   font-synthesis: none;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
@@ -39,7 +39,7 @@ h1,
 h2,
 h3,
 .font-display {
-  font-family: "Sora", "Manrope", "Aptos Display", "Segoe UI Variable", Arial, Helvetica, sans-serif;
+  font-family: "Aptos Display", "Segoe UI Variable Display", "Segoe UI Variable", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -82,15 +82,14 @@ a {
 }
 
 .container-shell {
-  width: min(1180px, calc(100% - 32px));
+  width: min(1240px, calc(100% - 40px));
   margin-inline: auto;
 }
 
 .glass-panel {
   border: 1px solid var(--line);
-  background: linear-gradient(145deg, rgba(22, 23, 27, 0.88), rgba(9, 10, 12, 0.78));
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
-  backdrop-filter: blur(18px);
+  background: rgba(13, 14, 17, 0.94);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
 }
 
 .red-glow {
@@ -182,7 +181,7 @@ a {
   }
 
   .container-shell {
-    width: min(1180px, calc(100% - 24px));
+    width: min(1240px, calc(100% - 24px));
   }
 }
 

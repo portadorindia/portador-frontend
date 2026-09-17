@@ -19,11 +19,11 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section className={`py-14 md:py-20 ${className}`}>
+    <section className={`py-16 md:py-24 ${className}`}>
       <div className="container-shell">
-        <div className="mb-8 max-w-3xl md:mb-10">
-          {eyebrow ? <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-[#e30613]">{eyebrow}</p> : null}
-          <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">{title}</h2>
+        <div className="mb-8 max-w-4xl md:mb-12">
+          {eyebrow ? <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#e30613]">{eyebrow}</p> : null}
+          <h2 className="text-3xl font-semibold leading-[1.12] text-white md:text-[2.75rem]">{title}</h2>
         </div>
         {children}
       </div>
@@ -35,7 +35,7 @@ export function PrimaryButton({ href, children }: { href: string; children: Reac
   return (
     <Link
       href={href}
-      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 text-center text-sm font-bold text-white shadow-[0_0_34px_rgba(227,6,19,0.28)] transition hover:bg-[#ff1b28]"
+      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 text-center text-sm font-bold text-white shadow-[0_12px_32px_rgba(227,6,19,0.2)] transition hover:bg-[#c80510]"
     >
       {children}
       <ArrowRight size={17} />
@@ -73,7 +73,7 @@ export function CTA({ title = "When Time Cannot Wait, speak to operations now.",
   return (
     <section className="py-14 md:py-20">
       <div className="container-shell">
-        <div className="glass-panel red-glow overflow-hidden rounded-xl p-6 md:p-10">
+        <div className="overflow-hidden rounded-lg border border-[#e30613]/25 bg-[#0a0b0d] p-6 shadow-[0_28px_80px_rgba(0,0,0,0.35)] md:p-10">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-[#e30613]">24x7 operations</p>
@@ -125,13 +125,13 @@ export function FloatingOperationsCTA() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
-      className="fixed bottom-[calc(6rem+env(safe-area-inset-bottom))] right-3 z-[49] md:bottom-6 md:right-6"
+      className="fixed bottom-6 right-6 z-[49] hidden xl:block"
     >
       {open ? (
         <div className="w-[min(300px,calc(100vw-32px))] rounded-lg border border-[#e30613]/30 bg-[#090a0c]/95 p-3 shadow-[0_0_24px_rgba(227,6,19,0.16)] backdrop-blur-xl">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ff4a54]">PORTADOR Operations Desk</p>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e30613]">PORTADOR Operations Desk</p>
               <p className="mt-1 text-xs text-zinc-400">When Time Cannot Wait.</p>
             </div>
             <div className="flex gap-1">
@@ -189,7 +189,7 @@ export function BackToTopButton() {
     <button
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-[calc(6rem+env(safe-area-inset-bottom))] left-3 z-[49] inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/80 text-white shadow-[0_0_20px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-[#e30613]/50 hover:text-[#ff4a54] md:bottom-6 md:left-6"
+      className="fixed bottom-6 left-6 z-[49] hidden h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/80 text-white shadow-[0_0_20px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-[#e30613]/50 hover:text-[#e30613] xl:inline-flex"
       aria-label="Back to top"
     >
       <ArrowUp size={17} />
@@ -292,9 +292,9 @@ export function EmergencyCallback() {
               </div>
             ))}
             <div aria-live="assertive" aria-atomic="true" className="md:col-span-2 xl:col-span-3">
-              {error ? <p id="callback-form-error" role="alert" className="text-sm font-semibold text-[#ff4a54]">{error}</p> : null}
+              {error ? <p id="callback-form-error" role="alert" className="text-sm font-semibold text-[#e30613]">{error}</p> : null}
             </div>
-            <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 text-sm font-bold text-white transition hover:bg-[#ff1b28] md:col-span-2 xl:col-span-1">
+            <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 text-sm font-bold text-white transition hover:bg-[#c80510] md:col-span-2 xl:col-span-1">
               <MessageCircle size={16} />
               Request Callback
             </button>

@@ -203,22 +203,24 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050506]/86 backdrop-blur-xl">
-      <div className="container-shell flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-[#050506]/94 shadow-[0_10px_35px_rgba(0,0,0,0.24)] backdrop-blur-xl">
+      <div className="container-shell flex h-[68px] items-center justify-between">
         <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="PORTADOR SOS homepage">
-          <img src={site.logo} alt="PORTADOR SOS" className="h-12 w-auto max-w-[170px] object-contain md:h-14 md:max-w-[215px]" />
-          <span className="hidden sm:block">
-            <span className="block border-l border-white/15 pl-3 text-xs font-black uppercase tracking-[0.14em] text-white">SOS AIR CARGO</span>
+          <span className="relative block h-8 w-[138px] shrink-0 overflow-hidden md:h-10 md:w-[168px]">
+            <img src={site.logo} alt="PORTADOR SOS" className="absolute left-1/2 top-1/2 w-[150px] max-w-none -translate-x-1/2 -translate-y-1/2 md:w-[182px]" />
+          </span>
+          <span className="hidden sm:block xl:hidden 2xl:block">
+            <span className="block border-l border-white/15 pl-3 text-[10px] font-black uppercase tracking-[0.16em] text-zinc-300">Time-Critical Logistics</span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-3 xl:flex 2xl:gap-4">
+        <nav className="hidden items-center gap-4 xl:flex 2xl:gap-5">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-sm font-medium text-zinc-300 transition hover:text-white">
+            <Link key={item.href} href={item.href} className="whitespace-nowrap text-sm font-medium text-zinc-300 transition hover:text-white">
               {item.label}
             </Link>
           ))}
           <div className="relative" ref={moreRef}>
-            <button type="button" onClick={() => setMoreOpen((value) => !value)} className="inline-flex items-center gap-1 text-sm font-medium text-zinc-300 transition hover:text-white" aria-expanded={moreOpen}>
+            <button type="button" onClick={() => setMoreOpen((value) => !value)} className="inline-flex items-center gap-1 whitespace-nowrap text-sm font-medium text-zinc-300 transition hover:text-white" aria-expanded={moreOpen}>
               More <ChevronDown size={14} className={moreOpen ? "rotate-180 transition" : "transition"} />
             </button>
             {moreOpen ? (
@@ -239,15 +241,15 @@ export function Header() {
           <Link href={site.phoneHref} className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-white transition hover:border-[#e30613]/60 hover:bg-white/[0.04]" aria-label="Call Operations">
             <PhoneCall size={16} />
           </Link>
-          <Link href={whatsappHref} className="inline-flex min-h-10 items-center gap-2 rounded-md bg-[#e30613] px-3 text-sm font-bold text-white transition hover:bg-[#ff1b28]">
+          <Link href={whatsappHref} className="inline-flex min-h-10 items-center gap-2 whitespace-nowrap rounded-md bg-[#e30613] px-3.5 text-sm font-bold text-white transition hover:bg-[#c80510]">
             <MessageCircle size={16} />
-            WhatsApp
+            Urgent help
           </Link>
         </div>
         <button
           ref={mobileMenuButtonRef}
           type="button"
-          className="rounded-md border border-white/15 p-2 text-white xl:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/15 text-white xl:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
@@ -263,7 +265,7 @@ export function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
-          className="fixed inset-x-0 top-16 z-50 h-[calc(100dvh-64px)] border-t border-white/10 bg-[#06070a]/98 shadow-2xl backdrop-blur-xl xl:hidden"
+          className="fixed inset-x-0 top-[68px] z-50 h-[calc(100dvh-68px)] border-t border-white/10 bg-[#06070a]/98 shadow-2xl backdrop-blur-xl xl:hidden"
         >
           <div className="h-full overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch]">
             <div className="container-shell flex justify-end pt-3">
@@ -277,13 +279,13 @@ export function Header() {
               </button>
             </div>
             <div className="container-shell grid gap-3 pb-[calc(10rem+env(safe-area-inset-bottom))] pt-3">
-              <div className="rounded-lg border border-[#e30613]/25 bg-[#e30613]/10 p-4">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff4a54]">When Time Cannot Wait</p>
-                <p className="mt-2 text-sm leading-6 text-zinc-200">Same-day air cargo, NFO logistics, airport cargo, excess baggage, and 24x7 human operations.</p>
+              <div className="rounded-lg border border-[#e30613]/25 bg-[#e30613]/[0.07] p-4">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#e30613]">Time-Critical Air Logistics</p>
+                <p className="mt-2 text-sm leading-6 text-zinc-200">SOS / NFO, same-day, heavy air cargo, excess baggage, OBC, and international priority support.</p>
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   <Link href={whatsappHref} onClick={closeMobileMenu} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#e30613] text-sm font-bold text-white">
                     <MessageCircle size={16} />
-                    WhatsApp
+                    Get help
                   </Link>
                   <Link href={site.phoneHref} onClick={closeMobileMenu} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-white/15 text-sm font-bold text-white">
                     <PhoneCall size={16} />
