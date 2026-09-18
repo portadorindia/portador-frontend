@@ -27,7 +27,7 @@ export function TrackingForm() {
         value={awb}
         onChange={(event) => setAwb(event.target.value)}
         placeholder="Enter AWB / Tracking Number"
-        className="min-h-12 rounded-md border border-white/10 bg-black/30 px-4 text-white outline-none placeholder:text-zinc-600 focus:border-[#e30613]/60"
+        className="min-h-12 rounded-md border border-white/10 bg-black/30 px-4 text-white outline-none placeholder:text-zinc-400 focus:border-[#e30613]/60"
       />
       <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 text-sm font-bold text-white transition hover:bg-[#c80510]">
         <Search size={17} />

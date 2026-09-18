@@ -154,6 +154,13 @@ export function Header() {
   useEffect(() => {
     if (!open) return;
 
+    const desktopQuery = window.matchMedia("(min-width: 1280px)");
+    function closeAtDesktop() {
+      if (desktopQuery.matches) setOpen(false);
+    }
+    desktopQuery.addEventListener("change", closeAtDesktop);
+    closeAtDesktop();
+
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -189,9 +196,12 @@ export function Header() {
     document.addEventListener("keydown", handleDrawerKeydown);
     return () => {
       window.cancelAnimationFrame(focusFrame);
+      desktopQuery.removeEventListener("change", closeAtDesktop);
       document.removeEventListener("keydown", handleDrawerKeydown);
       document.body.style.overflow = originalOverflow;
-      window.requestAnimationFrame(() => menuButton?.focus());
+      window.requestAnimationFrame(() => {
+        if (menuButton?.getClientRects().length) menuButton.focus();
+      });
     };
   }, [open]);
 

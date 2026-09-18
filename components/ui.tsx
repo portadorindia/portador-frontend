@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, ArrowUp, Headphones, MessageCircle, Minus, PhoneCall, X } from "lucide-react";
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { pushAnalyticsEvent } from "@/lib/analytics";
 import { portadorLegalPolicy } from "@/lib/policy";
 import { site, whatsappHref } from "@/lib/site";
@@ -116,6 +116,30 @@ export function StickyConversionBar() {
 
 export function FloatingOperationsCTA() {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const closeDesk = useCallback(() => {
+    setOpen(false);
+    window.requestAnimationFrame(() => {
+      if (triggerRef.current?.getClientRects().length) triggerRef.current.focus();
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const focusFrame = window.requestAnimationFrame(() => {
+      panelRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+    });
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") closeDesk();
+    }
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open, closeDesk]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -124,17 +148,17 @@ export function FloatingOperationsCTA() {
       className="fixed bottom-6 right-6 z-[49] hidden xl:block"
     >
       {open ? (
-        <div className="w-[min(300px,calc(100vw-32px))] rounded-lg border border-[#e30613]/30 bg-[#090a0c]/95 p-3 shadow-[0_0_24px_rgba(227,6,19,0.16)] backdrop-blur-xl">
+        <div ref={panelRef} id="sos-desk-panel" role="region" aria-label="SOS Desk" className="w-[min(300px,calc(100vw-32px))] rounded-lg border border-[#e30613]/30 bg-[#090a0c]/95 p-3 shadow-[0_0_24px_rgba(227,6,19,0.16)] backdrop-blur-xl">
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e30613]">SOS Desk</p>
               <p className="mt-1 text-xs text-zinc-400">Urgent shipment assistance.</p>
             </div>
             <div className="flex gap-1">
-              <button type="button" onClick={() => setOpen(false)} className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-white/10 text-zinc-300" aria-label="Minimize SOS desk">
+              <button type="button" onClick={closeDesk} className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-white/10 text-zinc-300" aria-label="Minimize SOS desk">
                 <Minus size={16} />
               </button>
-              <button type="button" onClick={() => setOpen(false)} className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-white/10 text-zinc-300" aria-label="Close SOS desk">
+              <button type="button" onClick={closeDesk} className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-white/10 text-zinc-300" aria-label="Close SOS desk">
                 <X size={16} />
               </button>
             </div>
@@ -156,7 +180,7 @@ export function FloatingOperationsCTA() {
         </div>
       ) : (
         <div className="flex flex-col items-center gap-1">
-          <button type="button" onClick={() => setOpen(true)} className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#e30613]/35 bg-[#e30613] text-white shadow-[0_0_22px_rgba(227,6,19,0.24)]" aria-label="Open SOS Desk">
+          <button ref={triggerRef} type="button" onClick={() => setOpen(true)} className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#e30613]/35 bg-[#e30613] text-white shadow-[0_0_22px_rgba(227,6,19,0.24)]" aria-label="Open SOS Desk" aria-expanded={open} aria-controls="sos-desk-panel">
             <Headphones size={18} />
           </button>
           <span className="rounded-full border border-white/10 bg-black/70 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-white">SOS Desk</span>
@@ -273,7 +297,7 @@ export function EmergencyCallback() {
           <form onSubmit={handleSubmit} className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
             {fields.map((field) => (
               <div key={field.key}>
-                <label className="sr-only" htmlFor={`callback-${field.key}`}>{field.label}</label>
+                <label className="mb-1.5 block text-sm font-medium text-zinc-300" htmlFor={`callback-${field.key}`}>{field.label}</label>
                 <input
                   id={`callback-${field.key}`}
                   aria-label={field.label}
@@ -284,7 +308,7 @@ export function EmergencyCallback() {
                   placeholder={field.placeholder}
                   required={field.required}
                   inputMode={field.inputMode}
-                  className="min-h-12 w-full rounded-md border border-white/10 bg-black/30 px-4 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[#e30613]/60"
+                  className="min-h-12 w-full rounded-md border border-white/10 bg-black/30 px-4 text-sm text-white outline-none placeholder:text-zinc-400 focus:border-[#e30613]/60"
                 />
               </div>
             ))}
