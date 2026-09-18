@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Linkedin, Mail, MapPin, MessageCircle, PackageCheck, PhoneCall, Youtube } from "lucide-react";
+import { LiabilityDisclosure } from "@/components/liability-disclosure";
 import { cargoPages, cities, fraudAdvisoryLink, hubArticles, legalLinks, site, socialLinks, whatsappHref } from "@/lib/site";
 
 const socialIconMap = {
@@ -23,8 +25,15 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-[1.55fr_repeat(5,minmax(0,1fr))] xl:items-start">
           <div className="min-w-0">
             <div className="flex flex-col items-start gap-3">
-              <span className="relative block h-11 w-[190px] shrink-0 overflow-hidden">
-                <img src={site.logo} alt="PORTADOR SOS" className="absolute left-1/2 top-1/2 w-[205px] max-w-none -translate-x-1/2 -translate-y-1/2" />
+              <span className="block h-[72px] w-[220px] shrink-0 overflow-visible">
+                <Image
+                  src={site.logo}
+                  alt="PORTADOR SOS"
+                  width={1563}
+                  height={1563}
+                  sizes="220px"
+                  className="pointer-events-none h-auto w-full -translate-y-[80px] object-contain"
+                />
               </span>
               <div className="border-l border-white/15 pl-3">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-white">Time-Critical Logistics</p>
@@ -79,11 +88,12 @@ export function Footer() {
 
           <FooterGroup title="Services" links={footerServiceLinks} />
           <FooterGroup title="Cargo Categories" links={cargoPages.slice(0, 8).map((item) => ({ label: item.title, href: `/cargo/${item.slug}` }))} />
-          <FooterGroup title="PORTADOR Network" links={cities.slice(0, 8).map((item) => ({ label: item.title, href: `/cities/${item.slug}` }))} />
+          <FooterGroup title="Airport Cities" links={cities.slice(0, 8).map((item) => ({ label: item.title, href: `/cities/${item.slug}` }))} />
           <FooterGroup title="Knowledge Hub" links={hubArticles.slice(0, 6).map((item) => ({ label: item.title, href: `/knowledge-hub/${item.slug}` }))} />
           <FooterGroup title="Legal" links={[...legalLinks, fraudAdvisoryLink]} />
         </div>
-        <div className="mt-10 border-t border-white/10 pt-6 text-xs text-zinc-500">
+        <LiabilityDisclosure compact className="mt-10" />
+        <div className="mt-6 border-t border-white/10 pt-6 text-xs text-zinc-500">
           © 2026 {site.legalName} • Built for Urgency.
         </div>
       </div>

@@ -113,3 +113,12 @@ The homepage continues to show founder-supplied operating signals already presen
 - Excess Baggage, AOG, machine breakdown, medical, DG / battery, temperature-controlled, event, high-value, and similar requirements remain cargo or use-case solutions rather than master service brands.
 - A prior homepage reference suggesting a general 10 kg+ customer-fit threshold was removed because no approved universal minimum-weight rule was found.
 - Protected FAQ statements concerning hard TAT, POD timing, integrations, dimensions, insurance, cutoffs, customs, and service availability remain unchanged and require the Founder decisions listed above.
+
+## Founder UAT Round 2 notes
+
+- Founder instruction standardized PORTADOR's own liability at up to ₹2,500 per shipment, with Delhi courts having exclusive jurisdiction. The website now reads this value from one central policy source.
+- Optional insurance is described separately from PORTADOR's liability. Any insurer claim remains subject to the insurer's policy terms, exclusions, and assessment.
+- The previous homepage references to "₹2,500 per docket," "No compensation," and an unverified 5% + GST ROV charge were removed to prevent conflicting or unsupported customer-facing terms.
+- The protected 385-question source FAQ corpus remains byte-identical. General carrier and insurance statements inside that source corpus still require Founder/legal review; the sitewide policy notice now clarifies PORTADOR's own liability without rewriting the source questions or answers.
+- Local company-profile, pitch, compliance, and registration files were discovered outside the repository. No credential, registration number, certification, award, insurer promise, partner logo, or airline logo was published from those files without explicit Founder approval of the exact public wording.
+- The founder-supplied 50+ airport cargo connections, 5000+ serviceable pin codes, and 24x7 assistance statements remain visible and should continue to be supported by current internal evidence.

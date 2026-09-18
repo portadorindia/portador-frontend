@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown, ChevronRight, Menu, MessageCircle, PhoneCall, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { legalLinks, moreNavItems, navItems, site, whatsappHref } from "@/lib/site";
@@ -112,7 +113,7 @@ const mobileMenuSections = [
     links: [
       { label: "Contact Operations", href: "/contact" },
       { label: "WhatsApp Operations", href: whatsappHref },
-      { label: "Call 24x7 Desk", href: site.phoneHref },
+      { label: "Call PORTADOR", href: site.phoneHref },
       ...legalLinks
     ]
   }
@@ -206,8 +207,16 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-[#050506]/94 shadow-[0_10px_35px_rgba(0,0,0,0.24)] backdrop-blur-xl">
       <div className="container-shell flex h-[88px] items-center justify-between md:h-[96px]">
         <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="PORTADOR SOS homepage">
-          <span className="block h-[88px] w-[132px] shrink-0 md:h-[96px] md:w-[144px]">
-            <img src={site.logo} alt="PORTADOR SOS" className="h-full w-full object-contain" />
+          <span className="block h-[88px] w-[150px] shrink-0 overflow-visible sm:w-[160px] md:h-[96px] md:w-[178px] xl:w-[190px]">
+            <Image
+              src={site.logo}
+              alt="PORTADOR SOS"
+              width={1563}
+              height={1563}
+              priority
+              sizes="(min-width: 1280px) 190px, (min-width: 768px) 178px, 150px"
+              className="pointer-events-none h-auto w-full -translate-y-[35px] object-contain md:-translate-y-[50px]"
+            />
           </span>
           <span className="hidden sm:block xl:hidden 2xl:block">
             <span className="block border-l border-white/15 pl-3 text-[10px] font-black uppercase tracking-[0.16em] text-zinc-300">Time-Critical Logistics</span>
@@ -281,7 +290,7 @@ export function Header() {
             <div className="container-shell grid gap-3 pb-[calc(10rem+env(safe-area-inset-bottom))] pt-3">
               <div className="rounded-lg border border-[#e30613]/25 bg-[#e30613]/[0.07] p-4">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#e30613]">Time-Critical Air Logistics</p>
-                <p className="mt-2 text-sm leading-6 text-zinc-200">PORTADOR SOS, EXPRESS, BLACK, and GLOBAL for urgent domestic, planned air-priority, controlled-custody, and international movements.</p>
+                <p className="mt-2 text-sm leading-6 text-zinc-200">Choose Same-Day / NFO, planned air-priority, controlled-custody, or international priority support.</p>
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   <Link href={whatsappHref} onClick={closeMobileMenu} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-[#e30613] text-sm font-bold text-white">
                     <MessageCircle size={16} />

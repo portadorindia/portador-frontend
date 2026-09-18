@@ -11,7 +11,7 @@ const normalizedFaqs = getFounderFaqsForStaticPage("contact");
 
 export const metadata: Metadata = {
   title: "Contact Operations",
-  description: "Contact PORTADOR SOS's 24x7 operations desk for urgent same-day air cargo, next flight out logistics, airport cargo, battery cargo, dangerous goods, and hand-carry shipments.",
+  description: "Contact PORTADOR for 24x7 assistance with urgent same-day air cargo, next flight out logistics, airport cargo, battery cargo, dangerous goods, and hand-carry shipments.",
   alternates: { canonical: "https://portador.in/contact" }
 };
 
@@ -64,19 +64,19 @@ export default function ContactPage() {
           <div className="flex max-w-3xl gap-4">
             <ShieldAlert className="mt-1 shrink-0 text-[#e30613]" size={24} aria-hidden="true" />
             <div>
-              <h3 className="text-xl font-semibold text-white">Fraud & Brand Impersonation Advisory</h3>
-              <p className="mt-2 text-sm leading-6 text-zinc-400">If a message, booking request, or payment communication appears suspicious, pause and verify it through the official contact details on this page before taking action.</p>
+              <h3 className="text-xl font-semibold text-white">Security Notice</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-400">Verify unusual messages or payment requests through the official details on this page. PORTADOR does not request shipment payments to personal bank accounts.</p>
             </div>
           </div>
           <Link href="/fraud-brand-impersonation-advisory" className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-md border border-white/15 px-4 text-sm font-bold text-white transition hover:border-[#e30613]/55 hover:bg-white/[0.04]">
-            Read official advisory
+            Read security notice
           </Link>
         </div>
       </Section>
       <BulletGrid eyebrow="Benefits" title="Why contact operations directly" items={["Faster route review", "Air cargo timing awareness", "Commodity acceptance checks", "Pickup and airport planning", "Human coordinator context", "Clear next action for urgent cargo"]} />
       <Process items={["Call or WhatsApp shipment details", "Operations reviews cargo details", "Fastest feasible option is shared", "Urgent support is coordinated", "Status updates are monitored"]} />
       <BulletGrid eyebrow="Use cases" title="Common contact reasons" items={["Same-day cargo quotes", "Next flight out cargo", "Excess baggage shipping", "Battery cargo review", "Dangerous goods review", "Hand carry and OBC requests"]} />
-      <BulletGrid eyebrow="Courier comparison" title="Why direct contact matters" items={["Urgent cargo needs immediate clarification", "Air cargo timing changes can affect support options", "Regulated cargo cannot be assumed accepted", "Human operations reduce ambiguity", "Same-day movement depends on cargo readiness", "Mission-critical customers need a live desk"]} />
+      <BulletGrid eyebrow="Courier comparison" title="Why direct contact matters" items={["Urgent cargo needs immediate clarification", "Air cargo timing changes can affect support options", "Regulated cargo cannot be assumed accepted", "Dedicated shipment assistance reduces ambiguity", "Same-day movement depends on cargo readiness", "Mission-critical customers need a clear escalation path"]} />
       <EmergencyCallback />
       <FAQBlock faqs={normalizedFaqs} />
       <CTA title="Need a quote now?" text="Send origin, destination, cargo, weight, dimensions, deadline, and whether the shipment contains batteries, liquids, chemicals, or regulated goods." />

@@ -1,6 +1,7 @@
 import { CheckCircle2, ChevronRight, Plane } from "lucide-react";
 import Link from "next/link";
 import { FAQEngine } from "@/components/faq-engine";
+import { LiabilitySection } from "@/components/liability-disclosure";
 import { CTA, MotionCard, PrimaryButton, QuickSelector, SecondaryButton, Section } from "@/components/ui";
 import { airportCityCoverage, airports, cargoPages, cities, comparisonPages, hubArticles, industries, lanes, PageModel, serviceIconMap, services, site, useCasePages, whatsappHref } from "@/lib/site";
 import { breadcrumbSchema, faqSchema, itemListSchema, serviceSchema, webPageSchema } from "@/lib/schema";
@@ -32,7 +33,7 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
           <div className="container-shell relative">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.78fr)] lg:items-center">
               <div className="max-w-[820px]">
-                <div className="mb-5 inline-flex items-center gap-2 rounded-md border border-[#e30613]/30 bg-[#e30613]/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#ff4a54]">
+                <div className="mb-5 inline-flex items-center gap-2 rounded-md border border-[#e30613]/30 bg-[#e30613]/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#e30613]">
                   <Icon size={15} />
                   {page.eyebrow}
                 </div>
@@ -44,9 +45,9 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
                 </div>
               </div>
               <div className="glass-panel rounded-xl p-5 md:p-6">
-                <p className="text-xs font-bold uppercase tracking-[0.24em] text-zinc-500">Trust signals</p>
+                <p className="text-xs font-bold uppercase tracking-[0.24em] text-zinc-400">What customers can expect</p>
                 <div className="mt-5 grid gap-3">
-                  {["50+ Airport Cargo Connections", "5000+ Serviceable Pin Codes", "Same-Day / NFO Availability", "Human Operations Coordination", "24x7 Operations Desk"].map((item) => (
+                  {["50+ Airport Cargo Connections", "5000+ Serviceable Pin Codes", "Same-Day / NFO checked per shipment", "24x7 urgent shipment assistance"].map((item) => (
                     <div key={item} className="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.03] p-4 text-sm font-semibold leading-6 text-zinc-200">
                       <CheckCircle2 className="text-[#e30613]" size={18} />
                       {item}
@@ -68,12 +69,12 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
               </div>
             </div>
             <div className="glass-panel rounded-lg p-6">
-              <h3 className="mb-4 text-xl font-semibold text-white">Best fit for urgent shipments</h3>
+              <h3 className="mb-4 text-xl font-semibold text-white">When {page.title} may be suitable</h3>
               <ul className="grid gap-3 text-sm leading-6 text-zinc-300">
                 {page.keywords.map((keyword) => (
                   <li key={keyword} className="flex gap-3">
                     <ChevronRight className="mt-1 shrink-0 text-[#e30613]" size={16} />
-                    PORTADOR SOS supports {keyword} with customer-focused, deadline-first air cargo support.
+                    Relevant when customers need {keyword} and the shipment meets acceptance requirements.
                   </li>
                 ))}
               </ul>
@@ -85,7 +86,7 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
         <TrustSignals />
         <AirportConnectedCoverage slug={page.slug} />
         <BulletGrid eyebrow="Benefits" title="Why businesses use PORTADOR SOS" items={page.benefits} />
-        <Process items={["Same-Day Availability Check", "Next Flight Out Coordination", "Airport Cargo Support", "Human Operations Desk", "Regulated Cargo Review", "24x7 Escalation"]} />
+        <Process items={["Share the shipment requirement", "Confirm service and cargo eligibility", "Arrange the agreed movement", "Receive shipment updates", "Complete destination delivery", "Escalate urgent exceptions"]} />
         <BulletGrid eyebrow="Use cases" title="Industry use cases" items={page.useCases} />
         <BulletGrid eyebrow="Courier comparison" title="Why this is different from regular courier" items={page.whyNotCourier} />
         <QuickSelector />
@@ -93,6 +94,7 @@ export function PageTemplate({ page, basePath }: { page: PageModel; basePath: st
         <RelatedCommercialLinks page={page} basePath={basePath} />
         <RelatedLocationLinks page={page} basePath={basePath} />
         <OperationalNextLinks />
+        {basePath === "/services" || basePath === "/cargo" ? <LiabilitySection /> : null}
         <FAQBlock faqs={normalizedFaqs.slice(3)} />
         <CTA title={page.cta} />
       </main>
@@ -221,7 +223,7 @@ export function OperationalNextLinks() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {links.map((link) => (
           <Link key={link.href} href={link.href} className="rounded-lg border border-[#e30613]/25 bg-[#e30613]/10 p-5 transition hover:-translate-y-1 hover:border-[#e30613]/50">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ff4a54]">{link.group}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e30613]">{link.group}</p>
             <h3 className="mt-3 text-lg font-semibold leading-6 text-white">{link.title}</h3>
             <p className="mt-3 text-sm leading-6 text-zinc-300">{link.description}</p>
           </Link>
@@ -279,15 +281,15 @@ export function WhenTimeCannotWaitStory() {
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-[#e30613]">When Time Cannot Wait</p>
-            <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">Urgent shipments need one accountable support desk.</h2>
+            <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">Urgent shipments need a clear decision before time is lost.</h2>
             <p className="mt-5 text-base leading-8 text-zinc-300">
-              PORTADOR SOS is built for moments where delay is expensive: production loss, aircraft downtime, missed flights, tender deadlines, emergency replacement, regulated cargo review, and business continuity pressure.
+              PORTADOR is built for moments where delay is expensive: production loss, aircraft downtime, missed flights, tender deadlines, emergency replacement, regulated cargo review, and business continuity pressure.
             </p>
           </div>
           <div className="glass-panel relative overflow-hidden rounded-xl p-6">
             <div className="airport-grid absolute inset-0 opacity-50" />
             <div className="relative grid gap-4 sm:grid-cols-2">
-              {["Business downtime", "Production loss", "Missed flights", "Emergency replacement", "Airport cargo support", "Human operations desk"].map((item) => (
+              {["Business downtime", "Production loss", "Missed flights", "Emergency replacement", "Airport cargo support", "Dedicated shipment assistance"].map((item) => (
                 <div key={item} className="rounded-md border border-white/10 bg-black/30 p-4">
                   <Plane className="mb-3 text-[#e30613]" size={18} />
                   <p className="text-sm font-semibold text-zinc-100">{item}</p>
@@ -305,14 +307,14 @@ export function TrustSignals() {
   const signals = [
     "50+ Airport Cargo Connections",
     "5000+ Serviceable Pin Codes",
-    "24x7 Operations Desk",
-    "Same-Day / NFO Availability",
-    "Human Operations Coordination",
-    "DG & Battery Cargo Support"
+    "24x7 Urgent Shipment Assistance",
+    "Same-Day / NFO checked per shipment",
+    "Official contact channels",
+    "DG & Battery Cargo Review"
   ];
 
   return (
-    <Section eyebrow="Trust and execution" title="Signals that matter in urgent logistics">
+    <Section eyebrow="Why customers choose PORTADOR" title="Published coverage and clear acceptance conditions">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {signals.map((signal) => (
           <div key={signal} className="rounded-lg border border-white/10 bg-white/[0.035] p-5">
@@ -342,7 +344,7 @@ export function BulletGrid({ eyebrow, title, items }: { eyebrow: string; title: 
 
 export function Process({ items }: { items: string[] }) {
   return (
-    <Section eyebrow="Support outcomes" title="Premium support without routine courier delays">
+    <Section eyebrow="What happens next" title="A clear path from enquiry to delivery">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item, index) => (
           <MotionCard key={item}>
@@ -357,6 +359,17 @@ export function Process({ items }: { items: string[] }) {
 
 export function FAQBlock({ faqs }: { faqs: { question: string; answer: string }[] }) {
   return <FAQEngine faqs={normalizeFaqs(faqs)} />;
+}
+
+function getListingCta(href: string, title: string) {
+  if (href.startsWith("/services/")) return `Explore ${title}`;
+  if (href.startsWith("/cargo/")) return "View cargo guidance";
+  if (href.startsWith("/industries/")) return "See industry support";
+  if (href.startsWith("/knowledge-hub/")) return "Read the guide";
+  if (href.startsWith("/comparisons/")) return "Read comparison";
+  if (href.startsWith("/use-cases/")) return "View use case";
+  if (href.startsWith("/airports/") || href.startsWith("/cities/") || href.startsWith("/routes/")) return "View coverage";
+  return "View details";
 }
 
 export function ListingPage({ title, description, links }: { title: string; description: string; links: { title: string; description: string; href: string }[] }) {
@@ -386,7 +399,7 @@ export function ListingPage({ title, description, links }: { title: string; desc
       <section className="relative overflow-hidden py-14 md:py-20">
         <div className="airport-grid absolute inset-0 opacity-70" />
         <div className="container-shell relative">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-[#e30613]">PORTADOR SOS network</p>
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-[#e30613]">PORTADOR · Time-Critical Logistics</p>
           <h1 className="max-w-4xl text-4xl font-black leading-tight text-white lg:text-5xl xl:text-6xl">{title}</h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300">{description}</p>
         </div>
@@ -397,8 +410,8 @@ export function ListingPage({ title, description, links }: { title: string; desc
             <Link key={link.href} href={link.href} className="glass-panel rounded-lg p-6 transition hover:-translate-y-1 hover:border-[#e30613]/40">
               <h3 className="text-xl font-semibold text-white">{link.title}</h3>
               <p className="mt-3 text-sm leading-6 text-zinc-400">{link.description}</p>
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#ff4a54]">
-                Open page <ChevronRight size={16} />
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#e30613]">
+                {getListingCta(link.href, link.title)} <ChevronRight size={16} />
               </span>
             </Link>
           ))}
@@ -413,11 +426,11 @@ export function ListingPage({ title, description, links }: { title: string; desc
                 ? "The PORTADOR Knowledge Hub explains real shipment questions in simple language, including same-day cargo, next flight out, airport cargo, excess baggage, legal documents, dangerous goods basics, volumetric weight, E-Way Bill, airline delays, shipment protection, and pickup or delivery planning."
                 : title === "Urgent Logistics Use Cases"
                   ? "Urgent logistics use cases show how PORTADOR supports customers when cargo cannot wait - from legal papers and medical equipment to last-minute commercial cargo, event material, excess baggage, and time-bound airport cargo."
-                  : `${title} is part of PORTADOR SOS's urgent air cargo network: every page explains urgent air cargo in simple customer language so customers can understand when same-day air cargo, next flight out logistics, airport cargo, or human-supported urgent delivery is the right choice.`}
+                  : `${title} is part of PORTADOR's urgent air cargo network: every page explains urgent air cargo in simple customer language so customers can understand when same-day air cargo, next flight out logistics, airport cargo, or dedicated shipment assistance is the right choice.`}
           </p>
           <div className="ai-snippet mt-6 rounded-md">
             <h3 className="mb-2 text-lg font-semibold text-white">Direct shipment summary</h3>
-            <p className="text-base leading-7 text-zinc-100">When Time Cannot Wait, PORTADOR SOS coordinates urgent air cargo support and a human operations desk for cargo facing business downtime, production loss, missed flights, or emergency replacement needs.</p>
+            <p className="text-base leading-7 text-zinc-100">When Time Cannot Wait, PORTADOR checks urgent air cargo options for shipments facing business downtime, production loss, missed flights, or emergency replacement needs.</p>
           </div>
         </div>
       </Section>
@@ -428,9 +441,9 @@ export function ListingPage({ title, description, links }: { title: string; desc
             "I need to send cargo today between cities.",
             "A machine is down and the replacement part must fly now.",
             "My shipment cannot wait for overnight courier.",
-            "I need airport-to-airport cargo with live coordination.",
+            "I need airport-to-airport cargo with clear shipment updates.",
             "I need to send battery, DG, or high-value cargo urgently.",
-            "I need a human operations desk, not a generic tracking screen."
+            "I need to speak with a shipment specialist, not only view a tracking screen."
           ].map((query) => (
             <div key={query} className="ai-snippet rounded-md">
               <p className="text-sm font-semibold leading-7 text-zinc-100">{query}</p>
@@ -439,9 +452,9 @@ export function ListingPage({ title, description, links }: { title: string; desc
         </div>
       </Section>
       <BulletGrid eyebrow="Benefits" title="Why PORTADOR's urgent air cargo support helps when timelines are critical" items={["Clear urgent cargo definitions", "Service and route selection support", "Airport-linked movement context", "Same-day and next-flight-out language", "Customer-ready shipment explanation", "Structured answers for urgent shipment searches"]} />
-      <Process items={["Same-Day Availability Check", "Next Flight Out Coordination", "Airport Cargo Support", "Human Operations Desk", "Regulated Cargo Review", "24x7 Escalation"]} />
+      <Process items={["Share the shipment requirement", "Confirm service and cargo eligibility", "Arrange the agreed movement", "Receive shipment updates", "Complete destination delivery", "Escalate urgent exceptions"]} />
       <BulletGrid eyebrow="Use cases" title="Who uses PORTADOR SOS" items={["Manufacturing companies", "Aviation companies", "Pharma and medical support teams", "Events and exhibitions", "Electronics and IT teams", "Travelers, students, SMEs, startups, and legal firms"]} />
-      <BulletGrid eyebrow="Courier comparison" title="Why not regular courier" items={["Routine parcel networks optimize scale", "Urgent air cargo prioritizes time-critical business needs", "Hub sorting can add avoidable delay", "Regulated cargo needs acceptance checks", "Human operations can reduce ambiguity", "Mission-critical cargo needs deadline-first ownership"]} />
+      <BulletGrid eyebrow="Courier comparison" title="Why not regular courier" items={["Routine parcel networks optimize scale", "Urgent air cargo prioritizes time-critical business needs", "Hub sorting can add avoidable delay", "Regulated cargo needs acceptance checks", "Dedicated shipment assistance reduces ambiguity", "Mission-critical cargo needs deadline-first ownership"]} />
       <Section eyebrow="Shipment answers" title="Answers Before You Ship Urgent Cargo">
         <div className="grid gap-4 lg:grid-cols-3">
           {normalizedFaqs.slice(0, 3).map((item) => (

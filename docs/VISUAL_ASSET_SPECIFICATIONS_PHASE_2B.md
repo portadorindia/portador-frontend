@@ -43,3 +43,9 @@ The repository currently contains the official PORTADOR logo and browser/app ico
 - Do not modify or recreate `public/portador-logo.png`.
 - Keep a CSS-only fallback so the page remains complete if imagery is delayed or disabled.
 
+## Round 2 asset review
+
+- The repository still contains no approved operational photography with source, rights, and responsive masters.
+- Local Company Profile and Pitch Deck files were located, but no standalone source-photography package or licensing record was found in the repository. Investor materials may also contain confidential or presentation-only content.
+- No deck image was copied into the website during Round 2. The refreshed experience therefore uses the official logo, restrained aviation iconography, controlled red illumination, stronger contrast, and CSS depth without adding stock or synthetic aircraft imagery.
+- Founder action: provide the approved original image files and written web-use approval before the photographic anchor areas above are implemented.

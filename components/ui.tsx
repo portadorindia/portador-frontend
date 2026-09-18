@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUp, Headphones, MessageCircle, Minus, PhoneCall, X } from "lucide-react";
 import { type FormEvent, useEffect, useState } from "react";
 import { pushAnalyticsEvent } from "@/lib/analytics";
+import { portadorLegalPolicy } from "@/lib/policy";
 import { site, whatsappHref } from "@/lib/site";
 
 export function Section({
@@ -35,7 +36,7 @@ export function PrimaryButton({ href, children }: { href: string; children: Reac
   return (
     <Link
       href={href}
-      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 text-center text-sm font-bold text-white shadow-[0_12px_32px_rgba(227,6,19,0.2)] transition hover:bg-[#c80510]"
+      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 text-center text-sm font-bold text-white shadow-[0_12px_32px_rgba(227,6,19,0.2)] transition hover:-translate-y-0.5 hover:bg-[#c80510]"
     >
       {children}
       <ArrowRight size={17} />
@@ -47,7 +48,7 @@ export function SecondaryButton({ href, children }: { href: string; children: Re
   return (
     <Link
       href={href}
-      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-white/15 bg-white/[0.04] px-5 text-center text-sm font-bold text-white transition hover:border-[#e30613]/50 hover:bg-[#e30613]/10"
+      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-white/15 bg-white/[0.04] px-5 text-center text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-[#e30613]/50 hover:bg-[#e30613]/10"
     >
       {children}
     </Link>
@@ -61,7 +62,6 @@ export function MotionCard({ children, className = "" }: { children: React.React
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.45 }}
-      whileHover={{ y: -4 }}
       className={`glass-panel rounded-lg p-6 transition ${className}`}
     >
       {children}
@@ -76,7 +76,7 @@ export function CTA({ title = "When Time Cannot Wait, speak to operations now.",
         <div className="overflow-hidden rounded-lg border border-[#e30613]/25 bg-[#0a0b0d] p-6 shadow-[0_28px_80px_rgba(0,0,0,0.35)] md:p-10">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-[#e30613]">24x7 operations</p>
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-[#e30613]">24x7 urgent shipment assistance</p>
               <h2 className="max-w-3xl text-3xl font-semibold leading-tight text-white md:text-5xl">{title}</h2>
               <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-300">{text ?? "Share origin, destination, cargo details, deadline, and any battery or dangerous goods information. PORTADOR SOS will check the fastest feasible air-linked support."}</p>
             </div>
@@ -127,8 +127,8 @@ export function FloatingOperationsCTA() {
         <div className="w-[min(300px,calc(100vw-32px))] rounded-lg border border-[#e30613]/30 bg-[#090a0c]/95 p-3 shadow-[0_0_24px_rgba(227,6,19,0.16)] backdrop-blur-xl">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e30613]">PORTADOR Operations Desk</p>
-              <p className="mt-1 text-xs text-zinc-400">When Time Cannot Wait.</p>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e30613]">SOS Desk</p>
+              <p className="mt-1 text-xs text-zinc-400">Urgent shipment assistance.</p>
             </div>
             <div className="flex gap-1">
               <button type="button" onClick={() => setOpen(false)} className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-white/10 text-zinc-300" aria-label="Minimize SOS desk">
@@ -149,7 +149,7 @@ export function FloatingOperationsCTA() {
               <PhoneCall size={16} />
             </Link>
             <Link href="/contact" className="inline-flex min-h-10 items-center justify-between rounded-md border border-white/15 px-3 text-sm font-bold text-white">
-              Commercial Inquiry
+              Commercial Enquiry
               <Headphones size={16} />
             </Link>
           </div>
@@ -185,10 +185,11 @@ export function BackToTopButton() {
     <button
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-6 left-6 z-[49] hidden h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/80 text-white shadow-[0_0_20px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-[#e30613]/50 hover:text-[#e30613] xl:inline-flex"
+      className="fixed bottom-6 left-6 z-[49] hidden min-h-11 items-center justify-center gap-2 rounded-md border border-white/10 bg-black/80 px-3 text-xs font-bold text-white shadow-[0_0_20px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-[#e30613]/50 hover:text-[#e30613] xl:inline-flex"
       aria-label="Back to top"
     >
       <ArrowUp size={17} />
+      Back to top
     </button>
   );
 }
@@ -294,6 +295,9 @@ export function EmergencyCallback() {
               <MessageCircle size={16} />
               Request Callback
             </button>
+            <p className="text-xs leading-5 text-zinc-500 md:col-span-2 xl:col-span-4">
+              By sending the request, you acknowledge the <Link href="/terms-conditions" className="font-semibold text-zinc-300 hover:text-white">Terms &amp; Conditions</Link>. {portadorLegalPolicy.shortDisclosure}
+            </p>
           </form>
         </div>
       </div>
@@ -303,18 +307,18 @@ export function EmergencyCallback() {
 
 export function QuickSelector() {
   const categories = [
-    { title: "Machine Parts", detail: "Breakdown support" },
-    { title: "Legal Documents", detail: "Tender & legal papers" },
-    { title: "Laptop Shipping", detail: "IT equipment" },
-    { title: "Heavy Cargo", detail: "50 kg+ B2B requirements" },
-    { title: "Dangerous Goods, Batteries & Restricted Cargo", detail: "Approval review" },
-    { title: "Excess Baggage", detail: "Airport pickup & drop" },
-    { title: "Medical Equipment", detail: "Surgical equipment" },
-    { title: "AOG Cargo", detail: "Aviation spares" },
-    { title: "Temperature Controlled Cargo", detail: "Dry ice & frozen cargo" },
-    { title: "High-Value Cargo", detail: "Premium equipment" },
-    { title: "Event Logistics", detail: "Time-bound event material" },
-    { title: "Other Urgent Cargo", detail: "Share cargo details. PORTADOR will check service availability." }
+    { title: "Machine Parts", detail: "Breakdown support", href: "/cargo/machine-breakdown" },
+    { title: "Legal Documents", detail: "Tender & legal papers", href: "/cargo/legal-document-courier" },
+    { title: "Laptop Shipping", detail: "IT equipment", href: "/cargo/laptop-shipping" },
+    { title: "Heavy Cargo", detail: "50 kg+ commercial focus", href: "/cargo/machine-parts" },
+    { title: "Dangerous Goods, Batteries & Restricted Cargo", detail: "Approval review", href: "/cargo/dangerous-goods" },
+    { title: "Excess Baggage", detail: "Airport pickup & delivery", href: "/cargo/excess-baggage" },
+    { title: "Medical Equipment", detail: "Time-sensitive equipment", href: "/cargo/medical-equipment" },
+    { title: "AOG Cargo", detail: "Aviation spares", href: "/cargo/aog-cargo" },
+    { title: "Temperature Controlled Cargo", detail: "Special handling review", href: "/cargo/temperature-controlled-cargo" },
+    { title: "High-Value Cargo", detail: "Sensitive commercial cargo", href: "/cargo/high-value-cargo" },
+    { title: "Event Logistics", detail: "Time-bound event material", href: "/cargo/event-logistics" },
+    { title: "Other Urgent Cargo", detail: "Share cargo details. PORTADOR will check service availability.", href: whatsappHref }
   ];
   return (
     <section className="py-14">
@@ -324,9 +328,12 @@ export function QuickSelector() {
           <h2 className="text-2xl font-semibold text-white md:text-4xl">Tell Us What You Need To Move</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((category) => (
-              <Link key={category.title} href={whatsappHref} className="flex min-h-[78px] flex-col justify-center rounded-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold leading-5 text-zinc-200 transition hover:border-[#e30613]/50 hover:bg-[#e30613]/10">
-                <span>{category.title}</span>
-                <span className="mt-1 line-clamp-2 text-xs font-normal leading-5 text-zinc-500">{category.detail}</span>
+              <Link key={category.title} href={category.href} className="group flex min-h-[86px] flex-col justify-center rounded-md border border-white/10 bg-white/[0.035] px-4 py-3 text-sm font-semibold leading-5 text-zinc-200 transition hover:-translate-y-0.5 hover:border-[#e30613]/50 hover:bg-[#e30613]/[0.07]">
+                <span className="flex items-start justify-between gap-3">
+                  <span>{category.title}</span>
+                  <ArrowRight className="mt-0.5 shrink-0 text-zinc-600 transition group-hover:text-[#e30613]" size={14} aria-hidden="true" />
+                </span>
+                <span className="mt-1 line-clamp-2 text-xs font-normal leading-5 text-zinc-400">{category.detail}</span>
               </Link>
             ))}
           </div>

@@ -20,17 +20,17 @@ export default function AboutPage() {
         <div className="airport-grid absolute inset-0 opacity-70" />
         <div className="container-shell relative">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-[#e30613]">About PORTADOR SOS</p>
-          <h1 className="max-w-4xl text-4xl font-black leading-tight text-white lg:text-5xl xl:text-6xl">India&apos;s SOS Air Cargo Operations Platform</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300">PORTADOR SOS exists for business and personal shipments where normal courier timelines are not enough. The brand combines premium air cargo support, airport-linked movement, and real human urgency.</p>
+          <h1 className="max-w-4xl text-4xl font-black leading-tight text-white lg:text-5xl xl:text-6xl">Time-Critical Air Logistics for Shipments That Cannot Wait</h1>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-zinc-300">PORTADOR exists for business and personal shipments where normal courier timelines are not enough. Customers receive premium air cargo support, clear acceptance guidance, and dedicated assistance when timing matters.</p>
         </div>
       </section>
       <Section eyebrow="Positioning" title="Urgency before routine parcel flow">
-        <p className="max-w-4xl text-xl leading-9 text-zinc-200">Traditional courier networks optimize routing, sorting, and scale. PORTADOR SOS focuses on urgency: the fastest feasible air-linked support, the right documentation, and one accountable human support desk watching the deadline.</p>
+        <p className="max-w-4xl text-xl leading-9 text-zinc-200">Traditional courier networks are designed for routine parcel flow. PORTADOR focuses on urgent cargo, clear documentation, cargo acceptance, and responsible communication around the customer&apos;s deadline.</p>
       </Section>
-      <BulletGrid eyebrow="Principles" title="How PORTADOR SOS supports urgent customers" items={["Airport-linked air cargo support", "No default dependency on hub delays", "Human ownership for mission-critical movement", "Compliance-aware review for regulated cargo", "Premium communication for urgent customers", "Built around same-day and next-flight-out availability"]} />
-      <Process items={["Understand the deadline", "Check cargo and serviceability", "Support pickup or airport movement", "Move cargo through the fastest feasible option", "Close with destination support"]} />
+      <BulletGrid eyebrow="Principles" title="How PORTADOR supports urgent customers" items={["Airport-connected air cargo support", "Deadline-led service selection", "Dedicated assistance for critical shipments", "Compliance-aware review for regulated cargo", "Clear communication before commitment", "Same-Day and Next Flight Out options where feasible"]} />
+      <Process items={["Share the shipment requirement", "Confirm service and cargo eligibility", "Arrange the agreed movement", "Receive shipment updates", "Complete destination delivery"]} />
       <BulletGrid eyebrow="Use cases" title="Where PORTADOR SOS fits" items={["Plant shutdown recovery", "Aviation AOG support", "Urgent legal documentation", "Exhibition and event deadlines", "High-value electronics", "Traveler and student baggage movement"]} />
-      <BulletGrid eyebrow="Courier comparison" title="Why not regular courier" items={["PORTADOR SOS is built for deadline-first support", "Air cargo timing awareness matters for same-day cargo", "Airport-linked movement can reduce delay", "Human support helps when plans change", "Regulated cargo needs early review", "Mission-critical customers need clarity"]} />
+      <BulletGrid eyebrow="Courier comparison" title="Why not regular courier" items={["PORTADOR is built for deadline-first support", "Same-Day cargo needs early availability checks", "Airport-connected movement may suit urgent intercity cargo", "Dedicated assistance helps when plans change", "Regulated cargo needs early review", "Mission-critical customers need clarity"]} />
       <FAQBlock faqs={normalizedFaqs} />
       <CTA />
     </main>

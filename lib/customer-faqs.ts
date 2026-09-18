@@ -69,7 +69,7 @@ export const customerEducationFaqs = [
   },
   {
     question: "How do I track my shipment?",
-    answer: "You can request tracking support by sharing your booking reference, shipment details, or contact number. PORTADOR will check the available shipment status and share updates through the operations desk."
+    answer: "You can request tracking support by sharing your booking reference, shipment details, or contact number. PORTADOR will check the available shipment status and share relevant updates."
   },
   {
     question: "How fast can pickup happen?",

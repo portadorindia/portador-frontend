@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function IndustriesPage() {
-  return <ListingPage title="Industry Logistics" description="Sector-aware urgent logistics for customers who need speed, documentation clarity, and reliable human support." links={industries.map((item) => ({ title: item.title, description: item.description, href: `/industries/${item.slug}` }))} />;
+  return <ListingPage title="Industry Logistics" description="Sector-aware urgent logistics for customers who need speed, documentation clarity, cargo acceptance guidance, and dependable shipment assistance." links={industries.map((item) => ({ title: item.title, description: item.description, href: `/industries/${item.slug}` }))} />;
 }

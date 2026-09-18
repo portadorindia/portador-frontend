@@ -85,7 +85,7 @@ export default function FraudBrandImpersonationAdvisoryPage() {
           <div className="flex max-w-4xl gap-4">
             <ShieldAlert className="mt-1 hidden shrink-0 text-[#e30613] sm:block" size={34} aria-hidden="true" />
             <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#e30613]">Official customer advisory</p>
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#e30613]">Security Notice</p>
               <h1 className="text-4xl font-black leading-tight text-white md:text-5xl">Fraud & Brand Impersonation Advisory</h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-zinc-300 md:text-lg md:leading-8">Guidance for customers who receive suspicious messages, booking or payment requests, spam, or other communications using the PORTADOR name or identity.</p>
             </div>
@@ -93,6 +93,7 @@ export default function FraudBrandImpersonationAdvisoryPage() {
 
           <div className="mt-8 max-w-5xl rounded-lg border border-[#e30613]/30 bg-[#e30613]/[0.07] p-5 md:p-6">
             <p className="text-base leading-7 text-zinc-100">PORTADOR Logistics Private Limited has received reports of unauthorized persons using the PORTADOR name or identity to send spam, unsolicited or inappropriate messages, fake booking/payment communications, or other communications that do not originate from PORTADOR or are not authorized by PORTADOR.</p>
+            <p className="mt-3 text-sm leading-6 text-zinc-300">PORTADOR does not request shipment payments to personal bank accounts. Verify unexpected payment instructions through the official contact details published on this website.</p>
           </div>
         </div>
       </section>
@@ -154,7 +155,7 @@ export default function FraudBrandImpersonationAdvisoryPage() {
             <h2 className="text-2xl font-semibold text-white md:text-3xl">Need to verify a PORTADOR communication?</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-400">Contact PORTADOR using the official details published on this website before responding, sharing information, or making payment.</p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="inline-flex min-h-11 items-center justify-center rounded-md bg-[#e30613] px-5 text-sm font-bold text-white transition hover:bg-[#ff1b28]">Contact PORTADOR</Link>
+              <Link href="/contact" className="inline-flex min-h-11 items-center justify-center rounded-md bg-[#e30613] px-5 text-sm font-bold text-white transition hover:bg-[#c80510]">Contact PORTADOR</Link>
               <a href={site.phoneHref} className="inline-flex min-h-11 items-center justify-center rounded-md border border-white/15 px-5 text-sm font-bold text-white transition hover:border-[#e30613]/55">Call official desk</a>
             </div>
           </div>

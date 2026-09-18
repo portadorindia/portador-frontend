@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { LiabilitySection } from "@/components/liability-disclosure";
 import { CTA } from "@/components/ui";
 import { faqSchema } from "@/lib/schema";
 import { faqAuthorityCategories, faqAuthorityFaqs } from "@/lib/faq-authority";
@@ -64,6 +65,7 @@ export default function FAQsPage() {
         </section>
       ))}
 
+      <LiabilitySection />
       <CTA title="Need urgent shipment support?" text="Share pickup, delivery, weight, deadline, cargo type, and documents. PORTADOR SOS will confirm the fastest available support path." />
     </main>
   );

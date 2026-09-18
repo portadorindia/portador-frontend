@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "PORTADOR SOS | When Time Cannot Wait",
-    description: "Same-day air cargo, NFO logistics, urgent airport cargo, and 24x7 human operations coordination.",
+    description: "Same-day air cargo, NFO logistics, urgent airport cargo, and 24x7 shipment assistance.",
     images: ["/portador-logo.png"]
   },
   robots: {

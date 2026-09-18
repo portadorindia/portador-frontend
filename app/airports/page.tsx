@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function AirportsPage() {
-  return <ListingPage title="Airport Cargo Network" description="Airport-linked cargo pages for urgent support, premium air cargo movement, same-day capability, and human operations coordination." links={airports.map((item) => ({ title: item.title, description: item.description, href: `/airports/${item.slug}` }))} />;
+  return <ListingPage title="Airport Cargo Network" description="Airport-linked cargo pages for urgent support, premium air cargo movement, same-day capability, and dedicated shipment assistance." links={airports.map((item) => ({ title: item.title, description: item.description, href: `/airports/${item.slug}` }))} />;
 }

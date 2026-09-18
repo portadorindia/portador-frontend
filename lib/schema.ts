@@ -7,7 +7,7 @@ const offerCatalog = {
     {
       name: "PORTADOR SOS",
       serviceType: "Same-Day Air Cargo + Next Flight Out Logistics",
-      description: "Flagship emergency domestic air cargo service for same-day, NFO, 10-16 hour availability where possible, airport-to-airport movement, urgent door coordination, and 24x7 human operations."
+      description: "Flagship emergency domestic air cargo service for same-day, NFO, 10-16 hour availability where possible, airport-to-airport movement, urgent door coordination, and 24x7 shipment assistance."
     },
     {
       name: "PORTADOR EXPRESS",
@@ -37,7 +37,7 @@ const offerCatalog = {
       areaServed: "India",
       serviceType: service.serviceType,
       description: service.description,
-      serviceOutput: "Airport-linked air cargo support, real-time monitoring, regulatory compliance verification where relevant, and human operations desk support for urgent cargo."
+      serviceOutput: "Airport-connected air cargo support, shipment updates, regulatory compliance verification where relevant, and dedicated assistance for urgent cargo."
     }
   }))
 };
@@ -128,13 +128,13 @@ export const localBusinessSchema = {
   },
   hasOfferCatalog: offerCatalog,
   sameAs: [site.url, ...socialLinks.map((link) => link.href)],
-  serviceOutput: "Same-day air cargo, next flight out logistics, airport cargo support, real-time monitoring, and human operations coordination for urgent shipments."
+  serviceOutput: "Same-day air cargo, next flight out logistics, airport cargo support, shipment updates, and dedicated assistance for urgent shipments."
 };
 
 export const placeSchema = {
   "@context": "https://schema.org",
   "@type": "Place",
-  name: "PORTADOR SOS Operations Desk",
+  name: "PORTADOR SOS",
   url: site.url,
   telephone: site.phone,
   address: {
@@ -220,7 +220,7 @@ export function serviceSchema(page: { title: string; description: string; slug: 
       name: "India"
     },
     serviceType: page.title,
-    serviceOutput: "Airport-linked air cargo support, real-time monitoring, human operations desk coordination, and regulated cargo review where relevant.",
+    serviceOutput: "Airport-connected air cargo support, shipment updates, dedicated assistance, and regulated cargo review where relevant.",
     hasOfferCatalog: offerCatalog,
     url: `${site.url}${basePath}/${page.slug}`
   };

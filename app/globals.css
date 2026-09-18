@@ -9,6 +9,7 @@
   --line: rgba(255, 255, 255, 0.1);
   --accent: #e30613;
   --accent-soft: rgba(227, 6, 19, 0.18);
+  color-scheme: dark;
 }
 
 * {
@@ -24,7 +25,8 @@ body {
   margin: 0;
   color: var(--foreground);
   background:
-    radial-gradient(circle at 74% -8%, rgba(227, 6, 19, 0.08), transparent 32rem),
+    radial-gradient(circle at 76% -10%, rgba(227, 6, 19, 0.1), transparent 34rem),
+    linear-gradient(180deg, #050506 0%, #08090b 42%, #050506 100%),
     #050506;
   font-family: "Aptos", "Segoe UI Variable", "Segoe UI", Arial, Helvetica, sans-serif;
   font-optical-sizing: auto;
@@ -88,8 +90,16 @@ a {
 
 .glass-panel {
   border: 1px solid var(--line);
-  background: rgba(13, 14, 17, 0.94);
+  background: linear-gradient(145deg, rgba(19, 20, 24, 0.96), rgba(10, 11, 13, 0.94));
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.text-zinc-500 {
+  color: #a1a1aa;
+}
+
+.text-zinc-600 {
+  color: #8b8b95;
 }
 
 .red-glow {

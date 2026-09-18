@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { portadorLegalPolicy } from "@/lib/policy";
 
 export type LegalSection = {
   title: string;
@@ -123,7 +124,7 @@ export const legalPages: LegalPage[] = [
       },
       {
         title: "Freight on value and liability",
-        body: "Declared value and freight on value, if applicable and accepted, must be confirmed before shipment movement. Unless expressly agreed in writing, PORTADOR SOS liability is limited and does not include indirect loss, business loss, production loss, profit loss, market loss, emotional loss, consequential damages, or losses caused by incorrect declaration, inadequate packing, regulatory hold, force majeure, airline refusal, airport delay, or consignee unavailability."
+        body: `Declared value and freight on value, if applicable and accepted, must be confirmed before shipment movement. ${portadorLegalPolicy.fullDisclosure}`
       },
       {
         title: "Delay",
@@ -182,7 +183,7 @@ export const legalPages: LegalPage[] = [
       },
       {
         title: "Liability",
-        body: "PORTADOR's liability, if any, is limited to the terms agreed for the shipment and applicable law. PORTADOR is not liable for indirect, consequential, special, business, production, profit, reputation, travel, tender, or opportunity losses. PORTADOR is not liable for delays or losses caused by incorrect declaration, prohibited goods, regulatory action, airline refusal, weather, traffic, security checks, force majeure, airport restrictions, customs issues, consignee unavailability, or third-party operational constraints."
+        body: portadorLegalPolicy.fullDisclosure
       },
       {
         title: "Flight and operational delay recalculation",
@@ -198,7 +199,7 @@ export const legalPages: LegalPage[] = [
       },
       {
         title: "Dispute resolution and jurisdiction",
-        body: "These Terms & Conditions are governed by the laws of India. Any dispute shall be subject to the exclusive jurisdiction of competent courts at New Delhi, India."
+        body: `These Terms & Conditions are governed by the laws of India. ${portadorLegalPolicy.jurisdiction}`
       },
       {
         title: "Contact",
