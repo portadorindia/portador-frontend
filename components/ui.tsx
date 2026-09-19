@@ -219,6 +219,7 @@ export function BackToTopButton() {
 }
 
 export function EmergencyCallback() {
+  const enquiryStarted = useRef(false);
   const [form, setForm] = useState({
     name: "",
     mobile: "",
@@ -232,6 +233,13 @@ export function EmergencyCallback() {
   const [error, setError] = useState("");
 
   function updateField(field: keyof typeof form, value: string) {
+    if (!enquiryStarted.current && value.trim()) {
+      enquiryStarted.current = true;
+      pushAnalyticsEvent("enquiry_start", {
+        form_name: "emergency_callback",
+        page_path: window.location.pathname
+      });
+    }
     setForm((current) => ({ ...current, [field]: value }));
     if (error) setError("");
   }
@@ -266,6 +274,8 @@ export function EmergencyCallback() {
     const whatsappBase = site.whatsapp || "https://wa.me/919818038779";
     pushAnalyticsEvent("quote_contact_form_submit", {
       form_name: "emergency_callback",
+      page_path: window.location.pathname,
+      conversion_stage: "whatsapp_handoff",
       has_origin: Boolean(form.origin.trim()),
       has_destination: Boolean(form.destination.trim()),
       has_weight: Boolean(form.weight.trim()),

@@ -234,7 +234,7 @@ export default function Home() {
 
       <CustomerFitSection />
 
-      <section id="heavy-air-cargo" className="border-y border-white/[0.06] bg-[#090a0c] py-16 md:py-24">
+      <section id="heavy-air-cargo" data-analytics-service="heavy_air_cargo" className="border-y border-white/[0.06] bg-[#090a0c] py-16 md:py-24">
         <div className="container-shell grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e30613]">Heavy Air Cargo</p>
