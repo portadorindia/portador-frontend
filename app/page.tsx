@@ -238,12 +238,12 @@ export default function Home() {
         <div className="container-shell grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#e30613]">Heavy Air Cargo</p>
-            <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight text-white md:text-5xl">Heavy Air Cargo — 50kg+ Focus</h2>
+            <h2 className="mt-4 max-w-3xl text-3xl font-semibold leading-tight text-white md:text-5xl">Heavy Air Cargo — 50 kg+ Shipments</h2>
             <p className="mt-5 max-w-2xl text-base leading-8 text-zinc-300">
-              Heavy and multi-box requirements are handled as a cargo solution through PORTADOR SOS or EXPRESS for domestic movement, PORTADOR BLACK where eligible controlled custody is practical, or PORTADOR GLOBAL for international priority cargo.
+              Designed for industrial spares, business equipment, multi-box cargo and critical replacement parts.
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-500">
-              The suitable service is selected according to deadline, dimensions, weight, cargo profile, route, airline acceptance, and operational feasibility. The 50kg+ position is a commercial focus, not a universal technical minimum.
+              Share the actual weight, dimensions, commodity and delivery deadline, and our team will assess the most suitable air-cargo solution.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <PrimaryButton href={whatsappHref}>Check heavy cargo feasibility</PrimaryButton>
@@ -257,7 +257,7 @@ export default function Home() {
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400">Heavy shipment requirements</p>
-                  <h3 className="mt-2 text-xl font-semibold text-white">Commercial cargo with real weight and consequence</h3>
+                  <h3 className="mt-2 text-xl font-semibold text-white">Built for Heavy, Urgent &amp; Business-Critical Cargo</h3>
                 </div>
                 <Weight className="text-[#e30613]" size={30} aria-hidden="true" />
               </div>
@@ -280,12 +280,12 @@ export default function Home() {
 
       <QuickSelector />
 
-      <Section eyebrow="Track shipment" title="Tracking stays clear and separate from booking">
+      <Section eyebrow="Track shipment" title="Track Your PORTADOR Shipment">
         <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
           <div>
-            <h3 className="text-xl font-semibold text-white">Already have an AWB or tracking number?</h3>
+            <h3 className="text-xl font-semibold text-white">Enter Your AWB / Tracking Number</h3>
             <p className="mt-3 text-sm leading-7 text-zinc-400">
-              Enter it below to open the dedicated PORTADOR-OPS tracking page. The public website does not store or process shipment status data.
+              Enter your AWB below to view the latest shipment status on PORTADOR OPS.
             </p>
           </div>
           <TrackingForm />
