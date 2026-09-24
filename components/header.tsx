@@ -257,6 +257,7 @@ export function Header() {
           <Link href={site.trackingUrl} className="inline-flex min-h-10 items-center rounded-md border border-white/15 px-3 text-sm font-bold text-white transition hover:border-[#e30613]/60 hover:bg-white/[0.04]">
             Track
           </Link>
+          <Link href="/book-pickup" className="inline-flex min-h-10 items-center rounded-md border border-white/15 px-3 text-sm font-bold">Book Pickup</Link>
           <Link href={site.phoneHref} className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-white transition hover:border-[#e30613]/60 hover:bg-white/[0.04]" aria-label="Call Operations">
             <PhoneCall size={16} />
           </Link>
@@ -312,6 +313,7 @@ export function Header() {
                   </Link>
                 </div>
               </div>
+              <Link href="/book-pickup" onClick={closeMobileMenu} className="rounded-md bg-[#e30613] p-3 text-center font-bold">Book Pickup / Secure SOS Pickup</Link>
               {mobileMenuSections.map((section) => {
                 const expanded = !!openSections[section.title];
                 return (
