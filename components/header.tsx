@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, ChevronRight, Menu, MessageCircle, PhoneCall, X } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, MessageCircle, PackageCheck, PhoneCall, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { legalLinks, moreNavItems, navItems, site, whatsappHref } from "@/lib/site";
 
@@ -10,6 +10,8 @@ const mobileMenuSections = [
   {
     title: "Services",
     links: [
+      { label: "Book a Pickup", href: "/book-pickup" },
+      { label: "Secure SOS Pickup", href: "/book-pickup?service=SOS" },
       { label: "View All Services", href: "/services" },
       { label: "PORTADOR SOS", href: "/services/portador-sos" },
       { label: "PORTADOR EXPRESS", href: "/services/portador-express" },
@@ -130,7 +132,12 @@ export function Header() {
   const moreRef = useRef<HTMLDivElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileDrawerRef = useRef<HTMLDivElement>(null);
-  const moreLinks = [...moreNavItems, ...legalLinks];
+  const moreLinks = [
+    { label: "Book a Pickup", href: "/book-pickup" },
+    { label: "Secure SOS Pickup", href: "/book-pickup?service=SOS" },
+    ...moreNavItems,
+    ...legalLinks
+  ];
 
   useEffect(() => {
     function closeMore(event: MouseEvent) {
@@ -217,33 +224,33 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/[0.08] bg-[#050506]/94 shadow-[0_10px_35px_rgba(0,0,0,0.24)] backdrop-blur-xl">
       <div className="container-shell flex h-[88px] items-center justify-between md:h-[96px]">
         <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="PORTADOR SOS homepage">
-          <span className="block h-[88px] w-[150px] shrink-0 overflow-visible sm:w-[160px] md:h-[96px] md:w-[178px] xl:w-[190px]">
+          <span className="block h-[88px] w-[128px] shrink-0 overflow-visible sm:w-[160px] md:h-[96px] md:w-[178px] xl:w-[190px]">
             <Image
               src={site.logo}
               alt="PORTADOR SOS"
               width={1563}
               height={1563}
               priority
-              sizes="(min-width: 1280px) 190px, (min-width: 768px) 178px, 150px"
+              sizes="(min-width: 1280px) 190px, (min-width: 768px) 178px, (min-width: 640px) 160px, 128px"
               className="pointer-events-none h-auto w-full -translate-y-[35px] object-contain md:-translate-y-[50px]"
             />
           </span>
-          <span className="hidden sm:block xl:hidden 2xl:block">
+          <span className="hidden sm:block xl:hidden">
             <span className="block border-l border-white/15 pl-3 text-[10px] font-black uppercase tracking-[0.16em] text-zinc-300">Time-Critical Logistics</span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-4 xl:flex 2xl:gap-5">
+        <nav aria-label="Main navigation" className="hidden items-center gap-3 xl:flex 2xl:gap-4">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="whitespace-nowrap text-sm font-medium text-zinc-300 transition hover:text-white">
+            <Link key={item.href} href={item.href} className="whitespace-nowrap text-xs font-medium text-zinc-300 transition hover:text-white 2xl:text-sm">
               {item.label}
             </Link>
           ))}
           <div className="relative" ref={moreRef}>
-            <button type="button" onClick={() => setMoreOpen((value) => !value)} className="inline-flex items-center gap-1 whitespace-nowrap text-sm font-medium text-zinc-300 transition hover:text-white" aria-expanded={moreOpen}>
+            <button type="button" onClick={() => setMoreOpen((value) => !value)} className="inline-flex min-h-10 items-center gap-1 whitespace-nowrap text-xs font-medium text-zinc-300 transition hover:text-white 2xl:text-sm" aria-expanded={moreOpen} aria-controls="more-navigation">
               More <ChevronDown size={14} className={moreOpen ? "rotate-180 transition" : "transition"} />
             </button>
             {moreOpen ? (
-              <div className="absolute right-0 top-full z-50 mt-3 min-w-64 rounded-lg border border-white/10 bg-[#08090b]/96 p-2 shadow-2xl backdrop-blur-xl">
+              <div id="more-navigation" className="absolute right-0 top-full z-50 mt-3 min-w-64 rounded-lg border border-white/10 bg-[#08090b]/96 p-2 shadow-2xl backdrop-blur-xl">
                 {moreLinks.map((item) => (
                 <Link key={item.href} href={item.href} onClick={() => setMoreOpen(false)} className="block rounded-md px-3 py-2 text-sm font-semibold text-zinc-300 hover:bg-white/[0.04] hover:text-white">
                   {item.label}
@@ -254,29 +261,32 @@ export function Header() {
           </div>
         </nav>
         <div className="hidden items-center gap-2 xl:flex">
-          <Link href={site.trackingUrl} className="inline-flex min-h-10 items-center rounded-md border border-white/15 px-3 text-sm font-bold text-white transition hover:border-[#e30613]/60 hover:bg-white/[0.04]">
+          <Link href={site.trackingUrl} className="hidden min-h-10 items-center rounded-md border border-white/15 px-3 text-sm font-bold text-white transition hover:border-[#e30613]/60 hover:bg-white/[0.04] 2xl:inline-flex">
             Track
           </Link>
-          <Link href="/book-pickup" className="inline-flex min-h-10 items-center rounded-md border border-white/15 px-3 text-sm font-bold">Book Pickup</Link>
+          <Link href="/book-pickup" className="inline-flex min-h-11 items-center gap-2 whitespace-nowrap rounded-md bg-[#e30613] px-3.5 text-sm font-bold text-white transition hover:bg-[#c80510]"><PackageCheck size={16} aria-hidden="true" />Book Pickup</Link>
           <Link href={site.phoneHref} className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-white transition hover:border-[#e30613]/60 hover:bg-white/[0.04]" aria-label="Call Operations">
             <PhoneCall size={16} />
           </Link>
-          <Link href={whatsappHref} className="inline-flex min-h-10 items-center gap-2 whitespace-nowrap rounded-md bg-[#e30613] px-3.5 text-sm font-bold text-white transition hover:bg-[#c80510]">
+          <Link href={whatsappHref} className="inline-flex min-h-10 items-center gap-2 whitespace-nowrap rounded-md border border-white/15 px-3 text-sm font-bold text-white transition hover:border-[#e30613]/60 hover:bg-white/[0.04]">
             <MessageCircle size={16} />
             Urgent help
           </Link>
         </div>
-        <button
-          ref={mobileMenuButtonRef}
-          type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/15 text-white xl:hidden"
-          onClick={() => setOpen((value) => !value)}
-          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={open}
-          aria-controls="mobile-navigation"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2 xl:hidden">
+          <Link href="/book-pickup" className="inline-flex min-h-11 items-center justify-center rounded-md bg-[#e30613] px-3 text-xs font-bold text-white transition hover:bg-[#c80510] sm:text-sm">Book Pickup</Link>
+          <button
+            ref={mobileMenuButtonRef}
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/15 text-white xl:hidden"
+            onClick={() => setOpen((value) => !value)}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
       {open ? (
         <div

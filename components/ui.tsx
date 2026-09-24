@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ArrowUp, Headphones, MessageCircle, Minus, PhoneCall, X } from "lucide-react";
+import { ArrowRight, ArrowUp, Headphones, MessageCircle, Minus, PackageCheck, PhoneCall, X } from "lucide-react";
 import { type FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { pushAnalyticsEvent } from "@/lib/analytics";
 import { portadorLegalPolicy } from "@/lib/policy";
@@ -100,14 +100,18 @@ export function CTA({ title = "When Time Cannot Wait, speak to operations now.",
 export function StickyConversionBar() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#050506]/92 px-2.5 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] backdrop-blur-xl md:hidden">
-      <div className="grid min-w-0 grid-cols-2 gap-2">
-        <Link href={site.phoneHref} className="inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-md bg-[#e30613] px-2 text-xs font-bold text-white min-[400px]:text-sm">
-          <PhoneCall size={16} className="shrink-0" />
-          Call Now
+      <div className="grid min-w-0 grid-cols-[1.25fr_0.75fr_1fr] gap-2">
+        <Link href="/book-pickup" className="inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-md bg-[#e30613] px-2 text-xs font-bold text-white">
+          <PackageCheck size={16} className="shrink-0" aria-hidden="true" />
+          Book Pickup
         </Link>
-        <Link href={whatsappHref} className="inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-md border border-white/15 bg-white/[0.04] px-2 text-xs font-bold text-white min-[400px]:text-sm">
+        <Link href={site.phoneHref} className="inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-md border border-white/15 bg-white/[0.04] px-2 text-xs font-bold text-white" aria-label="Call PORTADOR Operations">
+          <PhoneCall size={16} className="shrink-0" />
+          Call
+        </Link>
+        <Link href={whatsappHref} className="inline-flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-md border border-white/15 bg-white/[0.04] px-2 text-xs font-bold text-white" aria-label="WhatsApp PORTADOR Operations">
           <MessageCircle size={16} className="shrink-0" />
-          WhatsApp Operations
+          WhatsApp
         </Link>
       </div>
     </div>

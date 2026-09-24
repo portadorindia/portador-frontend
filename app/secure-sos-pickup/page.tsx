@@ -1,2 +1,2 @@
 import { redirect } from "next/navigation";
-export default function Page() { redirect("/book-pickup"); }
+export default function Page() { redirect("/book-pickup?service=SOS"); }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Instagram, Linkedin, Mail, MapPin, MessageCircle, PackageCheck, PhoneCall, Youtube } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, Mail, MapPin, MessageCircle, PackageCheck, PhoneCall, Youtube } from "lucide-react";
 import { LiabilityDisclosure } from "@/components/liability-disclosure";
 import { cargoPages, cities, fraudAdvisoryLink, hubArticles, legalLinks, site, socialLinks, whatsappHref } from "@/lib/site";
 
@@ -22,6 +22,13 @@ export function Footer() {
   return (
     <footer className="border-t border-white/[0.08] bg-[#050506] py-12 md:py-16">
       <div className="container-shell">
+        <div className="mb-10 flex flex-col gap-5 rounded-lg border border-[#e30613]/25 bg-[#e30613]/[0.06] p-5 sm:flex-row sm:items-center sm:justify-between md:p-6">
+          <div>
+            <h2 className="text-xl font-semibold text-white">Ready to arrange a pickup?</h2>
+            <p className="mt-2 max-w-xl text-sm leading-6 text-zinc-300">Enter your shipment details as a guest or with your customer account.</p>
+          </div>
+          <Link href="/book-pickup" className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 text-sm font-bold text-white transition hover:bg-[#c80510]">Book Pickup <ArrowRight size={17} aria-hidden="true" /></Link>
+        </div>
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-[1.55fr_repeat(5,minmax(0,1fr))] xl:items-start">
           <div className="min-w-0">
             <div className="flex flex-col items-start gap-3">
@@ -45,6 +52,10 @@ export function Footer() {
             </p>
             <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-600">Official website of {site.legalName}</p>
             <div className="mt-5 grid gap-2 text-sm leading-6 text-zinc-300">
+              <Link href="/book-pickup?service=SOS" className="inline-flex items-center gap-2 font-semibold transition hover:text-white">
+                <PackageCheck size={15} className="text-[#e30613]" aria-hidden="true" />
+                Secure SOS Pickup
+              </Link>
               <a href={site.phoneHref} className="inline-flex items-center gap-2 transition hover:text-white">
                 <PhoneCall size={15} className="text-[#e30613]" />
                 {site.phone}

@@ -200,10 +200,11 @@ export default function Home() {
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <PrimaryButton href={whatsappHref}>Get Urgent Cargo Assistance</PrimaryButton>
+              <PrimaryButton href="/book-pickup">Quick Pickup Booking</PrimaryButton>
+              <SecondaryButton href={whatsappHref}>Get Urgent Cargo Assistance</SecondaryButton>
               <SecondaryButton href={site.trackingUrl}>Track Shipment</SecondaryButton>
             </div>
-            <p className="mt-3 text-xs font-semibold leading-5 text-zinc-500">Route, cargo acceptance, and feasibility are confirmed before booking.</p>
+            <p className="mt-3 text-xs font-semibold leading-5 text-zinc-400">Start as a guest — no signup required. Collection and service availability are reviewed by PORTADOR.</p>
           </div>
 
           <AviationHeroVisual />
