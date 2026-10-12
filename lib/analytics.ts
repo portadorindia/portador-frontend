@@ -10,7 +10,10 @@ export type AnalyticsEventName =
   | "enquiry_start"
   | "airport_page_visit"
   | "city_page_visit"
-  | "route_page_visit";
+  | "route_page_visit"
+  | "pickup_cta_click"
+  | "pickup_request_page_view"
+  | "pickup_handoff";
 
 export type AnalyticsEventParams = Record<string, string | number | boolean | undefined>;
 
@@ -24,7 +27,8 @@ export function serviceInterestForPath(pathname: string): ServiceInterest | unde
     "/services/portador-express": "portador_express",
     "/services/portador-black": "portador_black",
     "/services/portador-global": "portador_global",
-    "/cargo/excess-baggage": "excess_baggage"
+    "/cargo/excess-baggage": "excess_baggage",
+    "/excess-baggage": "excess_baggage"
   };
   return services[path];
 }
@@ -69,16 +73,36 @@ export function routeEventName(pathname: string): AnalyticsEventName | null {
   return null;
 }
 
+// Reuse an existing consent-managed SDK only. This is not a second PostHog initializer.
+type ExistingPostHog = {
+  capture: (name: string, properties: AnalyticsEventParams) => unknown;
+  has_opted_out_capturing?: () => boolean;
+};
+const pickupEvents = new Set<AnalyticsEventName>(["pickup_cta_click", "pickup_request_page_view", "pickup_handoff"]);
+
 export function pushAnalyticsEvent(name: AnalyticsEventName, params: AnalyticsEventParams = {}) {
   if (typeof window === "undefined") return;
 
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: name,
-    ...params
-  });
+  // Analytics failures must never interrupt the actual contact/pickup navigation.
+  try {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: name, ...params });
+  } catch { /* The other delivery paths may still be available. */ }
+  try {
+    window.gtag?.("event", name, params);
+  } catch { /* The user action must still complete when tracking is blocked. */ }
 
-  if (typeof window.gtag === "function") {
-    window.gtag("event", name, params);
-  }
+  // Existing PostHog autocapture continues to own page, Call and WhatsApp events.
+  if (!pickupEvents.has(name)) return;
+  if (!["portador.in", "www.portador.in"].includes(window.location.hostname)) return;
+  try {
+    const posthog = (window as Window & { posthog?: ExistingPostHog }).posthog;
+    if (!posthog || typeof posthog.capture !== "function" || posthog.has_opted_out_capturing?.()) return;
+    posthog.capture(name, {
+      ...params,
+      // Strip arbitrary query data from the automatic current-URL property for these events.
+      $current_url: `${window.location.origin}${window.location.pathname}`,
+      $pathname: window.location.pathname
+    });
+  } catch { /* No opt-in, SDK injection or retry that could bypass consent. */ }
 }
