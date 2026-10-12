@@ -39,7 +39,7 @@ export default async function BookPickupPage({ searchParams }: { searchParams: P
             <div className="flex items-center gap-3"><Icon size={23} className="text-[#e30613]" aria-hidden="true" /><h2 className="text-2xl font-semibold">{title}</h2></div>
             <p className="mt-3 flex-1 leading-7 text-zinc-300">{text}</p>
             {origin ? (
-              <a className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 py-3 text-sm font-bold transition hover:bg-[#c80510]" href={`${origin}/secure-pickup?service=${service}`} aria-label={`Continue to ${title} without signup`}>Continue without signup <ArrowRight size={17} aria-hidden="true" /></a>
+              <a className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#e30613] px-5 py-3 text-sm font-bold transition hover:bg-[#c80510]" data-analytics-pickup="guest" data-analytics-pickup-origin={origin} href={`${origin}/secure-pickup?service=${service}`} aria-label={`Continue to ${title} without signup`}>Continue without signup <ArrowRight size={17} aria-hidden="true" /></a>
             ) : <p className="mt-6 rounded-md border border-white/10 p-3 text-sm text-zinc-400">Online secure booking is being prepared. Contact PORTADOR for pickup assistance.</p>}
           </section>
         ))}
@@ -47,7 +47,7 @@ export default async function BookPickupPage({ searchParams }: { searchParams: P
 
       <div className="mt-6 flex flex-col gap-5 border-b border-white/10 pb-8 sm:flex-row sm:items-start sm:justify-between">
         <div className="max-w-xl text-sm leading-6 text-zinc-300">
-          {origin ? <a className="inline-flex min-h-11 items-center gap-2 font-semibold text-white underline underline-offset-4" href={`${origin}/customer/secure-pickup${requestedService ? "?service=SOS" : ""}`}>Already a customer? Continue with your account <ArrowRight size={15} aria-hidden="true" /></a> : <Link href={site.phoneHref} className="inline-flex min-h-11 items-center font-semibold text-white underline underline-offset-4">Contact PORTADOR to arrange a pickup</Link>}
+          {origin ? <a className="inline-flex min-h-11 items-center gap-2 font-semibold text-white underline underline-offset-4" data-analytics-pickup="account" data-analytics-pickup-origin={origin} href={`${origin}/customer/secure-pickup${requestedService ? "?service=SOS" : ""}`}>Already a customer? Continue with your account <ArrowRight size={15} aria-hidden="true" /></a> : <Link href={site.phoneHref} className="inline-flex min-h-11 items-center font-semibold text-white underline underline-offset-4">Contact PORTADOR to arrange a pickup</Link>}
           <p>Collection and service timing are confirmed after PORTADOR reviews your request.</p>
         </div>
         <CopyPickupLink service={requestedService} />
